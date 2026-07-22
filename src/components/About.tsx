@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Placeholder from "./Placeholder";
 import Reveal from "./Reveal";
 
 const pillars = [
@@ -38,19 +37,33 @@ export default function About() {
           </h2>
         </Reveal>
 
-        {/* team picture */}
+        {/* team picture — bespoke band (no centered icon to collide with the
+            caption); taller on mobile so it reads large on every screen */}
         <Reveal delay={0.1}>
-          <div className="relative mt-14 overflow-hidden rounded-2xl border border-border">
-            <Placeholder label="The Anthem Team" ratio="aspect-[21/9]" />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-              <p className="font-display text-lg font-semibold">
+          <figure className="relative mt-14 overflow-hidden rounded-2xl border border-border">
+            <div className="relative aspect-[3/4] w-full bg-surface-2 sm:aspect-[21/9]">
+              <div className="absolute inset-0 bg-[radial-gradient(120%_140%_at_75%_-10%,rgba(139,127,232,0.22),transparent_60%)]" />
+              <div
+                className="absolute inset-0 opacity-[0.10]"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+                  backgroundSize: "48px 48px",
+                }}
+              />
+              <span className="absolute right-5 top-4 font-body text-[10px] uppercase tracking-[0.3em] text-muted-2">
+                New Delhi
+              </span>
+            </div>
+            <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 sm:p-8">
+              <p className="font-display text-lg font-semibold sm:text-xl">
                 The people behind the experiences
               </p>
-              <p className="font-body text-sm text-muted">
+              <p className="mt-1 font-body text-sm text-muted">
                 A team of strategists, producers and makers based in New Delhi.
               </p>
-            </div>
-          </div>
+            </figcaption>
+          </figure>
         </Reveal>
 
         <div className="mt-14 grid gap-5 md:grid-cols-3">

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import AnimatedHeading from "./AnimatedHeading";
 import Placeholder from "./Placeholder";
 import Reveal from "./Reveal";
 
@@ -43,12 +44,11 @@ export default function Blog() {
                 The Journal
               </p>
             </Reveal>
-            <Reveal delay={0.05}>
-              <h2 className="font-display text-3xl font-bold leading-tight sm:text-5xl">
-                Stories from{" "}
-                <span className="text-gradient">behind the experiences</span>
-              </h2>
-            </Reveal>
+            <AnimatedHeading
+              text="Stories from behind the experiences"
+              highlight="behind the experiences"
+              className="font-display text-3xl font-bold leading-tight sm:text-5xl"
+            />
           </div>
           <Reveal delay={0.1}>
             <a

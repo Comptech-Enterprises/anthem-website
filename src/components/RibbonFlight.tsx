@@ -74,12 +74,26 @@ export default function RibbonFlight({ children }: { children: ReactNode }) {
     const back = el.getPointAtLength(Math.max(0, L * clf - 2));
     px.set(p.x);
     py.set(p.y);
-    angle.set((Math.atan2(p.y - back.y, p.x - back.x) * 180) / Math.PI);
+
+    // The SVG uses preserveAspectRatio="none", so the viewBox is stretched
+    // non-uniformly (esp. on narrow/tall mobile). Convert the tangent from
+    // viewBox units to screen units before measuring the angle, otherwise the
+    // plane points the wrong way relative to the visually-rendered ribbon.
+    const svg = el.ownerSVGElement;
+    const scaleX = svg && svg.clientWidth ? svg.clientWidth / VB_W : 1;
+    const scaleY = svg && svg.clientHeight ? svg.clientHeight / VB_H : 1;
+    const dx = (p.x - back.x) * scaleX;
+    const dy = (p.y - back.y) * scaleY;
+    angle.set((Math.atan2(dy, dx) * 180) / Math.PI);
   };
 
   useMotionValueEvent(drawn, "change", updatePlane);
   useEffect(() => {
     updatePlane(drawn.get());
+    // re-measure on resize so the angle stays correct across breakpoints
+    const onResize = () => updatePlane(drawn.get());
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

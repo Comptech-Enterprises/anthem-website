@@ -1,46 +1,16 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { useRef } from "react";
+import MagneticButton from "./MagneticButton";
 
 const words = ["Your", "New-Age", "Experiential", "Partners"];
-
-/** A single frame in the hero collage — quiet placeholder, thin border,
- *  small caption. No shimmer/glow. Real photography drops straight in. */
-function Frame({
-  label,
-  ratio,
-  className = "",
-}: {
-  label: string;
-  ratio: string;
-  className?: string;
-}) {
-  return (
-    <div
-      className={`group relative overflow-hidden rounded-xl border border-border bg-surface-2 ${ratio} ${className}`}
-    >
-      <div className="absolute inset-0 bg-[radial-gradient(130%_130%_at_30%_0%,rgba(139,127,232,0.14),transparent_60%)]" />
-      <div
-        className="absolute inset-0 opacity-[0.10]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-          backgroundSize: "38px 38px",
-        }}
-      />
-      <span className="absolute bottom-2.5 left-3 font-body text-[9px] uppercase tracking-[0.25em] text-muted-2">
-        {label}
-      </span>
-    </div>
-  );
-}
-
-/** Signature hero visual — a single clean placeholder frame standing in
- *  for the old site's key hero image. */
-function HeroImage() {
-  return <Frame label="The Anthem" ratio="" className="h-full w-full" />;
-}
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -48,65 +18,87 @@ export default function Hero() {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 160]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const bandY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+
+  // mouse parallax
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const sx = useSpring(mx, { stiffness: 60, damping: 15 });
+  const sy = useSpring(my, { stiffness: 60, damping: 15 });
+  const planeX = useTransform(sx, [-0.5, 0.5], [-40, 40]);
+  const planeY = useTransform(sy, [-0.5, 0.5], [-30, 30]);
+  const gridX = useTransform(sx, [-0.5, 0.5], [24, -24]);
+  const gridY = useTransform(sy, [-0.5, 0.5], [16, -16]);
+
+  const onMove = (e: React.MouseEvent) => {
+    const r = ref.current?.getBoundingClientRect();
+    if (!r) return;
+    mx.set((e.clientX - r.left) / r.width - 0.5);
+    my.set((e.clientY - r.top) / r.height - 0.5);
+  };
 
   return (
     <section
       id="top"
       ref={ref}
-      className="relative flex min-h-screen items-center overflow-hidden"
+      onMouseMove={onMove}
+      className="relative flex min-h-screen flex-col justify-center overflow-hidden pt-32 pb-16"
     >
-      {/* animated background glows */}
+      {/* ambient glows */}
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -left-40 top-1/4 h-[36rem] w-[36rem] rounded-full bg-accent/20 blur-[140px]"
-        animate={{ x: [0, 60, 0], y: [0, -40, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none absolute left-1/4 top-10 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-accent/20 blur-[150px]"
+        animate={{ x: [0, 50, 0], y: [0, -30, 0] }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -right-40 bottom-0 h-[30rem] w-[30rem] rounded-full bg-accent/10 blur-[130px]"
-        animate={{ x: [0, -50, 0], y: [0, 40, 0] }}
-        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none absolute right-0 top-1/3 h-[28rem] w-[28rem] rounded-full bg-accent-deep/15 blur-[140px]"
+        animate={{ x: [0, -40, 0], y: [0, 40, 0] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        style={{ background: "rgba(108,92,231,0.15)" }}
       />
 
-      {/* grid overlay */}
-      <div
+      {/* grid overlay with parallax */}
+      <motion.div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.06]"
         style={{
+          x: gridX,
+          y: gridY,
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
           backgroundSize: "64px 64px",
         }}
+        className="pointer-events-none absolute -inset-10 opacity-[0.05]"
       />
 
       <motion.div
         style={{ y, opacity }}
-        className="container-x relative z-10 grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]"
+        className="container-x relative z-10 flex flex-col items-center text-center"
       >
-        <div>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-6 flex items-center gap-3 font-hand text-lg text-accent"
-          >
-            <span className="h-px w-10 bg-accent" />
-            Experiential Agency
-          </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-7 flex items-center gap-4 font-hand text-lg text-accent sm:text-xl"
+        >
+          <span className="h-px w-10 bg-accent" />
+          Experiential Agency
+          <span className="h-px w-10 bg-accent" />
+        </motion.p>
 
-          <h1 className="font-display text-5xl font-extrabold leading-[0.95] tracking-tight sm:text-7xl lg:text-8xl">
-            {words.map((w, i) => (
+        <h1 className="mx-auto max-w-5xl font-display text-5xl font-extrabold leading-[0.95] tracking-tight sm:text-7xl lg:text-[7rem]">
+          {words.map((w, i) => (
+            <span key={w} className="inline-block overflow-hidden pb-[0.12em] align-bottom">
               <motion.span
-                key={w}
-                initial={{ opacity: 0, y: 60, rotateX: -40 }}
-                animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                initial={{ y: "115%" }}
+                animate={{ y: 0 }}
                 transition={{
-                  duration: 0.8,
+                  duration: 0.9,
                   delay: 0.3 + i * 0.12,
-                  ease: [0.22, 1, 0.36, 1],
+                  ease: [0.16, 1, 0.3, 1],
                 }}
                 className={`mr-4 inline-block ${
                   w === "Experiential" ? "text-gradient" : ""
@@ -114,70 +106,89 @@ export default function Hero() {
               >
                 {w}
               </motion.span>
-            ))}
-          </h1>
+            </span>
+          ))}
+        </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.9 }}
-            className="mt-8 max-w-xl font-body text-lg leading-relaxed text-muted"
-          >
-            We create brand realities that transform insights into impactful
-            experiences.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1.05 }}
-            className="mt-10 flex flex-wrap items-center gap-4"
-          >
-            <a
-              href="#work"
-              className="group flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 font-body font-medium text-black transition-all hover:shadow-[0_0_35px_var(--accent-glow)]"
-            >
-              View Our Work
-              <span className="transition-transform group-hover:translate-x-1">
-                →
-              </span>
-            </a>
-            <a
-              href="#about"
-              className="rounded-full border border-border px-7 py-3.5 font-body font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
-            >
-              Who We Are
-            </a>
-          </motion.div>
-        </div>
-
-        {/* hero visual — editorial collage of placeholder frames */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="hidden h-[30rem] lg:block"
+          transition={{ duration: 0.7, delay: 0.9 }}
+          className="mt-8 max-w-xl font-body text-lg leading-relaxed text-muted"
         >
-          <HeroImage />
+          We create brand realities that transform sharp insight into
+          experiences people feel — on every screen and every stage.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 1.05 }}
+          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+        >
+          <MagneticButton
+            href="#work"
+            className="group flex items-center gap-2 rounded-full bg-accent px-8 py-4 font-body font-medium text-black transition-shadow hover:shadow-[0_0_45px_var(--accent-glow)]"
+          >
+            View Our Work
+            <span className="transition-transform group-hover:translate-x-1">
+              →
+            </span>
+          </MagneticButton>
+          <MagneticButton
+            href="#about"
+            className="rounded-full border border-border px-8 py-4 font-body font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+          >
+            Who We Are
+          </MagneticButton>
         </motion.div>
       </motion.div>
 
-      {/* scroll cue */}
+      {/* cinematic image band */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4 }}
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
+        style={{ y: bandY }}
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="container-x relative z-10 mt-16"
       >
-        <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-2">
-          Scroll
-        </span>
-        <div className="flex h-10 w-6 justify-center rounded-full border border-border p-1.5">
-          <motion.span
-            className="h-2 w-1 rounded-full bg-accent"
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 1.6, repeat: Infinity }}
-          />
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-surface-2">
+          <div className="relative aspect-[16/10] w-full sm:aspect-[21/7]">
+            <div className="absolute inset-0 bg-[radial-gradient(120%_150%_at_50%_-20%,rgba(139,127,232,0.25),transparent_60%)]" />
+            <div
+              className="absolute inset-0 opacity-[0.10]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+                backgroundSize: "44px 44px",
+              }}
+            />
+            {/* drifting paper-plane mark, mouse parallax */}
+            <motion.div
+              style={{ x: planeX, y: planeY }}
+              className="absolute inset-0 flex items-center justify-center"
+            >
+              <motion.svg
+                width="88"
+                height="88"
+                viewBox="0 0 24 24"
+                fill="#ffffff"
+                className="[filter:drop-shadow(0_0_24px_var(--accent-glow))]"
+                animate={{ y: [0, -12, 0], rotate: [-3, 3, -3] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <path d="M2 21l21-9L2 3v7l15 2-15 2z" />
+              </motion.svg>
+            </motion.div>
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-black/70 to-transparent p-6 sm:p-8">
+              <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-2">
+                The Anthem — Experiential Reel
+              </span>
+              <span className="hidden font-body text-[10px] uppercase tracking-[0.3em] text-muted-2 sm:block">
+                Based in New Delhi
+              </span>
+            </div>
+          </div>
         </div>
       </motion.div>
     </section>

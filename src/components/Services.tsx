@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import AnimatedHeading from "./AnimatedHeading";
 import Placeholder from "./Placeholder";
 import Reveal from "./Reveal";
 
@@ -72,12 +73,11 @@ export default function Services() {
                 Services
               </p>
             </Reveal>
-            <Reveal delay={0.05}>
-              <h2 className="font-display text-3xl font-bold leading-tight sm:text-5xl">
-                Digital & Events —{" "}
-                <span className="text-gradient">one seamless brand story</span>
-              </h2>
-            </Reveal>
+            <AnimatedHeading
+              text="Digital & Events — one seamless brand story"
+              highlight="one seamless brand story"
+              className="font-display text-3xl font-bold leading-tight sm:text-5xl"
+            />
           </div>
           <Reveal delay={0.1}>
             <p className="max-w-sm font-body text-muted">
@@ -139,7 +139,7 @@ export default function Services() {
                   <Reveal key={p.title} delay={0.1 + j * 0.08}>
                     <motion.article
                       whileHover="hover"
-                      className="group relative h-full cursor-pointer overflow-hidden rounded-2xl border border-border"
+                      className="group relative h-full cursor-pointer overflow-hidden rounded-2xl border border-border transition-all duration-300 hover:border-accent/60 hover:shadow-[0_24px_70px_-24px_var(--accent-glow)]"
                     >
                       <motion.div
                         variants={{ hover: { scale: 1.05 } }}

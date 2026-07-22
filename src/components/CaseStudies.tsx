@@ -1,5 +1,6 @@
 "use client";
 
+import AnimatedHeading from "./AnimatedHeading";
 import Placeholder from "./Placeholder";
 import Reveal from "./Reveal";
 
@@ -46,11 +47,11 @@ export default function CaseStudies() {
               Case Studies
             </p>
           </Reveal>
-          <Reveal delay={0.05}>
-            <h2 className="font-display text-3xl font-bold leading-tight sm:text-5xl">
-              The work, <span className="text-gradient">and what it delivered</span>
-            </h2>
-          </Reveal>
+          <AnimatedHeading
+            text="The work, and what it delivered"
+            highlight="and what it delivered"
+            className="font-display text-3xl font-bold leading-tight sm:text-5xl"
+          />
         </div>
 
         <div className="mt-14 flex flex-col gap-6">

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import AnimatedHeading from "./AnimatedHeading";
 import Placeholder from "./Placeholder";
 import Reveal from "./Reveal";
 
@@ -28,12 +29,11 @@ export default function Work() {
                 Our Work
               </p>
             </Reveal>
-            <Reveal delay={0.05}>
-              <h2 className="font-display text-3xl font-bold sm:text-5xl">
-                Campaigns that{" "}
-                <span className="text-gradient">left a mark</span>
-              </h2>
-            </Reveal>
+            <AnimatedHeading
+              text="Campaigns that left a mark"
+              highlight="left a mark"
+              className="font-display text-3xl font-bold sm:text-5xl"
+            />
           </div>
         </div>
 
@@ -46,7 +46,7 @@ export default function Work() {
             >
               <motion.article
                 whileHover="hover"
-                className="group relative h-full cursor-pointer overflow-hidden rounded-2xl border border-border"
+                className="group relative h-full cursor-pointer overflow-hidden rounded-2xl border border-border transition-all duration-300 hover:border-accent/60 hover:shadow-[0_24px_70px_-24px_var(--accent-glow)]"
               >
                 <motion.div
                   variants={{ hover: { scale: 1.05 } }}

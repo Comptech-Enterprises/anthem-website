@@ -4,6 +4,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import SmoothScroll from "@/components/SmoothScroll";
 import ChatWidget from "@/components/ChatWidget";
 import Hero from "@/components/Hero";
+import Marquee from "@/components/Marquee";
 import Stats from "@/components/Stats";
 import About from "@/components/About";
 import Services from "@/components/Services";
@@ -25,6 +26,7 @@ export default function Home() {
       <Navbar />
       <main className="flex-1">
         <Hero />
+        <Marquee />
         <Stats />
         <RibbonFlight>
           <About />
