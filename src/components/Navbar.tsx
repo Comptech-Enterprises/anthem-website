@@ -8,6 +8,8 @@ const links = [
   { label: "About Us", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Our Work", href: "#work" },
+  { label: "Gallery", href: "#gallery" },
+  { label: "Blog", href: "#blog" },
   { label: "Careers", href: "#careers" },
   { label: "Contact Us", href: "#enquiry" },
 ];
@@ -47,7 +49,7 @@ export default function Navbar() {
         </a>
 
         {/* desktop */}
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-6 lg:flex">
           {links.map((l) => (
             <li key={l.href}>
               <a
@@ -73,7 +75,7 @@ export default function Navbar() {
         <button
           aria-label="Toggle menu"
           onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
         >
           <motion.span
             animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
@@ -97,7 +99,7 @@ export default function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="overflow-hidden border-t border-border bg-background/95 backdrop-blur-xl md:hidden"
+            className="overflow-hidden border-t border-border bg-background/95 backdrop-blur-xl lg:hidden"
           >
             {links.map((l) => (
               <li key={l.href} className="border-b border-border/60">

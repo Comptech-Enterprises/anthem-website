@@ -10,7 +10,7 @@ type PlaceholderProps = {
 
 /**
  * Image placeholder — animated shimmer block used everywhere real photography
- * will eventually go. Keeps the dark, premium look with the electric-blue accent.
+ * will eventually go. Keeps the dark, premium look with the violet accent.
  */
 export default function Placeholder({
   label = "Image",
@@ -35,7 +35,7 @@ export default function Placeholder({
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(105deg, transparent 30%, rgba(0,153,255,0.18) 50%, transparent 70%)",
+            "linear-gradient(105deg, transparent 30%, rgba(139,127,232,0.18) 50%, transparent 70%)",
         }}
         animate={{ x: ["-120%", "120%"] }}
         transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}

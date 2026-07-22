@@ -11,6 +11,7 @@ type Category = {
   description: string;
   offerings: string[];
   projects: { title: string; tag: string }[];
+  link?: { label: string; href: string };
 };
 
 const categories: Category[] = [
@@ -32,6 +33,8 @@ const categories: Category[] = [
       { title: "Brand Film", tag: "Film & Motion" },
       { title: "Performance Campaign", tag: "Growth" },
     ],
+    // Food Talk is Anthem's digital-content arm — swap href for the live URL.
+    link: { label: "Explore Food Talk", href: "https://www.foodtalkindia.com" },
   },
   {
     key: "events",
@@ -115,6 +118,17 @@ export default function Services() {
                         </li>
                       ))}
                     </ul>
+                    {cat.link && (
+                      <a
+                        href={cat.link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-6 inline-flex items-center gap-2 rounded-full border border-accent/40 px-5 py-2.5 font-body text-sm font-medium text-accent transition-all hover:bg-accent hover:text-black"
+                      >
+                        {cat.link.label}
+                        <span aria-hidden>↗</span>
+                      </a>
+                    )}
                   </div>
                 </Reveal>
               </div>

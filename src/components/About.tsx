@@ -1,22 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Placeholder from "./Placeholder";
 import Reveal from "./Reveal";
 
 const pillars = [
   {
     title: "Create",
-    copy: "Transformative ideas into strategies that inspire and engage.",
+    copy: "We turn sharp insights into bold ideas and strategies that inspire, engage and move people to act.",
     num: "01",
   },
   {
     title: "Curate",
-    copy: "Experiences through events and activations that immerse and resonate.",
+    copy: "We craft events and activations that immerse audiences and turn brand moments into lasting memories.",
     num: "02",
   },
   {
     title: "Design",
-    copy: "Unique visual identities that speak volumes and create lasting impressions.",
+    copy: "We build distinctive brand identities and worlds that speak volumes and leave a lasting impression.",
     num: "03",
   },
 ];
@@ -36,11 +37,26 @@ export default function About() {
           <h2 className="max-w-4xl font-display text-3xl font-bold leading-tight sm:text-5xl">
             An experiential agency that delivers{" "}
             <span className="text-gradient">360° brand campaigns</span> — rooted
-            in innovation, consumer insights and storytelling.
+            in innovation, consumer insight and storytelling.
           </h2>
         </Reveal>
 
-        <div className="mt-16 grid gap-5 md:grid-cols-3">
+        {/* team picture */}
+        <Reveal delay={0.1}>
+          <div className="relative mt-14 overflow-hidden rounded-2xl border border-border">
+            <Placeholder label="The Anthem Team" ratio="aspect-[21/9]" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+              <p className="font-display text-lg font-semibold">
+                The people behind the experiences
+              </p>
+              <p className="font-body text-sm text-muted">
+                A team of strategists, producers and makers based in New Delhi.
+              </p>
+            </div>
+          </div>
+        </Reveal>
+
+        <div className="mt-14 grid gap-5 md:grid-cols-3">
           {pillars.map((p, i) => (
             <Reveal key={p.title} delay={0.1 + i * 0.1}>
               <motion.article

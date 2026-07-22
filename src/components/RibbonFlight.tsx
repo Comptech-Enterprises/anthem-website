@@ -31,12 +31,16 @@ const VB_H = 2000;
 // control = C1-continuous, no kinks). The final S ends with its control point
 // directly above the endpoint, so the tangent — and the plane — point straight
 // down at the center landing.
-const FLIGHT_PATH = `M 1330 40
-  C 1180 240, 120 300, 160 520
-  S 1360 760, 1300 1000
-  S 90 1240, 200 1460
-  S 1180 1660, 1000 1800
-  S 720 1920, 720 1990`;
+// Every segment's outgoing control mirrors the next segment's incoming control
+// (C1-continuous), so there are no tangent breaks / kinks. Wide waves left↔right,
+// a rightward bulge near the bottom, then a smooth curved descent into a
+// vertical (nose-down) landing at centre.
+const FLIGHT_PATH = `M 1390 40
+  C 1324 173, 120 420, 120 560
+  C 120 700, 1360 940, 1360 1080
+  C 1360 1220, 160 1380, 160 1520
+  C 160 1660, 1216 1640, 1150 1740
+  C 1084 1840, 720 1898, 720 1998`;
 
 export default function RibbonFlight({ children }: { children: ReactNode }) {
   const zoneRef = useRef<HTMLDivElement>(null);
