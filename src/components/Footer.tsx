@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const socials = ["Instagram", "LinkedIn", "Behance"];
 
 export default function Footer() {
@@ -6,11 +8,14 @@ export default function Footer() {
       <div className="container-x py-16">
         <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
           <div>
-            <div className="flex items-center gap-2">
-              <span className="font-display text-2xl font-extrabold">
-                ANTHEM
-              </span>
-              <span className="h-2 w-2 rounded-full bg-accent" />
+            <div className="flex items-center">
+              <Image
+                src="/logo.webp"
+                alt="Anthem"
+                width={3000}
+                height={2250}
+                className="h-24 w-auto invert"
+              />
             </div>
             <p className="mt-4 max-w-xs font-body text-sm leading-relaxed text-muted">
               Your new-age experiential partners — creating brand realities that

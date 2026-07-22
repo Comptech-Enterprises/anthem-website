@@ -6,6 +6,7 @@ import About from "@/components/About";
 import Services from "@/components/Services";
 import Work from "@/components/Work";
 import Founders from "@/components/Founders";
+import JobApplication from "@/components/JobApplication";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -22,6 +23,7 @@ export default function Home() {
           <Work />
         </RibbonFlight>
         <Founders />
+        <JobApplication />
         <Contact />
       </main>
       <Footer />

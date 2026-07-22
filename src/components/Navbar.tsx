@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 
 const links = [
   { label: "About Us", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Our Work", href: "#work" },
+  { label: "Careers", href: "#careers" },
   { label: "Contact Us", href: "#contact" },
 ];
 
@@ -32,12 +34,16 @@ export default function Navbar() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <nav className="container-x flex h-18 items-center justify-between py-4">
-        <a href="#top" className="group flex items-center gap-2">
-          <span className="font-display text-2xl font-extrabold tracking-tight">
-            ANTHEM
-          </span>
-          <span className="h-2 w-2 rounded-full bg-accent transition-transform group-hover:scale-150" />
+      <nav className="container-x flex min-h-18 items-center justify-between py-2">
+        <a href="#top" className="group flex items-center">
+          <Image
+            src="/logo.webp"
+            alt="Anthem"
+            width={3000}
+            height={2250}
+            priority
+            className="h-16 w-auto invert sm:h-20"
+          />
         </a>
 
         {/* desktop */}

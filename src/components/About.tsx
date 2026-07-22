@@ -48,7 +48,7 @@ export default function About() {
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
                 className="group relative h-full overflow-hidden rounded-2xl border border-border bg-surface p-8 transition-colors hover:border-accent/50"
               >
-                <div className="absolute -right-4 -top-6 font-display text-8xl font-extrabold text-surface-3 transition-colors group-hover:text-accent/20">
+                <div className="absolute right-4 top-2 font-display text-7xl font-extrabold leading-none text-surface-3 transition-colors group-hover:text-accent/20">
                   {p.num}
                 </div>
                 <h3 className="relative font-display text-2xl font-semibold">
