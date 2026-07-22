@@ -9,7 +9,7 @@ const links = [
   { label: "Services", href: "#services" },
   { label: "Our Work", href: "#work" },
   { label: "Careers", href: "#careers" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Contact Us", href: "#enquiry" },
 ];
 
 export default function Navbar() {
@@ -61,10 +61,10 @@ export default function Navbar() {
           ))}
           <li>
             <a
-              href="#contact"
+              href="#enquiry"
               className="rounded-full bg-accent px-5 py-2 font-body text-sm font-medium text-black transition-all hover:shadow-[0_0_25px_var(--accent-glow)]"
             >
-              Let&apos;s Talk
+              Start a Project
             </a>
           </li>
         </ul>

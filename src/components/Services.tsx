@@ -1,24 +1,56 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Placeholder from "./Placeholder";
 import Reveal from "./Reveal";
 
-const services = [
+type Category = {
+  key: string;
+  label: string;
+  title: string;
+  description: string;
+  offerings: string[];
+  projects: { title: string; tag: string }[];
+};
+
+const categories: Category[] = [
   {
-    title: "Live Events & IPs",
-    copy: "Owned festivals and format IPs designed to build brand equity and audiences.",
+    key: "digital",
+    label: "01 — Digital",
+    title: "Digital",
+    description:
+      "We build brands where audiences actually live — on their screens. From always-on social storytelling to high-craft films and performance-led campaigns, we plan, produce and publish content that earns attention and drives measurable action.",
+    offerings: [
+      "Social Media & Community",
+      "Content Production",
+      "Films, Reels & Motion",
+      "Performance Marketing",
+      "Web & Digital Experiences",
+    ],
+    projects: [
+      { title: "Always-On Social", tag: "Content System" },
+      { title: "Brand Film", tag: "Film & Motion" },
+      { title: "Performance Campaign", tag: "Growth" },
+    ],
   },
   {
-    title: "Experiential Strategy",
-    copy: "Insight-led planning that turns brand objectives into experiences people feel.",
-  },
-  {
-    title: "Content Production",
-    copy: "Films, social, and campaign content produced end-to-end for every screen.",
-  },
-  {
-    title: "Brand Activations",
-    copy: "On-ground and retail activations that immerse, engage and convert.",
+    key: "events",
+    label: "02 — Events",
+    title: "Events",
+    description:
+      "We turn spaces into stories. From owned festival IPs to brand activations, launches and immersive pop-ups, we design and deliver on-ground experiences end-to-end — where audiences don't just watch, they take part.",
+    offerings: [
+      "Live Events & Owned IPs",
+      "Brand Activations",
+      "Product Launches",
+      "Experiential Pop-Ups",
+      "Stage, Set & Production",
+    ],
+    projects: [
+      { title: "World Class India Festival", tag: "Live IP" },
+      { title: "Explorers Club", tag: "Festival" },
+      { title: "BCG Palooza", tag: "Activation" },
+    ],
   },
 ];
 
@@ -30,57 +62,90 @@ export default function Services() {
     >
       <div className="container-x">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
-          <div>
+          <div className="max-w-2xl">
             <Reveal>
-              <p className="mb-4 flex items-center gap-3 font-body text-sm uppercase tracking-[0.35em] text-accent">
+              <p className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
                 <span className="h-px w-10 bg-accent" />
                 Services
               </p>
             </Reveal>
             <Reveal delay={0.05}>
-              <h2 className="font-display text-3xl font-bold sm:text-5xl">
-                360° Brand Campaigns
+              <h2 className="font-display text-3xl font-bold leading-tight sm:text-5xl">
+                Digital & Events —{" "}
+                <span className="text-gradient">one seamless brand story</span>
               </h2>
             </Reveal>
           </div>
           <Reveal delay={0.1}>
             <p className="max-w-sm font-body text-muted">
               One partner, end to end — from the first insight to the final
-              activation.
+              activation, across every screen and every stage.
             </p>
           </Reveal>
         </div>
 
-        <div className="mt-14 divide-y divide-border border-t border-border">
-          {services.map((s, i) => (
-            <Reveal key={s.title} delay={i * 0.06}>
-              <motion.div
-                whileHover="hover"
-                className="group relative grid grid-cols-1 items-center gap-4 py-8 sm:grid-cols-[auto_1fr_auto]"
-              >
-                <span className="font-display text-sm text-muted-2">
-                  0{i + 1}
-                </span>
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-10">
-                  <h3 className="font-display text-2xl font-semibold transition-colors group-hover:text-accent sm:text-3xl">
-                    {s.title}
-                  </h3>
-                  <p className="max-w-md font-body text-muted">{s.copy}</p>
-                </div>
-                <motion.span
-                  variants={{ hover: { x: 8, opacity: 1 } }}
-                  className="hidden text-2xl text-accent opacity-40 sm:block"
-                >
-                  →
-                </motion.span>
-                <motion.span
-                  aria-hidden
-                  variants={{ hover: { scaleX: 1 } }}
-                  initial={{ scaleX: 0 }}
-                  className="absolute bottom-0 left-0 h-px w-full origin-left bg-accent"
-                />
-              </motion.div>
-            </Reveal>
+        <div className="mt-16 flex flex-col gap-20">
+          {categories.map((cat) => (
+            <div key={cat.key}>
+              {/* header + description */}
+              <div className="grid gap-8 border-t border-border pt-10 lg:grid-cols-[0.9fr_1.1fr]">
+                <Reveal>
+                  <div>
+                    <span className="font-body text-xs uppercase tracking-[0.3em] text-muted-2">
+                      {cat.label}
+                    </span>
+                    <h3 className="mt-3 font-display text-4xl font-bold sm:text-6xl">
+                      {cat.title}
+                    </h3>
+                  </div>
+                </Reveal>
+                <Reveal delay={0.1}>
+                  <div>
+                    <p className="font-body text-lg leading-relaxed text-muted">
+                      {cat.description}
+                    </p>
+                    <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+                      {cat.offerings.map((o) => (
+                        <li
+                          key={o}
+                          className="flex items-center gap-2 font-body text-sm text-foreground"
+                        >
+                          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                          {o}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Reveal>
+              </div>
+
+              {/* project images */}
+              <div className="mt-10 grid gap-5 sm:grid-cols-3">
+                {cat.projects.map((p, j) => (
+                  <Reveal key={p.title} delay={0.1 + j * 0.08}>
+                    <motion.article
+                      whileHover="hover"
+                      className="group relative h-full cursor-pointer overflow-hidden rounded-2xl border border-border"
+                    >
+                      <motion.div
+                        variants={{ hover: { scale: 1.05 } }}
+                        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                      >
+                        <Placeholder label={p.title} ratio="aspect-[4/3]" />
+                      </motion.div>
+                      <div className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/85 via-black/20 to-transparent p-5">
+                        <span className="font-body text-[11px] uppercase tracking-[0.25em] text-accent">
+                          {p.tag}
+                        </span>
+                        <h4 className="mt-1 font-display text-lg font-semibold">
+                          {p.title}
+                        </h4>
+                      </div>
+                    </motion.article>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>

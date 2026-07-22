@@ -1,19 +1,22 @@
 import Navbar from "@/components/Navbar";
 import RibbonFlight from "@/components/RibbonFlight";
 import ScrollProgress from "@/components/ScrollProgress";
+import SmoothScroll from "@/components/SmoothScroll";
+import ChatWidget from "@/components/ChatWidget";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Services from "@/components/Services";
 import Work from "@/components/Work";
 import Founders from "@/components/Founders";
+import EnquiryForm from "@/components/EnquiryForm";
 import JobApplication from "@/components/JobApplication";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <>
       <ScrollProgress />
+      <SmoothScroll />
       <Navbar />
       <main className="flex-1">
         <Hero />
@@ -24,9 +27,10 @@ export default function Home() {
         </RibbonFlight>
         <Founders />
         <JobApplication />
-        <Contact />
+        <EnquiryForm />
       </main>
       <Footer />
+      <ChatWidget />
     </>
   );
 }

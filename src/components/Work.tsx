@@ -23,7 +23,7 @@ export default function Work() {
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div>
             <Reveal>
-              <p className="mb-4 flex items-center gap-3 font-body text-sm uppercase tracking-[0.35em] text-accent">
+              <p className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
                 <span className="h-px w-10 bg-accent" />
                 Our Work
               </p>
@@ -54,7 +54,11 @@ export default function Work() {
                 >
                   <Placeholder
                     label={p.title}
-                    ratio={p.span ? "aspect-[21/9]" : "aspect-[4/5]"}
+                    ratio={
+                      p.span
+                        ? "aspect-[4/3] lg:aspect-[21/9]"
+                        : "aspect-[4/3] lg:aspect-[4/5]"
+                    }
                   />
                 </motion.div>
 

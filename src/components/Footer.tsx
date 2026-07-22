@@ -32,7 +32,7 @@ export default function Footer() {
                 ["About Us", "#about"],
                 ["Services", "#services"],
                 ["Our Work", "#work"],
-                ["Contact Us", "#contact"],
+                ["Contact Us", "#enquiry"],
               ].map(([label, href]) => (
                 <li key={href}>
                   <a
@@ -55,6 +55,20 @@ export default function Footer() {
               <br />
               Chhatarpur, New Delhi 110074
             </p>
+            <div className="mt-4 flex flex-col gap-1.5 font-body text-sm">
+              <a
+                href="mailto:hello@theanthem.in"
+                className="text-muted transition-colors hover:text-accent"
+              >
+                hello@theanthem.in
+              </a>
+              <a
+                href="tel:+919000000000"
+                className="text-muted transition-colors hover:text-accent"
+              >
+                +91 90000 00000
+              </a>
+            </div>
             <div className="mt-5 flex gap-4">
               {socials.map((s) => (
                 <a

@@ -31,6 +31,7 @@
 
   --font-display: var(--font-poppins);
   --font-body: var(--font-roboto);
+  --font-hand: var(--font-playwrite);
 }
 
 * {
@@ -38,7 +39,10 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* anchor scrolling is handled by <SmoothScroll /> (controlled duration +
+     easing + header offset), so native smooth is left off here to avoid a
+     double animation. scroll-padding-top remains as a no-JS fallback. */
+  scroll-padding-top: 7rem;
 }
 
 body {

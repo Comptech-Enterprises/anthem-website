@@ -21,7 +21,7 @@ export default function Founders() {
     <section className="relative border-t border-border bg-surface/60 py-28 backdrop-blur-sm sm:py-36">
       <div className="container-x">
         <Reveal>
-          <p className="mb-4 flex items-center gap-3 font-body text-sm uppercase tracking-[0.35em] text-accent">
+          <p className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
             <span className="h-px w-10 bg-accent" />
             The Founders
           </p>

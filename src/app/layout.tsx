@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, Roboto } from "next/font/google";
+import { Poppins, Roboto, Playwrite_NZ_Basic } from "next/font/google";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -12,6 +12,13 @@ const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
   weight: ["300", "400", "500", "700"],
+});
+
+// Handwriting/display accent font. Has no subsets (preload auto-disabled).
+const playwrite = Playwrite_NZ_Basic({
+  variable: "--font-playwrite",
+  weight: "variable",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -28,7 +35,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${poppins.variable} ${roboto.variable} h-full antialiased`}
+      className={`${poppins.variable} ${roboto.variable} ${playwrite.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         {children}

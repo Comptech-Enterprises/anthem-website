@@ -91,7 +91,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-6 flex items-center gap-3 font-body text-sm uppercase tracking-[0.35em] text-accent"
+            className="mb-6 flex items-center gap-3 font-hand text-lg text-accent"
           >
             <span className="h-px w-10 bg-accent" />
             Experiential Agency
