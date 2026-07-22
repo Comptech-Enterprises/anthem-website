@@ -8,17 +8,14 @@ const pillars = [
   {
     title: "Create",
     copy: "We turn sharp insights into bold ideas and strategies that inspire, engage and move people to act.",
-    num: "01",
   },
   {
     title: "Curate",
     copy: "We craft events and activations that immerse audiences and turn brand moments into lasting memories.",
-    num: "02",
   },
   {
     title: "Design",
     copy: "We build distinctive brand identities and worlds that speak volumes and leave a lasting impression.",
-    num: "03",
   },
 ];
 
@@ -64,9 +61,6 @@ export default function About() {
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
                 className="group relative h-full overflow-hidden rounded-2xl border border-border bg-surface p-8 transition-colors hover:border-accent/50"
               >
-                <div className="absolute right-4 top-2 font-display text-7xl font-extrabold leading-none text-surface-3 transition-colors group-hover:text-accent/20">
-                  {p.num}
-                </div>
                 <h3 className="relative font-display text-2xl font-semibold">
                   {p.title}
                 </h3>
