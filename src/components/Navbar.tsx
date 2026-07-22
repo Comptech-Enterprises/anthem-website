@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import MagneticButton from "./MagneticButton";
 
 const links = [
   { label: "About Us", href: "#about" },
@@ -62,14 +61,6 @@ export default function Navbar() {
               </a>
             </li>
           ))}
-          <li>
-            <MagneticButton
-              href="#enquiry"
-              className="inline-block rounded-full bg-accent px-5 py-2 font-body text-sm font-medium text-black transition-shadow hover:shadow-[0_0_25px_var(--accent-glow)]"
-            >
-              Start a Project
-            </MagneticButton>
-          </li>
         </ul>
 
         {/* mobile toggle */}
