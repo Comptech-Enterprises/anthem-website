@@ -5,6 +5,43 @@ import { useRef } from "react";
 
 const words = ["Your", "New-Age", "Experiential", "Partners"];
 
+/** A single frame in the hero collage — quiet placeholder, thin border,
+ *  small caption. No shimmer/glow. Real photography drops straight in. */
+function Frame({
+  label,
+  ratio,
+  className = "",
+}: {
+  label: string;
+  ratio: string;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`group relative overflow-hidden rounded-xl border border-border bg-surface-2 ${ratio} ${className}`}
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(130%_130%_at_30%_0%,rgba(139,127,232,0.14),transparent_60%)]" />
+      <div
+        className="absolute inset-0 opacity-[0.10]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+          backgroundSize: "38px 38px",
+        }}
+      />
+      <span className="absolute bottom-2.5 left-3 font-body text-[9px] uppercase tracking-[0.25em] text-muted-2">
+        {label}
+      </span>
+    </div>
+  );
+}
+
+/** Signature hero visual — a single clean placeholder frame standing in
+ *  for the old site's key hero image. */
+function HeroImage() {
+  return <Frame label="The Anthem" ratio="" className="h-full w-full" />;
+}
+
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -45,68 +82,83 @@ export default function Hero() {
         }}
       />
 
-      <motion.div style={{ y, opacity }} className="container-x relative z-10">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-6 flex items-center gap-3 font-body text-sm uppercase tracking-[0.35em] text-accent"
-        >
-          <span className="h-px w-10 bg-accent" />
-          Experiential Agency
-        </motion.p>
+      <motion.div
+        style={{ y, opacity }}
+        className="container-x relative z-10 grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]"
+      >
+        <div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mb-6 flex items-center gap-3 font-body text-sm uppercase tracking-[0.35em] text-accent"
+          >
+            <span className="h-px w-10 bg-accent" />
+            Experiential Agency
+          </motion.p>
 
-        <h1 className="font-display text-5xl font-extrabold leading-[0.95] tracking-tight sm:text-7xl lg:text-8xl">
-          {words.map((w, i) => (
-            <motion.span
-              key={w}
-              initial={{ opacity: 0, y: 60, rotateX: -40 }}
-              animate={{ opacity: 1, y: 0, rotateX: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.3 + i * 0.12,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className={`mr-4 inline-block ${
-                w === "Experiential" ? "text-gradient" : ""
-              }`}
+          <h1 className="font-display text-5xl font-extrabold leading-[0.95] tracking-tight sm:text-7xl lg:text-8xl">
+            {words.map((w, i) => (
+              <motion.span
+                key={w}
+                initial={{ opacity: 0, y: 60, rotateX: -40 }}
+                animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.3 + i * 0.12,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className={`mr-4 inline-block ${
+                  w === "Experiential" ? "text-gradient" : ""
+                }`}
+              >
+                {w}
+              </motion.span>
+            ))}
+          </h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.9 }}
+            className="mt-8 max-w-xl font-body text-lg leading-relaxed text-muted"
+          >
+            We create brand realities that transform insights into impactful
+            experiences.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 1.05 }}
+            className="mt-10 flex flex-wrap items-center gap-4"
+          >
+            <a
+              href="#work"
+              className="group flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 font-body font-medium text-black transition-all hover:shadow-[0_0_35px_var(--accent-glow)]"
             >
-              {w}
-            </motion.span>
-          ))}
-        </h1>
+              View Our Work
+              <span className="transition-transform group-hover:translate-x-1">
+                →
+              </span>
+            </a>
+            <a
+              href="#about"
+              className="rounded-full border border-border px-7 py-3.5 font-body font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+            >
+              Who We Are
+            </a>
+          </motion.div>
+        </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.9 }}
-          className="mt-8 max-w-xl font-body text-lg leading-relaxed text-muted"
-        >
-          We create brand realities that transform insights into impactful
-          experiences.
-        </motion.p>
-
+        {/* hero visual — editorial collage of placeholder frames */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.05 }}
-          className="mt-10 flex flex-wrap items-center gap-4"
+          transition={{ duration: 0.9, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="hidden h-[30rem] lg:block"
         >
-          <a
-            href="#work"
-            className="group flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 font-body font-medium text-black transition-all hover:shadow-[0_0_35px_var(--accent-glow)]"
-          >
-            View Our Work
-            <span className="transition-transform group-hover:translate-x-1">
-              →
-            </span>
-          </a>
-          <a
-            href="#about"
-            className="rounded-full border border-border px-7 py-3.5 font-body font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
-          >
-            Who We Are
-          </a>
+          <HeroImage />
         </motion.div>
       </motion.div>
 
