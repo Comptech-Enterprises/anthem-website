@@ -6,6 +6,7 @@ import ChatWidget from "@/components/ChatWidget";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import Stats from "@/components/Stats";
+import Brands from "@/components/Brands";
 import About from "@/components/About";
 import Services from "@/components/Services";
 import Work from "@/components/Work";
@@ -28,6 +29,7 @@ export default function Home() {
         <Hero />
         <Marquee />
         <Stats />
+        <Brands />
         <RibbonFlight>
           <About />
           <Services />
