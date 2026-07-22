@@ -136,10 +136,10 @@ export default function Hero() {
             </span>
           </MagneticButton>
           <MagneticButton
-            href="#about"
+            href="#enquiry"
             className="rounded-full border border-border px-8 py-4 font-body font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
           >
-            Who We Are
+            Start With Us
           </MagneticButton>
         </motion.div>
       </motion.div>
