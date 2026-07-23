@@ -22,7 +22,6 @@ const fieldClass =
 
 export default function EnquiryForm() {
   const [status, setStatus] = useState<Status>("idle");
-  const [profileNote, setProfileNote] = useState(false);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -62,27 +61,16 @@ export default function EnquiryForm() {
           </Reveal>
           <Reveal delay={0.15}>
             <div className="mt-8">
-              <button
-                type="button"
-                onClick={() => setProfileNote(true)}
-                className="group flex items-center gap-2 rounded-full border border-border px-6 py-3 font-body text-sm font-medium transition-colors hover:border-accent hover:text-accent"
+              <a
+                href="/Profile.pdf"
+                download
+                className="group flex w-fit items-center gap-2 rounded-full border border-border px-6 py-3 font-body text-sm font-medium transition-colors hover:border-accent hover:text-accent"
               >
-                <span aria-hidden>↓</span>
+                <span className="transition-transform group-hover:translate-y-0.5" aria-hidden>
+                  ↓
+                </span>
                 Download Company Profile
-              </button>
-              <AnimatePresence>
-                {profileNote && (
-                  <motion.p
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    className="mt-4 font-body text-sm text-muted-2"
-                  >
-                    Our Company Profile (PDF) is yet to be updated — check back
-                    soon.
-                  </motion.p>
-                )}
-              </AnimatePresence>
+              </a>
             </div>
           </Reveal>
         </div>

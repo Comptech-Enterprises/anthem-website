@@ -7,16 +7,12 @@ import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import Stats from "@/components/Stats";
 import Brands from "@/components/Brands";
-import About from "@/components/About";
-import Services from "@/components/Services";
+import HowWeWork from "@/components/HowWeWork";
 import Work from "@/components/Work";
 import CaseStudies from "@/components/CaseStudies";
-import Gallery from "@/components/Gallery";
 import Testimonials from "@/components/Testimonials";
 import Founders from "@/components/Founders";
-import Blog from "@/components/Blog";
 import EnquiryForm from "@/components/EnquiryForm";
-import JobApplication from "@/components/JobApplication";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -31,16 +27,12 @@ export default function Home() {
         <Stats />
         <Brands />
         <RibbonFlight>
-          <About />
-          <Services />
+          <HowWeWork />
           <Work />
         </RibbonFlight>
         <CaseStudies />
-        <Gallery />
         <Testimonials />
         <Founders />
-        <Blog />
-        <JobApplication />
         <EnquiryForm />
       </main>
       <Footer />

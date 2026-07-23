@@ -20,7 +20,7 @@ const pillars = [
 
 export default function About() {
   return (
-    <section id="about" className="relative py-28 sm:py-36">
+    <section id="about" className="relative pt-40 pb-28 sm:pt-48 sm:pb-36">
       <div className="container-x">
         <Reveal>
           <p className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">

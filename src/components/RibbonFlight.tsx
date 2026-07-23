@@ -18,7 +18,7 @@ import {
  * rides the leading tip, drawing the ribbon behind it as the user scrolls
  * through this range. Purely decorative.
  *
- * Wrap the About → Services → Work sections with this component.
+ * Wrap the How-We-Work → Work sections with this component.
  */
 
 const VB_W = 1440;

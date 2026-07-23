@@ -30,7 +30,7 @@ function PlayBadge() {
 
 export default function Gallery() {
   return (
-    <section id="gallery" className="relative border-t border-border py-28 sm:py-36">
+    <section id="gallery" className="relative pt-40 pb-28 sm:pt-48 sm:pb-36">
       <div className="container-x">
         <div className="max-w-2xl">
           <Reveal>

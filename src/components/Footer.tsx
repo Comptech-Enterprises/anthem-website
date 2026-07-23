@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const socials = ["Instagram", "LinkedIn", "Behance"];
 
@@ -29,18 +30,21 @@ export default function Footer() {
             </h4>
             <ul className="mt-4 space-y-3 font-body text-sm">
               {[
-                ["About Us", "#about"],
-                ["Services", "#services"],
-                ["Our Work", "#work"],
-                ["Contact Us", "#enquiry"],
+                ["About Us", "/about"],
+                ["Services", "/services"],
+                ["Our Work", "/#work"],
+                ["Gallery", "/gallery"],
+                ["Blog", "/blog"],
+                ["Careers", "/careers"],
+                ["Contact Us", "/#enquiry"],
               ].map(([label, href]) => (
                 <li key={href}>
-                  <a
+                  <Link
                     href={href}
                     className="text-muted transition-colors hover:text-accent"
                   >
                     {label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

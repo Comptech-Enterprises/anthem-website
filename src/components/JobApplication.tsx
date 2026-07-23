@@ -40,7 +40,7 @@ export default function JobApplication() {
   return (
     <section
       id="careers"
-      className="relative border-t border-border bg-surface/60 py-28 backdrop-blur-sm sm:py-36"
+      className="relative pt-40 pb-28 sm:pt-48 sm:pb-36"
     >
       <div className="container-x grid gap-14 lg:grid-cols-[0.85fr_1.15fr]">
         {/* intro column */}
@@ -66,7 +66,7 @@ export default function JobApplication() {
 
         {/* form column */}
         <Reveal delay={0.15}>
-          <div className="rounded-2xl border border-border bg-background p-6 sm:p-8">
+          <div className="rounded-2xl border border-border bg-surface/60 p-6 backdrop-blur-sm sm:p-8">
             <AnimatePresence mode="wait">
               {status === "success" ? (
                 <motion.div

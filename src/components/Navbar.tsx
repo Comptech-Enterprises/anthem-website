@@ -2,21 +2,30 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 
+// `hash` links resolve to same-page anchors on the home page and to
+// `/#anchor` (navigate home, then scroll) from any other route. `route`
+// links are standalone pages.
 const links = [
-  { label: "About Us", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Our Work", href: "#work" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Blog", href: "#blog" },
-  { label: "Careers", href: "#careers" },
-  { label: "Contact Us", href: "#enquiry" },
+  { label: "About Us", href: "/about", kind: "route" as const },
+  { label: "Services", href: "/services", kind: "route" as const },
+  { label: "Gallery", href: "/gallery", kind: "route" as const },
+  { label: "Blog", href: "/blog", kind: "route" as const },
+  { label: "Careers", href: "/careers", kind: "route" as const },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const onHome = pathname === "/";
+
+  // Anchor links jump within the home page; off-home they must first route home.
+  const resolve = (l: (typeof links)[number]) =>
+    l.kind === "route" ? l.href : onHome ? l.href : `/${l.href}`;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -37,7 +46,7 @@ export default function Navbar() {
       }`}
     >
       <nav className="container-x flex min-h-18 items-center justify-between py-2">
-        <a href="#top" className="group flex items-center">
+        <Link href={onHome ? "#top" : "/"} className="group flex items-center">
           <Image
             src="/logo.webp"
             alt="Anthem"
@@ -46,19 +55,19 @@ export default function Navbar() {
             priority
             className="h-16 w-auto invert sm:h-20"
           />
-        </a>
+        </Link>
 
         {/* desktop */}
         <ul className="hidden items-center gap-6 lg:flex">
           {links.map((l) => (
             <li key={l.href}>
-              <a
-                href={l.href}
+              <Link
+                href={resolve(l)}
                 className="group relative font-body text-sm text-muted transition-colors hover:text-foreground"
               >
                 {l.label}
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-300 group-hover:w-full" />
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -95,13 +104,13 @@ export default function Navbar() {
           >
             {links.map((l) => (
               <li key={l.href} className="border-b border-border/60">
-                <a
-                  href={l.href}
+                <Link
+                  href={resolve(l)}
                   onClick={() => setOpen(false)}
                   className="block px-6 py-4 font-body text-base text-muted hover:text-accent"
                 >
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
           </motion.ul>
