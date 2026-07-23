@@ -68,11 +68,6 @@ export default function Gallery() {
                 </motion.div>
                 {t.video && <PlayBadge />}
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center gap-2 bg-gradient-to-t from-black/80 to-transparent p-4">
-                  {t.video && (
-                    <span className="rounded-full bg-accent/20 px-2 py-0.5 font-body text-[10px] uppercase tracking-[0.2em] text-accent">
-                      Video
-                    </span>
-                  )}
                   <span className="font-body text-sm font-medium text-foreground">
                     {t.label}
                   </span>
