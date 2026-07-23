@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import AnimatedHeading from "./AnimatedHeading";
 import Reveal from "./Reveal";
 
@@ -42,19 +41,20 @@ export default function Brands() {
           />
         </div>
 
-        <div className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-3 lg:grid-cols-4">
-          {brands.map((name, i) => (
-            <motion.div
-              key={name}
-              initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{
-                duration: 0.6,
-                delay: (i % 4) * 0.06,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="group flex items-center justify-center bg-surface px-6 py-10 transition-colors hover:bg-surface-2"
+        <Reveal delay={0.1}>
+          <p className="mt-6 font-body text-sm text-muted-2">
+            Placeholder roster — brand names and logos to be added.
+          </p>
+        </Reveal>
+      </div>
+
+      {/* auto-scrolling brand slider */}
+      <div className="marquee-mask mt-12 overflow-hidden">
+        <div className="animate-marquee flex w-max items-center gap-4 whitespace-nowrap">
+          {[...brands, ...brands].map((name, i) => (
+            <span
+              key={i}
+              className="group flex items-center justify-center rounded-2xl border border-border bg-surface px-10 py-8 transition-colors hover:border-accent/50 hover:bg-surface-2"
             >
               <span className="font-display text-xl font-semibold tracking-tight text-muted-2 transition-colors duration-300 group-hover:text-foreground sm:text-2xl">
                 {name}
@@ -62,15 +62,9 @@ export default function Brands() {
                   .
                 </span>
               </span>
-            </motion.div>
+            </span>
           ))}
         </div>
-
-        <Reveal delay={0.1}>
-          <p className="mt-8 font-body text-sm text-muted-2">
-            Placeholder roster — brand names and logos to be added.
-          </p>
-        </Reveal>
       </div>
     </section>
   );
