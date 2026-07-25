@@ -1,98 +1,46 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const socials = ["Instagram", "LinkedIn", "Behance"];
+const pages = [
+  ["Home", "/"],
+  ["Services", "/services"],
+  ["Team", "/team"],
+  ["Careers", "/careers"],
+  ["Contact Us", "/#enquiry"],
+];
 
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-surface">
       <div className="container-x py-16">
-        <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
-          <div>
-            <div className="flex items-center">
-              <Image
-                src="/logo.webp"
-                alt="Anthem"
-                width={3000}
-                height={2250}
-                className="h-24 w-auto invert"
-              />
-            </div>
-            <p className="mt-4 max-w-xs font-body text-sm leading-relaxed text-muted">
-              Your new-age experiential partners — creating brand realities that
-              transform insights into impactful experiences.
-            </p>
-          </div>
+        <div className="flex flex-col items-center gap-8 sm:flex-row sm:justify-between">
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.webp"
+              alt="Anthem"
+              width={3000}
+              height={2250}
+              className="h-20 w-auto invert"
+            />
+          </Link>
 
-          <div>
-            <h4 className="font-body text-xs uppercase tracking-[0.25em] text-muted-2">
-              Navigate
-            </h4>
-            <ul className="mt-4 space-y-3 font-body text-sm">
-              {[
-                ["About Us", "/about"],
-                ["Services", "/services"],
-                ["Our Work", "/#work"],
-                ["Gallery", "/gallery"],
-                ["Blog", "/blog"],
-                ["Careers", "/careers"],
-                ["Contact Us", "/#enquiry"],
-              ].map(([label, href]) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className="text-muted transition-colors hover:text-accent"
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-body text-xs uppercase tracking-[0.25em] text-muted-2">
-              Get in Touch
-            </h4>
-            <p className="mt-4 font-body text-sm leading-relaxed text-muted">
-              134, D Block Rd, Dr Ambedkar Colony,
-              <br />
-              Chhatarpur, New Delhi 110074
-            </p>
-            <div className="mt-4 flex flex-col gap-1.5 font-body text-sm">
-              <a
-                href="mailto:hello@theanthem.in"
-                className="text-muted transition-colors hover:text-accent"
-              >
-                hello@theanthem.in
-              </a>
-              <a
-                href="tel:+919000000000"
-                className="text-muted transition-colors hover:text-accent"
-              >
-                +91 90000 00000
-              </a>
-            </div>
-            <div className="mt-5 flex gap-4">
-              {socials.map((s) => (
-                <a
-                  key={s}
-                  href="#"
-                  className="font-body text-sm text-muted transition-colors hover:text-accent"
+          <ul className="flex flex-wrap items-center gap-6 font-body text-sm">
+            {pages.map(([label, href]) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className="text-muted transition-colors hover:text-accent"
                 >
-                  {s}
-                </a>
-              ))}
-            </div>
-          </div>
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
+        <div className="mt-12 border-t border-border pt-8 text-center">
           <p className="font-body text-xs text-muted-2">
             © 2025 Digital Food Talk Pvt. Ltd. All rights reserved.
-          </p>
-          <p className="font-body text-xs text-muted-2">
-            Made with intent — in New Delhi.
           </p>
         </div>
       </div>

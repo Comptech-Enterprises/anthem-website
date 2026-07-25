@@ -30,7 +30,7 @@ const botReply = (input: string): string => {
   if (q.includes("event") || q.includes("plan"))
     return "Love that. Tell me a little about the occasion — brand activation, launch, festival? You can also use the enquiry form and we'll take it from there.";
   if (q.includes("team") || q.includes("talk") || q.includes("contact"))
-    return "You can reach us at hello@theanthem.in or +91 90000 00000. Want me to point you to the enquiry form?";
+    return "You can reach us at info@theanthem.in or +91 90000 00000. Want me to point you to the enquiry form?";
   return "Thanks for the message! This is a demo assistant — the team will get back to you shortly. 🙌";
 };
 

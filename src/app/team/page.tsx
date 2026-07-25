@@ -3,23 +3,23 @@ import Navbar from "@/components/Navbar";
 import ScrollProgress from "@/components/ScrollProgress";
 import SmoothScroll from "@/components/SmoothScroll";
 import ChatWidget from "@/components/ChatWidget";
-import Gallery from "@/components/Gallery";
+import Team from "@/components/Team";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Gallery — Anthem",
+  title: "Team — Anthem",
   description:
-    "Our work in living colour — photos and films from the ground, the proof of what we build, captured as it happened.",
+    "Meet the strategists, creators and producers behind Anthem's experiential campaigns.",
 };
 
-export default function GalleryPage() {
+export default function TeamPage() {
   return (
     <>
       <ScrollProgress />
       <SmoothScroll />
       <Navbar />
       <main className="flex-1">
-        <Gallery />
+        <Team />
       </main>
       <Footer />
       <ChatWidget />
