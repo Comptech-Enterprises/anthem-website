@@ -57,7 +57,6 @@ export default function JobApplication() {
               <AnimatedHeading
                 text="Work with us, not for us"
                 highlight="with us"
-                as="h2"
                 className="font-display text-4xl font-bold sm:text-5xl lg:text-6xl"
               />
             </Reveal>
