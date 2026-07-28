@@ -37,7 +37,6 @@ export default function WhatWeDo() {
           <AnimatedHeading
             text="What We Do"
             highlight="We Do"
-
             className="font-display text-4xl font-bold sm:text-5xl lg:text-6xl"
           />
         </div>

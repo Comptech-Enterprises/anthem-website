@@ -160,7 +160,6 @@ export default function Team() {
             <AnimatedHeading
               text="The people behind every moment"
               highlight="every moment"
-
               className="font-display text-4xl font-bold sm:text-5xl lg:text-6xl"
             />
           </Reveal>
