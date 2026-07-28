@@ -43,6 +43,11 @@ html {
      easing + header offset), so native smooth is left off here to avoid a
      double animation. scroll-padding-top remains as a no-JS fallback. */
   scroll-padding-top: 7rem;
+  /* Guard against stray decorative/absolute elements widening the page.
+     Kept here (not just on body) because body's overflow-x isn't reliably
+     propagated to the viewport. Safe: nav/scroll chrome is position:fixed,
+     nothing relies on position:sticky. */
+  overflow-x: hidden;
 }
 
 body {

@@ -17,7 +17,7 @@ const cards = [
 
 export default function WhatWeDo() {
   return (
-    <section className="relative border-t border-border py-24 sm:py-32">
+    <section className="relative overflow-hidden border-t border-border py-24 sm:py-32">
       <div
         className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[700px] rounded-full opacity-[0.05]"
         style={{

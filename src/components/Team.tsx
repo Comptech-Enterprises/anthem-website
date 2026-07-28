@@ -137,7 +137,7 @@ const displaced: Record<string, { dx: number; dy: number; rot: number }> = {
 
 export default function Team() {
   return (
-    <section className="relative pt-40 pb-28 sm:pt-48 sm:pb-36">
+    <section className="relative overflow-hidden pt-40 pb-28 sm:pt-48 sm:pb-36">
       {/* ambient glow */}
       <div
         className="pointer-events-none absolute top-24 left-1/2 -translate-x-1/2 h-[500px] w-[600px] rounded-full opacity-[0.07]"
