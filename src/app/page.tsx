@@ -7,7 +7,6 @@ import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
 import Brands from "@/components/Brands";
 import WhatWeDo from "@/components/WhatWeDo";
-import Work from "@/components/Work";
 import Testimonials from "@/components/Testimonials";
 import Founders from "@/components/Founders";
 import EnquiryForm from "@/components/EnquiryForm";
@@ -25,7 +24,6 @@ export default function Home() {
         <RibbonFlight>
           <Brands />
           <WhatWeDo />
-          <Work />
         </RibbonFlight>
         <Testimonials />
         <Founders />
