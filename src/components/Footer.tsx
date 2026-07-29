@@ -4,7 +4,6 @@ import Link from "next/link";
 const pages = [
   ["Home", "/"],
   ["Services", "/services"],
-  ["Team", "/team"],
   ["Careers", "/careers"],
   ["Contact Us", "/#enquiry"],
 ];

@@ -12,7 +12,6 @@ import { AnimatePresence, motion } from "framer-motion";
 const links = [
   { label: "Home", href: "/", kind: "route" as const },
   { label: "Services", href: "/services", kind: "route" as const },
-  { label: "Team", href: "/team", kind: "route" as const },
   { label: "Careers", href: "/careers", kind: "route" as const },
   { label: "Contact Us", href: "/#enquiry", kind: "hash" as const },
 ];
