@@ -94,6 +94,21 @@ export default function JobApplication() {
           </Reveal>
         </div>
 
+        {/* why work at Anthem */}
+        <div className="mb-12">
+          <Reveal>
+            <p className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
+              <span className="h-px w-10 bg-accent" />
+              Why work at Anthem
+            </p>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <h2 className="max-w-2xl font-display text-3xl font-bold sm:text-4xl">
+              Reasons people stick around
+            </h2>
+          </Reveal>
+        </div>
+
         {/* perks grid */}
         <div className="grid gap-6 sm:grid-cols-2 lg:gap-8">
           {perks.map((perk, i) => (
