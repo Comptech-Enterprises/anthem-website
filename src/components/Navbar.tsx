@@ -11,7 +11,7 @@ import { AnimatePresence, motion } from "framer-motion";
 // links are standalone pages.
 const links = [
   { label: "Home", href: "/", kind: "route" as const },
-  { label: "Services", href: "/services", kind: "route" as const },
+  { label: "Our Work", href: "/services", kind: "route" as const },
   { label: "Careers", href: "/careers", kind: "route" as const },
   { label: "Contact Us", href: "/#enquiry", kind: "hash" as const },
 ];
@@ -48,7 +48,7 @@ export default function Navbar() {
       }`}
     >
       <nav className="container-x flex min-h-18 items-center justify-between py-2">
-        <Link href={onHome ? "#top" : "/"} className="group flex items-center">
+        <Link href="/" className="group flex items-center">
           <Image
             src="/logo.webp"
             alt="Anthem"
@@ -76,7 +76,7 @@ export default function Navbar() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 1.2, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute left-1/2 top-full mt-3 -translate-x-1/2 whitespace-nowrap pointer-events-none"
+                  className="absolute right-0 top-full mt-3 whitespace-nowrap pointer-events-none"
                 >
                   <span className="absolute -top-[5px] right-4 h-2.5 w-2.5 rotate-45 bg-accent" />
                   <motion.span

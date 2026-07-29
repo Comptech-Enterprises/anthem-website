@@ -79,7 +79,7 @@ export default function Testimonials() {
             </p>
           </Reveal>
           <AnimatedHeading
-            text="Trusted by brands who came back for more"
+            text="Brands who came back for more"
             highlight="came back for more"
             className="font-display text-3xl font-bold leading-tight sm:text-5xl"
           />

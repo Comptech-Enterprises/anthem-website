@@ -28,12 +28,6 @@ export default function Brands() {
     >
       <div className="container-x">
         <div className="max-w-2xl">
-          <Reveal>
-            <p className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
-              <span className="h-px w-10 bg-accent" />
-              Trusted by
-            </p>
-          </Reveal>
           <AnimatedHeading
             text="Brands that trust us to create the moment"
             highlight="trust us"

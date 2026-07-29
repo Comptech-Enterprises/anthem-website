@@ -8,7 +8,6 @@ import {
   useTransform,
 } from "framer-motion";
 import { useRef } from "react";
-import MagneticButton from "./MagneticButton";
 
 const words = ["Your", "New-Age", "Experiential", "Partners"];
 
@@ -126,7 +125,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 1.05 }}
           className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
-          <MagneticButton
+          <a
             href="#work"
             className="group flex items-center gap-2 rounded-full bg-accent px-8 py-4 font-body font-medium text-black transition-shadow hover:shadow-[0_0_45px_var(--accent-glow)]"
           >
@@ -134,13 +133,13 @@ export default function Hero() {
             <span className="transition-transform group-hover:translate-x-1">
               →
             </span>
-          </MagneticButton>
-          <MagneticButton
+          </a>
+          <a
             href="#enquiry"
             className="rounded-full border border-border px-8 py-4 font-body font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
           >
             Start With Us
-          </MagneticButton>
+          </a>
         </motion.div>
       </motion.div>
 

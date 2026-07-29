@@ -7,9 +7,9 @@ import Services from "@/components/Services";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Services — Anthem",
+  title: "Our Work — Anthem",
   description:
-    "Digital and Events, one seamless brand story — content, films and performance across every screen, live IPs and activations on every stage.",
+    "Case studies from the brands we've partnered with — festival IPs, brand activations, launches and films across screen and stage.",
 };
 
 export default function ServicesPage() {
