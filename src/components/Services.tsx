@@ -111,18 +111,6 @@ export default function Services() {
                     {c.summary}
                   </p>
 
-                  {/* work tags */}
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {c.tags.map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-full border border-border/70 px-3 py-1 font-body text-[11px] uppercase tracking-[0.12em] text-muted transition-colors duration-300 group-hover:border-accent/30 group-hover:text-accent/90"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-
                   {/* read more */}
                   <span className="mt-auto flex items-center gap-2 border-t border-border/50 pt-7 font-body text-sm font-medium text-accent">
                     View case study
