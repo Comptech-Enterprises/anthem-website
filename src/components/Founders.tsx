@@ -8,11 +8,13 @@ const founders = [
     name: "Shuchir Suri",
     role: "Co-Founder",
     copy: "Drives strategy and flawless execution — turning bold ideas into experiences that deliver.",
+    href: "https://shuchir.com/",
   },
   {
     name: "Anjali Batra",
     role: "Co-Founder",
     copy: "Leads creative with a consumer-first approach, crafting stories that resonate and stick.",
+    href: undefined,
   },
 ];
 
@@ -32,27 +34,43 @@ export default function Founders() {
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2">
+        <div className="mt-14 flex flex-wrap justify-start gap-6">
           {founders.map((f, i) => (
-            <Reveal key={f.name} delay={0.1 + i * 0.1}>
-              <div className="group flex flex-col gap-5 rounded-2xl border border-border bg-background p-5 transition-colors hover:border-accent/50 sm:flex-row sm:items-center">
-                <Placeholder
-                  label={f.name}
-                  ratio="aspect-square"
-                  className="w-full shrink-0 sm:w-40"
-                />
-                <div>
-                  <span className="font-body text-xs uppercase tracking-[0.25em] text-accent">
-                    {f.role}
-                  </span>
-                  <h3 className="mt-1 font-display text-2xl font-semibold">
-                    {f.name}
-                  </h3>
-                  <p className="mt-3 font-body leading-relaxed text-muted">
-                    {f.copy}
-                  </p>
-                </div>
-              </div>
+            <Reveal key={f.name} delay={0.1 + i * 0.1} className="w-full sm:flex-1">
+              {(() => {
+                const Card = f.href ? "a" : "div";
+                return (
+                  <Card
+                    {...(f.href
+                      ? {
+                          href: f.href,
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                        }
+                      : {})}
+                    className={`group flex h-full flex-col items-center gap-5 rounded-2xl border border-border bg-background p-6 text-center transition-colors hover:border-accent/50 ${
+                      f.href ? "cursor-pointer" : ""
+                    }`}
+                  >
+                    <Placeholder
+                      label={f.name}
+                      ratio="aspect-[16/9]"
+                      className="w-full shrink-0"
+                    />
+                    <div>
+                      <span className="font-body text-xs uppercase tracking-[0.25em] text-accent">
+                        {f.role}
+                      </span>
+                      <h3 className="mt-1 font-display text-2xl font-semibold">
+                        {f.name}
+                      </h3>
+                      <p className="mt-3 font-body leading-relaxed text-muted">
+                        {f.copy}
+                      </p>
+                    </div>
+                  </Card>
+                );
+              })()}
             </Reveal>
           ))}
         </div>
