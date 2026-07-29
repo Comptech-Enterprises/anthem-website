@@ -154,7 +154,7 @@ export default function Services() {
           viewport={{ once: true, margin: "-80px" }}
           className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {cases.map((c, i) => (
+          {cases.map((c) => (
             <motion.article
               key={c.title}
               variants={cardVariants}
@@ -173,14 +173,6 @@ export default function Services() {
                 aria-hidden
                 className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.04] to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
               />
-
-              {/* giant index watermark */}
-              <span
-                aria-hidden
-                className="pointer-events-none absolute -right-2 -top-4 select-none font-display text-8xl font-bold leading-none text-foreground/[0.03] transition-colors duration-300 group-hover:text-accent/[0.06]"
-              >
-                {String(i + 1).padStart(2, "0")}
-              </span>
 
               <div className="relative flex flex-1 flex-col">
                 {/* logo */}

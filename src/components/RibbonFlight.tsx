@@ -35,12 +35,13 @@ const VB_H = 2000;
 // (C1-continuous), so there are no tangent breaks / kinks. Wide waves left↔right,
 // a rightward bulge near the bottom, then a smooth curved descent into a
 // vertical (nose-down) landing at centre.
-const FLIGHT_PATH = `M 1390 40
-  C 1324 173, 120 420, 120 560
-  C 120 700, 1360 940, 1360 1080
-  C 1360 1220, 160 1380, 160 1520
-  C 160 1660, 1216 1640, 1150 1740
-  C 1084 1840, 720 1898, 720 1998`;
+const FLIGHT_PATH = `M 1150 10
+  C 1000 110, 360 200, 360 320
+  C 360 440, 1080 520, 1080 640
+  C 1080 760, 360 840, 360 960
+  C 360 1080, 1080 1160, 1080 1280
+  C 1080 1400, 420 1480, 420 1600
+  C 420 1720, 720 1880, 720 1998`;
 
 export default function RibbonFlight({ children }: { children: ReactNode }) {
   const zoneRef = useRef<HTMLDivElement>(null);
@@ -48,7 +49,7 @@ export default function RibbonFlight({ children }: { children: ReactNode }) {
 
   const { scrollYProgress } = useScroll({
     target: zoneRef,
-    offset: ["start start", "end end"],
+    offset: ["start 80%", "end end"],
   });
 
   // Track the scroll position directly (no spring) so the ribbon tip and the

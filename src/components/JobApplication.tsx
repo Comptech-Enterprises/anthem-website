@@ -1,35 +1,5 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Reveal from "./Reveal";
 import AnimatedHeading from "./AnimatedHeading";
-
-const perks = [
-  {
-    icon: "01",
-    title: "Build things people remember",
-    description:
-      "You won't push pixels in a vacuum. Every project ships live — festivals, launches, activations — and you'll see thousands of people experience what you made.",
-  },
-  {
-    icon: "02",
-    title: "Small team, outsized reach",
-    description:
-      "We're lean by design. That means you own your lane from day one, work directly with founders, and move faster than agencies five times our size.",
-  },
-  {
-    icon: "03",
-    title: "Creative without the fluff",
-    description:
-      "No jargon decks. No brainstorms that go nowhere. We brief sharp, execute fast, and measure what matters — then do it again.",
-  },
-  {
-    icon: "04",
-    title: "New Delhi, on the ground",
-    description:
-      "We work out of Chhatarpur, Delhi. The role is in-person because the best experiential work happens when the team is in the room together.",
-  },
-];
 
 export default function JobApplication() {
   return (
@@ -45,7 +15,7 @@ export default function JobApplication() {
 
       <div className="container-x relative">
         {/* header — two-column: text left, email CTA right */}
-        <div className="mb-20 grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <Reveal>
               <p className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
@@ -93,32 +63,6 @@ export default function JobApplication() {
             </div>
           </Reveal>
         </div>
-
-        {/* perks grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:gap-8">
-          {perks.map((perk, i) => (
-            <Reveal key={perk.icon} delay={0.05 * i} className="h-full">
-              <motion.div
-                whileHover={{ y: -4 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="group relative flex h-full gap-5 rounded-2xl border border-border bg-surface/60 p-6 backdrop-blur-sm transition-colors hover:border-accent/30 sm:p-8"
-              >
-                <span className="shrink-0 font-display text-3xl font-bold text-accent/20 transition-colors group-hover:text-accent/50">
-                  {perk.icon}
-                </span>
-                <div>
-                  <h3 className="mb-2 font-display text-lg font-semibold">
-                    {perk.title}
-                  </h3>
-                  <p className="font-body text-sm leading-relaxed text-muted">
-                    {perk.description}
-                  </p>
-                </div>
-              </motion.div>
-            </Reveal>
-          ))}
-        </div>
-
       </div>
     </section>
   );
