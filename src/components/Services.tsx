@@ -77,8 +77,8 @@ export default function Services() {
         <div className="mb-10">
           <Reveal>
             <AnimatedHeading
-              text="Owned IP"
-              highlight="IP"
+              text="Owned IPs"
+              highlight="IPs"
               className="font-display text-4xl font-bold sm:text-5xl lg:text-6xl"
             />
           </Reveal>
