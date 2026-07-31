@@ -21,6 +21,28 @@ const cardVariants: Variants = {
   },
 };
 
+// Formats Anthem owns and runs itself — distinct from client work.
+const ownedIp = [
+  {
+    monogram: "FT",
+    name: "Food Talk",
+    title: "Food Talk India",
+    summary:
+      "Our own food-and-culture platform — a homegrown IP we build, program and grow ourselves.",
+    href: "https://food-talk-india.vercel.app/",
+    external: true,
+  },
+  {
+    monogram: "EC",
+    name: "The Anthem",
+    title: "Explorers Club",
+    summary:
+      "An in-house live series we produce end to end — our stage, our line-up, our audience.",
+    href: undefined as string | undefined,
+    external: false,
+  },
+];
+
 export default function Services() {
   return (
     <section id="work" className="relative overflow-hidden pt-40 pb-28 sm:pt-48 sm:pb-36">
@@ -49,19 +71,98 @@ export default function Services() {
               Our Work
             </p>
           </Reveal>
+        </div>
+
+        {/* owned IP */}
+        <div className="mb-10">
+          <Reveal>
+            <AnimatedHeading
+              text="Owned IP"
+              highlight="IP"
+              className="font-display text-4xl font-bold sm:text-5xl lg:text-6xl"
+            />
+          </Reveal>
           <Reveal delay={0.05}>
+            <p className="mt-3 max-w-xl font-body text-base leading-relaxed text-muted">
+              Properties we created and run under our own roof.
+            </p>
+          </Reveal>
+        </div>
+
+        <motion.div
+          variants={gridVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+          className="mb-24 grid gap-6 sm:grid-cols-2"
+        >
+          {ownedIp.map((ip) => {
+            const inner = (
+              <>
+                {/* corner tag */}
+                <span className="absolute top-6 right-6 z-10 rounded-full border border-border/70 bg-background/60 px-3 py-1 font-body text-[10px] uppercase tracking-[0.14em] text-muted-2 transition-colors duration-300 group-hover:border-accent/50 group-hover:text-accent">
+                  Owned IP
+                </span>
+
+                <div className="relative flex flex-1 flex-col">
+                  <div className="mb-8 flex h-16 w-16 items-center justify-center overflow-hidden rounded-xl border border-border bg-background transition-all duration-300 group-hover:border-accent/60 group-hover:bg-accent">
+                    <span className="font-display text-xl font-bold tracking-tight text-muted-2 transition-colors duration-300 group-hover:text-black">
+                      {ip.monogram}
+                    </span>
+                  </div>
+
+                  <p className="font-body text-xs uppercase tracking-[0.25em] text-muted-2">
+                    {ip.name}
+                  </p>
+                  <h3 className="mt-2 font-display text-xl font-semibold sm:text-2xl">
+                    {ip.title}
+                  </h3>
+                  <p className="mt-3 font-body text-sm leading-relaxed text-muted">
+                    {ip.summary}
+                  </p>
+
+                  {ip.href && (
+                    <span className="mt-auto flex items-center gap-2 border-t border-border/50 pt-7 font-body text-sm font-medium text-accent">
+                      Visit
+                      <span className="transition-transform duration-300 group-hover:translate-x-1">
+                        →
+                      </span>
+                    </span>
+                  )}
+                </div>
+              </>
+            );
+
+            const cardClass =
+              "group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface/60 p-7 backdrop-blur-sm transition-colors duration-300 hover:border-accent/50 hover:shadow-[0_28px_80px_-32px_var(--accent-glow)] sm:p-8";
+
+            return (
+              <motion.article key={ip.title} variants={cardVariants}>
+                {ip.href ? (
+                  <a
+                    href={ip.href}
+                    target={ip.external ? "_blank" : undefined}
+                    rel={ip.external ? "noopener noreferrer" : undefined}
+                    className={cardClass}
+                  >
+                    {inner}
+                  </a>
+                ) : (
+                  <div className={cardClass}>{inner}</div>
+                )}
+              </motion.article>
+            );
+          })}
+        </motion.div>
+
+        {/* brands heading */}
+        <div className="mb-10">
+          <Reveal>
             <AnimatedHeading
               text="Brands we brought to life"
               highlight="brought to life"
               className="font-display text-4xl font-bold sm:text-5xl lg:text-6xl"
             />
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="mt-6 font-body text-lg leading-relaxed text-muted">
-              A look at the companies we&apos;ve partnered with and the
-              experiences we built for them. Open any project for the full
-              case study.
-            </p>
           </Reveal>
         </div>
 
@@ -91,6 +192,11 @@ export default function Services() {
                   aria-hidden
                   className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.04] to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
                 />
+
+                {/* corner tag */}
+                <span className="absolute top-6 right-6 z-10 rounded-full border border-border/70 bg-background/60 px-3 py-1 font-body text-[10px] uppercase tracking-[0.14em] text-muted-2 transition-colors duration-300 group-hover:border-accent/50 group-hover:text-accent">
+                  {c.tags[0]}
+                </span>
 
                 <div className="relative flex flex-1 flex-col">
                   {/* logo */}
