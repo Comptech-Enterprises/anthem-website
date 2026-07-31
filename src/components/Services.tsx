@@ -99,11 +99,6 @@ export default function Services() {
           {ownedIp.map((ip) => {
             const inner = (
               <>
-                {/* corner tag */}
-                <span className="absolute top-6 right-6 z-10 rounded-full border border-border/70 bg-background/60 px-3 py-1 font-body text-[10px] uppercase tracking-[0.14em] text-muted-2 transition-colors duration-300 group-hover:border-accent/50 group-hover:text-accent">
-                  Owned IP
-                </span>
-
                 <div className="relative flex flex-1 flex-col">
                   <div className="mb-8 flex h-16 w-16 items-center justify-center overflow-hidden rounded-xl border border-border bg-background transition-all duration-300 group-hover:border-accent/60 group-hover:bg-accent">
                     <span className="font-display text-xl font-bold tracking-tight text-muted-2 transition-colors duration-300 group-hover:text-black">
