@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import AnimatedHeading from "./AnimatedHeading";
 import MagneticButton from "./MagneticButton";
 import Placeholder from "./Placeholder";
@@ -62,7 +63,22 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
         {/* hero media */}
         <Reveal delay={0.2}>
           <div className="mt-14">
-            <Placeholder label={data.media[0]} ratio="aspect-[16/7]" className="w-full" />
+            {data.video ? (
+              <div className="relative w-full overflow-hidden rounded-2xl border border-border aspect-[16/7]">
+                <iframe
+                  src={data.video}
+                  allow="autoplay"
+                  className="absolute inset-0 h-full w-full"
+                  allowFullScreen
+                />
+              </div>
+            ) : data.media[0]?.startsWith("/") ? (
+              <div className="relative w-full overflow-hidden rounded-2xl border border-border aspect-[16/7]">
+                <Image src={data.media[0]} alt={data.title} fill sizes="100vw" className="object-cover" unoptimized />
+              </div>
+            ) : (
+              <Placeholder label={data.media[0]} ratio="aspect-[16/7]" className="w-full" />
+            )}
           </div>
         </Reveal>
 
@@ -125,13 +141,19 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
         </div>
 
         {/* gallery */}
-        {data.media.length > 1 && (
+        {data.media.length > 0 && (
           <div className="mt-20">
             <Section eyebrow="05" title="Gallery">
               <div className="grid gap-4 sm:grid-cols-2">
-                {data.media.slice(1).map((m) => (
-                  <Placeholder key={m} label={m} ratio="aspect-[4/3]" className="w-full" />
-                ))}
+                {(data.video ? data.media : data.media.slice(1)).map((m) =>
+                  m.startsWith("/") ? (
+                    <div key={m} className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border">
+                      <Image src={m} alt="" fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" unoptimized />
+                    </div>
+                  ) : (
+                    <Placeholder key={m} label={m} ratio="aspect-[4/3]" className="w-full" />
+                  )
+                )}
               </div>
             </Section>
           </div>

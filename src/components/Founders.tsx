@@ -1,6 +1,6 @@
 "use client";
 
-import Placeholder from "./Placeholder";
+import Image from "next/image";
 import Reveal from "./Reveal";
 
 const founders = [
@@ -8,12 +8,14 @@ const founders = [
     name: "Shuchir Suri",
     role: "Co-Founder – Strategy & Growth",
     copy: "A sharp business strategist and operator, Shuchir translates ambitious creative ideas into scalable, commercially efficient campaigns. His expertise spans brand strategy, multi-city execution, client partnerships, and growth — ensuring every mandate is both creatively compelling and business-effective.",
+    img: "/founders/Shuchir.jpg",
     href: "https://shuchir.com/",
   },
   {
     name: "Anjali Batra",
     role: "Co-Founder – Creative & Experience",
     copy: "The creative engine behind Anthem's most iconic work, Anjali brings a consumer-first lens and an instinct for culture. From conceptualising immersive brand worlds to bringing a vision into reality, she ensures every experience feels intentional, premium, and deeply resonant.",
+    img: "/founders/Anjali-Batra.jpg",
     href: undefined,
   },
 ];
@@ -52,11 +54,9 @@ export default function Founders() {
                       f.href ? "cursor-pointer" : ""
                     }`}
                   >
-                    <Placeholder
-                      label={f.name}
-                      ratio="aspect-[16/9]"
-                      className="w-full shrink-0"
-                    />
+                    <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden rounded-xl">
+                      <Image src={f.img} alt={f.name} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" unoptimized />
+                    </div>
                     <div>
                       <span className="font-body text-xs uppercase tracking-[0.25em] text-accent">
                         {f.role}

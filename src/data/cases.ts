@@ -10,6 +10,7 @@ export type CaseStudy = {
   execution: string[];
   results: { value: string; label: string }[];
   media: string[];
+  video?: string;
 };
 
 export const cases: CaseStudy[] = [
@@ -87,7 +88,7 @@ export const cases: CaseStudy[] = [
       { value: "1", label: "Flagship store launch in Delhi" },
       { value: "5,000+", label: "People queued for the launch" },
     ],
-    media: [],
+    media: ["/projects/ARKS/1.png", "/projects/ARKS/2.png", "/projects/ARKS/3.jpeg"],
   },
   {
     slug: "don-julio-cinco-on",
@@ -111,7 +112,7 @@ export const cases: CaseStudy[] = [
       { value: "2,000+", label: "Attendees" },
       { value: "5M+", label: "Reach (2026)" },
     ],
-    media: [],
+    media: ["/projects/don-julio/1.JPG", "/projects/don-julio/2.JPG", "/projects/don-julio/3.JPG", "/projects/don-julio/4.JPG"],
   },
   {
     slug: "whisky-experiments",
@@ -208,7 +209,7 @@ export const cases: CaseStudy[] = [
       { value: "80+", label: "Media, PR & top HNIs" },
       { value: "1", label: "Mumbai experience" },
     ],
-    media: [],
+    media: ["/projects/Hendrick-Gin/2.jpg", "/projects/Hendrick-Gin/1.jpg", "/projects/Hendrick-Gin/3.jpg"],
   },
   {
     slug: "por-amor-potluck-don-julio",
@@ -283,7 +284,7 @@ export const cases: CaseStudy[] = [
       { value: "10.5M+", label: "Social reach" },
       { value: "180+", label: "Attendees" },
     ],
-    media: [],
+    media: ["/projects/Toki-Dinners/1.jpg", "/projects/Toki-Dinners/2.jpg", "/projects/Toki-Dinners/3.jpg", "/projects/Toki-Dinners/4.jpg"],
   },
 ];
 
