@@ -3,20 +3,14 @@
 import AnimatedHeading from "./AnimatedHeading";
 import Reveal from "./Reveal";
 
-// Placeholder client roster — swap these for real brand names/logos.
 const brands = [
-  "Aurora",
-  "Northwind",
-  "Solstice",
-  "Vertex",
-  "Meridian",
-  "Lumen",
-  "Cobalt",
-  "Halcyon",
-  "Everest",
-  "Quill",
-  "Zephyr",
-  "Ironwood",
+  "Diageo India",
+  "Boston Consulting Group",
+  "William Grant & Sons",
+  "Beam Suntory",
+  "Bapuna",
+  "ARKS",
+  "Radico Khaitan",
 ];
 
 export default function Brands() {
@@ -35,14 +29,8 @@ export default function Brands() {
           />
         </div>
 
-        <Reveal delay={0.1}>
-          <p className="mt-6 font-body text-sm text-muted-2">
-            Placeholder roster — brand names and logos to be added.
-          </p>
-        </Reveal>
       </div>
 
-      {/* auto-scrolling brand slider */}
       <div className="marquee-mask mt-12 overflow-hidden">
         <div className="animate-marquee flex w-max items-center gap-4 whitespace-nowrap">
           {[...brands, ...brands].map((name, i) => (
