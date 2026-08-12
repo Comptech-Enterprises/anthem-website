@@ -2,12 +2,23 @@
 
 import {
   motion,
+  AnimatePresence,
   useMotionValue,
   useScroll,
   useSpring,
   useTransform,
 } from "framer-motion";
-import { useRef } from "react";
+import Image from "next/image";
+import { useRef, useState, useEffect } from "react";
+
+const slides = [
+  "/sliders/1.jpg",
+  "/sliders/2.JPG",
+  "/sliders/3.JPG",
+  "/sliders/4.jpg",
+  "/sliders/5.jpg",
+  "/sliders/6.jpg",
+];
 
 const words = ["We", "Build", "Moments", "People", "Remember."];
 
@@ -30,6 +41,13 @@ export default function Hero() {
   const planeY = useTransform(sy, [-0.5, 0.5], [-30, 30]);
   const gridX = useTransform(sx, [-0.5, 0.5], [24, -24]);
   const gridY = useTransform(sy, [-0.5, 0.5], [16, -16]);
+
+  const [slide, setSlide] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => setSlide((s) => (s + 1) % slides.length), 3500);
+    return () => clearInterval(t);
+  }, []);
 
   const onMove = (e: React.MouseEvent) => {
     const r = ref.current?.getBoundingClientRect();
@@ -120,33 +138,27 @@ export default function Hero() {
         className="container-x relative z-10 mt-16"
       >
         <div className="relative overflow-hidden rounded-3xl border border-border bg-surface-2">
-          <div className="relative aspect-[16/10] w-full sm:aspect-[21/7]">
-            <div className="absolute inset-0 bg-[radial-gradient(120%_150%_at_50%_-20%,rgba(139,127,232,0.25),transparent_60%)]" />
-            <div
-              className="absolute inset-0 opacity-[0.10]"
-              style={{
-                backgroundImage:
-                  "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-                backgroundSize: "44px 44px",
-              }}
-            />
-            {/* drifting paper-plane mark, mouse parallax */}
-            <motion.div
-              style={{ x: planeX, y: planeY }}
-              className="absolute inset-0 flex items-center justify-center"
-            >
-              <motion.svg
-                width="88"
-                height="88"
-                viewBox="0 0 24 24"
-                fill="#ffffff"
-                className="[filter:drop-shadow(0_0_24px_var(--accent-glow))]"
-                animate={{ y: [0, -12, 0], rotate: [-3, 3, -3] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          <div className="relative aspect-[16/10] w-full sm:aspect-[21/7] overflow-hidden">
+            <AnimatePresence mode="sync">
+              <motion.div
+                key={slide}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+                className="absolute inset-0"
               >
-                <path d="M2 21l21-9L2 3v7l15 2-15 2z" />
-              </motion.svg>
-            </motion.div>
+                <Image
+                  src={slides[slide]}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  unoptimized
+                  priority
+                />
+              </motion.div>
+            </AnimatePresence>
+            <div className="pointer-events-none absolute inset-0 bg-black/30" />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-black/70 to-transparent p-6 sm:p-8">
               <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-2">
                 The Anthem — Experiential Reel
