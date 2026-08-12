@@ -29,8 +29,8 @@ export default function Brands() {
       <div className="container-x">
         <div className="max-w-2xl">
           <AnimatedHeading
-            text="Brands that trust us to create the moment"
-            highlight="trust us"
+            text="Brands we've created great work with"
+            highlight="great work"
             className="font-display text-3xl font-bold leading-tight sm:text-5xl"
           />
         </div>

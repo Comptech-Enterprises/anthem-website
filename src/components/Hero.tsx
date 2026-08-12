@@ -9,7 +9,7 @@ import {
 } from "framer-motion";
 import { useRef } from "react";
 
-const words = ["Your", "New-Age", "Experiential", "Partners"];
+const words = ["We", "Build", "Moments", "People", "Remember."];
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -77,16 +77,6 @@ export default function Hero() {
         style={{ y, opacity }}
         className="container-x relative z-10 flex flex-col items-center text-center"
       >
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-7 flex items-center gap-4 font-hand text-lg text-accent sm:text-xl"
-        >
-          <span className="h-px w-10 bg-accent" />
-          Experiential Agency
-          <span className="h-px w-10 bg-accent" />
-        </motion.p>
 
         <h1 className="mx-auto max-w-5xl font-display text-5xl font-extrabold leading-[0.95] tracking-tight sm:text-7xl lg:text-[7rem]">
           {words.map((w, i) => (
@@ -100,7 +90,7 @@ export default function Hero() {
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 className={`mr-4 inline-block ${
-                  w === "Experiential" ? "text-gradient" : ""
+                  w === "Moments" ? "text-gradient" : ""
                 }`}
               >
                 {w}
@@ -119,28 +109,6 @@ export default function Hero() {
           experiences people feel — on every screen and every stage.
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.05 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
-        >
-          <a
-            href="#work"
-            className="group flex items-center gap-2 rounded-full bg-accent px-8 py-4 font-body font-medium text-black transition-shadow hover:shadow-[0_0_45px_var(--accent-glow)]"
-          >
-            View Our Work
-            <span className="transition-transform group-hover:translate-x-1">
-              →
-            </span>
-          </a>
-          <a
-            href="#enquiry"
-            className="rounded-full border border-border px-8 py-4 font-body font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
-          >
-            Start With Us
-          </a>
-        </motion.div>
       </motion.div>
 
       {/* cinematic image band */}

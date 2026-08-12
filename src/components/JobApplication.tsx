@@ -55,16 +55,14 @@ export default function JobApplication() {
             </Reveal>
             <Reveal delay={0.05}>
               <AnimatedHeading
-                text="Work with us, not for us"
-                highlight="with us"
+                text="Work With Us"
+                highlight="With Us"
                 className="font-display text-4xl font-bold sm:text-5xl lg:text-6xl"
               />
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-6 max-w-lg font-body text-lg leading-relaxed text-muted">
-                We&apos;re always looking for sharp, restless people who&apos;d rather make
-                the moment than watch it. No open roles listed — if you&apos;re good,
-                we&apos;ll find a seat.
+                Join a team that believes the best ideas don&apos;t just live on slides — they come alive in the real world.
               </p>
             </Reveal>
           </div>
@@ -72,6 +70,9 @@ export default function JobApplication() {
           {/* email CTA card — right side */}
           <Reveal delay={0.15}>
             <div className="flex flex-col items-center rounded-2xl border border-border bg-surface/60 px-8 py-10 text-center backdrop-blur-sm">
+              <p className="mb-2 font-body text-sm leading-relaxed text-muted">
+                If you think you&apos;d be a great fit, we&apos;d love to hear from you.
+              </p>
               <p className="mb-4 font-body text-sm leading-relaxed text-muted">
                 Send us your portfolio, a note about yourself, and the role you see yourself in.
               </p>
@@ -94,45 +95,6 @@ export default function JobApplication() {
           </Reveal>
         </div>
 
-        {/* why work at Anthem */}
-        <div className="mb-12">
-          <Reveal>
-            <p className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
-              <span className="h-px w-10 bg-accent" />
-              Why work at Anthem
-            </p>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <h2 className="max-w-2xl font-display text-3xl font-bold sm:text-4xl">
-              Reasons people stick around
-            </h2>
-          </Reveal>
-        </div>
-
-        {/* perks grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:gap-8">
-          {perks.map((perk, i) => (
-            <Reveal key={perk.icon} delay={0.05 * i} className="h-full">
-              <motion.div
-                whileHover={{ y: -4 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="group relative flex h-full gap-5 rounded-2xl border border-border bg-surface/60 p-6 backdrop-blur-sm transition-colors hover:border-accent/30 sm:p-8"
-              >
-                <span className="shrink-0 font-display text-3xl font-bold text-accent/20 transition-colors group-hover:text-accent/50">
-                  {perk.icon}
-                </span>
-                <div>
-                  <h3 className="mb-2 font-display text-lg font-semibold">
-                    {perk.title}
-                  </h3>
-                  <p className="font-body text-sm leading-relaxed text-muted">
-                    {perk.description}
-                  </p>
-                </div>
-              </motion.div>
-            </Reveal>
-          ))}
-        </div>
       </div>
     </section>
   );

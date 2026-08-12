@@ -9,33 +9,15 @@ import Reveal from "./Reveal";
 const testimonials = [
   {
     quote:
-      "Anthem turned our product launch into a citywide moment. From the first strategy deck to the final teardown, the execution was flawless.",
-    name: "Marketing Head",
-    org: "Global Spirits Brand",
+      "Working with Anthem felt like having an extension of our own team. Every detail was thoughtfully planned, flawlessly executed, and always delivered beyond expectations.",
+    name: "Brand Specialist",
+    org: "Diageo India",
   },
   {
     quote:
-      "Few teams understand experiential like Anthem. Bold creative, obsessive attention to detail, and a genuine partner through every twist.",
-    name: "Brand Director",
-    org: "Leading FMCG Company",
-  },
-  {
-    quote:
-      "They took a sharp consumer insight and built an experience our audience couldn't stop talking about. Impossible to ignore, easy to love.",
-    name: "Chief Marketing Officer",
-    org: "High-Growth Tech Startup",
-  },
-  {
-    quote:
-      "Every milestone was hit, every detail considered. Anthem made a complex multi-city rollout feel effortless from our side of the table.",
-    name: "Head of Brand",
-    org: "National Beverage Leader",
-  },
-  {
-    quote:
-      "The kind of partner that makes your brand braver. Ideas with teeth, delivered with real craft and zero drama.",
-    name: "VP Marketing",
-    org: "Global Lifestyle Label",
+      "What impressed us most was their ownership. No matter the scale or complexity, the team remained proactive, collaborative and solutions-focused throughout.",
+    name: "Marketing Lead",
+    org: "Radico Khaitan",
   },
 ];
 
@@ -79,8 +61,8 @@ export default function Testimonials() {
             </p>
           </Reveal>
           <AnimatedHeading
-            text="Brands who came back for more"
-            highlight="came back for more"
+            text="Words From Our Partners"
+            highlight="Our Partners"
             className="font-display text-3xl font-bold leading-tight sm:text-5xl"
           />
         </div>

@@ -3,16 +3,17 @@
 import { motion } from "framer-motion";
 import Reveal from "./Reveal";
 import AnimatedHeading from "./AnimatedHeading";
-import Placeholder from "./Placeholder";
+import Image from "next/image";
 
 const cards = [
-  { title: "Digital", href: "/services#digital" },
-  { title: "Events", href: "/services#events" },
+  { title: "Digital", href: "/services#digital", img: "/what-we-do/digital.jpg" },
+  { title: "Events", href: "/services#events", img: "/what-we-do/events.png" },
   {
     title: "Experiential Brand Activation",
     href: "/services#experiential",
+    img: "/what-we-do/brand-activation.jpg",
   },
-  { title: "Owned IPs", href: "/services#owned-ips" },
+  { title: "Owned IPs", href: "/services#owned-ips", img: "/what-we-do/owned-ip.jpg" },
 ];
 
 export default function WhatWeDo() {
@@ -50,21 +51,21 @@ export default function WhatWeDo() {
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 className="group relative block overflow-hidden rounded-2xl border border-border"
               >
-                <Placeholder
-                  label={card.title}
-                  ratio="aspect-[16/10]"
-                  className="w-full !rounded-none !border-0"
-                />
+                <div className="relative aspect-[16/10] w-full">
+                  <Image
+                    src={card.img}
+                    alt={card.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10 transition-opacity group-hover:from-black/90" />
 
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-5">
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
                   <h3 className="font-display text-xl font-bold text-white sm:text-2xl lg:text-3xl text-center px-4">
                     {card.title}
                   </h3>
-                  <span className="inline-flex items-center gap-2 rounded border border-white/40 px-6 py-2.5 font-body text-xs uppercase tracking-[0.2em] text-white/90 transition-all group-hover:border-accent group-hover:text-accent group-hover:shadow-[0_0_20px_var(--accent-glow)]">
-                    View All
-                  </span>
                 </div>
               </motion.a>
             </Reveal>

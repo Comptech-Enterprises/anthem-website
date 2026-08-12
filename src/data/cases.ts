@@ -1,16 +1,10 @@
-// Case-study content for the Our Work page and its dedicated detail routes.
-// Media are intentional placeholders (no real client artwork yet) — the
-// `media` labels drive the shimmer boxes rendered by <Placeholder>.
-
 export type CaseStudy = {
   slug: string;
   company: string;
   monogram: string;
   title: string;
   tags: string[];
-  // short line used on the grid card
   summary: string;
-  // dedicated page sections
   overview: string;
   objective: string;
   execution: string[];
@@ -20,150 +14,276 @@ export type CaseStudy = {
 
 export const cases: CaseStudy[] = [
   {
-    slug: "world-class-india-festival",
-    company: "Aurora",
-    monogram: "AU",
-    title: "World Class India Festival",
-    tags: ["Live IP", "Stage Production", "360° Campaign"],
+    slug: "world-class-festival-india",
+    company: "Diageo India",
+    monogram: "DI",
+    title: "World Class Festival India",
+    tags: ["Live Event - IP"],
     summary:
-      "A homegrown festival IP built from the first concept note to a world-class stage.",
+      "India's premier cocktail festival and bartending competition, bringing together Diageo's premium portfolio through a large-scale celebration of cocktail culture.",
     overview:
-      "Aurora wanted a property they could own and grow year after year — not a one-off event. We built a homegrown festival IP from the ground up, shaping the format, the programming and the launch story, then producing the whole thing end to end.",
+      "India's premier cocktail festival and bartending competition, bringing together Diageo's premium portfolio through a large-scale celebration of cocktail culture.",
     objective:
-      "Create a repeatable, ownable festival brand that could stand shoulder to shoulder with the best in the world while still feeling unmistakably local.",
+      "Bring Diageo's premium portfolio under one roof for India's biggest annual cocktail showcase & competition.",
     execution: [
-      "Defined an original festival format, name and brand identity",
-      "Designed and built the main stage and live production",
-      "Ran a multi-channel launch campaign to fill the grounds",
-      "Set up the show-calling and run-of-show for a multi-day event",
+      "Built the campaign around the duality of competition followed by the festival",
+      "Drove talkability through influencer tie-ups",
+      "Developed and managed brand zones",
+      "Curated artist lineup & F&B",
     ],
     results: [
-      { value: "20K+", label: "Attendees across the weekend" },
-      { value: "3", label: "Cities in the touring roadmap" },
-      { value: "40M", label: "Campaign impressions" },
+      { value: "4", label: "Successful editions (2023–2026)" },
+      { value: "8,000+", label: "Attendees" },
+      { value: "50M+", label: "Reach" },
+      { value: "55M+", label: "Impressions" },
     ],
-    media: ["Main stage — night one", "Crowd wide shot", "Backstage production"],
+    media: [],
   },
   {
-    slug: "explorers-club",
-    company: "Northwind",
-    monogram: "NW",
-    title: "Explorers Club",
-    tags: ["Brand Activation", "Experiential Pop-Up"],
+    slug: "bcg-india-leadership-meet",
+    company: "Boston Consulting Group",
+    monogram: "BCG",
+    title: "BCG India — Leadership Meet, Goa",
+    tags: ["Corporate Event"],
     summary:
-      "A travelling, hands-on pop-up that let people walk through the product story.",
+      "A three-day leadership summit designed for BCG India's senior leadership, combining conferences, networking and celebration.",
     overview:
-      "Northwind wanted their product story to be felt, not just seen. We answered with a travelling pop-up — a hands-on world guests could walk through, play with and share, tuned to the crowd at each city stop.",
+      "A three-day leadership summit designed for BCG India's senior leadership, combining conferences, networking and celebration.",
     objective:
-      "Turn a product story into a physical experience people would share, and carry that reach well past the room itself.",
+      "Create a premium leadership experience that felt engaging, immersive and reflective of BCG's culture.",
     execution: [
-      "Built a modular set that toured multiple cities",
-      "Designed interactive stations around the product",
-      "Engineered shareable moments for social reach",
-      "Tuned each stop to its local audience",
+      "Managed hotel operations end-to-end, ensuring a seamless experience for all attendees",
+      "Led collateral design and fabrication across the event's physical touchpoints",
+      "Oversaw all technical setups and AV production to ensure smooth event delivery",
+      "Managed transitions and show runs to keep the programme seamless and on schedule",
+      "Curated and managed entertainment",
     ],
     results: [
-      { value: "6", label: "Cities on the tour" },
-      { value: "12K", label: "Guests through the doors" },
-      { value: "3.5M", label: "Organic social reach" },
+      { value: "500+", label: "Senior leaders" },
+      { value: "3-day", label: "Multi-format experience" },
     ],
-    media: ["Pop-up exterior", "Interactive station", "Guest moment"],
+    media: [],
   },
   {
-    slug: "bcg-palooza",
-    company: "Solstice",
-    monogram: "SO",
-    title: "BCG Palooza",
-    tags: ["Corporate Event", "Content Film"],
+    slug: "arks-store-launch",
+    company: "ARKS",
+    monogram: "AK",
+    title: "ARKS: A Ranbir Kapoor Studio",
+    tags: ["Store Launch Event"],
     summary:
-      "A routine town hall reimagined as a full production the whole company rallied behind.",
+      "Launch of ARKS' flagship store through an immersive brand experience that reflected the label's philosophy of quiet confidence.",
     overview:
-      "An internal celebration reimagined as a full production. We took what could have been a routine town hall and turned it into a day the whole company rallied behind — sharp staging, tight run-of-show, and a recap film that kept the energy alive long after everyone went home.",
+      "Launch of ARKS' flagship store through an immersive brand experience that reflected the label's philosophy of quiet confidence.",
     objective:
-      "Make an internal event feel like a moment worth showing up for, and give it a life beyond the day itself.",
+      "Unveil the ARKS flagship store at DLF Avenue, Saket, through an immersive launch experience that brought the brand's philosophy of quiet confidence and individuality to life.",
     execution: [
-      "Handled end-to-end event design and staging",
-      "Managed live show calling and run-of-show",
-      "Produced a post-event recap film for internal reach",
+      "Oversaw end-to-end event production and operations to ensure seamless execution",
+      "Curated the guest experience, from arrival through the event journey",
+      "Managed celebrity movement and management throughout the launch experience",
+      "Designed and executed interactive installations to drive engagement",
+      "Managed F&B curation and execution as part of the overall experience",
     ],
     results: [
-      { value: "1.2K", label: "Employees in the room" },
-      { value: "95%", label: "Positive post-event feedback" },
-      { value: "1", label: "Recap film with lasting reach" },
+      { value: "1", label: "Flagship store launch in Delhi" },
+      { value: "5,000+", label: "People queued for the launch" },
     ],
-    media: ["Main stage", "Audience", "Recap film still"],
+    media: [],
   },
   {
-    slug: "tiny-10-salon",
-    company: "Vertex",
-    monogram: "VX",
-    title: "Tiny 10 Salon",
-    tags: ["Product Launch", "Social Campaign"],
+    slug: "don-julio-cinco-on",
+    company: "Diageo India",
+    monogram: "DJ",
+    title: "Don Julio — Cinco On With Don",
+    tags: ["Brand IP"],
     summary:
-      "An intimate reveal wrapped in a social rollout that turned one night into weeks of talk.",
+      "A multi-city experiential platform celebrating Cinco de Mayo while strengthening Don Julio's cultural relevance in India.",
     overview:
-      "Vertex was launching a new line and needed the moment to punch above its size. We built an intimate reveal for the people who mattered most, then wrapped it in a social rollout that carried the buzz well past the event.",
+      "A multi-city experiential platform celebrating Cinco de Mayo while strengthening Don Julio's cultural relevance in India.",
     objective:
-      "Make a small-format launch feel big, and sustain the conversation long after the doors closed.",
+      "Create brand awareness and own the Mexican holiday of Cinco de Mayo in India through impactful brand activations and events.",
     execution: [
-      "Designed an invite-only launch experience",
-      "Built content capture into the night",
-      "Ran a rollout calendar that sustained the buzz",
+      "Designed and executed a multi-city activation strategy to build momentum across markets",
+      "Built the journey towards a flagship event that brought together culture, fashion, creators and premium hospitality",
+      "Curated the overall experience to create talkability and brand engagement across the activation",
     ],
     results: [
-      { value: "80", label: "Hand-picked guests" },
-      { value: "4 wks", label: "Of sustained conversation" },
-      { value: "2.1M", label: "Social impressions" },
+      { value: "3", label: "Successful editions" },
+      { value: "2,000+", label: "Attendees" },
+      { value: "5M+", label: "Reach (2026)" },
     ],
-    media: ["Reveal moment", "Guest experience", "Content still"],
+    media: [],
   },
   {
-    slug: "global-sales-kickoff",
-    company: "Meridian",
-    monogram: "MD",
-    title: "Global Sales Kickoff",
-    tags: ["Conference Design", "Show Calling"],
+    slug: "whisky-experiments",
+    company: "Diageo India",
+    monogram: "JW",
+    title: "Whisky Experiments",
+    tags: ["Brand IP"],
     summary:
-      "A multi-day kickoff for a thousand — designed, built and run without a beat dropped.",
+      "A year-long experiential platform designed to reposition Johnnie Walker Black Label within India's evolving cocktail culture.",
     overview:
-      "A multi-day kickoff for a room of a thousand — designed, built and run by us. Meridian needed their teams to leave aligned and fired up, so we handled everything from the set and the run-of-show to live show calling.",
+      "A year-long experiential platform designed to reposition Johnnie Walker Black Label within India's evolving cocktail culture.",
     objective:
-      "Keep a complex, multi-day agenda moving flawlessly while leaving a thousand people aligned and energised.",
+      "Drive cultural relevance and make Johnnie Walker Black Label more discoverable through modern cocktail experiences.",
     execution: [
-      "Designed the full conference set and stage",
-      "Planned multi-day run-of-show and logistics",
-      "Ran live show calling for a 1,000-seat room",
+      "Built a 365-day campaign to strengthen Johnnie Walker Black Label's relevance",
+      "Developed collaborations and partnerships across key cultural platforms",
+      "Activated bar partnerships to drive the brand's presence within cocktail culture",
+      "Created large-scale events and consumer activations across the year",
     ],
     results: [
-      { value: "1K", label: "Seats, run flawlessly" },
-      { value: "3", label: "Days of programming" },
-      { value: "0", label: "Beats dropped" },
+      { value: "500+", label: "Outlets activated" },
+      { value: "50+", label: "Activations" },
+      { value: "5", label: "Large-scale events" },
     ],
-    media: ["Conference set", "Keynote moment", "Backstage ops"],
+    media: [],
   },
   {
-    slug: "flagship-store-reveal",
-    company: "Lumen",
-    monogram: "LM",
-    title: "Flagship Store Reveal",
-    tags: ["Activation", "Films", "Performance Media"],
+    slug: "black-and-white-table-for-everyone",
+    company: "Diageo India",
+    monogram: "BW",
+    title: "Black & White — Table For Everyone",
+    tags: ["Brand IP"],
     summary:
-      "A flagship opening the whole city noticed — activation, films and performance media.",
+      "A conversation-led dining experience designed to build meaningful connections around the Black & White brand.",
     overview:
-      "Lumen opened a flagship and we made sure the city noticed. A street-level activation drew people in, launch films gave the story legs online, and a performance-media push kept the momentum pointed straight at footfall.",
+      "A conversation-led dining experience designed to build meaningful connections around the Black & White brand.",
     objective:
-      "Drive real footfall to a new flagship and keep the doors busy well past opening week.",
+      "Create talkability, increase ROIs and brand salience with a GenZ & young Millennial audience.",
     execution: [
-      "Staged a street-level activation at the storefront",
-      "Produced a launch film suite for digital channels",
-      "Ran a performance-media push tuned for footfall",
+      "Created intimate dining experiences designed around the brand's world",
+      "Curated food and dining experiences to complement each gathering",
+      "Introduced interactive conversation formats to encourage meaningful engagement",
+      "Created a relaxed setting that encouraged genuine conversations and connections",
     ],
     results: [
-      { value: "5K+", label: "Footfall in opening week" },
-      { value: "8", label: "Launch films shipped" },
-      { value: "2.4x", label: "Return on media spend" },
+      { value: "350+", label: "Editions" },
+      { value: "6,000+", label: "Attendees" },
+      { value: "2023–", label: "Running successfully since" },
     ],
-    media: ["Storefront activation", "Launch film still", "Opening crowd"],
+    media: [],
+  },
+  {
+    slug: "chambal-gin",
+    company: "Bapuna",
+    monogram: "CG",
+    title: "Chambal Gin",
+    tags: ["Brand Activation"],
+    summary:
+      "Chambal Gin's launch designed as an immersive brand experience that brought the spirit and untamed flavours of the Chambal ravines to life.",
+    overview:
+      "Chambal Gin's launch designed as an immersive brand experience that brought the spirit and untamed flavours of the Chambal ravines to life.",
+    objective:
+      "Capture the essence of the mystical Chambal ravines while creating a rich, immersive Indian gin-sipping experience.",
+    execution: [
+      "Designed the space with earthy layers, decor and props inspired by the brand's spirit",
+      "Brought Chambal's untamed flavours to life through an evening of indulgence",
+      "Introduced intimate theatrical experiences and games to create memorable moments while staying true to the brand's essence",
+    ],
+    results: [
+      { value: "70+", label: "Content creators invited" },
+      { value: "1", label: "End-to-end execution" },
+    ],
+    media: [],
+  },
+  {
+    slug: "hendricks-house-of-oddities",
+    company: "William Grant & Sons",
+    monogram: "HG",
+    title: "Hendrick's Gin — The House of Oddities",
+    tags: ["Brand Activation"],
+    summary:
+      "A surreal, whimsical brand experience in Mumbai designed to welcome Hendrick's global ambassador and immerse guests in the eccentric world of Hendrick's.",
+    overview:
+      "A surreal, whimsical brand experience in Mumbai designed to welcome Hendrick's global ambassador, Ally Martin, and immerse guests in the eccentric world of Hendrick's.",
+    objective:
+      "Host a unique experience for the global ambassador's India visit while immersing attendees in Hendrick's distinctive and whimsical brand world.",
+    execution: [
+      "Took over Love Fools in Bandra, Mumbai, transforming the space into the House of Oddities",
+      "Created a world filled with eccentric characters, quirky décor and curated tables",
+      "Curated F&B and music to bring the experience to life",
+      "Designed an immersive environment filled with spells, secrets, puzzles and missions inspired by the brand's world",
+    ],
+    results: [
+      { value: "80+", label: "Media, PR & top HNIs" },
+      { value: "1", label: "Mumbai experience" },
+    ],
+    media: [],
+  },
+  {
+    slug: "por-amor-potluck-don-julio",
+    company: "Diageo India",
+    monogram: "PA",
+    title: "Por Amor Potluck x Don Julio",
+    tags: ["Digital Campaign - Influencer"],
+    summary:
+      "A creator-led digital series celebrating shared meals, meaningful conversations and togetherness through the spirit of Por Amor.",
+    overview:
+      "A creator-led digital series celebrating shared meals, meaningful conversations and togetherness through the spirit of Por Amor.",
+    objective:
+      "Build cultural relevance for Don Julio Grapefruit Soda through authentic creator storytelling.",
+    execution: [
+      "Partnered with leading creators to bring the experience to life through intimate potlucks",
+      "Built creator-led content around food, togetherness and shared experiences",
+      "End-to-end influencer management & coordination",
+    ],
+    results: [
+      { value: "5.5M+", label: "Reach" },
+      { value: "5M+", label: "Views" },
+      { value: "110K+", label: "Engagement" },
+    ],
+    media: [],
+  },
+  {
+    slug: "roku-gin-come-alive",
+    company: "Beam Suntory",
+    monogram: "RG",
+    title: "Roku Gin: Come Alive With The Seasons",
+    tags: ["Digital Campaign"],
+    summary:
+      "A premium, nature-led experiential IP rooted in Japanese craft and culture, bringing Roku Gin's philosophy to life through immersive experiences.",
+    overview:
+      "A premium, nature-led experiential IP rooted in Japanese craft and culture, bringing Roku Gin's \"Come Alive with the Seasons\" philosophy to life through immersive experiences.",
+    objective:
+      "Create a culturally relevant, high-energy campaign that translated seamlessly from digital to on-ground experiences.",
+    execution: [
+      "Created a ticketed, repeatable and scalable format designed for deployment across key metro markets",
+      "Built a social-first experience amplified through high-quality, organic content",
+      "Curated immersive activities including Japanese ink art, moss terrarium building and Ikebana",
+      "Activated the experience across Delhi, Mumbai and Bengaluru",
+    ],
+    results: [
+      { value: "10", label: "Influencers activated" },
+      { value: "7M+", label: "Reach" },
+      { value: "8M+", label: "Views" },
+      { value: "600K+", label: "Engagement" },
+    ],
+    media: [],
+  },
+  {
+    slug: "toki-dinners",
+    company: "Beam Suntory",
+    monogram: "TK",
+    title: "Toki Dinners",
+    tags: ["Digital Campaign"],
+    summary:
+      "A curated dining series by Food Talk India celebrating bold cuisine and storytelling, with Toki Whisky seamlessly integrated into the experience.",
+    overview:
+      "A curated dining series by Food Talk India celebrating bold cuisine and storytelling, with Toki Whisky seamlessly integrated into the experience.",
+    objective:
+      "Position Toki as an integral part of memorable dining experiences rather than simply a beverage served alongside them.",
+    execution: [
+      "Developed a ticketed dining format designed to create a distinctive brand experience",
+      "Curated unique culinary concepts for each dining experience",
+      "Built immersive storytelling into the overall guest journey",
+      "Integrated the brand naturally across the dining experience, from start to finish",
+    ],
+    results: [
+      { value: "4", label: "Outlets activated" },
+      { value: "10.5M+", label: "Social reach" },
+      { value: "180+", label: "Attendees" },
+    ],
+    media: [],
   },
 ];
 

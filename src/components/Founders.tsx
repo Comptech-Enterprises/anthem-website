@@ -6,14 +6,14 @@ import Reveal from "./Reveal";
 const founders = [
   {
     name: "Shuchir Suri",
-    role: "Co-Founder",
-    copy: "Drives strategy and flawless execution — turning bold ideas into experiences that deliver.",
+    role: "Co-Founder – Strategy & Growth",
+    copy: "A sharp business strategist and operator, Shuchir translates ambitious creative ideas into scalable, commercially efficient campaigns. His expertise spans brand strategy, multi-city execution, client partnerships, and growth — ensuring every mandate is both creatively compelling and business-effective.",
     href: "https://shuchir.com/",
   },
   {
     name: "Anjali Batra",
-    role: "Co-Founder",
-    copy: "Leads creative with a consumer-first approach, crafting stories that resonate and stick.",
+    role: "Co-Founder – Creative & Experience",
+    copy: "The creative engine behind Anthem's most iconic work, Anjali brings a consumer-first lens and an instinct for culture. From conceptualising immersive brand worlds to bringing a vision into reality, she ensures every experience feels intentional, premium, and deeply resonant.",
     href: undefined,
   },
 ];
@@ -30,7 +30,7 @@ export default function Founders() {
         </Reveal>
         <Reveal delay={0.05}>
           <h2 className="max-w-3xl font-display text-3xl font-bold sm:text-5xl">
-            The minds behind the experiences
+            The Minds Behind Anthem
           </h2>
         </Reveal>
 

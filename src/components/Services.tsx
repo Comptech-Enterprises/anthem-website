@@ -28,7 +28,7 @@ const ownedIp = [
     name: "Food Talk",
     title: "Food Talk India",
     summary:
-      "Our own food-and-culture platform — a homegrown IP we build, program and grow ourselves.",
+      "India's leading food and drink culture platform that brings together stories, experiences and conversations shaping how India eats, drinks and goes out.",
     href: "https://food-talk-india.vercel.app/",
     external: true,
   },
@@ -37,7 +37,7 @@ const ownedIp = [
     name: "The Anthem",
     title: "Explorers Club",
     summary:
-      "An in-house live series we produce end to end — our stage, our line-up, our audience.",
+      "A lifestyle and culture-led experiential IP built around spirits, flavour, food, music and more. What started as an experience has grown into a culture-led platform, attracting 1.5L+ attendees across 3 cities and building a community around discovery, connection and culture.",
     href: undefined as string | undefined,
     external: false,
   },

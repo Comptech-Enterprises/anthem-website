@@ -84,7 +84,7 @@ export default function Navbar() {
                     transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                     className="relative block rounded-2xl rounded-tr-sm bg-accent px-3.5 py-1.5 font-hand text-xs text-black font-medium shadow-[0_2px_12px_var(--accent-glow)]"
                   >
-                    I know you want to 😉
+                    Hit us up
                   </motion.span>
                 </motion.span>
               )}

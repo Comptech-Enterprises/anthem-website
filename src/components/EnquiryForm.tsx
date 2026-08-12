@@ -34,12 +34,12 @@ export default function EnquiryForm() {
           <Reveal>
             <p className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
               <span className="h-px w-10 bg-accent" />
-              Start a Project
+              Let's work together
             </p>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="max-w-md font-display text-3xl font-bold sm:text-5xl">
-              Tell us about your event
+              Tell us about your brand
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
@@ -47,20 +47,6 @@ export default function EnquiryForm() {
               Share the details and our team will craft a tailored proposal.
               The more you tell us, the sharper our first response.
             </p>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <div className="mt-8">
-              <a
-                href="/Profile.pdf"
-                download
-                className="group flex w-fit items-center gap-2 rounded-full border border-border px-6 py-3 font-body text-sm font-medium transition-colors hover:border-accent hover:text-accent"
-              >
-                <span className="transition-transform group-hover:translate-y-0.5" aria-hidden>
-                  ↓
-                </span>
-                Download Company Profile
-              </a>
-            </div>
           </Reveal>
         </div>
 
@@ -144,6 +130,16 @@ export default function EnquiryForm() {
                       name="phone"
                       type="tel"
                       required
+                      className={fieldClass}
+                    />
+                  </label>
+
+                  <label className="flex flex-col gap-2">
+                    <span className="font-body text-sm text-muted">
+                      City
+                    </span>
+                    <input
+                      name="city"
                       className={fieldClass}
                     />
                   </label>

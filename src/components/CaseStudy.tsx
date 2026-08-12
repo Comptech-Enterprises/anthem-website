@@ -45,11 +45,6 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
               className="font-display text-4xl font-bold sm:text-5xl lg:text-6xl"
             />
           </Reveal>
-          <Reveal delay={0.1}>
-            <p className="mt-6 font-body text-lg leading-relaxed text-muted">
-              {data.summary}
-            </p>
-          </Reveal>
           <Reveal delay={0.15}>
             <div className="mt-6 flex flex-wrap gap-2">
               {data.tags.map((t) => (

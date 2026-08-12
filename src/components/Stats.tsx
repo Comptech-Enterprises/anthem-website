@@ -5,10 +5,10 @@ import { motion, useInView } from "framer-motion";
 import Reveal from "./Reveal";
 
 const stats = [
-  { value: 150, suffix: "+", label: "Experiences delivered" },
   { value: 12, suffix: "", label: "Years of craft" },
-  { value: 80, suffix: "+", label: "Brands partnered" },
   { value: 30, suffix: "+", label: "Cities activated" },
+  { value: 80, suffix: "+", label: "Brands partnered" },
+  { value: 150, suffix: "+", label: "Experiences delivered" },
 ];
 
 function Counter({ value, suffix }: { value: number; suffix: string }) {
