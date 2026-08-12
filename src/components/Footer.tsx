@@ -46,24 +46,35 @@ export default function Footer() {
                 className="h-20 w-auto invert"
               />
             </Link>
-            <div className="flex flex-col items-center gap-2 sm:items-start">
+            <div className="flex flex-col items-center gap-3 sm:items-start">
               <p className="font-body text-xs uppercase tracking-[0.2em] text-muted-2">
                 Units
               </p>
-              <a
-                href="https://food-talk-india.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex opacity-80 transition-opacity hover:opacity-100"
-              >
-                <Image
-                  src="/food-talk.webp"
-                  alt="Food Talk"
-                  width={576}
-                  height={576}
-                  className="h-10 w-auto"
-                />
-              </a>
+              <div className="flex items-start gap-3">
+                <a
+                  href="https://food-talk-india.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex shrink-0 opacity-80 transition-opacity hover:opacity-100"
+                >
+                  <Image
+                    src="/food-talk.webp"
+                    alt="Food Talk India"
+                    width={576}
+                    height={576}
+                    className="h-10 w-auto"
+                  />
+                </a>
+                <p className="font-body text-xs leading-relaxed text-muted-2 max-w-[180px]">
+                  India&apos;s leading F&amp;B media house.
+                </p>
+              </div>
+              <div className="flex flex-col gap-1 sm:items-start">
+                <p className="font-body text-xs font-medium text-muted">Explorers Club</p>
+                <p className="font-body text-xs leading-relaxed text-muted-2 max-w-[220px]">
+                  Our in-house experiential IP built around spirits, music and food.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -96,6 +107,10 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+            <p className="font-body text-xs leading-relaxed text-muted-2 text-center sm:text-right max-w-[260px]">
+              1st floor, 134, D Block Rd, Dr Ambedkar Colony,<br />
+              Chhatarpur, New Delhi, Delhi 110074
+            </p>
           </div>
         </div>
 
