@@ -189,6 +189,7 @@ export const cases: CaseStudy[] = [
       { value: "1", label: "End-to-end execution" },
     ],
     media: [],
+    video: "https://anthem-videos.s3.ap-south-1.amazonaws.com/uploads/1f1ef839-838f-41ad-b27b-fdf937c0c9f0.mp4",
   },
   {
     slug: "hendricks-house-of-oddities",
