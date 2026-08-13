@@ -64,7 +64,7 @@ export const cases: CaseStudy[] = [
       { value: "500+", label: "Senior leaders" },
       { value: "3-day", label: "Multi-format experience" },
     ],
-    media: [],
+    media: ["/projects/BCG/1.JPG"],
   },
   {
     slug: "arks-store-launch",
