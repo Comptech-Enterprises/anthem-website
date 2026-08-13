@@ -99,11 +99,10 @@ export default function Services() {
           {ownedIp.map((ip) => {
             const inner = (
               <>
+                <span className="absolute top-6 right-6 z-10 rounded-full border border-border/70 bg-background/60 px-3 py-1 font-body text-[10px] uppercase tracking-[0.14em] text-muted-2">
+                  {ip.tag}
+                </span>
                 <div className="relative flex flex-1 flex-col">
-                  <span className="absolute top-6 right-6 z-10 rounded-full border border-border/70 bg-background/60 px-3 py-1 font-body text-[10px] uppercase tracking-[0.14em] text-muted-2">
-                    {ip.tag}
-                  </span>
-
                   <h3 className="font-display text-xl font-semibold sm:text-2xl">
                     {ip.title}
                   </h3>
@@ -188,7 +187,7 @@ export default function Services() {
                   {c.tags[0]}
                 </span>
 
-                <div className="relative flex flex-1 flex-col">
+                <div className="relative flex flex-1 flex-col pt-8">
                   <h3 className="font-display text-xl font-semibold sm:text-2xl">
                     {c.title}
                   </h3>
