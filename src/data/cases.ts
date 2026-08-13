@@ -139,6 +139,7 @@ export const cases: CaseStudy[] = [
       { value: "5", label: "Large-scale events" },
     ],
     media: [],
+    video: "https://anthem-videos.s3.ap-south-1.amazonaws.com/uploads/4c9360a9-41ac-419e-9f3c-d5630f420cb7.mov",
   },
   {
     slug: "black-and-white-table-for-everyone",
@@ -164,6 +165,7 @@ export const cases: CaseStudy[] = [
       { value: "2023–", label: "Running successfully since" },
     ],
     media: [],
+    video: "https://anthem-videos.s3.ap-south-1.amazonaws.com/uploads/6b7b0ce5-51cd-409e-b62c-308daad8f003.mp4",
   },
   {
     slug: "chambal-gin",
