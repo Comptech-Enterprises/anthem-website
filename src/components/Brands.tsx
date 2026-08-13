@@ -8,9 +8,20 @@ const brands = [
   "Boston Consulting Group",
   "William Grant & Sons",
   "Beam Suntory",
-  "Bapuna",
-  "ARKS",
   "Radico Khaitan",
+  "ARKS",
+  "Bapuna",
+  "Pernod Ricard",
+  "Bacardi",
+  "ITC Hotels",
+  "Nykaa",
+  "Myntra",
+  "OYO",
+  "Tata",
+  "Godrej",
+  "Zomato",
+  "HDFC Bank",
+  "Marico",
 ];
 
 export default function Brands() {
