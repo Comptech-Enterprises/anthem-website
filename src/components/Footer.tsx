@@ -43,7 +43,7 @@ export default function Footer() {
                 alt="Anthem"
                 width={3000}
                 height={2250}
-                className="h-20 w-auto invert"
+                className="h-12 w-auto invert sm:h-16 md:h-20"
               />
             </Link>
             <div className="flex flex-col items-center gap-3 sm:items-start">
