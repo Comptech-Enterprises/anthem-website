@@ -265,6 +265,7 @@ export const cases: CaseStudy[] = [
       { value: "600K+", label: "Engagement" },
     ],
     media: [],
+    video: "https://anthem-videos.s3.ap-south-1.amazonaws.com/uploads/b8816217-ea83-483c-8e8e-cbbe55553229.mp4",
   },
   {
     slug: "toki-dinners",
