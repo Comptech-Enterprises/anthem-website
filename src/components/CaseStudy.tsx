@@ -65,11 +65,12 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
           <div className="mt-14">
             {data.video ? (
               <div className="relative w-full overflow-hidden rounded-2xl border border-border aspect-[16/7]">
-                <iframe
+                <video
                   src={data.video}
-                  allow="autoplay"
-                  className="absolute inset-0 h-full w-full"
-                  allowFullScreen
+                  autoPlay
+                  loop
+                  playsInline
+                  className="absolute inset-0 h-full w-full object-cover"
                 />
               </div>
             ) : data.media[0]?.startsWith("/") ? (

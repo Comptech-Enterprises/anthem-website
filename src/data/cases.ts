@@ -39,6 +39,7 @@ export const cases: CaseStudy[] = [
       { value: "55M+", label: "Impressions" },
     ],
     media: [],
+    video: "https://anthem-videos.s3.ap-south-1.amazonaws.com/uploads/5c184b95-8d7f-47e8-b69d-b93cc22084f2.mp4",
   },
   {
     slug: "bcg-india-leadership-meet",
