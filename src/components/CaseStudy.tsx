@@ -2,16 +2,88 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import {
+  motion,
+  useInView,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 import AnimatedHeading from "./AnimatedHeading";
 import MagneticButton from "./MagneticButton";
 import Placeholder from "./Placeholder";
 import Reveal from "./Reveal";
 import type { CaseStudy as CaseStudyType } from "@/data/cases";
 
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.09 } },
+};
+
+const slideLeft = {
+  hidden: { opacity: 0, x: -28 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } },
+};
+
+const scaleFade = {
+  hidden: { opacity: 0, scale: 0.88 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } },
+};
+
+function useCountUp(target: string, active: boolean) {
+  const [display, setDisplay] = useState("0");
+
+  useEffect(() => {
+    if (!active) return;
+    const match = target.match(/^(\D*)([\d,]+)(\D*)$/);
+    if (!match) { setDisplay(target); return; }
+    const [, pre, raw, suf] = match;
+    const end = parseInt(raw.replace(/,/g, ""), 10);
+    if (isNaN(end)) { setDisplay(target); return; }
+
+    let startTs: number;
+    const duration = 1200;
+    const raf = (ts: number) => {
+      if (!startTs) startTs = ts;
+      const p = Math.min((ts - startTs) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const cur = Math.round(eased * end);
+      setDisplay(pre + cur.toLocaleString() + suf);
+      if (p < 1) requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+  }, [active, target]);
+
+  return display;
+}
+
+function ResultCard({ value, label }: { value: string; label: string }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const display = useCountUp(value, inView);
+
+  return (
+    <motion.div
+      ref={ref}
+      variants={scaleFade}
+      className="rounded-2xl border border-border bg-surface/60 p-7 backdrop-blur-sm"
+    >
+      <p className="font-display text-4xl font-bold text-gradient sm:text-5xl">
+        {display}
+      </p>
+      <p className="mt-3 font-body text-sm leading-relaxed text-muted">{label}</p>
+    </motion.div>
+  );
+}
+
 export default function CaseStudy({ data }: { data: CaseStudyType }) {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.4]);
+
   return (
     <article className="relative overflow-hidden pt-36 pb-28 sm:pt-44 sm:pb-36">
-      {/* ambient glow */}
       <div
         aria-hidden
         className="pointer-events-none absolute top-10 left-1/4 h-[520px] w-[520px] rounded-full opacity-[0.08]"
@@ -25,9 +97,7 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
             href="/services"
             className="group inline-flex items-center gap-2 font-body text-sm text-muted transition-colors hover:text-accent"
           >
-            <span className="transition-transform duration-300 group-hover:-translate-x-1">
-              ←
-            </span>
+            <span className="transition-transform duration-300 group-hover:-translate-x-1">←</span>
             All work
           </Link>
         </Reveal>
@@ -60,102 +130,121 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
           </Reveal>
         </header>
 
-        {/* hero media */}
-        <Reveal delay={0.2}>
-          <div className="mt-14">
-            {data.video ? (
-              <div className="relative w-full overflow-hidden rounded-2xl border border-border aspect-[16/7]">
+        {/* hero media — parallax */}
+        <motion.div
+          ref={heroRef}
+          style={{ opacity: heroOpacity }}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-14 overflow-hidden rounded-2xl border border-border"
+        >
+          {data.video ? (
+            <div className="relative w-full aspect-[16/7]">
+              <motion.div style={{ scale: heroScale }} className="absolute inset-0 origin-center">
                 <video
                   src={data.video}
                   autoPlay
                   loop
                   playsInline
-                  className="absolute inset-0 h-full w-full object-cover"
+                  className="h-full w-full object-cover"
                 />
-              </div>
-            ) : data.media[0]?.startsWith("/") ? (
-              <div className="relative w-full overflow-hidden rounded-2xl border border-border aspect-[16/7]">
+              </motion.div>
+            </div>
+          ) : data.media[0]?.startsWith("/") ? (
+            <div className="relative w-full aspect-[16/7] overflow-hidden">
+              <motion.div style={{ scale: heroScale }} className="absolute inset-0 origin-center">
                 <Image src={data.media[0]} alt={data.title} fill sizes="100vw" className="object-cover" unoptimized />
-              </div>
-            ) : (
-              <Placeholder label={data.media[0]} ratio="aspect-[16/7]" className="w-full" />
-            )}
-          </div>
-        </Reveal>
+              </motion.div>
+            </div>
+          ) : (
+            <Placeholder label={data.media[0]} ratio="aspect-[16/7]" className="w-full" />
+          )}
+        </motion.div>
 
+      </div>
+
+      <div className="container-x relative">
         {/* body */}
         <div className="mt-20 grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-          {/* overview + objective */}
           <div className="space-y-14">
             <Section eyebrow="01" title="Project overview">
-              <p className="font-body text-base leading-relaxed text-muted">
-                {data.overview}
-              </p>
+              <p className="font-body text-base leading-relaxed text-muted">{data.overview}</p>
             </Section>
-
             <Section eyebrow="02" title="Objective">
-              <p className="font-body text-base leading-relaxed text-muted">
-                {data.objective}
-              </p>
+              <p className="font-body text-base leading-relaxed text-muted">{data.objective}</p>
             </Section>
           </div>
 
-          {/* execution */}
+          {/* execution — staggered slide */}
           <Section eyebrow="03" title="Execution">
-            <ol className="space-y-4">
+            <motion.ol
+              variants={stagger}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              className="space-y-4"
+            >
               {data.execution.map((step, i) => (
-                <li
+                <motion.li
                   key={step}
+                  variants={slideLeft}
                   className="flex gap-4 rounded-2xl border border-border bg-surface/60 p-5 backdrop-blur-sm"
                 >
                   <span className="font-display text-sm font-bold text-accent/60">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="font-body text-sm leading-relaxed text-muted">
-                    {step}
-                  </span>
-                </li>
+                  <span className="font-body text-sm leading-relaxed text-muted">{step}</span>
+                </motion.li>
               ))}
-            </ol>
+            </motion.ol>
           </Section>
         </div>
 
-        {/* results */}
+        {/* results — staggered scale + count-up */}
         <div className="mt-20">
           <Section eyebrow="04" title="Results">
-            <div className="grid gap-4 sm:grid-cols-3">
+            <motion.div
+              variants={stagger}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              className="grid gap-4 sm:grid-cols-3"
+            >
               {data.results.map((r) => (
-                <div
-                  key={r.label}
-                  className="rounded-2xl border border-border bg-surface/60 p-7 backdrop-blur-sm"
-                >
-                  <p className="font-display text-4xl font-bold text-gradient sm:text-5xl">
-                    {r.value}
-                  </p>
-                  <p className="mt-3 font-body text-sm leading-relaxed text-muted">
-                    {r.label}
-                  </p>
-                </div>
+                <ResultCard key={r.label} value={r.value} label={r.label} />
               ))}
-            </div>
+            </motion.div>
           </Section>
         </div>
 
-        {/* gallery */}
+        {/* gallery — staggered scale */}
         {data.media.length > 0 && (
           <div className="mt-20">
             <Section eyebrow="05" title="Gallery">
-              <div className="grid gap-4 sm:grid-cols-2">
+              <motion.div
+                variants={stagger}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-60px" }}
+                className="grid gap-4 sm:grid-cols-2"
+              >
                 {(data.video ? data.media : data.media.slice(1)).map((m) =>
                   m.startsWith("/") ? (
-                    <div key={m} className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border">
+                    <motion.div
+                      key={m}
+                      variants={scaleFade}
+                      className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border"
+                    >
                       <Image src={m} alt="" fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" unoptimized />
-                    </div>
+                    </motion.div>
                   ) : (
-                    <Placeholder key={m} label={m} ratio="aspect-[4/3]" className="w-full" />
+                    <motion.div key={m} variants={scaleFade}>
+                      <Placeholder label={m} ratio="aspect-[4/3]" className="w-full" />
+                    </motion.div>
                   )
                 )}
-              </div>
+              </motion.div>
             </Section>
           </div>
         )}
