@@ -214,6 +214,7 @@ export const cases: CaseStudy[] = [
       { value: "1", label: "Mumbai experience" },
     ],
     media: ["/projects/Hendrick-Gin/2.jpg", "/projects/Hendrick-Gin/1.jpg", "/projects/Hendrick-Gin/3.jpg"],
+    video: "https://anthem-videos.s3.ap-south-1.amazonaws.com/uploads/2216c33b-0763-4e23-b32a-34e6f2e06e78.mp4",
   },
   {
     slug: "por-amor-potluck-don-julio",
