@@ -24,7 +24,7 @@ const cardVariants: Variants = {
 // Formats Anthem owns and runs itself — distinct from client work.
 const ownedIp = [
   {
-    monogram: "FT",
+    tag: "Media Platform",
     name: "Food Talk",
     title: "Food Talk India",
     summary:
@@ -33,7 +33,7 @@ const ownedIp = [
     external: true,
   },
   {
-    monogram: "EC",
+    tag: "Live Festival",
     name: "The Anthem",
     title: "Explorers Club",
     summary:
@@ -100,16 +100,11 @@ export default function Services() {
             const inner = (
               <>
                 <div className="relative flex flex-1 flex-col">
-                  <div className="mb-8 flex h-16 w-16 items-center justify-center overflow-hidden rounded-xl border border-border bg-background transition-all duration-300 group-hover:border-accent/60 group-hover:bg-accent">
-                    <span className="font-display text-xl font-bold tracking-tight text-muted-2 transition-colors duration-300 group-hover:text-black">
-                      {ip.monogram}
-                    </span>
-                  </div>
+                  <span className="absolute top-6 right-6 z-10 rounded-full border border-border/70 bg-background/60 px-3 py-1 font-body text-[10px] uppercase tracking-[0.14em] text-muted-2">
+                    {ip.tag}
+                  </span>
 
-                  <p className="font-body text-xs uppercase tracking-[0.25em] text-muted-2">
-                    {ip.name}
-                  </p>
-                  <h3 className="mt-2 font-display text-xl font-semibold sm:text-2xl">
+                  <h3 className="font-display text-xl font-semibold sm:text-2xl">
                     {ip.title}
                   </h3>
                   <p className="mt-3 font-body text-sm leading-relaxed text-muted">
@@ -194,17 +189,7 @@ export default function Services() {
                 </span>
 
                 <div className="relative flex flex-1 flex-col">
-                  {/* logo */}
-                  <div className="mb-8 flex h-16 w-16 items-center justify-center overflow-hidden rounded-xl border border-border bg-background transition-all duration-300 group-hover:border-accent/60 group-hover:bg-accent">
-                    <span className="font-display text-xl font-bold tracking-tight text-muted-2 transition-colors duration-300 group-hover:text-black">
-                      {c.monogram}
-                    </span>
-                  </div>
-
-                  <p className="font-body text-xs uppercase tracking-[0.25em] text-muted-2">
-                    {c.company}
-                  </p>
-                  <h3 className="mt-2 font-display text-xl font-semibold sm:text-2xl">
+                  <h3 className="font-display text-xl font-semibold sm:text-2xl">
                     {c.title}
                   </h3>
 

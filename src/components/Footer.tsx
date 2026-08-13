@@ -48,7 +48,7 @@ export default function Footer() {
             </Link>
             <div className="flex flex-col items-center gap-3 sm:items-start">
               <p className="font-body text-xs uppercase tracking-[0.2em] text-muted-2">
-                Units
+                Our Ecosystem
               </p>
               <div className="flex items-start gap-3">
                 <a

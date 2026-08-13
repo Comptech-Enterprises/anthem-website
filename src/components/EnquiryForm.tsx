@@ -37,15 +37,9 @@ export default function EnquiryForm() {
               Let's work together
             </p>
           </Reveal>
-          <Reveal delay={0.05}>
-            <h2 className="max-w-md font-display text-3xl font-bold sm:text-5xl">
-              Tell us about your brand
-            </h2>
-          </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-6 max-w-md font-body leading-relaxed text-muted">
-              Share the details and our team will craft a tailored proposal.
-              The more you tell us, the sharper our first response.
+              For business enquiries, partnerships, collaborations and project opportunities, get in touch with our team.
             </p>
           </Reveal>
         </div>
@@ -87,6 +81,7 @@ export default function EnquiryForm() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   onSubmit={handleSubmit}
+                  noValidate
                   className="grid gap-5"
                 >
                   <label className="flex flex-col gap-2">
