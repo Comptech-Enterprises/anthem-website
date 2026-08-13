@@ -238,6 +238,7 @@ export const cases: CaseStudy[] = [
       { value: "110K+", label: "Engagement" },
     ],
     media: [],
+    video: "https://anthem-videos.s3.ap-south-1.amazonaws.com/uploads/2216c33b-0763-4e23-b32a-34e6f2e06e78.mp4",
   },
   {
     slug: "roku-gin-come-alive",
