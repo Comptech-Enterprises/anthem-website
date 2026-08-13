@@ -102,7 +102,7 @@ export default function Services() {
                 <span className="absolute top-6 right-6 z-10 rounded-full border border-border/70 bg-background/60 px-3 py-1 font-body text-[10px] uppercase tracking-[0.14em] text-muted-2">
                   {ip.tag}
                 </span>
-                <div className="relative flex flex-1 flex-col">
+                <div className="relative flex flex-1 flex-col pt-8">
                   <h3 className="font-display text-xl font-semibold sm:text-2xl">
                     {ip.title}
                   </h3>
