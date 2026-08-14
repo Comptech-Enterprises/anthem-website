@@ -138,7 +138,7 @@ export default function Hero() {
         className="container-x relative z-10 mt-16"
       >
         <div className="relative overflow-hidden rounded-3xl border border-border bg-surface-2">
-          <div className="relative aspect-[16/10] w-full sm:aspect-[21/7] overflow-hidden">
+          <div className="relative aspect-[3/4] w-full sm:aspect-[21/9] overflow-hidden">
             <AnimatePresence mode="sync">
               <motion.div
                 key={slide}
@@ -152,7 +152,7 @@ export default function Hero() {
                   src={slides[slide]}
                   alt=""
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                   unoptimized
                   priority
                 />
