@@ -218,87 +218,101 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
       </div>
 
       <div className="container-x relative">
-        {/* body */}
-        <div className="mt-20 grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-          <div className="space-y-14">
-            <Section eyebrow="01" title="Project overview">
-              <p className="font-body text-base leading-relaxed text-muted">{data.overview}</p>
-            </Section>
-            <Section eyebrow="02" title="Objective">
-              <p className="font-body text-base leading-relaxed text-muted">{data.objective}</p>
-            </Section>
-          </div>
-
-          {/* execution — staggered slide */}
-          <Section eyebrow="03" title="Execution">
-            <motion.ol
-              variants={stagger}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-80px" }}
-              className="space-y-4"
-            >
-              {data.execution.map((step, i) => (
-                <motion.li
-                  key={step}
-                  variants={slideLeft}
-                  className="flex gap-4 rounded-2xl border border-border bg-surface/60 p-5 backdrop-blur-sm"
-                >
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/60" />
-                  <span className="font-body text-sm leading-relaxed text-muted">{step}</span>
-                </motion.li>
-              ))}
-            </motion.ol>
-          </Section>
+        {/* overview + objective — stacked with left accent bar */}
+        <div className="mt-20 space-y-10">
+          <Reveal>
+            <div className="flex gap-6">
+              <div className="w-1 shrink-0 rounded-full bg-gradient-to-b from-accent to-accent/20" />
+              <div>
+                <p className="font-body text-xs uppercase tracking-[0.2em] text-accent mb-3">Overview</p>
+                <p className="font-body text-lg leading-relaxed text-muted">{data.overview}</p>
+              </div>
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div className="flex gap-6">
+              <div className="w-1 shrink-0 rounded-full bg-gradient-to-b from-accent to-accent/20" />
+              <div>
+                <p className="font-body text-xs uppercase tracking-[0.2em] text-accent mb-3">Objective</p>
+                <p className="font-body text-lg leading-relaxed text-muted">{data.objective}</p>
+              </div>
+            </div>
+          </Reveal>
         </div>
 
-        {/* results — staggered scale + count-up */}
+        {/* execution — masonry cards */}
         <div className="mt-20">
-          <Section eyebrow="04" title="Results">
+          <Reveal>
+            <p className="font-body text-xs uppercase tracking-[0.2em] text-accent mb-8">Execution</p>
+          </Reveal>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            className="columns-1 sm:columns-2 gap-4 space-y-4"
+          >
+            {data.execution.map((step) => (
+              <motion.div
+                key={step}
+                variants={scaleFade}
+                className="break-inside-avoid rounded-2xl border border-border/40 bg-gradient-to-br from-surface/80 to-surface/40 p-6 backdrop-blur-sm"
+              >
+                <span className="font-body text-base leading-relaxed text-muted">{step}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* gallery */}
+        {(data.video ? data.media.length > 0 : data.media.length > 1) && (
+          <div className="mt-20">
+            <Reveal>
+              <p className="font-body text-xs uppercase tracking-[0.2em] text-accent mb-8">Gallery</p>
+            </Reveal>
             <motion.div
               variants={stagger}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-60px" }}
-              className="grid gap-4 sm:grid-cols-3"
+              className="grid gap-3 sm:grid-cols-2"
             >
-              {data.results.map((r) => (
-                <ResultCard key={r.label} value={r.value} label={r.label} />
-              ))}
+              {(data.video ? data.media : data.media.slice(1)).map((m) =>
+                m.startsWith("/") ? (
+                  <motion.div
+                    key={m}
+                    variants={scaleFade}
+                    className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl"
+                  >
+                    <Image src={m} alt="" fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" unoptimized />
+                  </motion.div>
+                ) : (
+                  <motion.div key={m} variants={scaleFade}>
+                    <Placeholder label={m} ratio="aspect-[4/3]" className="w-full" />
+                  </motion.div>
+                )
+              )}
             </motion.div>
-          </Section>
-        </div>
-
-        {/* gallery — staggered scale */}
-        {data.media.length > 0 && (
-          <div className="mt-20">
-            <Section eyebrow="05" title="Gallery">
-              <motion.div
-                variants={stagger}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-60px" }}
-                className="grid gap-4 sm:grid-cols-2"
-              >
-                {(data.video ? data.media : data.media.slice(1)).map((m) =>
-                  m.startsWith("/") ? (
-                    <motion.div
-                      key={m}
-                      variants={scaleFade}
-                      className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border"
-                    >
-                      <Image src={m} alt="" fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" unoptimized />
-                    </motion.div>
-                  ) : (
-                    <motion.div key={m} variants={scaleFade}>
-                      <Placeholder label={m} ratio="aspect-[4/3]" className="w-full" />
-                    </motion.div>
-                  )
-                )}
-              </motion.div>
-            </Section>
           </div>
         )}
+
+        {/* results */}
+        <div className="mt-20">
+          <Reveal>
+            <p className="font-body text-xs uppercase tracking-[0.2em] text-accent mb-8">Impact</p>
+          </Reveal>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            className={`grid gap-4 ${data.results.length === 2 ? "sm:grid-cols-2" : data.results.length === 4 ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-3"}`}
+          >
+            {data.results.map((r) => (
+              <ResultCard key={r.label} value={r.value} label={r.label} />
+            ))}
+          </motion.div>
+        </div>
 
         {/* CTA */}
         <Reveal>
