@@ -152,17 +152,14 @@ export default function Hero() {
                   src={slides[slide]}
                   alt=""
                   fill
-                  className={`object-cover ${slides[slide] === "/sliders/2.webp" ? "object-top" : "object-center"}`}
+                  className={`object-cover ${slides[slide] === "/sliders/2.webp" ? "object-top" : "object-center"} ${slides[slide] === "/sliders/3.webp" ? "scale-[1.2] sm:scale-100" : ""}`}
                   unoptimized
                   priority
                 />
               </motion.div>
             </AnimatePresence>
             <div className="pointer-events-none absolute inset-0 bg-black/30" />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-black/70 to-transparent p-6 sm:p-8">
-              <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-2">
-                The Anthem — Experiential Reel
-              </span>
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-end bg-gradient-to-t from-black/70 to-transparent p-6 sm:p-8">
               <span className="hidden font-body text-[10px] uppercase tracking-[0.3em] text-muted-2 sm:block">
                 Based in New Delhi
               </span>
