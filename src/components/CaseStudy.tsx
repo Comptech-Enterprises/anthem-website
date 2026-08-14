@@ -89,7 +89,7 @@ function VideoHero({ src, heroScale }: { src: string; heroScale: MotionValue<num
   };
 
   return (
-    <div className="relative w-full aspect-[16/7] overflow-hidden bg-surface">
+    <div className="relative w-full aspect-[3/4] sm:aspect-[16/7] overflow-hidden bg-surface">
       <motion.div style={{ scale: heroScale }} className="absolute inset-0 origin-center">
         <video
           ref={(el) => {
@@ -146,7 +146,7 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.4]);
 
   return (
-    <article className="relative overflow-hidden pt-36 pb-28 sm:pt-44 sm:pb-36">
+    <article className="relative overflow-hidden pt-24 pb-28 sm:pt-44 sm:pb-36">
       <div
         aria-hidden
         className="pointer-events-none absolute top-10 left-1/4 h-[520px] w-[520px] rounded-full opacity-[0.08]"
@@ -205,7 +205,7 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
           {data.video ? (
             <VideoHero src={data.video} heroScale={heroScale} />
           ) : data.media[0]?.startsWith("/") ? (
-            <div className="relative w-full aspect-[16/7] overflow-hidden">
+            <div className="relative w-full aspect-[3/4] sm:aspect-[16/7] overflow-hidden">
               <motion.div style={{ scale: heroScale }} className="absolute inset-0 origin-center">
                 <Image src={data.media[0]} alt={data.title} fill sizes="100vw" className="object-cover" unoptimized />
               </motion.div>
