@@ -39,7 +39,7 @@ export const cases: CaseStudy[] = [
       { value: "55M+", label: "Impressions" },
     ],
     media: [],
-    video: "https://anthem-videos.s3.ap-south-1.amazonaws.com/uploads/5c184b95-8d7f-47e8-b69d-b93cc22084f2.mp4",
+    video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/world-class-optimized.mp4",
   },
   {
     slug: "bcg-india-leadership-meet",
@@ -139,7 +139,7 @@ export const cases: CaseStudy[] = [
       { value: "5", label: "Large-scale events" },
     ],
     media: [],
-    video: "https://anthem-videos.s3.ap-south-1.amazonaws.com/uploads/4c9360a9-41ac-419e-9f3c-d5630f420cb7.mov",
+    video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/whisky-experiments-optimized.mp4",
   },
   {
     slug: "black-and-white-table-for-everyone",
@@ -165,7 +165,7 @@ export const cases: CaseStudy[] = [
       { value: "2023–", label: "Running successfully since" },
     ],
     media: [],
-    video: "https://anthem-videos.s3.ap-south-1.amazonaws.com/uploads/6b7b0ce5-51cd-409e-b62c-308daad8f003.mp4",
+    video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/black-white-optimized.mp4",
   },
   {
     slug: "chambal-gin",
@@ -189,7 +189,7 @@ export const cases: CaseStudy[] = [
       { value: "1", label: "End-to-end execution" },
     ],
     media: [],
-    video: "https://anthem-videos.s3.ap-south-1.amazonaws.com/uploads/1f1ef839-838f-41ad-b27b-fdf937c0c9f0.mp4",
+    video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/chambal-gin-optimized.mp4",
   },
   {
     slug: "hendricks-house-of-oddities",
@@ -265,7 +265,7 @@ export const cases: CaseStudy[] = [
       { value: "600K+", label: "Engagement" },
     ],
     media: [],
-    video: "https://anthem-videos.s3.ap-south-1.amazonaws.com/uploads/b8816217-ea83-483c-8e8e-cbbe55553229.mp4",
+    video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/roku-gin-optimized.mp4",
   },
   {
     slug: "toki-dinners",
