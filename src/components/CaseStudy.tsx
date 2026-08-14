@@ -9,7 +9,7 @@ import {
   useTransform,
   type MotionValue,
 } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import AnimatedHeading from "./AnimatedHeading";
 import MagneticButton from "./MagneticButton";
 import Placeholder from "./Placeholder";
@@ -79,15 +79,25 @@ function ResultCard({ value, label }: { value: string; label: string }) {
 
 function VideoHero({ src, heroScale }: { src: string; heroScale: MotionValue<number> }) {
   const [ready, setReady] = useState(false);
+  const [muted, setMuted] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleMute = () => {
+    if (!videoRef.current) return;
+    videoRef.current.muted = !videoRef.current.muted;
+    setMuted(videoRef.current.muted);
+  };
+
   return (
     <div className="relative w-full aspect-[16/7] overflow-hidden bg-surface">
       <motion.div style={{ scale: heroScale }} className="absolute inset-0 origin-center">
         <video
           ref={(el) => {
+            (videoRef as React.MutableRefObject<HTMLVideoElement | null>).current = el;
             if (!el) return;
             el.play().catch(() => {
-              // autoplay blocked; show first frame silently
               el.muted = true;
+              setMuted(true);
               el.play().catch(() => {});
             });
           }}
@@ -105,6 +115,26 @@ function VideoHero({ src, heroScale }: { src: string; heroScale: MotionValue<num
         className="pointer-events-none absolute inset-0 animate-pulse bg-gradient-to-r from-surface via-border/30 to-surface transition-opacity duration-700"
         style={{ opacity: ready ? 0 : 1 }}
       />
+      {/* mute/unmute button */}
+      <button
+        onClick={toggleMute}
+        aria-label={muted ? "Unmute video" : "Mute video"}
+        className="absolute bottom-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-black/70"
+      >
+        {muted ? (
+          <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2">
+            <path d="M11 5L6 9H2v6h4l5 4V5z" />
+            <line x1="23" y1="9" x2="17" y2="15" />
+            <line x1="17" y1="9" x2="23" y2="15" />
+          </svg>
+        ) : (
+          <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2">
+            <path d="M11 5L6 9H2v6h4l5 4V5z" />
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+          </svg>
+        )}
+      </button>
     </div>
   );
 }
