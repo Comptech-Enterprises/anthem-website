@@ -15,7 +15,7 @@ const slides = [
   "/sliders/1.webp",
   "/sliders/2.webp",
   "/sliders/3.webp",
-  "/sliders/4.webp",
+  "/sliders/4-slider.webp",
   "/sliders/5.webp",
   "/sliders/6.webp",
 ];
