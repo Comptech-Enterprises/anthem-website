@@ -244,9 +244,7 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
                   variants={slideLeft}
                   className="flex gap-4 rounded-2xl border border-border bg-surface/60 p-5 backdrop-blur-sm"
                 >
-                  <span className="font-display text-sm font-bold text-accent/60">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/60" />
                   <span className="font-body text-sm leading-relaxed text-muted">{step}</span>
                 </motion.li>
               ))}
@@ -336,8 +334,8 @@ function Section({
   return (
     <section>
       <Reveal>
-        <div className="mb-6 flex items-baseline gap-4">
-          <span className="font-display text-sm font-bold text-accent/50">{eyebrow}</span>
+        <div className="mb-6 flex items-baseline gap-3">
+          <span className="h-2 w-2 rounded-full bg-accent/60" />
           <h2 className="font-display text-2xl font-semibold sm:text-3xl">{title}</h2>
         </div>
       </Reveal>
