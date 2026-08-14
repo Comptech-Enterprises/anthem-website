@@ -45,5 +45,6 @@ next-env.d.ts
 .agents/
 .claude/
 
+# ffmpeg temp files
 *.log.mbtree
 ffmpeg2pass*
