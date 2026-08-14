@@ -152,7 +152,7 @@ export default function Hero() {
                   src={slides[slide]}
                   alt=""
                   fill
-                  className={`object-cover ${slides[slide] === "/sliders/2.webp" ? "object-top" : "object-center"} ${slides[slide] === "/sliders/3.webp" ? "scale-[1.2] sm:scale-100" : ""}`}
+                  className={`object-cover ${slides[slide] === "/sliders/2.webp" ? "object-top" : "object-center"} ${slides[slide] === "/sliders/3.webp" ? "scale-100" : ""}`}
                   unoptimized
                   priority
                 />
