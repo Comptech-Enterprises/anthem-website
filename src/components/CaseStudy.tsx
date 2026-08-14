@@ -76,6 +76,37 @@ function ResultCard({ value, label }: { value: string; label: string }) {
   );
 }
 
+function VideoHero({ src, heroScale }: { src: string; heroScale: ReturnType<typeof useTransform> }) {
+  const [ready, setReady] = useState(false);
+  return (
+    <div className="relative w-full aspect-[16/7] overflow-hidden bg-surface">
+      <motion.div style={{ scale: heroScale }} className="absolute inset-0 origin-center">
+        <video
+          ref={(el) => {
+            if (!el) return;
+            el.play().catch(() => {
+              // autoplay blocked; show first frame silently
+              el.muted = true;
+              el.play().catch(() => {});
+            });
+          }}
+          src={src}
+          autoPlay
+          loop
+          playsInline
+          onCanPlay={() => setReady(true)}
+          className="h-full w-full object-cover"
+        />
+      </motion.div>
+      {/* shimmer overlays video until it can play */}
+      <div
+        className="pointer-events-none absolute inset-0 animate-pulse bg-gradient-to-r from-surface via-border/30 to-surface transition-opacity duration-700"
+        style={{ opacity: ready ? 0 : 1 }}
+      />
+    </div>
+  );
+}
+
 export default function CaseStudy({ data }: { data: CaseStudyType }) {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
@@ -140,17 +171,7 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
           className="mt-14 overflow-hidden rounded-2xl border border-border"
         >
           {data.video ? (
-            <div className="relative w-full aspect-[16/7]">
-              <motion.div style={{ scale: heroScale }} className="absolute inset-0 origin-center">
-                <video
-                  src={data.video}
-                  autoPlay
-                  loop
-                  playsInline
-                  className="h-full w-full object-cover"
-                />
-              </motion.div>
-            </div>
+            <VideoHero src={data.video} heroScale={heroScale} />
           ) : data.media[0]?.startsWith("/") ? (
             <div className="relative w-full aspect-[16/7] overflow-hidden">
               <motion.div style={{ scale: heroScale }} className="absolute inset-0 origin-center">
