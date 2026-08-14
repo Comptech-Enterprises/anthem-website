@@ -50,30 +50,38 @@ export default function Footer() {
               <p className="font-body text-xs uppercase tracking-[0.2em] text-muted-2">
                 Our Ecosystem
               </p>
-              <div className="flex items-start gap-3">
-                <a
-                  href="https://food-talk-india.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex shrink-0 opacity-80 transition-opacity hover:opacity-100"
-                >
+              <div className="flex flex-row gap-6">
+                <div className="flex flex-col items-center gap-2 text-center">
+                  <a
+                    href="https://food-talk-india.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex shrink-0 opacity-80 transition-opacity hover:opacity-100"
+                  >
+                    <Image
+                      src="/food-talk.webp"
+                      alt="Food Talk India"
+                      width={576}
+                      height={576}
+                      className="h-14 w-auto"
+                    />
+                  </a>
+                  <p className="font-body text-[10px] leading-relaxed text-muted-2 max-w-[100px]">
+                    India&apos;s leading F&amp;B media house.
+                  </p>
+                </div>
+                <div className="flex flex-col items-center gap-2 text-center">
                   <Image
-                    src="/food-talk.webp"
-                    alt="Food Talk India"
+                    src="/EC.webp"
+                    alt="Explorers Club"
                     width={576}
                     height={576}
-                    className="h-10 w-auto"
+                    className="h-14 w-auto shrink-0 opacity-80 transition-opacity hover:opacity-100"
                   />
-                </a>
-                <p className="font-body text-xs leading-relaxed text-muted-2 max-w-[180px]">
-                  India&apos;s leading F&amp;B media house.
-                </p>
-              </div>
-              <div className="flex flex-col gap-1 sm:items-start">
-                <p className="font-body text-xs font-medium text-muted">Explorers Club</p>
-                <p className="font-body text-xs leading-relaxed text-muted-2 max-w-[220px]">
-                  Our in-house experiential IP built around spirits, music and food.
-                </p>
+                  <p className="font-body text-[10px] leading-relaxed text-muted-2 max-w-[100px]">
+                    Our experiential IP: spirits, music &amp; food.
+                  </p>
+                </div>
               </div>
             </div>
           </div>

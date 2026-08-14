@@ -25,6 +25,10 @@ export const metadata: Metadata = {
   title: "Anthem — Your New-Age Experiential Partners",
   description:
     "Anthem is an experiential agency that delivers 360° brand campaigns rooted in innovation, consumer insights and storytelling.",
+  icons: {
+    icon: "/logo.webp",
+    apple: "/logo.webp",
+  },
 };
 
 export default function RootLayout({
