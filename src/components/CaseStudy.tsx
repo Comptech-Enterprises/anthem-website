@@ -7,6 +7,7 @@ import {
   useInView,
   useScroll,
   useTransform,
+  type MotionValue,
 } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import AnimatedHeading from "./AnimatedHeading";
@@ -76,7 +77,7 @@ function ResultCard({ value, label }: { value: string; label: string }) {
   );
 }
 
-function VideoHero({ src, heroScale }: { src: string; heroScale: ReturnType<typeof useTransform> }) {
+function VideoHero({ src, heroScale }: { src: string; heroScale: MotionValue<number> }) {
   const [ready, setReady] = useState(false);
   return (
     <div className="relative w-full aspect-[16/7] overflow-hidden bg-surface">
