@@ -94,6 +94,7 @@ function VideoHero({ src, heroScale }: { src: string; heroScale: ReturnType<type
           autoPlay
           loop
           playsInline
+          preload="auto"
           onCanPlay={() => setReady(true)}
           className="h-full w-full object-cover"
         />
