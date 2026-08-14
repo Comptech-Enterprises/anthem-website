@@ -12,12 +12,12 @@ import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 
 const slides = [
-  "/sliders/1.jpg",
-  "/sliders/2.JPG",
-  "/sliders/3.JPG",
-  "/sliders/4.jpg",
-  "/sliders/5.jpg",
-  "/sliders/6.jpg",
+  "/sliders/1.webp",
+  "/sliders/2.webp",
+  "/sliders/3.webp",
+  "/sliders/4.webp",
+  "/sliders/5.webp",
+  "/sliders/6.webp",
 ];
 
 const words = ["We", "Build", "Moments", "People", "Remember."];

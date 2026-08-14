@@ -6,14 +6,14 @@ import AnimatedHeading from "./AnimatedHeading";
 import Image from "next/image";
 
 const cards = [
-  { title: "Owned IPs", href: "/services#owned-ips", img: "/what-we-do/owned-ip.jpg" },
-  { title: "Events", href: "/services#events", img: "/what-we-do/events.png" },
+  { title: "Owned IPs", href: "/services#owned-ips", img: "/what-we-do/owned-ip.webp" },
+  { title: "Events", href: "/services#events", img: "/what-we-do/events.webp" },
   {
     title: "Experiential Brand Activation",
     href: "/services#experiential",
-    img: "/what-we-do/brand-activation.jpg",
+    img: "/what-we-do/brand-activation.webp",
   },
-  { title: "Digital", href: "/services#digital", img: "/what-we-do/digital.jpg" },
+  { title: "Digital", href: "/services#digital", img: "/what-we-do/digital.webp" },
 ];
 
 export default function WhatWeDo() {

@@ -8,14 +8,14 @@ const founders = [
     name: "Shuchir Suri",
     role: "Co-Founder – Strategy & Growth",
     copy: "A sharp business strategist and operator, Shuchir translates ambitious creative ideas into scalable, commercially efficient campaigns. His expertise spans brand strategy, multi-city execution, client partnerships, and growth — ensuring every mandate is both creatively compelling and business-effective.",
-    img: "/founders/Shuchir.jpg",
+    img: "/founders/Shuchir.webp",
     href: "https://shuchir.com/",
   },
   {
     name: "Anjali Batra",
     role: "Co-Founder – Creative & Experience",
     copy: "The creative engine behind Anthem's most iconic work, Anjali brings a consumer-first lens and an instinct for culture. From conceptualising immersive brand worlds to bringing a vision into reality, she ensures every experience feels intentional, premium, and deeply resonant.",
-    img: "/founders/Anjali-Batra.jpg",
+    img: "/founders/Anjali-Batra.webp",
     href: undefined,
   },
 ];
