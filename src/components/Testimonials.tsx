@@ -1,9 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import AnimatedHeading from "./AnimatedHeading";
-import Placeholder from "./Placeholder";
 import Reveal from "./Reveal";
 
 const testimonials = [
@@ -12,12 +12,14 @@ const testimonials = [
       "Working with Anthem felt like having an extension of our own team. Every detail was thoughtfully planned, flawlessly executed, and always delivered beyond expectations.",
     name: "Brand Specialist",
     org: "Diageo India",
+    img: "/testimonials/diageo.webp",
   },
   {
     quote:
       "What impressed us most was their ownership. No matter the scale or complexity, the team remained proactive, collaborative and solutions-focused throughout.",
     name: "Marketing Lead",
     org: "Radico Khaitan",
+    img: "/testimonials/radico.webp",
   },
 ];
 
@@ -97,11 +99,15 @@ export default function Testimonials() {
                       {t.quote}
                     </blockquote>
                     <figcaption className="mt-8 flex items-center gap-4">
-                      <Placeholder
-                        label=""
-                        ratio="aspect-square"
-                        className="h-12 w-12 shrink-0 rounded-full"
-                      />
+                      <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-border bg-background">
+                        <Image
+                          src={t.img}
+                          alt={t.org}
+                          fill
+                          sizes="48px"
+                          className="object-contain p-1.5"
+                        />
+                      </div>
                       <div>
                         <p className="font-display text-base font-semibold">
                           {t.name}
