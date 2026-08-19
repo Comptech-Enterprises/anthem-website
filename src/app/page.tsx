@@ -6,6 +6,7 @@ import ChatWidget from "@/components/ChatWidget";
 import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
 import Brands from "@/components/Brands";
+import OurServices from "@/components/OurServices";
 import WhatWeDo from "@/components/WhatWeDo";
 import Testimonials from "@/components/Testimonials";
 import Founders from "@/components/Founders";
@@ -23,6 +24,7 @@ export default function Home() {
         <Stats />
         <RibbonFlight>
           <Brands />
+          <OurServices />
           <WhatWeDo />
         </RibbonFlight>
         <Testimonials />
