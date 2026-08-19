@@ -5,6 +5,7 @@
 /.pnp
 .pnp.*
 .yarn/*
+
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
@@ -39,3 +40,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# claude / agents local config
+.agents/
+.claude/
+
+# ffmpeg temp files
+*.log.mbtree
+ffmpeg2pass*

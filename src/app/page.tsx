@@ -4,12 +4,10 @@ import ScrollProgress from "@/components/ScrollProgress";
 import SmoothScroll from "@/components/SmoothScroll";
 import ChatWidget from "@/components/ChatWidget";
 import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
 import Stats from "@/components/Stats";
 import Brands from "@/components/Brands";
-import HowWeWork from "@/components/HowWeWork";
-import Work from "@/components/Work";
-import CaseStudies from "@/components/CaseStudies";
+import OurServices from "@/components/OurServices";
+import WhatWeDo from "@/components/WhatWeDo";
 import Testimonials from "@/components/Testimonials";
 import Founders from "@/components/Founders";
 import EnquiryForm from "@/components/EnquiryForm";
@@ -23,14 +21,12 @@ export default function Home() {
       <Navbar />
       <main className="flex-1">
         <Hero />
-        <Marquee />
         <Stats />
-        <Brands />
         <RibbonFlight>
-          <HowWeWork />
-          <Work />
+          <Brands />
+          <OurServices />
+          <WhatWeDo />
         </RibbonFlight>
-        <CaseStudies />
         <Testimonials />
         <Founders />
         <EnquiryForm />

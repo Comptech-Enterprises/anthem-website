@@ -1,43 +1,92 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const socials = ["Instagram", "LinkedIn", "Behance"];
+const pages = [
+  ["Home", "/"],
+  ["Our Work", "/services"],
+  ["Careers", "/careers"],
+  ["Contact Us", "/#enquiry"],
+];
+
+const socials = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/anthem.in/?hl=en",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden>
+        <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.6" />
+        <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.6" />
+        <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
+      </svg>
+    ),
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/anthemagency/",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden>
+        <path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9z" />
+      </svg>
+    ),
+  },
+];
 
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-surface">
       <div className="container-x py-16">
-        <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
-          <div>
-            <div className="flex items-center">
+        <div className="flex flex-col items-center gap-8 sm:flex-row sm:justify-between">
+          <div className="flex flex-col items-center gap-2 sm:items-start">
+            <Link href="/" className="flex items-center">
               <Image
                 src="/logo.webp"
                 alt="Anthem"
                 width={3000}
                 height={2250}
-                className="h-24 w-auto invert"
+                className="h-12 w-auto invert sm:h-16 md:h-20"
               />
+            </Link>
+            <div className="flex flex-col items-center gap-3 sm:items-start">
+              <p className="font-body text-xs uppercase tracking-[0.2em] text-muted-2">
+                Our Ecosystem
+              </p>
+              <div className="flex items-start gap-3">
+                <a
+                  href="https://food-talk-india.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex shrink-0 opacity-80 transition-opacity hover:opacity-100"
+                >
+                  <Image
+                    src="/food-talk.webp"
+                    alt="Food Talk India"
+                    width={576}
+                    height={576}
+                    className="h-10 w-auto"
+                  />
+                </a>
+                <p className="font-body text-xs leading-relaxed text-muted-2 max-w-[180px]">
+                  India&apos;s leading F&amp;B media house.
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <Image
+                  src="/EC.webp"
+                  alt="Explorers Club"
+                  width={576}
+                  height={576}
+                  className="h-10 w-auto shrink-0 opacity-80 transition-opacity hover:opacity-100"
+                />
+                <p className="font-body text-xs leading-relaxed text-muted-2 max-w-[180px]">
+                  Our in-house experiential IP built around spirits, music and food.
+                </p>
+              </div>
             </div>
-            <p className="mt-4 max-w-xs font-body text-sm leading-relaxed text-muted">
-              Your new-age experiential partners — creating brand realities that
-              transform insights into impactful experiences.
-            </p>
           </div>
 
-          <div>
-            <h4 className="font-body text-xs uppercase tracking-[0.25em] text-muted-2">
-              Navigate
-            </h4>
-            <ul className="mt-4 space-y-3 font-body text-sm">
-              {[
-                ["About Us", "/about"],
-                ["Services", "/services"],
-                ["Our Work", "/#work"],
-                ["Gallery", "/gallery"],
-                ["Blog", "/blog"],
-                ["Careers", "/careers"],
-                ["Contact Us", "/#enquiry"],
-              ].map(([label, href]) => (
+          <div className="flex flex-col items-center gap-6 sm:items-end">
+            <ul className="flex flex-wrap items-center gap-6 font-body text-sm">
+              {pages.map(([label, href]) => (
                 <li key={href}>
                   <Link
                     href={href}
@@ -48,51 +97,52 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
 
-          <div>
-            <h4 className="font-body text-xs uppercase tracking-[0.25em] text-muted-2">
-              Get in Touch
-            </h4>
-            <p className="mt-4 font-body text-sm leading-relaxed text-muted">
-              134, D Block Rd, Dr Ambedkar Colony,
-              <br />
-              Chhatarpur, New Delhi 110074
-            </p>
-            <div className="mt-4 flex flex-col gap-1.5 font-body text-sm">
-              <a
-                href="mailto:hello@theanthem.in"
-                className="text-muted transition-colors hover:text-accent"
-              >
-                hello@theanthem.in
-              </a>
-              <a
-                href="tel:+919000000000"
-                className="text-muted transition-colors hover:text-accent"
-              >
-                +91 90000 00000
-              </a>
-            </div>
-            <div className="mt-5 flex gap-4">
-              {socials.map((s) => (
-                <a
-                  key={s}
-                  href="#"
-                  className="font-body text-sm text-muted transition-colors hover:text-accent"
-                >
-                  {s}
-                </a>
+            <ul className="flex items-center gap-3">
+              {socials.map(({ label, href, icon }) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-accent hover:text-accent"
+                  >
+                    {icon}
+                  </a>
+                </li>
               ))}
-            </div>
+            </ul>
+            <p className="font-body text-xs leading-relaxed text-muted-2 text-center sm:text-right max-w-[260px]">
+              1st floor, 134, D Block Rd, Dr Ambedkar Colony,<br />
+              Chhatarpur, New Delhi, Delhi 110074
+            </p>
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center gap-2 border-t border-border pt-8 text-center">
           <p className="font-body text-xs text-muted-2">
-            © 2025 Digital Food Talk Pvt. Ltd. All rights reserved.
+            © 2025 Digital{" "}
+            <a
+              href="https://food-talk-india.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-accent"
+            >
+              Food Talk
+            </a>{" "}
+            Pvt. Ltd. All rights reserved.
           </p>
           <p className="font-body text-xs text-muted-2">
-            Made with intent — in New Delhi.
+            Developed by{" "}
+            <a
+              href="https://comptech.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-accent"
+            >
+              Comptech
+            </a>
           </p>
         </div>
       </div>

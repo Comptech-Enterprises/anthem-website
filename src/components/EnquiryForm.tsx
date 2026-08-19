@@ -4,17 +4,6 @@ import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Reveal from "./Reveal";
 
-const eventTypes = [
-  "Corporate Event",
-  "Product Launch",
-  "Brand Activation",
-  "Festival / Live IP",
-  "Conference / Summit",
-  "Experiential Pop-Up",
-  "Wedding / Private",
-  "Other",
-];
-
 type Status = "idle" | "submitting" | "success" | "error";
 
 const fieldClass =
@@ -45,33 +34,13 @@ export default function EnquiryForm() {
           <Reveal>
             <p className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
               <span className="h-px w-10 bg-accent" />
-              Start a Project
+              Let's work together
             </p>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <h2 className="max-w-md font-display text-3xl font-bold sm:text-5xl">
-              Tell us about your event
-            </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-6 max-w-md font-body leading-relaxed text-muted">
-              Share the details and our team will craft a tailored proposal.
-              The more you tell us, the sharper our first response.
+              For business enquiries, partnerships, collaborations and project opportunities, get in touch with our team.
             </p>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <div className="mt-8">
-              <a
-                href="/Profile.pdf"
-                download
-                className="group flex w-fit items-center gap-2 rounded-full border border-border px-6 py-3 font-body text-sm font-medium transition-colors hover:border-accent hover:text-accent"
-              >
-                <span className="transition-transform group-hover:translate-y-0.5" aria-hidden>
-                  ↓
-                </span>
-                Download Company Profile
-              </a>
-            </div>
           </Reveal>
         </div>
 
@@ -112,125 +81,83 @@ export default function EnquiryForm() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   onSubmit={handleSubmit}
-                  className="grid gap-5 sm:grid-cols-2"
+                  noValidate
+                  className="grid gap-5"
                 >
                   <label className="flex flex-col gap-2">
                     <span className="font-body text-sm text-muted">
-                      Full name *
+                      Name <span className="text-red-500">*</span>
                     </span>
                     <input
                       name="name"
                       required
-                      placeholder="Jane Doe"
                       className={fieldClass}
                     />
                   </label>
 
                   <label className="flex flex-col gap-2">
                     <span className="font-body text-sm text-muted">
-                      Email *
+                      Email <span className="text-red-500">*</span>
                     </span>
                     <input
                       name="email"
                       type="email"
                       required
-                      placeholder="jane@company.com"
                       className={fieldClass}
                     />
                   </label>
 
                   <label className="flex flex-col gap-2">
-                    <span className="font-body text-sm text-muted">Phone</span>
+                    <span className="font-body text-sm text-muted">
+                      Company
+                    </span>
+                    <input
+                      name="company"
+                      className={fieldClass}
+                    />
+                  </label>
+
+                  <label className="flex flex-col gap-2">
+                    <span className="font-body text-sm text-muted">
+                      Phone <span className="text-red-500">*</span>
+                    </span>
                     <input
                       name="phone"
                       type="tel"
-                      placeholder="+91 90000 00000"
-                      className={fieldClass}
-                    />
-                  </label>
-
-                  <label className="flex flex-col gap-2">
-                    <span className="font-body text-sm text-muted">
-                      Type of event *
-                    </span>
-                    <select
-                      name="eventType"
                       required
-                      defaultValue=""
                       className={fieldClass}
-                    >
-                      <option value="" disabled>
-                        Select event type
-                      </option>
-                      {eventTypes.map((t) => (
-                        <option key={t} value={t}>
-                          {t}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-
-                  <label className="flex flex-col gap-2">
-                    <span className="font-body text-sm text-muted">
-                      Event date
-                    </span>
-                    <input
-                      name="eventDate"
-                      type="date"
-                      className={`${fieldClass} [color-scheme:dark]`}
                     />
                   </label>
 
                   <label className="flex flex-col gap-2">
                     <span className="font-body text-sm text-muted">
-                      Number of guests
+                      City
                     </span>
                     <input
-                      name="guests"
-                      type="number"
-                      min="1"
-                      placeholder="e.g. 250"
+                      name="city"
                       className={fieldClass}
                     />
                   </label>
 
-                  <label className="flex flex-col gap-2 sm:col-span-2">
+                  <label className="flex flex-col gap-2">
                     <span className="font-body text-sm text-muted">
-                      Venue / location
-                    </span>
-                    <input
-                      name="venue"
-                      placeholder="City, or a specific venue if decided"
-                      className={fieldClass}
-                    />
-                  </label>
-
-                  <label className="flex flex-col gap-2 sm:col-span-2">
-                    <span className="font-body text-sm text-muted">
-                      Requirements & brief
+                      Message <span className="text-red-500">*</span>
                     </span>
                     <textarea
-                      name="requirements"
+                      name="message"
                       rows={4}
-                      placeholder="Tell us about the objective, scope, budget range and anything specific you need…"
-                      className={`${fieldClass} resize-none`}
+                      required
+                      className={fieldClass}
                     />
                   </label>
 
-                  <div className="flex items-center gap-4 sm:col-span-2">
-                    <button
-                      type="submit"
-                      disabled={status === "submitting"}
-                      className="group flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 font-body font-medium text-black transition-all hover:shadow-[0_0_35px_var(--accent-glow)] disabled:cursor-not-allowed disabled:opacity-60"
-                    >
-                      {status === "submitting" ? "Sending…" : "Send Enquiry"}
-                      {status !== "submitting" && (
-                        <span className="transition-transform group-hover:translate-x-1">
-                          →
-                        </span>
-                      )}
-                    </button>
-                  </div>
+                  <button
+                    type="submit"
+                    disabled={status === "submitting"}
+                    className="w-full rounded-xl border border-border bg-background py-3.5 font-body font-medium text-foreground transition-all hover:border-accent hover:text-accent hover:shadow-[0_0_25px_var(--accent-glow)] disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    {status === "submitting" ? "Sending…" : "Get In Touch"}
+                  </button>
                 </motion.form>
               )}
             </AnimatePresence>

@@ -1,18 +1,22 @@
 "use client";
 
-import Placeholder from "./Placeholder";
+import Image from "next/image";
 import Reveal from "./Reveal";
 
 const founders = [
   {
     name: "Shuchir Suri",
-    role: "Co-Founder",
-    copy: "Drives strategy and flawless execution — turning bold ideas into experiences that deliver.",
+    role: "Co-Founder – Strategy & Growth",
+    copy: "A sharp business strategist and operator, Shuchir translates ambitious creative ideas into scalable, commercially efficient campaigns. His expertise spans brand strategy, multi-city execution, client partnerships, and growth — ensuring every mandate is both creatively compelling and business-effective.",
+    img: "/founders/Shuchir.webp",
+    href: "https://shuchir.com/",
   },
   {
     name: "Anjali Batra",
-    role: "Co-Founder",
-    copy: "Leads creative with a consumer-first approach, crafting stories that resonate and stick.",
+    role: "Co-Founder – Creative & Experience",
+    copy: "The creative engine behind Anthem's most iconic work, Anjali brings a consumer-first lens and an instinct for culture. From conceptualising immersive brand worlds to bringing a vision into reality, she ensures every experience feels intentional, premium, and deeply resonant.",
+    img: "/founders/Anjali-Batra.webp",
+    href: undefined,
   },
 ];
 
@@ -28,31 +32,45 @@ export default function Founders() {
         </Reveal>
         <Reveal delay={0.05}>
           <h2 className="max-w-3xl font-display text-3xl font-bold sm:text-5xl">
-            The minds behind the experiences
+            The Minds Behind Anthem
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2">
+        <div className="mt-14 flex flex-wrap justify-start gap-6">
           {founders.map((f, i) => (
-            <Reveal key={f.name} delay={0.1 + i * 0.1}>
-              <div className="group flex flex-col gap-5 rounded-2xl border border-border bg-background p-5 transition-colors hover:border-accent/50 sm:flex-row sm:items-center">
-                <Placeholder
-                  label={f.name}
-                  ratio="aspect-square"
-                  className="w-full shrink-0 sm:w-40"
-                />
-                <div>
-                  <span className="font-body text-xs uppercase tracking-[0.25em] text-accent">
-                    {f.role}
-                  </span>
-                  <h3 className="mt-1 font-display text-2xl font-semibold">
-                    {f.name}
-                  </h3>
-                  <p className="mt-3 font-body leading-relaxed text-muted">
-                    {f.copy}
-                  </p>
-                </div>
-              </div>
+            <Reveal key={f.name} delay={0.1 + i * 0.1} className="w-full sm:flex-1">
+              {(() => {
+                const Card = f.href ? "a" : "div";
+                return (
+                  <Card
+                    {...(f.href
+                      ? {
+                          href: f.href,
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                        }
+                      : {})}
+                    className={`group flex h-full flex-col items-center gap-5 rounded-2xl border border-border bg-background p-6 text-center transition-colors hover:border-accent/50 ${
+                      f.href ? "cursor-pointer" : ""
+                    }`}
+                  >
+                    <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden rounded-xl">
+                      <Image src={f.img} alt={f.name} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" unoptimized />
+                    </div>
+                    <div>
+                      <span className="font-body text-xs uppercase tracking-[0.25em] text-accent">
+                        {f.role}
+                      </span>
+                      <h3 className="mt-1 font-display text-2xl font-semibold">
+                        {f.name}
+                      </h3>
+                      <p className="mt-3 font-body leading-relaxed text-muted">
+                        {f.copy}
+                      </p>
+                    </div>
+                  </Card>
+                );
+              })()}
             </Reveal>
           ))}
         </div>

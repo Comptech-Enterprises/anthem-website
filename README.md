@@ -48,3 +48,5 @@ Open [http://localhost:3000](http://localhost:3000) to view the site. The page a
 
 Deploy easily on [Vercel](https://vercel.com/new). See the [Next.js deployment docs](https://nextjs.org/docs/app/building-your-application/deploying) for other options.
 
+Vercel deploys are driven by the `development` branch: pushes to `development` ship to production, while pushes to `main` are ignored (see `vercel.json`).
+

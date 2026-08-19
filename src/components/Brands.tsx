@@ -3,20 +3,101 @@
 import AnimatedHeading from "./AnimatedHeading";
 import Reveal from "./Reveal";
 
-// Placeholder client roster — swap these for real brand names/logos.
 const brands = [
-  "Aurora",
-  "Northwind",
-  "Solstice",
-  "Vertex",
-  "Meridian",
-  "Lumen",
-  "Cobalt",
-  "Halcyon",
-  "Everest",
-  "Quill",
-  "Zephyr",
-  "Ironwood",
+  "Diageo",
+  "BCG",
+  "Pernod Ricard",
+  "Beam Suntory",
+  "Radico Khaitan",
+  "Brown-Forman",
+  "DLF",
+  "Don Julio",
+  "William Grant & Sons",
+  "OML",
+  "Stanley",
+  "PR Pundit",
+  "Leela Hotels",
+  "Apostrophe Communications",
+  "8 PM Black",
+  "Vasant Valley",
+  "Dram Club",
+  "WGS",
+  "Casio",
+  "Tilaknagar Industries",
+  "ITC",
+  "TCC",
+  "Arks Club",
+  "Yyaki Restaurant",
+  "Barcode Entertainment",
+  "Nactman",
+  "Shark & Ink",
+  "Sober",
+  "Avokado Media",
+  "Aero Nutrix",
+  "Mitti Se",
+  "Indospirit",
+  "Devans Modern Breweries Ltd.",
+  "Wellbeing Nutrition",
+  "Rain Check Earth",
+  "Jaibo",
+  "Food Affairs",
+  "Enoki Hospitality",
+  "Cookware Cumin Co.",
+  "Kindlife",
+  "Bapuna",
+  "Social Jam",
+  "Times Influential Media",
+  "Clan Connect",
+  "Two Things",
+  "Route Ignite",
+  "The Good Bug",
+  "Qourz",
+  "Mudra Max",
+  "Andamen",
+  "Eleve Media",
+  "Dewar's",
+  "Confluencer",
+  "Aman Sharma",
+  "Starbucks India",
+  "Edelman",
+  "BraceIt Media",
+  "Grynow",
+  "Twain Communications",
+  "Rama Vision",
+  "Current Global",
+  "Foodjam",
+  "DK Select",
+  "White Rivers Media",
+  "The Good Glamm Group",
+  "Web Fynd",
+  "Riddler Media",
+  "Weber Shandwick",
+  "Nidhi & Mihir PR Consultancy",
+  "Devout Media",
+  "Avian WE",
+  "BG Socials",
+  "Kommunity PR",
+  "Living Root Beverages",
+  "Studio BOP",
+  "Opportune",
+  "Cocktail Story",
+  "Urban Company",
+  "Intelliquo",
+  "Bata India Limited",
+  "Tagged Communications",
+  "Plus Nine One",
+  "MSL India",
+  "Elsol",
+  "Secret Ingredient",
+  "Sarya",
+  "Savourworks",
+  "80 dB Communications",
+  "Zomato",
+  "Coca-Cola",
+  "Nightout",
+  "Cedarhouse",
+  "Value360 Communications",
+  "Mehta Wines",
 ];
 
 export default function Brands() {
@@ -28,27 +109,15 @@ export default function Brands() {
     >
       <div className="container-x">
         <div className="max-w-2xl">
-          <Reveal>
-            <p className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
-              <span className="h-px w-10 bg-accent" />
-              Trusted by
-            </p>
-          </Reveal>
           <AnimatedHeading
-            text="Brands that trust us to create the moment"
-            highlight="trust us"
+            text="Brands we've created great work with"
+            highlight="great work"
             className="font-display text-3xl font-bold leading-tight sm:text-5xl"
           />
         </div>
 
-        <Reveal delay={0.1}>
-          <p className="mt-6 font-body text-sm text-muted-2">
-            Placeholder roster — brand names and logos to be added.
-          </p>
-        </Reveal>
       </div>
 
-      {/* auto-scrolling brand slider */}
       <div className="marquee-mask mt-12 overflow-hidden">
         <div className="animate-marquee flex w-max items-center gap-4 whitespace-nowrap">
           {[...brands, ...brands].map((name, i) => (

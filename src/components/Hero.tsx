@@ -2,15 +2,25 @@
 
 import {
   motion,
+  AnimatePresence,
   useMotionValue,
   useScroll,
   useSpring,
   useTransform,
 } from "framer-motion";
-import { useRef } from "react";
-import MagneticButton from "./MagneticButton";
+import Image from "next/image";
+import { useRef, useState, useEffect } from "react";
 
-const words = ["Your", "New-Age", "Experiential", "Partners"];
+const slides = [
+  "/sliders/1.webp",
+  "/sliders/2.webp",
+  "/sliders/3.webp",
+  "/sliders/slider-4.webp",
+  "/sliders/5.webp",
+  "/sliders/6.webp",
+];
+
+const words = ["We", "Build", "Moments", "People", "Remember."];
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -31,6 +41,13 @@ export default function Hero() {
   const planeY = useTransform(sy, [-0.5, 0.5], [-30, 30]);
   const gridX = useTransform(sx, [-0.5, 0.5], [24, -24]);
   const gridY = useTransform(sy, [-0.5, 0.5], [16, -16]);
+
+  const [slide, setSlide] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => setSlide((s) => (s + 1) % slides.length), 3500);
+    return () => clearInterval(t);
+  }, []);
 
   const onMove = (e: React.MouseEvent) => {
     const r = ref.current?.getBoundingClientRect();
@@ -78,16 +95,6 @@ export default function Hero() {
         style={{ y, opacity }}
         className="container-x relative z-10 flex flex-col items-center text-center"
       >
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-7 flex items-center gap-4 font-hand text-lg text-accent sm:text-xl"
-        >
-          <span className="h-px w-10 bg-accent" />
-          Experiential Agency
-          <span className="h-px w-10 bg-accent" />
-        </motion.p>
 
         <h1 className="mx-auto max-w-5xl font-display text-5xl font-extrabold leading-[0.95] tracking-tight sm:text-7xl lg:text-[7rem]">
           {words.map((w, i) => (
@@ -101,7 +108,7 @@ export default function Hero() {
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 className={`mr-4 inline-block ${
-                  w === "Experiential" ? "text-gradient" : ""
+                  w === "Moments" ? "text-gradient" : ""
                 }`}
               >
                 {w}
@@ -120,28 +127,6 @@ export default function Hero() {
           experiences people feel — on every screen and every stage.
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.05 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
-        >
-          <MagneticButton
-            href="#work"
-            className="group flex items-center gap-2 rounded-full bg-accent px-8 py-4 font-body font-medium text-black transition-shadow hover:shadow-[0_0_45px_var(--accent-glow)]"
-          >
-            View Our Work
-            <span className="transition-transform group-hover:translate-x-1">
-              →
-            </span>
-          </MagneticButton>
-          <MagneticButton
-            href="#enquiry"
-            className="rounded-full border border-border px-8 py-4 font-body font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
-          >
-            Start With Us
-          </MagneticButton>
-        </motion.div>
       </motion.div>
 
       {/* cinematic image band */}
@@ -153,41 +138,28 @@ export default function Hero() {
         className="container-x relative z-10 mt-16"
       >
         <div className="relative overflow-hidden rounded-3xl border border-border bg-surface-2">
-          <div className="relative aspect-[16/10] w-full sm:aspect-[21/7]">
-            <div className="absolute inset-0 bg-[radial-gradient(120%_150%_at_50%_-20%,rgba(139,127,232,0.25),transparent_60%)]" />
-            <div
-              className="absolute inset-0 opacity-[0.10]"
-              style={{
-                backgroundImage:
-                  "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-                backgroundSize: "44px 44px",
-              }}
-            />
-            {/* drifting paper-plane mark, mouse parallax */}
-            <motion.div
-              style={{ x: planeX, y: planeY }}
-              className="absolute inset-0 flex items-center justify-center"
-            >
-              <motion.svg
-                width="88"
-                height="88"
-                viewBox="0 0 24 24"
-                fill="#ffffff"
-                className="[filter:drop-shadow(0_0_24px_var(--accent-glow))]"
-                animate={{ y: [0, -12, 0], rotate: [-3, 3, -3] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          <div className="relative aspect-[3/4] w-full sm:aspect-[21/9] overflow-hidden">
+            <AnimatePresence mode="sync">
+              <motion.div
+                key={slide}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+                className="absolute inset-0"
               >
-                <path d="M2 21l21-9L2 3v7l15 2-15 2z" />
-              </motion.svg>
-            </motion.div>
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-black/70 to-transparent p-6 sm:p-8">
-              <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-2">
-                The Anthem — Experiential Reel
-              </span>
-              <span className="hidden font-body text-[10px] uppercase tracking-[0.3em] text-muted-2 sm:block">
-                Based in New Delhi
-              </span>
-            </div>
+                <Image
+                  src={slides[slide]}
+                  alt=""
+                  fill
+                  className={`object-cover ${slides[slide] === "/sliders/2.webp" ? "object-top" : "object-center"} ${slides[slide] === "/sliders/3.webp" ? "scale-100" : ""}`}
+                  unoptimized
+                  priority
+                />
+              </motion.div>
+            </AnimatePresence>
+            <div className="pointer-events-none absolute inset-0 bg-black/30" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-6 sm:p-8" />
           </div>
         </div>
       </motion.div>

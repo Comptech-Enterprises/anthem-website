@@ -10,11 +10,10 @@ import { AnimatePresence, motion } from "framer-motion";
 // `/#anchor` (navigate home, then scroll) from any other route. `route`
 // links are standalone pages.
 const links = [
-  { label: "About Us", href: "/about", kind: "route" as const },
-  { label: "Services", href: "/services", kind: "route" as const },
-  { label: "Gallery", href: "/gallery", kind: "route" as const },
-  { label: "Blog", href: "/blog", kind: "route" as const },
+  { label: "Home", href: "/", kind: "route" as const },
+  { label: "Our Work", href: "/services", kind: "route" as const },
   { label: "Careers", href: "/careers", kind: "route" as const },
+  { label: "Contact Us", href: "/#enquiry", kind: "hash" as const },
 ];
 
 export default function Navbar() {
@@ -24,8 +23,11 @@ export default function Navbar() {
   const onHome = pathname === "/";
 
   // Anchor links jump within the home page; off-home they must first route home.
-  const resolve = (l: (typeof links)[number]) =>
-    l.kind === "route" ? l.href : onHome ? l.href : `/${l.href}`;
+  const resolve = (l: (typeof links)[number]) => {
+    if (l.kind === "route") return l.href;
+    const hash = l.href.replace(/^\/?/, "");
+    return onHome ? hash : `/${hash}`;
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -46,7 +48,7 @@ export default function Navbar() {
       }`}
     >
       <nav className="container-x flex min-h-18 items-center justify-between py-2">
-        <Link href={onHome ? "#top" : "/"} className="group flex items-center">
+        <Link href="/" className="group flex items-center">
           <Image
             src="/logo.webp"
             alt="Anthem"
@@ -60,7 +62,7 @@ export default function Navbar() {
         {/* desktop */}
         <ul className="hidden items-center gap-6 lg:flex">
           {links.map((l) => (
-            <li key={l.href}>
+            <li key={l.href} className="relative">
               <Link
                 href={resolve(l)}
                 className="group relative font-body text-sm text-muted transition-colors hover:text-foreground"
@@ -68,6 +70,24 @@ export default function Navbar() {
                 {l.label}
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-300 group-hover:w-full" />
               </Link>
+
+              {l.label === "Contact Us" && (
+                <motion.span
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1.2, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute right-0 top-full mt-3 whitespace-nowrap pointer-events-none"
+                >
+                  <span className="absolute -top-[5px] right-4 h-2.5 w-2.5 rotate-45 bg-accent" />
+                  <motion.span
+                    animate={{ y: [0, -2, 0] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                    className="relative block rounded-2xl rounded-tr-sm bg-accent px-3.5 py-1.5 font-hand text-xs text-black font-medium shadow-[0_2px_12px_var(--accent-glow)]"
+                  >
+                    Hit us up
+                  </motion.span>
+                </motion.span>
+              )}
             </li>
           ))}
         </ul>
