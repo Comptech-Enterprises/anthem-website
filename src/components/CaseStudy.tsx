@@ -2,14 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import {
-  motion,
-  useInView,
-  useScroll,
-  useTransform,
-  type MotionValue,
-} from "framer-motion";
-import React, { useRef, useEffect, useState } from "react";
+import { AnimatePresence, motion, useInView } from "framer-motion";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import AnimatedHeading from "./AnimatedHeading";
 import MagneticButton from "./MagneticButton";
 import Placeholder from "./Placeholder";
@@ -19,11 +13,6 @@ import type { CaseStudy as CaseStudyType } from "@/data/cases";
 const stagger = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.09 } },
-};
-
-const slideLeft = {
-  hidden: { opacity: 0, x: -28 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
 };
 
 const scaleFade = {
@@ -77,7 +66,7 @@ function ResultCard({ value, label }: { value: string; label: string }) {
   );
 }
 
-function VideoHero({ src, heroScale }: { src: string; heroScale: MotionValue<number> }) {
+function VideoSlide({ src }: { src: string }) {
   const [ready, setReady] = useState(false);
   const [muted, setMuted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -89,33 +78,29 @@ function VideoHero({ src, heroScale }: { src: string; heroScale: MotionValue<num
   };
 
   return (
-    <div className="relative w-full aspect-[3/4] sm:aspect-[16/7] overflow-hidden bg-surface">
-      <motion.div style={{ scale: heroScale }} className="absolute inset-0 origin-center">
-        <video
-          ref={(el) => {
-            (videoRef as React.MutableRefObject<HTMLVideoElement | null>).current = el;
-            if (!el) return;
-            el.play().catch(() => {
-              el.muted = true;
-              setMuted(true);
-              el.play().catch(() => {});
-            });
-          }}
-          src={src}
-          autoPlay
-          loop
-          playsInline
-          preload="auto"
-          onCanPlay={() => setReady(true)}
-          className="h-full w-full object-cover"
-        />
-      </motion.div>
-      {/* shimmer overlays video until it can play */}
+    <div className="absolute inset-0 bg-surface">
+      <video
+        ref={(el) => {
+          (videoRef as React.MutableRefObject<HTMLVideoElement | null>).current = el;
+          if (!el) return;
+          el.play().catch(() => {
+            el.muted = true;
+            setMuted(true);
+            el.play().catch(() => {});
+          });
+        }}
+        src={src}
+        autoPlay
+        loop
+        playsInline
+        preload="auto"
+        onCanPlay={() => setReady(true)}
+        className="h-full w-full object-cover"
+      />
       <div
         className="pointer-events-none absolute inset-0 animate-pulse bg-gradient-to-r from-surface via-border/30 to-surface transition-opacity duration-700"
         style={{ opacity: ready ? 0 : 1 }}
       />
-      {/* mute/unmute button */}
       <button
         onClick={toggleMute}
         aria-label={muted ? "Unmute video" : "Mute video"}
@@ -139,14 +124,157 @@ function VideoHero({ src, heroScale }: { src: string; heroScale: MotionValue<num
   );
 }
 
-export default function CaseStudy({ data }: { data: CaseStudyType }) {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.4]);
+type Slide =
+  | { kind: "video"; src: string }
+  | { kind: "image"; src: string }
+  | { kind: "placeholder"; src: string };
+
+function buildSlides(data: CaseStudyType): Slide[] {
+  const slides: Slide[] = [];
+  if (data.video) slides.push({ kind: "video", src: data.video });
+  for (const m of data.media) {
+    slides.push(m.startsWith("/") ? { kind: "image", src: m } : { kind: "placeholder", src: m });
+  }
+  return slides;
+}
+
+function MediaCarousel({
+  slides,
+  title,
+  className = "",
+}: {
+  slides: Slide[];
+  title: string;
+  className?: string;
+}) {
+  const [index, setIndex] = useState(0);
+  const [dir, setDir] = useState(1);
+  const [paused, setPaused] = useState(false);
+  const len = slides.length;
+
+  const go = useCallback(
+    (next: number, direction?: number) => {
+      if (len < 2) return;
+      const wrapped = ((next % len) + len) % len;
+      setDir(direction ?? (wrapped > index ? 1 : -1));
+      setIndex(wrapped);
+    },
+    [index, len],
+  );
+
+  useEffect(() => {
+    if (len < 2) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") go(index + 1, 1);
+      if (e.key === "ArrowLeft") go(index - 1, -1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [go, index, len]);
+
+  useEffect(() => {
+    if (len < 2 || paused) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const delay = slides[index]?.kind === "video" ? 8000 : 4500;
+    const t = window.setTimeout(() => go(index + 1, 1), delay);
+    return () => window.clearTimeout(t);
+  }, [go, index, len, paused, slides]);
+
+  if (len === 0) return null;
+
+  const slide = slides[index];
 
   return (
-    <article className="relative overflow-hidden pt-24 pb-28 sm:pt-44 sm:pb-36">
+    <div
+      className={`relative overflow-hidden rounded-2xl border border-border bg-surface ${className}`}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={() => setPaused(false)}
+    >
+      <div className="relative aspect-square w-full overflow-hidden sm:aspect-[5/3] lg:aspect-[5/4]">
+        <AnimatePresence initial={false} custom={dir} mode="popLayout">
+          <motion.div
+            key={`${slide.kind}-${slide.src}-${index}`}
+            custom={dir}
+            initial={{ x: dir * 48, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: dir * -48, opacity: 0 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            drag={len > 1 ? "x" : false}
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.18}
+            onDragEnd={(_, info) => {
+              if (info.offset.x < -60) go(index + 1, 1);
+              else if (info.offset.x > 60) go(index - 1, -1);
+            }}
+            className="absolute inset-0 cursor-grab active:cursor-grabbing"
+          >
+            {slide.kind === "video" ? (
+              <VideoSlide src={slide.src} />
+            ) : slide.kind === "image" ? (
+              <Image
+                src={slide.src}
+                alt={title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 70vw"
+                className="object-cover"
+                unoptimized
+                draggable={false}
+              />
+            ) : (
+              <Placeholder label={slide.src} ratio="aspect-square" className="h-full w-full" />
+            )}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {len > 1 && (
+        <>
+          <button
+            type="button"
+            aria-label="Previous photo"
+            onClick={() => go(index - 1, -1)}
+            className="absolute top-1/2 left-3 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-black/70"
+          >
+            <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            aria-label="Next photo"
+            onClick={() => go(index + 1, 1)}
+            className="absolute top-1/2 right-3 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-black/70"
+          >
+            <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" stroke="currentColor" strokeWidth="2">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+          <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2">
+            {slides.map((s, i) => (
+              <button
+                key={`${s.kind}-${s.src}`}
+                type="button"
+                aria-label={`Go to slide ${i + 1}`}
+                onClick={() => go(i, i >= index ? 1 : -1)}
+                className={`h-1.5 rounded-full transition-all ${
+                  i === index ? "w-6 bg-accent" : "w-1.5 bg-white/35 hover:bg-white/60"
+                }`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+export default function CaseStudy({ data }: { data: CaseStudyType }) {
+  const slides = buildSlides(data);
+
+  return (
+    <article className="relative pt-24 pb-28 sm:pt-44 sm:pb-36">
       <div
         aria-hidden
         className="pointer-events-none absolute top-10 left-1/4 h-[520px] w-[520px] rounded-full opacity-[0.08]"
@@ -193,70 +321,51 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
           </Reveal>
         </header>
 
-        {/* hero media — parallax */}
-        <motion.div
-          ref={heroRef}
-          style={{ opacity: heroOpacity }}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-14 overflow-hidden rounded-2xl border border-border"
-        >
-          {data.video ? (
-            <VideoHero src={data.video} heroScale={heroScale} />
-          ) : data.media[0]?.startsWith("/") ? (
-            <div className="relative w-full aspect-[3/4] sm:aspect-[16/7] overflow-hidden">
-              <motion.div style={{ scale: heroScale }} className="absolute inset-0 origin-center">
-                <Image src={data.media[0]} alt={data.title} fill sizes="100vw" className="object-cover" unoptimized />
-              </motion.div>
+        <div className="mt-14 grid items-start gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className={`space-y-10 ${slides.length > 0 ? "lg:col-span-5" : "lg:col-span-12 lg:max-w-3xl"}`}>
+            <Reveal>
+              <div className="flex gap-6">
+                <div className="w-1 shrink-0 rounded-full bg-gradient-to-b from-accent to-accent/20" />
+                <div>
+                  <p className="mb-3 font-body text-xs uppercase tracking-[0.2em] text-accent">Overview</p>
+                  <p className="font-body text-lg leading-relaxed text-muted">{data.overview}</p>
+                </div>
+              </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <div className="flex gap-6">
+                <div className="w-1 shrink-0 rounded-full bg-gradient-to-b from-accent to-accent/20" />
+                <div>
+                  <p className="mb-3 font-body text-xs uppercase tracking-[0.2em] text-accent">Objective</p>
+                  <p className="font-body text-lg leading-relaxed text-muted">{data.objective}</p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          {slides.length > 0 && (
+            <div className="lg:col-span-7">
+              <MediaCarousel slides={slides} title={data.title} />
             </div>
-          ) : (
-            <Placeholder label={data.media[0]} ratio="aspect-[16/7]" className="w-full" />
           )}
-        </motion.div>
-
-      </div>
-
-      <div className="container-x relative">
-        {/* overview + objective — stacked with left accent bar */}
-        <div className="mt-20 space-y-10">
-          <Reveal>
-            <div className="flex gap-6">
-              <div className="w-1 shrink-0 rounded-full bg-gradient-to-b from-accent to-accent/20" />
-              <div>
-                <p className="font-body text-xs uppercase tracking-[0.2em] text-accent mb-3">Overview</p>
-                <p className="font-body text-lg leading-relaxed text-muted">{data.overview}</p>
-              </div>
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <div className="flex gap-6">
-              <div className="w-1 shrink-0 rounded-full bg-gradient-to-b from-accent to-accent/20" />
-              <div>
-                <p className="font-body text-xs uppercase tracking-[0.2em] text-accent mb-3">Objective</p>
-                <p className="font-body text-lg leading-relaxed text-muted">{data.objective}</p>
-              </div>
-            </div>
-          </Reveal>
         </div>
 
-        {/* execution — masonry cards */}
         <div className="mt-20">
           <Reveal>
-            <p className="font-body text-xs uppercase tracking-[0.2em] text-accent mb-8">Execution</p>
+            <p className="mb-8 font-body text-xs uppercase tracking-[0.2em] text-accent">Execution</p>
           </Reveal>
           <motion.div
             variants={stagger}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
-            className="columns-1 sm:columns-2 gap-4 space-y-4"
+            className="columns-1 gap-4 space-y-4 sm:columns-2"
           >
             {data.execution.map((step) => (
               <motion.div
                 key={step}
                 variants={scaleFade}
-                className="break-inside-avoid rounded-2xl border border-border/40 bg-gradient-to-br from-surface/80 to-surface/40 p-6 backdrop-blur-sm"
+                className="mb-4 break-inside-avoid rounded-2xl border border-border/40 bg-gradient-to-br from-surface/80 to-surface/40 p-6 backdrop-blur-sm"
               >
                 <span className="font-body text-base leading-relaxed text-muted">{step}</span>
               </motion.div>
@@ -264,49 +373,22 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
           </motion.div>
         </div>
 
-        {/* gallery */}
-        {(data.video ? data.media.length > 0 : data.media.length > 1) && (
-          <div className="mt-20">
-            <Reveal>
-              <p className="font-body text-xs uppercase tracking-[0.2em] text-accent mb-8">Gallery</p>
-            </Reveal>
-            <motion.div
-              variants={stagger}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
-              className="grid gap-3 sm:grid-cols-2"
-            >
-              {(data.video ? data.media : data.media.slice(1)).map((m) =>
-                m.startsWith("/") ? (
-                  <motion.div
-                    key={m}
-                    variants={scaleFade}
-                    className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl"
-                  >
-                    <Image src={m} alt="" fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" unoptimized />
-                  </motion.div>
-                ) : (
-                  <motion.div key={m} variants={scaleFade}>
-                    <Placeholder label={m} ratio="aspect-[4/3]" className="w-full" />
-                  </motion.div>
-                )
-              )}
-            </motion.div>
-          </div>
-        )}
-
-        {/* results */}
         <div className="mt-20">
           <Reveal>
-            <p className="font-body text-xs uppercase tracking-[0.2em] text-accent mb-8">Impact</p>
+            <p className="mb-8 font-body text-xs uppercase tracking-[0.2em] text-accent">Impact</p>
           </Reveal>
           <motion.div
             variants={stagger}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
-            className={`grid gap-4 ${data.results.length === 2 ? "sm:grid-cols-2" : data.results.length === 4 ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-3"}`}
+            className={`grid gap-4 ${
+              data.results.length === 2
+                ? "sm:grid-cols-2"
+                : data.results.length === 4
+                  ? "sm:grid-cols-2 lg:grid-cols-4"
+                  : "sm:grid-cols-3"
+            }`}
           >
             {data.results.map((r) => (
               <ResultCard key={r.label} value={r.value} label={r.label} />
@@ -314,7 +396,6 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
           </motion.div>
         </div>
 
-        {/* CTA */}
         <Reveal>
           <div className="mt-24 flex flex-col items-center gap-6 rounded-3xl border border-border bg-surface/60 px-8 py-14 text-center backdrop-blur-sm">
             <h2 className="max-w-xl font-display text-2xl font-bold sm:text-3xl">
@@ -336,24 +417,3 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
   );
 }
 
-function Section({
-  eyebrow,
-  title,
-  children,
-}: {
-  eyebrow: string;
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <section>
-      <Reveal>
-        <div className="mb-6 flex items-baseline gap-3">
-          <span className="h-2 w-2 rounded-full bg-accent/60" />
-          <h2 className="font-display text-2xl font-semibold sm:text-3xl">{title}</h2>
-        </div>
-      </Reveal>
-      <Reveal delay={0.05}>{children}</Reveal>
-    </section>
-  );
-}

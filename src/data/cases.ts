@@ -38,7 +38,7 @@ export const cases: CaseStudy[] = [
       { value: "50M+", label: "Reach" },
       { value: "55M+", label: "Impressions" },
     ],
-    media: [],
+    media: ["/projects/World-Class-Festival-India/1.webp"],
     video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/world-class-optimized.mp4",
   },
   {
