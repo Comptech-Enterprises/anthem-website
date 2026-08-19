@@ -321,8 +321,8 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
           </Reveal>
         </header>
 
-        <div className="mt-14 grid items-start gap-10 lg:grid-cols-12 lg:gap-12">
-          <div className={`space-y-10 ${slides.length > 0 ? "lg:col-span-5" : "lg:col-span-12 lg:max-w-3xl"}`}>
+        <div className="mt-14 grid items-stretch gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className={`flex flex-col justify-center gap-10 ${slides.length > 0 ? "lg:col-span-5" : "lg:col-span-12 lg:max-w-3xl"}`}>
             <Reveal>
               <div className="flex gap-6">
                 <div className="w-1 shrink-0 rounded-full bg-gradient-to-b from-accent to-accent/20" />
@@ -359,13 +359,13 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
-            className="columns-1 gap-4 space-y-4 sm:columns-2"
+            className="grid grid-cols-1 gap-4 sm:grid-cols-2"
           >
             {data.execution.map((step) => (
               <motion.div
                 key={step}
                 variants={scaleFade}
-                className="mb-4 break-inside-avoid rounded-2xl border border-border/40 bg-gradient-to-br from-surface/80 to-surface/40 p-6 backdrop-blur-sm"
+                className="flex items-center rounded-2xl border border-border/40 bg-gradient-to-br from-surface/80 to-surface/40 p-6 backdrop-blur-sm"
               >
                 <span className="font-body text-base leading-relaxed text-muted">{step}</span>
               </motion.div>
