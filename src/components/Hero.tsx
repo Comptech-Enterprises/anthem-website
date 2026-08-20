@@ -125,7 +125,7 @@ export default function Hero() {
             { text: "integrated marketing agency", highlight: true },
             { text: " that builds ideas people don’t just see, but ", highlight: false },
             { text: "get to live", highlight: true },
-            { text: ". From large scale festivals, brand activations to creator-led campaigns and ", highlight: false },
+            { text: ". From large-scale festivals and brand activations to creator-led campaigns and ", highlight: false },
             { text: "cultural IPs", highlight: true },
             { text: ", we create work that lives both ", highlight: false },
             { text: "online and offline", highlight: true },
