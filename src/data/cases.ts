@@ -38,7 +38,7 @@ export const cases: CaseStudy[] = [
       { value: "50M+", label: "Reach" },
       { value: "55M+", label: "Impressions" },
     ],
-    media: ["/projects/World-Class-Festival-India/1.webp"],
+    media: [],
     video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/world-class-optimized.mp4",
   },
   {
@@ -64,7 +64,7 @@ export const cases: CaseStudy[] = [
       { value: "500+", label: "Senior leaders" },
       { value: "3-day", label: "Multi-format experience" },
     ],
-    media: ["/projects/BCG/1.webp"],
+    media: ["/sliders/3.webp", "/projects/BCG/1.webp", "/projects/BCG/2.webp"],
   },
   {
     slug: "arks-store-launch",
@@ -119,7 +119,7 @@ export const cases: CaseStudy[] = [
     slug: "whisky-experiments",
     company: "Diageo India",
     monogram: "JW",
-    title: "Whisky Experiments",
+    title: "Johnnie Walker Black Label Whisky Experiments",
     tags: ["Brand IP"],
     summary:
       "A year-long experiential platform designed to reposition Johnnie Walker Black Label within India's evolving cocktail culture.",
