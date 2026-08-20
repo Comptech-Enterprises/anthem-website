@@ -18,6 +18,8 @@ const slides = [
   "/sliders/slider-4.webp",
   "/sliders/5.webp",
   "/sliders/6.webp",
+  "/sliders/7.webp",
+  "/sliders/8.webp",
 ];
 
 const words = ["We", "Build", "Moments", "People", "Remember."];
@@ -61,7 +63,7 @@ export default function Hero() {
       id="top"
       ref={ref}
       onMouseMove={onMove}
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden pt-32 pb-16"
+      className="relative flex min-h-screen flex-col justify-start overflow-hidden pt-28 pb-16 sm:justify-center sm:pt-32"
     >
       {/* ambient glows */}
       <motion.div
@@ -172,7 +174,7 @@ export default function Hero() {
                   src={slides[slide]}
                   alt=""
                   fill
-                  className={`object-cover ${slides[slide] === "/sliders/2.webp" ? "object-top" : "object-center"} ${slides[slide] === "/sliders/3.webp" ? "scale-100" : ""}`}
+                  className={`object-cover ${slides[slide] === "/sliders/2.webp" || slides[slide] === "/sliders/7.webp" || slides[slide] === "/sliders/8.webp" ? "object-top" : "object-center"} ${slides[slide] === "/sliders/3.webp" ? "scale-100" : ""}`}
                   unoptimized
                   priority
                 />
