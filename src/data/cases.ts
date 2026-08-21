@@ -292,6 +292,37 @@ export const cases: CaseStudy[] = [
     ],
     media: ["/projects/Toki-Dinners/1.webp", "/projects/Toki-Dinners/2.webp", "/projects/Toki-Dinners/3.webp", "/projects/Toki-Dinners/4.webp"],
   },
+  {
+    slug: "curator-circle",
+    company: "Diageo India",
+    monogram: "CC",
+    title: "Curator Circle",
+    tags: ["Digital Campaign", "Corporate Hiring Campaign"],
+    summary:
+      "A culture-first hiring experience that reimagined traditional recruitment for Diageo India.",
+    overview:
+      "A culture-first hiring experience that reimagined traditional recruitment for Diageo India.",
+    objective:
+      "Help Diageo India discover their next set of Culture & Community Curators.",
+    execution: [
+      "Built a digital-first hiring campaign to drive awareness and entries to find the person everyone knows",
+      "End-to-end content production for the digital campaign that got 1000+ entries",
+      "Screened entries to identify 13 finalists who best embodied the spirit of a Culture & Community Curator",
+      "Conceptualised the Curator Circle and brought the finalists together for an immersive day of challenges, conversations and collaborations, judged by 4 culture maestros",
+    ],
+    results: [
+      { value: "Pan-India", label: "Campaign reach" },
+      { value: "10M+", label: "Social reach" },
+      { value: "13", label: "Finalists discovered" },
+      { value: "Hired", label: "Culture & Community Curators for Diageo India" },
+    ],
+    media: [
+      "/projects/CuratorCircle/1.webp",
+      "/projects/CuratorCircle/2.webp",
+      "/projects/CuratorCircle/3.webp",
+      "/projects/CuratorCircle/4.webp",
+    ],
+  },
 ];
 
 export function getCase(slug: string): CaseStudy | undefined {
