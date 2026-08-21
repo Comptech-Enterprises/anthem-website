@@ -19,14 +19,14 @@ export default function OurServices() {
   return (
     <section
       id="our-services"
-      aria-label="Our Service"
+      aria-label="Our Services"
       className="relative border-b border-border py-24 sm:py-32"
     >
       <div className="container-x">
         <Reveal>
           <p className="mb-16 flex items-center gap-3 font-hand text-lg text-accent">
             <span className="h-px w-10 bg-accent" />
-            Our Service
+            Our Services
           </p>
         </Reveal>
         <Reveal>
