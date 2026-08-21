@@ -56,7 +56,7 @@ function ResultCard({ value, label }: { value: string; label: string }) {
     <motion.div
       ref={ref}
       variants={scaleFade}
-      className="rounded-2xl border border-border bg-surface/60 p-7 backdrop-blur-sm"
+      className="rounded-2xl border border-border bg-surface/60 p-7 text-center backdrop-blur-sm sm:text-left"
     >
       <p className="break-words font-display text-3xl font-bold text-gradient sm:text-4xl">
         {display}
