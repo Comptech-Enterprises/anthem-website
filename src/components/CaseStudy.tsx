@@ -66,7 +66,15 @@ function ResultCard({ value, label }: { value: string; label: string }) {
   );
 }
 
-function VideoSlide({ src, onRatio }: { src: string; onRatio?: (r: number) => void }) {
+function VideoSlide({
+  src,
+  onRatio,
+  fit = "object-cover",
+}: {
+  src: string;
+  onRatio?: (r: number) => void;
+  fit?: string;
+}) {
   const [ready, setReady] = useState(false);
   const [muted, setMuted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -100,7 +108,7 @@ function VideoSlide({ src, onRatio }: { src: string; onRatio?: (r: number) => vo
         playsInline
         preload="auto"
         onCanPlay={() => setReady(true)}
-        className="h-full w-full object-contain"
+        className={`h-full w-full ${fit}`}
       />
       <div
         className="pointer-events-none absolute inset-0 animate-pulse bg-gradient-to-r from-surface via-border/30 to-surface transition-opacity duration-700"
@@ -193,18 +201,27 @@ function MediaCarousel({
   if (len === 0) return null;
 
   const slide = slides[index];
+  const r = ratios[index];
+  // Only a tall *video* shrinks into a small portrait card. Everything else —
+  // images and landscape videos — keeps the original fixed frame + cover sizing.
+  const shrinkVideo = slide.kind === "video" && (r ?? 5 / 4) < 1;
+  const videoFit = shrinkVideo ? "object-contain" : "object-cover";
 
   return (
     <div
-      className={`relative mx-auto w-full max-w-md overflow-hidden rounded-2xl border border-border bg-surface ${className}`}
+      className={`relative mx-auto w-full overflow-hidden rounded-2xl border border-border bg-surface ${
+        shrinkVideo ? "max-w-[340px]" : ""
+      } ${className}`}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
     >
       <div
-        className="relative w-full overflow-hidden bg-surface transition-[aspect-ratio] duration-500"
-        style={{ aspectRatio: ratios[index] ?? 5 / 4 }}
+        className={`relative w-full overflow-hidden bg-surface transition-[aspect-ratio] duration-500 ${
+          shrinkVideo ? "" : "aspect-square sm:aspect-[5/3] lg:aspect-[5/4]"
+        }`}
+        style={shrinkVideo ? { aspectRatio: r } : undefined}
       >
         <AnimatePresence initial={false} custom={dir} mode="popLayout">
           <motion.div
@@ -224,21 +241,16 @@ function MediaCarousel({
             className="absolute inset-0 cursor-grab active:cursor-grabbing"
           >
             {slide.kind === "video" ? (
-              <VideoSlide src={slide.src} onRatio={(r) => setRatio(index, r)} />
+              <VideoSlide src={slide.src} fit={videoFit} onRatio={(r) => setRatio(index, r)} />
             ) : slide.kind === "image" ? (
               <Image
                 src={slide.src}
                 alt={title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 70vw"
-                className="object-contain"
+                className="object-cover"
                 unoptimized
                 draggable={false}
-                onLoad={(e) => {
-                  const img = e.currentTarget;
-                  if (img.naturalWidth && img.naturalHeight)
-                    setRatio(index, img.naturalWidth / img.naturalHeight);
-                }}
               />
             ) : (
               <Placeholder label={slide.src} ratio="aspect-square" className="h-full w-full" />
