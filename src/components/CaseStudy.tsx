@@ -341,7 +341,7 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
         </header>
 
         <div className="mt-14 grid items-stretch gap-10 lg:grid-cols-12 lg:gap-12">
-          <div className={`flex flex-col justify-center gap-10 ${slides.length > 0 ? "lg:col-span-5" : "lg:col-span-12 lg:max-w-3xl"}`}>
+          <div className={`order-2 flex flex-col justify-center gap-10 lg:order-none ${slides.length > 0 ? "lg:col-span-5" : "lg:col-span-12 lg:max-w-3xl"}`}>
             <Reveal>
               <div className="flex gap-6">
                 <div className="w-1 shrink-0 rounded-full bg-gradient-to-b from-accent to-accent/20" />
@@ -363,7 +363,7 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
           </div>
 
           {slides.length > 0 && (
-            <div className="lg:col-span-7">
+            <div className="order-1 lg:order-none lg:col-span-7">
               <MediaCarousel
                 slides={slides}
                 title={data.title}
