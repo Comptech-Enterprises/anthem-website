@@ -14,7 +14,6 @@ import { useRef, useState, useEffect } from "react";
 const slides = [
   "/sliders/1.webp",
   "/sliders/2.webp",
-  "/sliders/5.webp",
   "/sliders/6.webp",
   "/sliders/7.webp",
   "/sliders/8.webp",
