@@ -66,7 +66,7 @@ function ResultCard({ value, label }: { value: string; label: string }) {
   );
 }
 
-function VideoSlide({ src }: { src: string }) {
+function VideoSlide({ src, onRatio }: { src: string; onRatio?: (r: number) => void }) {
   const [ready, setReady] = useState(false);
   const [muted, setMuted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -83,6 +83,11 @@ function VideoSlide({ src }: { src: string }) {
         ref={(el) => {
           (videoRef as React.MutableRefObject<HTMLVideoElement | null>).current = el;
           if (!el) return;
+          const report = () => {
+            if (el.videoWidth && el.videoHeight) onRatio?.(el.videoWidth / el.videoHeight);
+          };
+          if (el.readyState >= 1) report();
+          else el.addEventListener("loadedmetadata", report, { once: true });
           el.play().catch(() => {
             el.muted = true;
             setMuted(true);
@@ -95,7 +100,7 @@ function VideoSlide({ src }: { src: string }) {
         playsInline
         preload="auto"
         onCanPlay={() => setReady(true)}
-        className="h-full w-full object-cover"
+        className="h-full w-full object-contain"
       />
       <div
         className="pointer-events-none absolute inset-0 animate-pulse bg-gradient-to-r from-surface via-border/30 to-surface transition-opacity duration-700"
@@ -150,7 +155,12 @@ function MediaCarousel({
   const [index, setIndex] = useState(0);
   const [dir, setDir] = useState(1);
   const [paused, setPaused] = useState(false);
+  const [ratios, setRatios] = useState<Record<number, number>>({});
   const len = slides.length;
+
+  const setRatio = useCallback((i: number, r: number) => {
+    setRatios((prev) => (prev[i] === r ? prev : { ...prev, [i]: r }));
+  }, []);
 
   const go = useCallback(
     (next: number, direction?: number) => {
@@ -186,13 +196,16 @@ function MediaCarousel({
 
   return (
     <div
-      className={`relative overflow-hidden rounded-2xl border border-border bg-surface ${className}`}
+      className={`relative mx-auto w-full max-w-md overflow-hidden rounded-2xl border border-border bg-surface ${className}`}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
     >
-      <div className="relative aspect-square w-full overflow-hidden sm:aspect-[5/3] lg:aspect-[5/4]">
+      <div
+        className="relative w-full overflow-hidden bg-surface transition-[aspect-ratio] duration-500"
+        style={{ aspectRatio: ratios[index] ?? 5 / 4 }}
+      >
         <AnimatePresence initial={false} custom={dir} mode="popLayout">
           <motion.div
             key={`${slide.kind}-${slide.src}-${index}`}
@@ -211,16 +224,21 @@ function MediaCarousel({
             className="absolute inset-0 cursor-grab active:cursor-grabbing"
           >
             {slide.kind === "video" ? (
-              <VideoSlide src={slide.src} />
+              <VideoSlide src={slide.src} onRatio={(r) => setRatio(index, r)} />
             ) : slide.kind === "image" ? (
               <Image
                 src={slide.src}
                 alt={title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 70vw"
-                className="object-cover"
+                className="object-contain"
                 unoptimized
                 draggable={false}
+                onLoad={(e) => {
+                  const img = e.currentTarget;
+                  if (img.naturalWidth && img.naturalHeight)
+                    setRatio(index, img.naturalWidth / img.naturalHeight);
+                }}
               />
             ) : (
               <Placeholder label={slide.src} ratio="aspect-square" className="h-full w-full" />
