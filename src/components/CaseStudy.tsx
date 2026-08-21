@@ -202,9 +202,11 @@ function MediaCarousel({
 
   const slide = slides[index];
   const r = ratios[index];
-  // Only a tall *video* shrinks into a small portrait card. Everything else —
-  // images and landscape videos — keeps the original fixed frame + cover sizing.
+  // Images and tall videos fit their native ratio (whole photo/video shows, no
+  // crop). Only a tall video shrinks into a small card; landscape videos keep
+  // the original fixed frame + cover.
   const shrinkVideo = slide.kind === "video" && (r ?? 5 / 4) < 1;
+  const nativeFrame = slide.kind === "image" || shrinkVideo;
   const videoFit = shrinkVideo ? "object-contain" : "object-cover";
 
   return (
@@ -219,9 +221,9 @@ function MediaCarousel({
     >
       <div
         className={`relative w-full overflow-hidden bg-surface transition-[aspect-ratio] duration-500 ${
-          shrinkVideo ? "" : "aspect-square sm:aspect-[5/3] lg:aspect-[5/4]"
+          nativeFrame ? "" : "aspect-square sm:aspect-[5/3] lg:aspect-[5/4]"
         }`}
-        style={shrinkVideo ? { aspectRatio: r } : undefined}
+        style={nativeFrame ? { aspectRatio: r ?? 5 / 4 } : undefined}
       >
         <AnimatePresence initial={false} custom={dir} mode="popLayout">
           <motion.div
@@ -248,9 +250,14 @@ function MediaCarousel({
                 alt={title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 70vw"
-                className="object-cover"
+                className="object-contain"
                 unoptimized
                 draggable={false}
+                onLoad={(e) => {
+                  const img = e.currentTarget;
+                  if (img.naturalWidth && img.naturalHeight)
+                    setRatio(index, img.naturalWidth / img.naturalHeight);
+                }}
               />
             ) : (
               <Placeholder label={slide.src} ratio="aspect-square" className="h-full w-full" />
