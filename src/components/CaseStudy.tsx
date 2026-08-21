@@ -58,7 +58,7 @@ function ResultCard({ value, label }: { value: string; label: string }) {
       variants={scaleFade}
       className="rounded-2xl border border-border bg-surface/60 p-7 backdrop-blur-sm"
     >
-      <p className="break-words font-display text-4xl font-bold text-gradient sm:text-5xl">
+      <p className="break-words font-display text-3xl font-bold text-gradient sm:text-4xl">
         {display}
       </p>
       <p className="mt-3 font-body text-sm leading-relaxed text-muted">{label}</p>
