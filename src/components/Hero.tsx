@@ -17,6 +17,7 @@ const slides = [
   "/sliders/6.webp",
   "/sliders/7.webp",
   "/sliders/8.webp",
+  "/sliders/10.webp",
 ];
 
 const words = ["We", "Build", "Moments", "People", "Remember."];
