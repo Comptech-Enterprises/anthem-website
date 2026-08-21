@@ -14,10 +14,9 @@ import { useRef, useState, useEffect } from "react";
 const slides = [
   "/sliders/1.webp",
   "/sliders/2.webp",
-  "/sliders/6.webp",
-  "/sliders/7.webp",
-  "/sliders/8.webp",
   "/sliders/10.webp",
+  "/sliders/11.webp",
+  "/sliders/12.webp",
 ];
 
 const words = ["We", "Build", "Moments", "People", "Remember."];
@@ -45,7 +44,7 @@ export default function Hero() {
   const [slide, setSlide] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(() => setSlide((s) => (s + 1) % slides.length), 3500);
+    const t = setInterval(() => setSlide((s) => (s + 1) % slides.length), 2500);
     return () => clearInterval(t);
   }, []);
 
@@ -172,7 +171,7 @@ export default function Hero() {
                   src={slides[slide]}
                   alt=""
                   fill
-                  className={`object-cover ${slides[slide] === "/sliders/2.webp" || slides[slide] === "/sliders/7.webp" || slides[slide] === "/sliders/8.webp" ? "object-top" : "object-center"}`}
+                  className={`object-cover ${slides[slide] === "/sliders/1.webp" ? "object-bottom" : slides[slide] === "/sliders/2.webp" ? "object-top" : "object-center"}`}
                   unoptimized
                   priority
                 />
