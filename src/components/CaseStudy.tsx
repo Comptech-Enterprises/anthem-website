@@ -144,9 +144,12 @@ type Slide =
 
 function buildSlides(data: CaseStudyType): Slide[] {
   const slides: Slide[] = [];
-  if (data.video) slides.push({ kind: "video", src: data.video });
+  const videos = data.video ? (Array.isArray(data.video) ? data.video : [data.video]) : [];
+  for (const v of videos) slides.push({ kind: "video", src: v });
   for (const m of data.media) {
-    slides.push(m.startsWith("/") ? { kind: "image", src: m } : { kind: "placeholder", src: m });
+    slides.push(
+      m.startsWith("/") || m.startsWith("http") ? { kind: "image", src: m } : { kind: "placeholder", src: m }
+    );
   }
   return slides;
 }

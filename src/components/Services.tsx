@@ -148,8 +148,8 @@ export default function Services() {
         <div className="mb-10">
           <Reveal>
             <AnimatedHeading
-              text="Brands we brought to life"
-              highlight="brought to life"
+              text="Ideas We've Brought to Life"
+              highlight="Brought to Life"
               className="font-display text-4xl font-bold sm:text-5xl lg:text-6xl"
             />
           </Reveal>
