@@ -19,7 +19,7 @@ const slides = [
   "/sliders/12.webp",
 ];
 
-const words = ["We", "Build", "Moments", "People", "Remember."];
+const words = ["We", "Build", "Moments", "People", "Remember"];
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
