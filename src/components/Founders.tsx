@@ -75,7 +75,7 @@ export default function Founders() {
           ))}
         </div>
 
-        <div className="mt-20 max-w-2xl border-t border-border pt-14">
+        <div className="mt-20 border-t border-border pt-14">
           <Reveal>
             <p className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
               <span className="h-px w-10 bg-accent" />
