@@ -83,7 +83,7 @@ export default function Founders() {
             </p>
           </Reveal>
           <Reveal delay={0.05}>
-            <p className="font-body leading-relaxed text-muted">
+            <p className="font-body text-lg leading-relaxed text-muted">
               We&apos;re a team of 30+ individuals across production, digital, and strategy. Different disciplines, one shared goal: creating work that people want to engage with, talk about and be a part of.
             </p>
           </Reveal>
