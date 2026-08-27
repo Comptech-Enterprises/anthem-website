@@ -11,7 +11,7 @@ const services: { label: string; bold: boolean }[] = [
   { label: "Creator Collaborations", bold: true },
   { label: "Content Production", bold: false },
   { label: "IP Development", bold: true },
-  { label: "Digital Strategy", bold: false },
+  { label: "Corporate Events", bold: false },
   { label: "Influencer Marketing", bold: true },
 ];
 

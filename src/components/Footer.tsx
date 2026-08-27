@@ -46,42 +46,6 @@ export default function Footer() {
                 className="h-12 w-auto invert sm:h-16 md:h-20"
               />
             </Link>
-            <div className="flex flex-col items-center gap-3 sm:items-start">
-              <p className="font-body text-xs uppercase tracking-[0.2em] text-muted-2">
-                Our Ecosystem
-              </p>
-              <div className="flex items-start gap-3">
-                <a
-                  href="https://food-talk-india.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex shrink-0 opacity-80 transition-opacity hover:opacity-100"
-                >
-                  <Image
-                    src="/food-talk.webp"
-                    alt="Food Talk India"
-                    width={576}
-                    height={576}
-                    className="h-10 w-auto"
-                  />
-                </a>
-                <p className="font-body text-xs leading-relaxed text-muted-2 max-w-[180px]">
-                  India&apos;s leading F&amp;B media house.
-                </p>
-              </div>
-              <div className="flex items-start gap-3">
-                <Image
-                  src="/EC.webp"
-                  alt="Explorers Club"
-                  width={576}
-                  height={576}
-                  className="h-10 w-auto shrink-0 opacity-80 transition-opacity hover:opacity-100"
-                />
-                <p className="font-body text-xs leading-relaxed text-muted-2 max-w-[180px]">
-                  Our in-house experiential IP built around spirits, music and food.
-                </p>
-              </div>
-            </div>
           </div>
 
           <div className="flex flex-col items-center gap-6 sm:items-end">
@@ -121,18 +85,6 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center gap-2 border-t border-border pt-8 text-center">
-          <p className="font-body text-xs text-muted-2">
-            © 2025 Digital{" "}
-            <a
-              href="https://food-talk-india.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-accent"
-            >
-              Food Talk
-            </a>{" "}
-            Pvt. Ltd. All rights reserved.
-          </p>
           <p className="font-body text-xs text-muted-2">
             Developed by{" "}
             <a
