@@ -188,7 +188,7 @@ export const cases: CaseStudy[] = [
       { value: "70+", label: "Content creators invited" },
       { value: "1", label: "End-to-end execution" },
     ],
-    media: [],
+    media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/chambal-launch.webp"],
     video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/chambal-gin-optimized.mp4",
   },
   {
@@ -237,7 +237,7 @@ export const cases: CaseStudy[] = [
       { value: "5M+", label: "Views" },
       { value: "110K+", label: "Engagement" },
     ],
-    media: [],
+    media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/por-amor.webp"],
     video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/naina-bhan-don-julio-optimized.mp4",
   },
   {
