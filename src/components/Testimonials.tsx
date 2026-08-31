@@ -9,17 +9,17 @@ import Reveal from "./Reveal";
 const testimonials = [
   {
     quote:
-      "Working with Anthem felt like having an extension of our own team. Every detail was thoughtfully planned, flawlessly executed, and always delivered beyond expectations.",
-    name: "Brand Specialist",
-    org: "Diageo India",
-    img: "/testimonials/diageo.webp",
+      "Anthem created a niche with Gin Explorers Club, and we had been waiting for the right moment to be part of it. It had evolved into this incredible carnival for gin lovers, with enthusiasts coming together in one place. For Jaisalmer Gin, being able to show up where the most passionate gin drinkers already were made all the difference.",
+    name: "Abhishek Khaitan",
+    org: "Managing Director, Radico Khaitan",
+    img: "/testimonials/radico.webp",
   },
   {
     quote:
-      "What impressed us most was their ownership. No matter the scale or complexity, the team remained proactive, collaborative and solutions-focused throughout.",
-    name: "Marketing Lead",
-    org: "Radico Khaitan",
-    img: "/testimonials/radico.webp",
+      "Over the years, Anthem has become an extension of our own team. What I value most is that they’re not afraid to speak their mind. They challenge our thinking, push our ideas and help us take them in the right direction.",
+    name: "Inderpreet Singh Sethi",
+    org: "Marketing Lead, Diageo India",
+    img: "/testimonials/diageo.webp",
   },
 ];
 
@@ -95,7 +95,7 @@ export default function Testimonials() {
                     exit="exit"
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    <blockquote className="max-w-3xl font-display text-lg font-medium leading-snug text-foreground sm:text-3xl">
+                    <blockquote className="max-w-4xl font-display text-lg font-medium leading-snug text-foreground sm:text-2xl">
                       {t.quote}
                     </blockquote>
                     <figcaption className="mt-8 flex items-center gap-4">

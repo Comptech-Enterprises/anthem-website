@@ -27,7 +27,7 @@ export default function Home() {
           <OurServices />
           <WhatWeDo />
         </RibbonFlight>
-        <Testimonials />
+        {/* <Testimonials /> */}
         <Founders />
         <EnquiryForm />
       </main>

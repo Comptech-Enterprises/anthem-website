@@ -74,6 +74,20 @@ export default function Founders() {
             </Reveal>
           ))}
         </div>
+
+        <div className="mt-20 border-t border-border pt-14">
+          <Reveal>
+            <p className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
+              <span className="h-px w-10 bg-accent" />
+              The Team
+            </p>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <p className="font-body text-lg leading-relaxed text-muted">
+              We&apos;re a team of 30+ individuals across production, digital, and strategy. Different disciplines, one shared goal: creating work that people want to engage with, talk about and be a part of.
+            </p>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import AnimatedHeading from "./AnimatedHeading";
@@ -148,8 +149,8 @@ export default function Services() {
         <div className="mb-10">
           <Reveal>
             <AnimatedHeading
-              text="Brands we brought to life"
-              highlight="brought to life"
+              text="Ideas We've Brought to Life"
+              highlight="Brought to Life"
               className="font-display text-4xl font-bold sm:text-5xl lg:text-6xl"
             />
           </Reveal>
@@ -170,6 +171,16 @@ export default function Services() {
                 aria-label={`Read the ${c.title} case study`}
                 className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface/60 p-7 backdrop-blur-sm transition-colors duration-300 hover:border-accent/50 hover:shadow-[0_28px_80px_-32px_var(--accent-glow)] sm:p-8"
               >
+                {/* hover background image */}
+                {c.media[0] && (
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 z-0 opacity-0 transition-opacity duration-500 group-hover:opacity-15"
+                  >
+                    <Image src={c.media[0]} alt="" fill unoptimized className="object-cover" />
+                  </div>
+                )}
+
                 {/* hover spotlight */}
                 <div
                   aria-hidden

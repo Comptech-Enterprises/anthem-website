@@ -10,7 +10,7 @@ export type CaseStudy = {
   execution: string[];
   results: { value: string; label: string }[];
   media: string[];
-  video?: string;
+  video?: string | string[];
 };
 
 export const cases: CaseStudy[] = [
@@ -38,7 +38,7 @@ export const cases: CaseStudy[] = [
       { value: "50M+", label: "Reach" },
       { value: "55M+", label: "Impressions" },
     ],
-    media: ["/projects/World-Class-Festival-India/1.webp"],
+    media: [],
     video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/world-class-optimized.mp4",
   },
   {
@@ -64,7 +64,7 @@ export const cases: CaseStudy[] = [
       { value: "500+", label: "Senior leaders" },
       { value: "3-day", label: "Multi-format experience" },
     ],
-    media: ["/projects/BCG/1.webp"],
+    media: ["/projects/BCG/3.webp", "/projects/BCG/2.webp", "/projects/BCG/4.webp", "/projects/BCG/5.webp"],
   },
   {
     slug: "arks-store-launch",
@@ -119,7 +119,7 @@ export const cases: CaseStudy[] = [
     slug: "whisky-experiments",
     company: "Diageo India",
     monogram: "JW",
-    title: "Whisky Experiments",
+    title: "Johnnie Walker Black Label Whisky Experiments",
     tags: ["Brand IP"],
     summary:
       "A year-long experiential platform designed to reposition Johnnie Walker Black Label within India's evolving cocktail culture.",
@@ -171,7 +171,7 @@ export const cases: CaseStudy[] = [
     slug: "chambal-gin",
     company: "Bapuna",
     monogram: "CG",
-    title: "Chambal Gin",
+    title: "Chambal Gin Launch",
     tags: ["Brand Activation"],
     summary:
       "Chambal Gin's launch designed as an immersive brand experience that brought the spirit and untamed flavours of the Chambal ravines to life.",
@@ -188,14 +188,14 @@ export const cases: CaseStudy[] = [
       { value: "70+", label: "Content creators invited" },
       { value: "1", label: "End-to-end execution" },
     ],
-    media: [],
+    media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/chambal-launch.webp"],
     video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/chambal-gin-optimized.mp4",
   },
   {
     slug: "hendricks-house-of-oddities",
     company: "William Grant & Sons",
     monogram: "HG",
-    title: "Hendrick's Gin — The House of Oddities",
+    title: "The House of Oddities",
     tags: ["Brand Activation"],
     summary:
       "A surreal, whimsical brand experience in Mumbai designed to welcome Hendrick's global ambassador and immerse guests in the eccentric world of Hendrick's.",
@@ -237,7 +237,7 @@ export const cases: CaseStudy[] = [
       { value: "5M+", label: "Views" },
       { value: "110K+", label: "Engagement" },
     ],
-    media: [],
+    media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/por-amor.webp"],
     video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/naina-bhan-don-julio-optimized.mp4",
   },
   {
@@ -271,7 +271,7 @@ export const cases: CaseStudy[] = [
     slug: "toki-dinners",
     company: "Beam Suntory",
     monogram: "TK",
-    title: "Toki Dinners",
+    title: "Serious Eaters Club Dinners",
     tags: ["Digital Campaign"],
     summary:
       "A curated dining series by Food Talk India celebrating bold cuisine and storytelling, with Toki Whisky seamlessly integrated into the experience.",
@@ -290,7 +290,69 @@ export const cases: CaseStudy[] = [
       { value: "10.5M+", label: "Social reach" },
       { value: "180+", label: "Attendees" },
     ],
-    media: ["/projects/Toki-Dinners/1.webp", "/projects/Toki-Dinners/2.webp", "/projects/Toki-Dinners/3.webp", "/projects/Toki-Dinners/4.webp"],
+    media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/serious-eaters-club-1.webp", "/projects/Toki-Dinners/2.webp", "/projects/Toki-Dinners/3.webp", "/projects/Toki-Dinners/4.webp"],
+  },
+  {
+    slug: "curator-circle",
+    company: "Diageo India",
+    monogram: "CC",
+    title: "Curator Circle",
+    tags: ["Corporate Event"],
+    summary:
+      "A culture-first hiring experience that reimagined traditional recruitment for Diageo India.",
+    overview:
+      "A culture-first hiring experience that reimagined traditional recruitment for Diageo India.",
+    objective:
+      "Help Diageo India discover their next set of Culture & Community Curators.",
+    execution: [
+      "End-to-end event production and on-ground execution",
+      "Program planning and experience curation",
+      "F&B planning and management",
+      "Jury coordination and management",
+      "Finalist coordination and guest management",
+      "On-ground staffing and event operations",
+    ],
+    results: [
+      { value: "13", label: "Finalists" },
+      { value: "3", label: "Culture Maestros" },
+      { value: "Hired", label: "Culture & Community Curators for Diageo India" },
+    ],
+    media: [
+      "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/curator-circle-1.webp",
+      "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/curator-circle-2.webp",
+      "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/curator-circle-3.webp",
+      "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/curator-circle-4.webp",
+    ],
+  },
+  {
+    slug: "hiring-campaign-diageo-india",
+    company: "Diageo India",
+    monogram: "HC",
+    title: "Hiring Campaign for Diageo India",
+    tags: ["Digital Campaign"],
+    summary:
+      "A digital campaign designed to help Diageo India discover the people shaping culture and community around them.",
+    overview:
+      "A digital campaign designed to help Diageo India discover the people shaping culture and community around them.",
+    objective:
+      "Drive awareness and applications for Diageo India's search for its next Culture & Community Curators.",
+    execution: [
+      "Developed the campaign concept and creative direction",
+      "End-to-end digital campaign production",
+      "Campaign rollout and amplification",
+      "Content designed to identify and attract culture-forward talent",
+    ],
+    results: [
+      { value: "Pan-India", label: "Campaign reach" },
+      { value: "10M+", label: "Social reach" },
+      { value: "1000+", label: "Entries" },
+      { value: "13", label: "Finalists identified" },
+    ],
+    media: [],
+    video: [
+      "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/hiring-campaign-1-optimized.mp4",
+      "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/hiring-campaign-2-optimized.mp4",
+    ],
   },
 ];
 

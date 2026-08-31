@@ -5,34 +5,28 @@ import Reveal from "./Reveal";
 
 const services: { label: string; bold: boolean }[] = [
   { label: "Experience Design", bold: true },
-  { label: "Branding", bold: false },
+  { label: "Brand Activations", bold: false },
   { label: "Event Management", bold: true },
-  { label: "Creative Storytelling", bold: false },
-  { label: "Content Gamification", bold: true },
-  { label: "Design Thinking", bold: false },
-  { label: "Program Design", bold: true },
-  { label: "Digital Experiences", bold: false },
-  { label: "Product Launches", bold: true },
-  { label: "Crisis Management", bold: false },
-  { label: "Marquee Concepts", bold: true },
-  { label: "Experience IPs", bold: false },
-  { label: "Content IPs", bold: true },
-  { label: "Sustainable Event Design", bold: false },
-  { label: "Online Experiences", bold: true },
+  { label: "Luxury Experiences", bold: false },
+  { label: "Creator Collaborations", bold: true },
+  { label: "Content Production", bold: false },
+  { label: "IP Development", bold: true },
+  { label: "Corporate Events", bold: false },
+  { label: "Influencer Marketing", bold: true },
 ];
 
 export default function OurServices() {
   return (
     <section
       id="our-services"
-      aria-label="Our Service"
+      aria-label="Our Services"
       className="relative border-b border-border py-24 sm:py-32"
     >
       <div className="container-x">
         <Reveal>
           <p className="mb-16 flex items-center gap-3 font-hand text-lg text-accent">
             <span className="h-px w-10 bg-accent" />
-            Our Service
+            Our Services
           </p>
         </Reveal>
         <Reveal>

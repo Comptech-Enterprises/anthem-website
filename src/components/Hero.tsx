@@ -14,13 +14,12 @@ import { useRef, useState, useEffect } from "react";
 const slides = [
   "/sliders/1.webp",
   "/sliders/2.webp",
-  "/sliders/3.webp",
-  "/sliders/slider-4.webp",
-  "/sliders/5.webp",
-  "/sliders/6.webp",
+  "/sliders/10.webp",
+  "/sliders/11.webp",
+  "/sliders/12.webp",
 ];
 
-const words = ["We", "Build", "Moments", "People", "Remember."];
+const words = ["We", "Build", "Moments", "People", "Remember"];
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -45,7 +44,7 @@ export default function Hero() {
   const [slide, setSlide] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(() => setSlide((s) => (s + 1) % slides.length), 3500);
+    const t = setInterval(() => setSlide((s) => (s + 1) % slides.length), 2500);
     return () => clearInterval(t);
   }, []);
 
@@ -61,7 +60,7 @@ export default function Hero() {
       id="top"
       ref={ref}
       onMouseMove={onMove}
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden pt-32 pb-16"
+      className="relative flex min-h-screen flex-col justify-start overflow-hidden pt-28 pb-16 sm:justify-center sm:pt-32"
     >
       {/* ambient glows */}
       <motion.div
@@ -118,13 +117,33 @@ export default function Hero() {
         </h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.9 }}
-          className="mt-8 max-w-xl font-body text-lg leading-relaxed text-muted"
+          className="mt-8 max-w-2xl font-body text-lg leading-relaxed text-muted"
         >
-          We create brand realities that transform sharp insight into
-          experiences people feel — on every screen and every stage.
+          {[
+            { text: "Anthem is an ", highlight: false },
+            { text: "integrated marketing agency", highlight: true },
+            { text: " that builds ideas people don’t just see, but ", highlight: false },
+            { text: "get to live", highlight: true },
+            { text: ". From large-scale festivals and brand activations to creator-led campaigns and ", highlight: false },
+            { text: "cultural IPs", highlight: true },
+            { text: ", we create work that lives both ", highlight: false },
+            { text: "online and offline", highlight: true },
+            { text: ".", highlight: false },
+          ].map((segment, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.5,
+                delay: 1.0 + i * 0.08,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className={segment.highlight ? "text-gradient font-medium" : ""}
+            >
+              {segment.text}
+            </motion.span>
+          ))}
         </motion.p>
 
       </motion.div>
@@ -152,7 +171,13 @@ export default function Hero() {
                   src={slides[slide]}
                   alt=""
                   fill
-                  className={`object-cover ${slides[slide] === "/sliders/2.webp" ? "object-top" : "object-center"} ${slides[slide] === "/sliders/3.webp" ? "scale-100" : ""}`}
+                  className={`object-cover ${
+                    slides[slide] === "/sliders/2.webp"
+                      ? "object-top"
+                      : slides[slide] === "/sliders/12.webp"
+                        ? "object-right sm:object-center"
+                        : "object-center"
+                  }`}
                   unoptimized
                   priority
                 />
