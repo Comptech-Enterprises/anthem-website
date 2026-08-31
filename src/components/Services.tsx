@@ -28,19 +28,25 @@ const ownedIp = [
     tag: "Media Platform",
     name: "Food Talk",
     title: "Food Talk India",
+    logo: "/food-talk.webp",
+    highlight: "Digital & Experiential Platform",
     summary:
       "India's leading food and drink culture platform that brings together stories, experiences and conversations shaping how India eats, drinks and goes out.",
     href: "https://food-talk-india.vercel.app/",
     external: true,
+    glow: "rgba(235, 94, 85, 0.15)",
   },
   {
-    tag: "Live Festival",
+    tag: "Live Festival IP",
     name: "The Anthem",
     title: "Explorers Club",
+    logo: "/EC.webp",
+    highlight: "1.5L+ Attendees · 3 Cities",
     summary:
       "A lifestyle and culture-led experiential IP built around spirits, flavour, food, music and more. What started as an experience has grown into a culture-led platform, attracting 1.5L+ attendees across 3 cities and building a community around discovery, connection and culture.",
     href: undefined as string | undefined,
     external: false,
+    glow: "rgba(139, 127, 232, 0.18)",
   },
 ];
 
@@ -100,21 +106,54 @@ export default function Services() {
           {ownedIp.map((ip) => {
             const inner = (
               <>
-                <span className="absolute top-6 right-6 z-10 rounded-full border border-border/70 bg-background/60 px-3 py-1 font-body text-[10px] uppercase tracking-[0.14em] text-muted-2">
+                {/* logo — visible normally, blurs & scales out smoothly on hover */}
+                {ip.logo && (
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden opacity-100 transition-all duration-500 ease-out group-hover:scale-90 group-hover:opacity-0 group-hover:blur-[2px]"
+                  >
+                    <Image
+                      src={ip.logo}
+                      alt={ip.title}
+                      fill
+                      unoptimized
+                      className="object-contain p-10 sm:p-14"
+                    />
+                  </div>
+                )}
+
+                {/* hover spotlight */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
+                  style={{ background: "radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)" }}
+                />
+
+                {/* sheen sweep */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
+                />
+
+                {/* corner tag */}
+                <span className="absolute top-6 right-6 z-10 rounded-full border border-border/70 bg-background/60 px-3 py-1 font-body text-[10px] uppercase tracking-[0.14em] text-muted-2 backdrop-blur-md transition-colors duration-300 group-hover:border-accent/50 group-hover:text-accent">
                   {ip.tag}
                 </span>
-                <div className="relative flex flex-1 flex-col pt-8">
-                  <h3 className="font-display text-xl font-semibold sm:text-2xl">
+
+                {/* content body — reveals with staggered rise animation on hover */}
+                <div className="relative z-10 flex flex-1 flex-col pt-8">
+                  <h3 className="translate-y-3 font-display text-xl font-semibold opacity-0 transition-all duration-400 ease-out group-hover:translate-y-0 group-hover:opacity-100 sm:text-2xl">
                     {ip.title}
                   </h3>
-                  <p className="mt-3 font-body text-sm leading-relaxed text-muted">
+
+                  <p className="mt-3 translate-y-4 font-body text-sm leading-relaxed text-muted opacity-0 transition-all duration-500 delay-75 ease-out group-hover:translate-y-0 group-hover:opacity-100">
                     {ip.summary}
                   </p>
 
                   {ip.href && (
-                    <span className="mt-auto flex items-center gap-2 border-t border-border/50 pt-7 font-body text-sm font-medium text-accent">
+                    <span className="mt-auto flex translate-y-3 items-center gap-2 border-t border-border/50 pt-7 font-body text-sm font-medium text-accent opacity-0 transition-all duration-500 delay-150 ease-out group-hover:translate-y-0 group-hover:opacity-100">
                       Visit
-                      <span className="transition-transform duration-300 group-hover:translate-x-1">
+                      <span className="transition-transform duration-300 group-hover:translate-x-1.5">
                         →
                       </span>
                     </span>
@@ -124,7 +163,7 @@ export default function Services() {
             );
 
             const cardClass =
-              "group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface/60 p-7 backdrop-blur-sm transition-colors duration-300 hover:border-accent/50 hover:shadow-[0_28px_80px_-32px_var(--accent-glow)] sm:p-8";
+              "group relative flex h-full min-h-[280px] flex-col overflow-hidden rounded-2xl border border-border bg-surface/60 p-7 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_28px_80px_-32px_var(--accent-glow)] sm:min-h-[300px] sm:p-8";
 
             return (
               <motion.article key={ip.title} variants={cardVariants}>
@@ -171,13 +210,19 @@ export default function Services() {
                 aria-label={`Read the ${c.title} case study`}
                 className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface/60 p-7 backdrop-blur-sm transition-colors duration-300 hover:border-accent/50 hover:shadow-[0_28px_80px_-32px_var(--accent-glow)] sm:p-8"
               >
-                {/* hover background image */}
+                {/* background image */}
                 {c.media[0] && (
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute inset-0 z-0 opacity-0 transition-opacity duration-500 group-hover:opacity-15"
+                    className="pointer-events-none absolute inset-0 z-0 opacity-15 transition-opacity duration-500 group-hover:opacity-30"
                   >
-                    <Image src={c.media[0]} alt="" fill unoptimized className="object-cover" />
+                    <Image
+                      src={c.media[0]}
+                      alt=""
+                      fill
+                      unoptimized
+                      className={`object-cover ${c.bgPosition || "object-center"}`}
+                    />
                   </div>
                 )}
 
