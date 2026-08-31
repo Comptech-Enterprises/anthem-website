@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import ScrollProgress from "@/components/ScrollProgress";
 import SmoothScroll from "@/components/SmoothScroll";
-import ChatWidget from "@/components/ChatWidget";
 import CaseStudy from "@/components/CaseStudy";
 import Footer from "@/components/Footer";
 import { cases, getCase } from "@/data/cases";
@@ -44,7 +43,6 @@ export default async function CaseStudyPage({
         <CaseStudy data={data} />
       </main>
       <Footer />
-      <ChatWidget />
     </>
   );
 }

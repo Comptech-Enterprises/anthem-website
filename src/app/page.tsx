@@ -2,7 +2,6 @@ import Navbar from "@/components/Navbar";
 import RibbonFlight from "@/components/RibbonFlight";
 import ScrollProgress from "@/components/ScrollProgress";
 import SmoothScroll from "@/components/SmoothScroll";
-import ChatWidget from "@/components/ChatWidget";
 import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
 import Brands from "@/components/Brands";
@@ -32,7 +31,6 @@ export default function Home() {
         <EnquiryForm />
       </main>
       <Footer />
-      <ChatWidget />
     </>
   );
 }
