@@ -348,7 +348,7 @@ export const cases: CaseStudy[] = [
       { value: "1000+", label: "Entries" },
       { value: "13", label: "Finalists identified" },
     ],
-    media: [],
+    media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/hiring-campaign.webp"],
     video: [
       "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/hiring-campaign-1-optimized.mp4",
       "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/hiring-campaign-2-optimized.mp4",
