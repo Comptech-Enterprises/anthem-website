@@ -38,7 +38,7 @@ export const cases: CaseStudy[] = [
       { value: "50M+", label: "Reach" },
       { value: "55M+", label: "Impressions" },
     ],
-    media: [],
+    media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/world-class.webp"],
     video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/world-class-optimized.mp4",
   },
   {
@@ -138,7 +138,7 @@ export const cases: CaseStudy[] = [
       { value: "50+", label: "Activations" },
       { value: "5", label: "Large-scale events" },
     ],
-    media: [],
+    media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/whisky-experiments.webp"],
     video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/whisky-experiments-optimized.mp4",
   },
   {
@@ -164,7 +164,7 @@ export const cases: CaseStudy[] = [
       { value: "6,000+", label: "Attendees" },
       { value: "2023–", label: "Running successfully since" },
     ],
-    media: [],
+    media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/table-for-everyone.webp"],
     video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/black-white-optimized.mp4",
   },
   {
@@ -264,7 +264,7 @@ export const cases: CaseStudy[] = [
       { value: "8M+", label: "Views" },
       { value: "600K+", label: "Engagement" },
     ],
-    media: [],
+    media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/roku-gin.webp"],
     video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/roku-gin-optimized.mp4",
   },
   {
