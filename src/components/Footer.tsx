@@ -83,20 +83,6 @@ export default function Footer() {
             </p>
           </div>
         </div>
-
-        <div className="mt-12 flex flex-col items-center gap-2 border-t border-border pt-8 text-center">
-          <p className="font-body text-xs text-muted-2">
-            Developed by{" "}
-            <a
-              href="https://comptech.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-accent"
-            >
-              Comptech
-            </a>
-          </p>
-        </div>
       </div>
     </footer>
   );
