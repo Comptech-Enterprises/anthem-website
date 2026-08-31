@@ -195,22 +195,33 @@ export default function Services() {
 
                     {ip.href && (
                       <div className="mt-auto pt-7">
-                        <a
-                          href={ip.href}
-                          target={ip.external ? "_blank" : undefined}
-                          rel={ip.external ? "noopener noreferrer" : undefined}
-                          onClick={(e) => e.stopPropagation()}
-                          className={`inline-flex items-center gap-2 border-t border-border/50 pt-3 font-body text-sm font-medium text-accent transition-all duration-500 delay-150 ease-out group-hover:translate-y-0 group-hover:opacity-100 hover:text-accent-glow ${
-                            isRevealed
-                              ? "translate-y-0 opacity-100 pointer-events-auto"
-                              : "translate-y-3 opacity-0 pointer-events-none group-hover:pointer-events-auto"
-                          }`}
-                        >
-                          Visit
-                          <span className="transition-transform duration-300 group-hover:translate-x-1.5">
-                            →
-                          </span>
-                        </a>
+                        {isRevealed ? (
+                          <a
+                            href={ip.href}
+                            target={ip.external ? "_blank" : undefined}
+                            rel={ip.external ? "noopener noreferrer" : undefined}
+                            onClick={(e) => e.stopPropagation()}
+                            className="inline-flex items-center gap-2 border-t border-border/50 pt-3 font-body text-sm font-medium text-accent transition-all duration-300 hover:text-accent-glow"
+                          >
+                            Visit website
+                            <span className="transition-transform duration-300 group-hover:translate-x-1.5">
+                              →
+                            </span>
+                          </a>
+                        ) : (
+                          <a
+                            href={ip.href}
+                            target={ip.external ? "_blank" : undefined}
+                            rel={ip.external ? "noopener noreferrer" : undefined}
+                            onClick={(e) => e.stopPropagation()}
+                            className="hidden sm:inline-flex items-center gap-2 border-t border-border/50 pt-3 font-body text-sm font-medium text-accent opacity-0 translate-y-3 transition-all duration-500 delay-150 ease-out group-hover:translate-y-0 group-hover:opacity-100 hover:text-accent-glow"
+                          >
+                            Visit website
+                            <span className="transition-transform duration-300 group-hover:translate-x-1.5">
+                              →
+                            </span>
+                          </a>
+                        )}
                       </div>
                     )}
                   </div>
