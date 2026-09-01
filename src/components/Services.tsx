@@ -35,6 +35,7 @@ const ownedIp = [
       "India's leading food and drink culture platform that brings together stories, experiences and conversations shaping how India eats, drinks and goes out.",
     href: "https://food-talk-india.vercel.app/",
     external: true,
+    bg: undefined as string | undefined,
     glow: "rgba(235, 94, 85, 0.15)",
   },
   {
@@ -42,6 +43,7 @@ const ownedIp = [
     name: "The Anthem",
     title: "Explorers Club",
     logo: "/EC.webp",
+    bg: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/explorers-club.webp",
     highlight: "1.5L+ Attendees · 3 Cities",
     summary:
       "A lifestyle and culture-led experiential IP built around spirits, flavour, food, music and more. What started as an experience has grown into a culture-led platform, attracting 1.5L+ attendees across 3 cities and building a community around discovery, connection and culture.",
@@ -129,6 +131,18 @@ export default function Services() {
                       : "border-border"
                   }`}
                 >
+                  {/* hover background image */}
+                  {ip.bg && (
+                    <div
+                      aria-hidden
+                      className={`pointer-events-none absolute inset-0 z-0 transition-opacity duration-500 group-hover:opacity-30 ${
+                        isRevealed ? "opacity-30" : "opacity-0"
+                      }`}
+                    >
+                      <Image src={ip.bg} alt="" fill unoptimized className="object-cover" />
+                    </div>
+                  )}
+
                   {/* logo — visible normally, blurs & scales out smoothly on hover or when clicked on mobile */}
                   {ip.logo && (
                     <div
