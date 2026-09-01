@@ -106,7 +106,7 @@ function VideoSlide({
         autoPlay
         loop
         playsInline
-        preload="auto"
+        preload="none"
         onCanPlay={() => setReady(true)}
         className={`h-full w-full ${fit}`}
       />

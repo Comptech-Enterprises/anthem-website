@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import RibbonFlight from "@/components/RibbonFlight";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -6,11 +7,11 @@ import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
 import Brands from "@/components/Brands";
 import OurServices from "@/components/OurServices";
-import WhatWeDo from "@/components/WhatWeDo";
-import Testimonials from "@/components/Testimonials";
-import Founders from "@/components/Founders";
-import EnquiryForm from "@/components/EnquiryForm";
-import Footer from "@/components/Footer";
+
+const WhatWeDo = dynamic(() => import("@/components/WhatWeDo"));
+const Founders = dynamic(() => import("@/components/Founders"));
+const EnquiryForm = dynamic(() => import("@/components/EnquiryForm"));
+const Footer = dynamic(() => import("@/components/Footer"));
 
 export default function Home() {
   return (
