@@ -114,7 +114,7 @@ export default function Services() {
                       aria-hidden
                       className="pointer-events-none absolute inset-0 z-0 opacity-15 transition-opacity duration-500 group-hover:opacity-30"
                     >
-                      <Image src={ip.bg} alt="" fill unoptimized className="object-cover" />
+                      <Image src={ip.bg} alt="" fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" />
                     </div>
                   )}
 
@@ -201,7 +201,7 @@ export default function Services() {
                       src={c.media[0]}
                       alt=""
                       fill
-                      unoptimized
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className={`object-cover ${c.bgPosition || "object-center"}`}
                     />
                   </div>

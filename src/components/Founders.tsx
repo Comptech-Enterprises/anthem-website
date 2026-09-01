@@ -8,14 +8,14 @@ const founders = [
     name: "Shuchir Suri",
     role: "Co-Founder – Strategy & Growth",
     copy: "A sharp business strategist and operator, Shuchir translates ambitious creative ideas into scalable, commercially efficient campaigns. His expertise spans brand strategy, multi-city execution, client partnerships, and growth — ensuring every mandate is both creatively compelling and business-effective.",
-    img: "/founders/Shuchir.webp",
+    img: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/founders-Shuchir.webp",
     href: "https://shuchir.com/",
   },
   {
     name: "Anjali Batra",
     role: "Co-Founder – Creative & Experience",
     copy: "The creative engine behind Anthem's most iconic work, Anjali brings a consumer-first lens and an instinct for culture. From conceptualising immersive brand worlds to bringing a vision into reality, she ensures every experience feels intentional, premium, and deeply resonant.",
-    img: "/founders/Anjali-Batra.webp",
+    img: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/founders-Anjali-Batra.webp",
     href: undefined,
   },
 ];
@@ -55,7 +55,7 @@ export default function Founders() {
                     }`}
                   >
                     <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden rounded-xl">
-                      <Image src={f.img} alt={f.name} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" unoptimized />
+                      <Image src={f.img} alt={f.name} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" />
                     </div>
                     <div>
                       <span className="font-body text-xs uppercase tracking-[0.25em] text-accent">

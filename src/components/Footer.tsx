@@ -39,7 +39,7 @@ export default function Footer() {
           <div className="flex flex-col items-center gap-2 sm:items-start">
             <Link href="/" className="flex items-center">
               <Image
-                src="/logo.webp"
+                src="https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/logo.webp"
                 alt="Anthem"
                 width={3000}
                 height={2250}

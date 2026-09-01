@@ -50,7 +50,7 @@ export default function Navbar() {
       <nav className="container-x flex min-h-18 items-center justify-between py-2">
         <Link href="/" className="group flex items-center">
           <Image
-            src="/logo.webp"
+            src="https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/logo.webp"
             alt="Anthem"
             width={3000}
             height={2250}

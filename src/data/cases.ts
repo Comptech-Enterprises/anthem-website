@@ -67,7 +67,7 @@ export const cases: CaseStudy[] = [
       { value: "500+", label: "Senior leaders" },
       { value: "3-day", label: "Multi-format experience" },
     ],
-    media: ["/projects/BCG/3.webp", "/projects/BCG/2.webp", "/projects/BCG/4.webp", "/projects/BCG/5.webp"],
+    media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-BCG-3.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-BCG-2.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-BCG-4.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-BCG-5.webp"],
   },
   // 3. Don Julio (Tequila IP)
   {
@@ -92,7 +92,7 @@ export const cases: CaseStudy[] = [
       { value: "2,000+", label: "Attendees" },
       { value: "5M+", label: "Reach (2026)" },
     ],
-    media: ["/projects/don-julio/1.webp", "/projects/don-julio/2.webp", "/projects/don-julio/3.webp", "/projects/don-julio/4.webp"],
+    media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-don-julio-1.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-don-julio-2.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-don-julio-3.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-don-julio-4.webp"],
   },
   // 4. ARKS Store Launch (Fashion / Retail Launch - Non-Alcohol)
   {
@@ -118,7 +118,7 @@ export const cases: CaseStudy[] = [
       { value: "1", label: "Flagship store launch in Delhi" },
       { value: "5,000+", label: "People queued for the launch" },
     ],
-    media: ["/projects/ARKS/1.webp", "/projects/ARKS/2.webp", "/projects/ARKS/3.webp"],
+    media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-ARKS-1.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-ARKS-2.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-ARKS-3.webp"],
   },
   // 5. Johnnie Walker Whisky Experiments (Whisky IP)
   {
@@ -287,7 +287,7 @@ export const cases: CaseStudy[] = [
       { value: "80+", label: "Media, PR & top HNIs" },
       { value: "1", label: "Mumbai experience" },
     ],
-    media: ["/projects/Hendrick-Gin/2.webp", "/projects/Hendrick-Gin/1.webp", "/projects/Hendrick-Gin/3.webp"],
+    media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-Hendrick-Gin-2.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-Hendrick-Gin-1.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-Hendrick-Gin-3.webp"],
   },
   // 11. Por Amor Potluck (Creator Series)
   {
@@ -340,7 +340,7 @@ export const cases: CaseStudy[] = [
       { value: "10.5M+", label: "Social reach" },
       { value: "180+", label: "Attendees" },
     ],
-    media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/serious-eaters-club-1.webp", "/projects/Toki-Dinners/2.webp", "/projects/Toki-Dinners/3.webp", "/projects/Toki-Dinners/4.webp"],
+    media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/serious-eaters-club-1.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-Toki-Dinners-2.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-Toki-Dinners-3.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-Toki-Dinners-4.webp"],
   },
   // 13. Roku Gin (Japanese Craft / Nature IP)
   {

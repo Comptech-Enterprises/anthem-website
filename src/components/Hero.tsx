@@ -11,12 +11,14 @@ import {
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 
+const R2 = "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads";
+
 const slides = [
-  "/sliders/1.webp",
-  "/sliders/2.webp",
-  "/sliders/10.webp",
-  "/sliders/11.webp",
-  "/sliders/12.webp",
+  `${R2}/sliders-1.webp`,
+  `${R2}/sliders-2.webp`,
+  `${R2}/sliders-10.webp`,
+  `${R2}/sliders-11.webp`,
+  `${R2}/sliders-12.webp`,
 ];
 
 const words = ["We", "Build", "Moments", "People", "Remember"];
@@ -172,13 +174,13 @@ export default function Hero() {
                   alt=""
                   fill
                   className={`object-cover ${
-                    slides[slide] === "/sliders/2.webp"
+                    slides[slide] === `${R2}/sliders-2.webp`
                       ? "object-top"
-                      : slides[slide] === "/sliders/12.webp"
+                      : slides[slide] === `${R2}/sliders-12.webp`
                         ? "object-right sm:object-center"
                         : "object-center"
                   }`}
-                  unoptimized
+                  sizes="100vw"
                   priority
                 />
               </motion.div>

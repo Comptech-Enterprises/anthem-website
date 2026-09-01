@@ -256,7 +256,6 @@ function MediaCarousel({
                 fill
                 sizes="(max-width: 1024px) 100vw, 70vw"
                 className={fixedAspect ? "object-cover" : "object-contain"}
-                unoptimized
                 draggable={false}
                 onLoad={(e) => {
                   const img = e.currentTarget;

@@ -6,14 +6,14 @@ import AnimatedHeading from "./AnimatedHeading";
 import Image from "next/image";
 
 const cards = [
-  { title: "Owned IPs", href: "/services#owned-ips", img: "/what-we-do/owned-ip.webp" },
-  { title: "Events", href: "/services#events", img: "/what-we-do/events.webp" },
+  { title: "Owned IPs", href: "/services#owned-ips", img: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/what-we-do-owned-ip.webp" },
+  { title: "Events", href: "/services#events", img: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/what-we-do-events.webp" },
   {
     title: "Experiential Brand Activation",
     href: "/services#experiential",
-    img: "/what-we-do/brand-activation.webp",
+    img: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/what-we-do-brand-activation.webp",
   },
-  { title: "Digital", href: "/services#digital", img: "/what-we-do/digital.webp" },
+  { title: "Digital", href: "/services#digital", img: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/what-we-do-digital.webp" },
 ];
 
 export default function WhatWeDo() {
