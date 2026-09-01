@@ -1,0 +1,25 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: 13.234.21.123
+          username: ec2-user
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd ~/anthem-website
+            git pull
+            docker build -t anthem-website .
+            docker stop anthem 2>/dev/null || true
+            docker rm anthem 2>/dev/null || true
+            docker run -d --name anthem -p 3000:3000 --restart unless-stopped anthem-website
+            sleep 5
+            curl -sf http://localhost:3000 > /dev/null && echo "Deploy OK" || echo "Deploy FAILED"
