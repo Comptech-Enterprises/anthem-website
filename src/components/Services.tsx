@@ -31,7 +31,7 @@ const ownedIp = [
     highlight: "Digital & Experiential Platform",
     summary:
       "India's leading food and drink culture platform that brings together stories, experiences and conversations shaping how India eats, drinks and goes out.",
-    href: "https://food-talk-india.vercel.app/",
+    href: "https://foodtalk.in/",
     external: true,
     bg: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/food-talk-bg.webp",
     glow: "rgba(235, 94, 85, 0.15)",
