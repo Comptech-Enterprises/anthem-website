@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import ScrollProgress from "@/components/ScrollProgress";
 import SmoothScroll from "@/components/SmoothScroll";
-import ChatWidget from "@/components/ChatWidget";
 import JobApplication from "@/components/JobApplication";
 import Footer from "@/components/Footer";
 
@@ -22,7 +21,6 @@ export default function CareersPage() {
         <JobApplication />
       </main>
       <Footer />
-      <ChatWidget />
     </>
   );
 }

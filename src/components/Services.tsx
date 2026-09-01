@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
@@ -28,23 +29,33 @@ const ownedIp = [
     tag: "Media Platform",
     name: "Food Talk",
     title: "Food Talk India",
+    logo: "/food-talk.webp",
+    highlight: "Digital & Experiential Platform",
     summary:
       "India's leading food and drink culture platform that brings together stories, experiences and conversations shaping how India eats, drinks and goes out.",
     href: "https://food-talk-india.vercel.app/",
     external: true,
+    bg: undefined as string | undefined,
+    glow: "rgba(235, 94, 85, 0.15)",
   },
   {
-    tag: "Live Festival",
+    tag: "Live Festival IP",
     name: "The Anthem",
     title: "Explorers Club",
+    logo: "/EC.webp",
+    bg: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/explorers-club.webp",
+    highlight: "1.5L+ Attendees · 3 Cities",
     summary:
       "A lifestyle and culture-led experiential IP built around spirits, flavour, food, music and more. What started as an experience has grown into a culture-led platform, attracting 1.5L+ attendees across 3 cities and building a community around discovery, connection and culture.",
     href: undefined as string | undefined,
     external: false,
+    glow: "rgba(139, 127, 232, 0.18)",
   },
 ];
 
 export default function Services() {
+  const [activeIp, setActiveIp] = useState<string | null>(null);
+
   return (
     <section id="work" className="relative overflow-hidden pt-40 pb-28 sm:pt-48 sm:pb-36">
       {/* drifting ambient glows */}
@@ -98,48 +109,137 @@ export default function Services() {
           className="mb-24 grid gap-6 sm:grid-cols-2"
         >
           {ownedIp.map((ip) => {
-            const inner = (
-              <>
-                <span className="absolute top-6 right-6 z-10 rounded-full border border-border/70 bg-background/60 px-3 py-1 font-body text-[10px] uppercase tracking-[0.14em] text-muted-2">
-                  {ip.tag}
-                </span>
-                <div className="relative flex flex-1 flex-col pt-8">
-                  <h3 className="font-display text-xl font-semibold sm:text-2xl">
-                    {ip.title}
-                  </h3>
-                  <p className="mt-3 font-body text-sm leading-relaxed text-muted">
-                    {ip.summary}
-                  </p>
-
-                  {ip.href && (
-                    <span className="mt-auto flex items-center gap-2 border-t border-border/50 pt-7 font-body text-sm font-medium text-accent">
-                      Visit
-                      <span className="transition-transform duration-300 group-hover:translate-x-1">
-                        →
-                      </span>
-                    </span>
-                  )}
-                </div>
-              </>
-            );
-
-            const cardClass =
-              "group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface/60 p-7 backdrop-blur-sm transition-colors duration-300 hover:border-accent/50 hover:shadow-[0_28px_80px_-32px_var(--accent-glow)] sm:p-8";
+            const isRevealed = activeIp === ip.title;
 
             return (
               <motion.article key={ip.title} variants={cardVariants}>
-                {ip.href ? (
-                  <a
-                    href={ip.href}
-                    target={ip.external ? "_blank" : undefined}
-                    rel={ip.external ? "noopener noreferrer" : undefined}
-                    className={cardClass}
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => {
+                    setActiveIp((prev) => (prev === ip.title ? null : ip.title));
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setActiveIp((prev) => (prev === ip.title ? null : ip.title));
+                    }
+                  }}
+                  className={`group relative flex h-full min-h-[280px] cursor-pointer flex-col overflow-hidden rounded-2xl border bg-surface/60 p-7 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_28px_80px_-32px_var(--accent-glow)] sm:min-h-[300px] sm:p-8 ${
+                    isRevealed
+                      ? "-translate-y-1 border-accent/50 shadow-[0_28px_80px_-32px_var(--accent-glow)]"
+                      : "border-border"
+                  }`}
+                >
+                  {/* hover background image */}
+                  {ip.bg && (
+                    <div
+                      aria-hidden
+                      className={`pointer-events-none absolute inset-0 z-0 transition-opacity duration-500 group-hover:opacity-30 ${
+                        isRevealed ? "opacity-30" : "opacity-0"
+                      }`}
+                    >
+                      <Image src={ip.bg} alt="" fill unoptimized className="object-cover" />
+                    </div>
+                  )}
+
+                  {/* logo — visible normally, blurs & scales out smoothly on hover or when clicked on mobile */}
+                  {ip.logo && (
+                    <div
+                      aria-hidden
+                      className={`pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden transition-all duration-500 ease-out group-hover:scale-90 group-hover:opacity-0 group-hover:blur-[2px] ${
+                        isRevealed ? "scale-90 opacity-0 blur-[2px]" : "opacity-100"
+                      }`}
+                    >
+                      <Image
+                        src={ip.logo}
+                        alt={ip.title}
+                        fill
+                        unoptimized
+                        className="object-contain p-10 sm:p-14"
+                      />
+                    </div>
+                  )}
+
+                  {/* hover/active spotlight */}
+                  <div
+                    aria-hidden
+                    className={`pointer-events-none absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full blur-2xl transition-opacity duration-500 group-hover:opacity-100 ${
+                      isRevealed ? "opacity-100" : "opacity-0"
+                    }`}
+                    style={{ background: "radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)" }}
+                  />
+
+                  {/* sheen sweep */}
+                  <div
+                    aria-hidden
+                    className={`pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.06] to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full ${
+                      isRevealed ? "translate-x-full" : "-translate-x-full"
+                    }`}
+                  />
+
+                  {/* corner tag */}
+                  <span
+                    className={`absolute top-6 right-6 z-10 rounded-full border bg-background/60 px-3 py-1 font-body text-[10px] uppercase tracking-[0.14em] backdrop-blur-md transition-colors duration-300 group-hover:border-accent/50 group-hover:text-accent ${
+                      isRevealed
+                        ? "border-accent/50 text-accent"
+                        : "border-border/70 text-muted-2"
+                    }`}
                   >
-                    {inner}
-                  </a>
-                ) : (
-                  <div className={cardClass}>{inner}</div>
-                )}
+                    {ip.tag}
+                  </span>
+
+                  {/* content body — reveals with staggered rise animation on hover or on click/mobile */}
+                  <div className="relative z-10 flex flex-1 flex-col pt-8">
+                    <h3
+                      className={`font-display text-xl font-semibold transition-all duration-400 ease-out group-hover:translate-y-0 group-hover:opacity-100 sm:text-2xl ${
+                        isRevealed ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+                      }`}
+                    >
+                      {ip.title}
+                    </h3>
+
+                    <p
+                      className={`mt-3 font-body text-sm leading-relaxed text-muted transition-all duration-500 delay-75 ease-out group-hover:translate-y-0 group-hover:opacity-100 ${
+                        isRevealed ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                      }`}
+                    >
+                      {ip.summary}
+                    </p>
+
+                    {ip.href && (
+                      <div className="mt-auto pt-7">
+                        {isRevealed ? (
+                          <a
+                            href={ip.href}
+                            target={ip.external ? "_blank" : undefined}
+                            rel={ip.external ? "noopener noreferrer" : undefined}
+                            onClick={(e) => e.stopPropagation()}
+                            className="inline-flex items-center gap-2 border-t border-border/50 pt-3 font-body text-sm font-medium text-accent transition-all duration-300 hover:text-accent-glow"
+                          >
+                            Visit website
+                            <span className="transition-transform duration-300 group-hover:translate-x-1.5">
+                              →
+                            </span>
+                          </a>
+                        ) : (
+                          <a
+                            href={ip.href}
+                            target={ip.external ? "_blank" : undefined}
+                            rel={ip.external ? "noopener noreferrer" : undefined}
+                            onClick={(e) => e.stopPropagation()}
+                            className="hidden sm:inline-flex items-center gap-2 border-t border-border/50 pt-3 font-body text-sm font-medium text-accent opacity-0 translate-y-3 transition-all duration-500 delay-150 ease-out group-hover:translate-y-0 group-hover:opacity-100 hover:text-accent-glow"
+                          >
+                            Visit website
+                            <span className="transition-transform duration-300 group-hover:translate-x-1.5">
+                              →
+                            </span>
+                          </a>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
               </motion.article>
             );
           })}
@@ -171,13 +271,19 @@ export default function Services() {
                 aria-label={`Read the ${c.title} case study`}
                 className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface/60 p-7 backdrop-blur-sm transition-colors duration-300 hover:border-accent/50 hover:shadow-[0_28px_80px_-32px_var(--accent-glow)] sm:p-8"
               >
-                {/* hover background image */}
+                {/* background image */}
                 {c.media[0] && (
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute inset-0 z-0 opacity-0 transition-opacity duration-500 group-hover:opacity-15"
+                    className="pointer-events-none absolute inset-0 z-0 opacity-15 transition-opacity duration-500 group-hover:opacity-30"
                   >
-                    <Image src={c.media[0]} alt="" fill unoptimized className="object-cover" />
+                    <Image
+                      src={c.media[0]}
+                      alt=""
+                      fill
+                      unoptimized
+                      className={`object-cover ${c.bgPosition || "object-center"}`}
+                    />
                   </div>
                 )}
 
