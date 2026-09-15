@@ -123,7 +123,7 @@ export default function Hero() {
         >
           {[
             { text: "Anthem is an ", highlight: false },
-            { text: "integrated marketing agency", highlight: true },
+            { text: "experiential marketing agency", highlight: true },
             { text: " that builds ideas people don’t just see, but ", highlight: false },
             { text: "get to live", highlight: true },
             { text: ". From large-scale festivals and brand activations to creator-led campaigns and ", highlight: false },
