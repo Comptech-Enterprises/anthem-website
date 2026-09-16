@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { useInView } from "@/hooks/useInView";
 import Reveal from "./Reveal";
 
 const stats = [
@@ -12,8 +12,7 @@ const stats = [
 ];
 
 function Counter({ value, suffix }: { value: number; suffix: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [ref, inView] = useInView<HTMLSpanElement>({ threshold: 0.5, rootMargin: "-80px" });
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
@@ -24,7 +23,6 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
     const tick = (t: number) => {
       if (start === null) start = t;
       const progress = Math.min((t - start) / duration, 1);
-      // easeOutCubic
       const eased = 1 - Math.pow(1 - progress, 3);
       setDisplay(Math.round(value * eased));
       if (progress < 1) raf = requestAnimationFrame(tick);

@@ -1,8 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
 import AnimatedHeading from "./AnimatedHeading";
 import Reveal from "./Reveal";
 
@@ -16,7 +15,7 @@ const testimonials = [
   },
   {
     quote:
-      "Over the years, Anthem has become an extension of our own team. What I value most is that they’re not afraid to speak their mind. They challenge our thinking, push our ideas and help us take them in the right direction.",
+      "Over the years, Anthem has become an extension of our own team. What I value most is that they're not afraid to speak their mind. They challenge our thinking, push our ideas and help us take them in the right direction.",
     name: "Inderpreet Singh Sethi",
     org: "Marketing Lead, Diageo India",
     img: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/testimonials-diageo.webp",
@@ -25,27 +24,30 @@ const testimonials = [
 
 const AUTOPLAY_MS = 5000;
 
-// direction-aware slide + fade
-const variants = {
-  enter: (dir: number) => ({ opacity: 0, x: dir > 0 ? 80 : -80 }),
-  center: { opacity: 1, x: 0 },
-  exit: (dir: number) => ({ opacity: 0, x: dir > 0 ? -80 : 80 }),
-};
-
 export default function Testimonials() {
-  const [[index, dir], setState] = useState<[number, number]>([0, 1]);
+  const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const progressRef = useRef<HTMLSpanElement>(null);
 
-  const go = useCallback((next: number, direction: number) => {
+  const go = useCallback((next: number) => {
     const len = testimonials.length;
-    setState([(next + len) % len, direction]);
+    setIndex(((next % len) + len) % len);
   }, []);
 
   useEffect(() => {
     if (paused) return;
-    const id = setInterval(() => go(index + 1, 1), AUTOPLAY_MS);
+    const id = setInterval(() => go(index + 1), AUTOPLAY_MS);
     return () => clearInterval(id);
   }, [index, paused, go]);
+
+  // Restart progress animation on index change
+  useEffect(() => {
+    const el = progressRef.current;
+    if (!el) return;
+    el.style.animation = "none";
+    void el.offsetHeight;
+    el.style.animation = `autoplay-fill ${AUTOPLAY_MS}ms linear forwards`;
+  }, [index, paused]);
 
   const t = testimonials[index];
 
@@ -75,9 +77,7 @@ export default function Testimonials() {
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            {/* slider stage */}
             <div className="relative overflow-hidden rounded-3xl border border-border bg-surface px-6 py-12 sm:px-16 sm:py-16">
-              {/* ambient glow */}
               <div className="pointer-events-none absolute -right-20 -top-20 hidden h-64 w-64 rounded-full bg-accent/10 blur-[100px] sm:block" />
 
               <span className="block font-display text-6xl leading-none text-accent/40">
@@ -85,24 +85,22 @@ export default function Testimonials() {
               </span>
 
               <div className="relative min-h-[16rem] sm:min-h-[11rem]">
-                <AnimatePresence mode="wait" custom={dir}>
-                  <motion.div
-                    key={index}
-                    custom={dir}
-                    variants={variants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                {testimonials.map((item, i) => (
+                  <div
+                    key={i}
+                    className={`testimonial-slide ${
+                      i === index ? "active" : i < index ? "prev" : ""
+                    }`}
+                    aria-hidden={i !== index}
                   >
                     <blockquote className="max-w-4xl font-display text-lg font-medium leading-snug text-foreground sm:text-2xl">
-                      {t.quote}
+                      {item.quote}
                     </blockquote>
                     <figcaption className="mt-8 flex items-center gap-4">
                       <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-border bg-background">
                         <Image
-                          src={t.img}
-                          alt={t.org}
+                          src={item.img}
+                          alt={item.org}
                           fill
                           sizes="48px"
                           className="object-contain p-1.5"
@@ -110,35 +108,33 @@ export default function Testimonials() {
                       </div>
                       <div>
                         <p className="font-display text-base font-semibold">
-                          {t.name}
+                          {item.name}
                         </p>
-                        <p className="font-body text-sm text-muted-2">{t.org}</p>
+                        <p className="font-body text-sm text-muted-2">{item.org}</p>
                       </div>
                     </figcaption>
-                  </motion.div>
-                </AnimatePresence>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* controls */}
             <div className="mt-8 flex items-center justify-between">
-              {/* dots + autoplay progress */}
               <div className="flex items-center gap-2.5">
                 {testimonials.map((_, i) => (
                   <button
                     key={i}
                     aria-label={`Go to testimonial ${i + 1}`}
-                    onClick={() => go(i, i > index ? 1 : -1)}
+                    onClick={() => go(i)}
                     className="group relative h-2 overflow-hidden rounded-full bg-surface-3 transition-all"
                     style={{ width: i === index ? 40 : 10 }}
                   >
                     {i === index && !paused && (
-                      <motion.span
-                        key={index}
+                      <span
+                        ref={i === index ? progressRef : undefined}
                         className="absolute inset-0 origin-left rounded-full bg-accent"
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        transition={{ duration: AUTOPLAY_MS / 1000, ease: "linear" }}
+                        style={{
+                          animation: `autoplay-fill ${AUTOPLAY_MS}ms linear forwards`,
+                        }}
                       />
                     )}
                     {i === index && paused && (
@@ -148,18 +144,17 @@ export default function Testimonials() {
                 ))}
               </div>
 
-              {/* arrows */}
               <div className="flex gap-3">
                 <button
                   aria-label="Previous"
-                  onClick={() => go(index - 1, -1)}
+                  onClick={() => go(index - 1)}
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:border-accent hover:text-accent"
                 >
                   ←
                 </button>
                 <button
                   aria-label="Next"
-                  onClick={() => go(index + 1, 1)}
+                  onClick={() => go(index + 1)}
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:border-accent hover:text-accent"
                 >
                   →

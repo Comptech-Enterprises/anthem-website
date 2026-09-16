@@ -1,11 +1,5 @@
 "use client";
 
-import {
-  motion,
-  AnimatePresence,
-  useScroll,
-  useTransform,
-} from "framer-motion";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 
@@ -33,24 +27,10 @@ const segments = [
   { text: ".", highlight: false },
 ];
 
-function useIsMobile() {
-  const [mobile, setMobile] = useState(false);
-  useEffect(() => {
-    setMobile(window.innerWidth < 640);
-  }, []);
-  return mobile;
-}
-
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
-  const isMobile = useIsMobile();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], [0, isMobile ? 0 : 160]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const bandY = useTransform(scrollYProgress, [0, 1], [0, isMobile ? 0 : -80]);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const bandRef = useRef<HTMLDivElement>(null);
 
   const [slide, setSlide] = useState(0);
 
@@ -59,14 +39,34 @@ export default function Hero() {
     return () => clearInterval(t);
   }, []);
 
-  const descContent = segments.map((segment, i) => (
-    <span
-      key={i}
-      className={segment.highlight ? "text-gradient font-medium" : ""}
-    >
-      {segment.text}
-    </span>
-  ));
+  // Scroll parallax — vanilla JS
+  useEffect(() => {
+    const section = ref.current;
+    const content = contentRef.current;
+    const band = bandRef.current;
+    if (!section) return;
+    const isMobile = window.innerWidth < 640;
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking || isMobile) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const rect = section.getBoundingClientRect();
+        const progress = Math.max(0, Math.min(1, -rect.top / rect.height));
+        if (content) {
+          content.style.transform = `translateY(${progress * 160}px)`;
+          content.style.opacity = `${1 - progress * 1.25}`;
+        }
+        if (band) {
+          band.style.transform = `translateY(${progress * -80}px)`;
+        }
+        ticking = false;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <section
@@ -74,7 +74,6 @@ export default function Hero() {
       ref={ref}
       className="relative flex min-h-screen flex-col justify-start overflow-hidden pt-28 pb-16 sm:justify-center sm:pt-32"
     >
-      {/* ambient glows — static, smaller on mobile */}
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/4 top-10 h-[20rem] w-[20rem] -translate-x-1/2 rounded-full bg-accent/20 blur-[80px] sm:h-[34rem] sm:w-[34rem] sm:blur-[150px]"
@@ -85,7 +84,6 @@ export default function Hero() {
         style={{ background: "rgba(108,92,231,0.15)" }}
       />
 
-      {/* grid overlay — desktop only */}
       <div
         aria-hidden
         style={{
@@ -96,138 +94,62 @@ export default function Hero() {
         className="pointer-events-none absolute -inset-10 opacity-[0.05] hidden sm:block"
       />
 
-      <motion.div
-        style={isMobile ? undefined : { y, opacity }}
+      <div
+        ref={contentRef}
         className="container-x relative z-10 flex flex-col items-center text-center"
       >
         <h1 className="mx-auto max-w-5xl font-display text-5xl font-extrabold leading-[0.95] tracking-tight sm:text-7xl lg:text-[7rem]">
-          {words.map((w, i) =>
-            isMobile ? (
-              <span key={w} className="inline-block overflow-hidden pb-[0.12em] align-bottom">
-                <span className={`mr-4 inline-block hero-word hero-word-${i} ${w === "Moments" ? "text-gradient" : ""}`}>
-                  {w}
-                </span>
+          {words.map((w, i) => (
+            <span key={w} className="inline-block overflow-hidden pb-[0.12em] align-bottom">
+              <span className={`mr-4 inline-block hero-word hero-word-${i} ${w === "Moments" ? "text-gradient" : ""}`}>
+                {w}
               </span>
-            ) : (
-              <span key={w} className="inline-block overflow-hidden pb-[0.12em] align-bottom">
-                <motion.span
-                  initial={{ y: "115%" }}
-                  animate={{ y: 0 }}
-                  transition={{
-                    duration: 0.9,
-                    delay: 0.3 + i * 0.12,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                  className={`mr-4 inline-block ${w === "Moments" ? "text-gradient" : ""}`}
-                >
-                  {w}
-                </motion.span>
-              </span>
-            )
-          )}
+            </span>
+          ))}
         </h1>
 
-        {isMobile ? (
-          <p className="hero-desc mt-8 max-w-2xl font-body text-lg leading-relaxed text-muted">
-            {descContent}
-          </p>
-        ) : (
-          <motion.p className="mt-8 max-w-2xl font-body text-lg leading-relaxed text-muted">
-            {segments.map((segment, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: 1.0 + i * 0.08,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className={segment.highlight ? "text-gradient font-medium" : ""}
-              >
-                {segment.text}
-              </motion.span>
-            ))}
-          </motion.p>
-        )}
-      </motion.div>
+        <p className="hero-desc mt-8 max-w-2xl font-body text-lg leading-relaxed text-muted">
+          {segments.map((segment, i) => (
+            <span
+              key={i}
+              className={segment.highlight ? "text-gradient font-medium" : ""}
+            >
+              {segment.text}
+            </span>
+          ))}
+        </p>
+      </div>
 
       {/* cinematic image band */}
-      {isMobile ? (
-        <div className="hero-band container-x relative z-10 mt-16">
-          <div className="relative overflow-hidden rounded-3xl border border-border bg-surface-2">
-            <div className="relative aspect-[3/4] w-full overflow-hidden">
-              <AnimatePresence mode="sync">
-                <motion.div
-                  key={slide}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="absolute inset-0"
-                >
-                  <Image
-                    src={slides[slide]}
-                    alt=""
-                    fill
-                    className={`object-cover ${
-                      slides[slide] === `${R2}/sliders-2.webp`
-                        ? "object-top"
-                        : slides[slide] === `${R2}/sliders-12.webp`
-                          ? "object-right"
-                          : "object-center"
-                    }`}
-                    sizes="100vw"
-                    priority={slide === 0}
-                  />
-                </motion.div>
-              </AnimatePresence>
-              <div className="pointer-events-none absolute inset-0 bg-black/30" />
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-6" />
-            </div>
+      <div ref={bandRef} className="hero-band container-x relative z-10 mt-16">
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-surface-2">
+          <div className="relative aspect-[3/4] w-full overflow-hidden sm:aspect-[21/9]">
+            {slides.map((src, i) => (
+              <div
+                key={src}
+                className={`carousel-slide ${i === slide ? "active" : ""}`}
+              >
+                <Image
+                  src={src}
+                  alt=""
+                  fill
+                  className={`object-cover ${
+                    src === `${R2}/sliders-2.webp`
+                      ? "object-top"
+                      : src === `${R2}/sliders-12.webp`
+                        ? "object-right sm:object-center"
+                        : "object-center"
+                  }`}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 80vw"
+                  priority={i === 0}
+                />
+              </div>
+            ))}
+            <div className="pointer-events-none absolute inset-0 bg-black/30" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-6 sm:p-8" />
           </div>
         </div>
-      ) : (
-        <motion.div
-          style={{ y: bandY }}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="container-x relative z-10 mt-16"
-        >
-          <div className="relative overflow-hidden rounded-3xl border border-border bg-surface-2">
-            <div className="relative aspect-[21/9] w-full overflow-hidden">
-              <AnimatePresence mode="sync">
-                <motion.div
-                  key={slide}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 1 }}
-                  className="absolute inset-0"
-                >
-                  <Image
-                    src={slides[slide]}
-                    alt=""
-                    fill
-                    className={`object-cover ${
-                      slides[slide] === `${R2}/sliders-2.webp`
-                        ? "object-top"
-                        : slides[slide] === `${R2}/sliders-12.webp`
-                          ? "object-center"
-                          : "object-center"
-                    }`}
-                    sizes="(max-width: 1024px) 90vw, 80vw"
-                    priority={slide === 0}
-                  />
-                </motion.div>
-              </AnimatePresence>
-              <div className="pointer-events-none absolute inset-0 bg-black/30" />
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-6 sm:p-8" />
-            </div>
-          </div>
-        </motion.div>
-      )}
+      </div>
     </section>
   );
 }

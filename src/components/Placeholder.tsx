@@ -1,17 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 type PlaceholderProps = {
   label?: string;
   className?: string;
-  ratio?: string; // e.g. "aspect-video", "aspect-square"
+  ratio?: string;
 };
 
-/**
- * Image placeholder — animated shimmer block used everywhere real photography
- * will eventually go. Keeps the dark, premium look with the violet accent.
- */
 export default function Placeholder({
   label = "Image",
   className = "",
@@ -21,7 +15,6 @@ export default function Placeholder({
     <div
       className={`relative overflow-hidden rounded-2xl border border-border bg-surface-2 ${ratio} ${className}`}
     >
-      {/* diagonal grid */}
       <div
         className="absolute inset-0 opacity-[0.15]"
         style={{
@@ -30,15 +23,13 @@ export default function Placeholder({
           backgroundSize: "22px 22px",
         }}
       />
-      {/* moving shimmer */}
-      <motion.div
+      <div
         className="absolute inset-0"
         style={{
           background:
             "linear-gradient(105deg, transparent 30%, rgba(139,127,232,0.18) 50%, transparent 70%)",
+          animation: "shimmer-sweep 2.4s ease-in-out infinite",
         }}
-        animate={{ x: ["-120%", "120%"] }}
-        transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
       />
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center">
         <svg
