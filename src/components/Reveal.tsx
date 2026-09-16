@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import type { ReactNode } from "react";
+import { useRef, useEffect, useState, type ReactNode } from "react";
 
 type RevealProps = {
   children: ReactNode;
@@ -13,7 +13,14 @@ type RevealProps = {
   from?: "up" | "down" | "left" | "right";
 };
 
-/** Scroll-triggered reveal — fade + rise + soft blur, with cinematic easing. */
+function useIsMobile() {
+  const [mobile, setMobile] = useState(false);
+  useEffect(() => {
+    setMobile(window.innerWidth < 640);
+  }, []);
+  return mobile;
+}
+
 export default function Reveal({
   children,
   className = "",
@@ -23,6 +30,38 @@ export default function Reveal({
   blur = true,
   from = "up",
 }: RevealProps) {
+  const isMobile = useIsMobile();
+  const cssRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isMobile || !cssRef.current) return;
+    const el = cssRef.current;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add("in-view");
+          if (once) observer.disconnect();
+        }
+      },
+      { threshold: 0.15 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [isMobile, once]);
+
+  if (isMobile) {
+    const dirClass = from === "up" ? "" : `css-reveal-${from}`;
+    return (
+      <div
+        ref={cssRef}
+        className={`css-reveal ${dirClass} ${className}`}
+        style={delay > 0 ? { animationDelay: `${delay}s` } : undefined}
+      >
+        {children}
+      </div>
+    );
+  }
+
   const offset: Record<string, { x?: number; y?: number }> = {
     up: { y },
     down: { y: -y },
