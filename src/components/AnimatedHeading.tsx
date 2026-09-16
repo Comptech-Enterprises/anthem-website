@@ -59,8 +59,7 @@ export default function AnimatedHeading({
         >
           <span
             data-hw
-            className={`inline-block ${hi.has(clean(w)) ? "text-gradient" : ""}`}
-            style={{ transform: "translateY(115%)" }}
+            className={`inline-block heading-word-hide ${hi.has(clean(w)) ? "text-gradient" : ""}`}
           >
             {w}
           </span>

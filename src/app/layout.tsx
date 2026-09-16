@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Poppins, Roboto, Playwrite_NZ_Basic } from "next/font/google";
 import "./globals.css";
 
@@ -40,7 +41,13 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${poppins.variable} ${roboto.variable} ${playwrite.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        <Script id="js-detect" strategy="beforeInteractive">
+          {`document.documentElement.classList.add('js')`}
+        </Script>
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         {children}
       </body>

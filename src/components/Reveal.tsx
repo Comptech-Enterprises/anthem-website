@@ -14,13 +14,6 @@ type RevealProps = {
 
 const EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
 
-const initialTransform: Record<string, string> = {
-  up: "translateY(24px)",
-  down: "translateY(-24px)",
-  left: "translateX(24px)",
-  right: "translateX(-24px)",
-};
-
 export default function Reveal({
   children,
   className = "",
@@ -33,6 +26,11 @@ export default function Reveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    const offsets: Record<string, string> = {
+      up: "translateY(24px)", down: "translateY(-24px)",
+      left: "translateX(24px)", right: "translateX(-24px)",
+    };
+    el.style.transform = offsets[from];
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -53,8 +51,7 @@ export default function Reveal({
   return (
     <div
       ref={ref}
-      className={className}
-      style={{ opacity: 0, transform: initialTransform[from] }}
+      className={`reveal-hide ${className}`}
     >
       {children}
     </div>

@@ -89,7 +89,11 @@ body {
 
 /* ── Keyframes ─────────────────────────────────────────────────── */
 
-/* Hero/reveal/heading animations are JS-driven (inline styles) for Safari compat */
+/* Initial hidden states — only when JS is available (.js on <html>).
+   Without JS, content renders visible. JS useEffect animates them in. */
+.js .hero-word-hide { transform: translateY(115%); }
+.js .reveal-hide { opacity: 0; }
+.js .heading-word-hide { transform: translateY(115%); }
 
 /* Navbar entrance */
 @keyframes navbar-down {

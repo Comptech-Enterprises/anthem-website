@@ -38,8 +38,9 @@ export default function Hero() {
 
   const [slide, setSlide] = useState(0);
 
-  // Entrance animations — all JS-driven inline styles
   useEffect(() => {
+    if (descRef.current) descRef.current.style.transform = "translateY(10px)";
+    if (bandRef.current) bandRef.current.style.transform = "translateY(10px)";
     const run = () => {
       wordRefs.current.forEach((el, i) => {
         if (!el) return;
@@ -70,7 +71,6 @@ export default function Hero() {
     return () => clearInterval(t);
   }, []);
 
-  // Scroll parallax — vanilla JS
   useEffect(() => {
     const section = ref.current;
     const content = contentRef.current;
@@ -134,8 +134,7 @@ export default function Hero() {
             <span key={w} className="inline-block overflow-hidden pb-[0.12em] align-bottom">
               <span
                 ref={(el) => { wordRefs.current[i] = el; }}
-                className={`mr-4 inline-block ${w === "Moments" ? "text-gradient" : ""}`}
-                style={{ transform: "translateY(115%)" }}
+                className={`mr-4 inline-block hero-word-hide ${w === "Moments" ? "text-gradient" : ""}`}
               >
                 {w}
               </span>
@@ -145,8 +144,7 @@ export default function Hero() {
 
         <p
           ref={descRef}
-          className="mt-8 max-w-2xl font-body text-lg leading-relaxed text-muted"
-          style={{ opacity: 0, transform: "translateY(10px)" }}
+          className="reveal-hide mt-8 max-w-2xl font-body text-lg leading-relaxed text-muted"
         >
           {segments.map((segment, i) => (
             <span
@@ -162,8 +160,7 @@ export default function Hero() {
       {/* cinematic image band */}
       <div
         ref={bandRef}
-        className="container-x relative z-10 mt-16"
-        style={{ opacity: 0, transform: "translateY(10px)" }}
+        className="reveal-hide container-x relative z-10 mt-16"
       >
         <div className="relative overflow-hidden rounded-3xl border border-border bg-surface-2">
           <div className="relative aspect-[3/4] w-full overflow-hidden sm:aspect-[21/9]">
