@@ -3,9 +3,7 @@
 import {
   motion,
   AnimatePresence,
-  useMotionValue,
   useScroll,
-  useSpring,
   useTransform,
 } from "framer-motion";
 import Image from "next/image";
@@ -33,16 +31,6 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const bandY = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
-  // mouse parallax
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const sx = useSpring(mx, { stiffness: 60, damping: 15 });
-  const sy = useSpring(my, { stiffness: 60, damping: 15 });
-  const planeX = useTransform(sx, [-0.5, 0.5], [-40, 40]);
-  const planeY = useTransform(sy, [-0.5, 0.5], [-30, 30]);
-  const gridX = useTransform(sx, [-0.5, 0.5], [24, -24]);
-  const gridY = useTransform(sy, [-0.5, 0.5], [16, -16]);
-
   const [slide, setSlide] = useState(0);
 
   useEffect(() => {
@@ -50,46 +38,32 @@ export default function Hero() {
     return () => clearInterval(t);
   }, []);
 
-  const onMove = (e: React.MouseEvent) => {
-    const r = ref.current?.getBoundingClientRect();
-    if (!r) return;
-    mx.set((e.clientX - r.left) / r.width - 0.5);
-    my.set((e.clientY - r.top) / r.height - 0.5);
-  };
-
   return (
     <section
       id="top"
       ref={ref}
-      onMouseMove={onMove}
       className="relative flex min-h-screen flex-col justify-start overflow-hidden pt-28 pb-16 sm:justify-center sm:pt-32"
     >
-      {/* ambient glows */}
-      <motion.div
+      {/* ambient glows — static on mobile to avoid expensive blur+animate */}
+      <div
         aria-hidden
-        className="pointer-events-none absolute left-1/4 top-10 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-accent/20 blur-[150px]"
-        animate={{ x: [0, 50, 0], y: [0, -30, 0] }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none absolute left-1/4 top-10 h-[20rem] w-[20rem] -translate-x-1/2 rounded-full bg-accent/20 blur-[80px] sm:h-[34rem] sm:w-[34rem] sm:blur-[150px]"
       />
-      <motion.div
+      <div
         aria-hidden
-        className="pointer-events-none absolute right-0 top-1/3 h-[28rem] w-[28rem] rounded-full bg-accent-deep/15 blur-[140px]"
-        animate={{ x: [0, -40, 0], y: [0, 40, 0] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none absolute right-0 top-1/3 h-[16rem] w-[16rem] rounded-full blur-[70px] sm:h-[28rem] sm:w-[28rem] sm:blur-[140px]"
         style={{ background: "rgba(108,92,231,0.15)" }}
       />
 
-      {/* grid overlay with parallax */}
-      <motion.div
+      {/* grid overlay — hidden on mobile */}
+      <div
         aria-hidden
         style={{
-          x: gridX,
-          y: gridY,
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
           backgroundSize: "64px 64px",
         }}
-        className="pointer-events-none absolute -inset-10 opacity-[0.05]"
+        className="pointer-events-none absolute -inset-10 opacity-[0.05] hidden sm:block"
       />
 
       <motion.div
