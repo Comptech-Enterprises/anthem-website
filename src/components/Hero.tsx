@@ -21,15 +21,36 @@ const slides = [
 
 const words = ["We", "Build", "Moments", "People", "Remember"];
 
+const segments = [
+  { text: "Anthem is an ", highlight: false },
+  { text: "experiential marketing agency", highlight: true },
+  { text: " that builds ideas people don't just see, but ", highlight: false },
+  { text: "get to live", highlight: true },
+  { text: ". From large-scale festivals and brand activations to creator-led campaigns and ", highlight: false },
+  { text: "cultural IPs", highlight: true },
+  { text: ", we create work that lives both ", highlight: false },
+  { text: "online and offline", highlight: true },
+  { text: ".", highlight: false },
+];
+
+function useIsMobile() {
+  const [mobile, setMobile] = useState(false);
+  useEffect(() => {
+    setMobile(window.innerWidth < 640);
+  }, []);
+  return mobile;
+}
+
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 160]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, isMobile ? 60 : 160]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const bandY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const bandY = useTransform(scrollYProgress, [0, 1], [0, isMobile ? -30 : -80]);
 
   const [slide, setSlide] = useState(0);
 
@@ -44,7 +65,7 @@ export default function Hero() {
       ref={ref}
       className="relative flex min-h-screen flex-col justify-start overflow-hidden pt-28 pb-16 sm:justify-center sm:pt-32"
     >
-      {/* ambient glows — static on mobile to avoid expensive blur+animate */}
+      {/* ambient glows — static, smaller on mobile */}
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/4 top-10 h-[20rem] w-[20rem] -translate-x-1/2 rounded-full bg-accent/20 blur-[80px] sm:h-[34rem] sm:w-[34rem] sm:blur-[150px]"
@@ -55,7 +76,7 @@ export default function Hero() {
         style={{ background: "rgba(108,92,231,0.15)" }}
       />
 
-      {/* grid overlay — hidden on mobile */}
+      {/* grid overlay — desktop only */}
       <div
         aria-hidden
         style={{
@@ -78,8 +99,8 @@ export default function Hero() {
                 initial={{ y: "115%" }}
                 animate={{ y: 0 }}
                 transition={{
-                  duration: 0.9,
-                  delay: 0.3 + i * 0.12,
+                  duration: isMobile ? 0.5 : 0.9,
+                  delay: isMobile ? 0.1 + i * 0.06 : 0.3 + i * 0.12,
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 className={`mr-4 inline-block ${
@@ -92,44 +113,52 @@ export default function Hero() {
           ))}
         </h1>
 
-        <motion.p
-          className="mt-8 max-w-2xl font-body text-lg leading-relaxed text-muted"
-        >
-          {[
-            { text: "Anthem is an ", highlight: false },
-            { text: "experiential marketing agency", highlight: true },
-            { text: " that builds ideas people don’t just see, but ", highlight: false },
-            { text: "get to live", highlight: true },
-            { text: ". From large-scale festivals and brand activations to creator-led campaigns and ", highlight: false },
-            { text: "cultural IPs", highlight: true },
-            { text: ", we create work that lives both ", highlight: false },
-            { text: "online and offline", highlight: true },
-            { text: ".", highlight: false },
-          ].map((segment, i) => (
-            <motion.span
-              key={i}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: 1.0 + i * 0.08,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className={segment.highlight ? "text-gradient font-medium" : ""}
-            >
-              {segment.text}
-            </motion.span>
-          ))}
-        </motion.p>
+        {isMobile ? (
+          <motion.p
+            className="mt-8 max-w-2xl font-body text-lg leading-relaxed text-muted"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {segments.map((segment, i) => (
+              <span
+                key={i}
+                className={segment.highlight ? "text-gradient font-medium" : ""}
+              >
+                {segment.text}
+              </span>
+            ))}
+          </motion.p>
+        ) : (
+          <motion.p
+            className="mt-8 max-w-2xl font-body text-lg leading-relaxed text-muted"
+          >
+            {segments.map((segment, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 1.0 + i * 0.08,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className={segment.highlight ? "text-gradient font-medium" : ""}
+              >
+                {segment.text}
+              </motion.span>
+            ))}
+          </motion.p>
+        )}
 
       </motion.div>
 
       {/* cinematic image band */}
       <motion.div
         style={{ y: bandY }}
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: isMobile ? 20 : 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: isMobile ? 0.5 : 1, delay: isMobile ? 0.4 : 0.7, ease: [0.16, 1, 0.3, 1] }}
         className="container-x relative z-10 mt-16"
       >
         <div className="relative overflow-hidden rounded-3xl border border-border bg-surface-2">
@@ -140,7 +169,7 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 1 }}
+                transition={{ duration: isMobile ? 0.5 : 1 }}
                 className="absolute inset-0"
               >
                 <Image
