@@ -78,7 +78,7 @@ export default function Testimonials() {
             {/* slider stage */}
             <div className="relative overflow-hidden rounded-3xl border border-border bg-surface px-6 py-12 sm:px-16 sm:py-16">
               {/* ambient glow */}
-              <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent/10 blur-[100px]" />
+              <div className="pointer-events-none absolute -right-20 -top-20 hidden h-64 w-64 rounded-full bg-accent/10 blur-[100px] sm:block" />
 
               <span className="block font-display text-6xl leading-none text-accent/40">
                 &ldquo;
