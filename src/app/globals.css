@@ -94,6 +94,33 @@ body {
   }
 }
 
+/* Hero CSS animations for mobile — no JS dependency, starts instantly */
+@keyframes hero-word-rise {
+  from { transform: translateY(115%); }
+  to { transform: translateY(0); }
+}
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 639px) {
+  .hero-word {
+    animation: hero-word-rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .hero-word-0 { animation-delay: 0.1s; }
+  .hero-word-1 { animation-delay: 0.16s; }
+  .hero-word-2 { animation-delay: 0.22s; }
+  .hero-word-3 { animation-delay: 0.28s; }
+  .hero-word-4 { animation-delay: 0.34s; }
+  .hero-desc {
+    animation: hero-fade-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+  }
+  .hero-band {
+    animation: hero-fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+  }
+}
+
 /* Gradient text — white → lavender → violet → soft pink */
 .text-gradient {
   background: linear-gradient(
