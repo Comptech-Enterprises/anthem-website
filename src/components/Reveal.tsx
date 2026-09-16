@@ -12,6 +12,15 @@ type RevealProps = {
   from?: "up" | "down" | "left" | "right";
 };
 
+const EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
+
+const initialTransform: Record<string, string> = {
+  up: "translateY(24px)",
+  down: "translateY(-24px)",
+  left: "translateX(24px)",
+  right: "translateX(-24px)",
+};
+
 export default function Reveal({
   children,
   className = "",
@@ -27,7 +36,10 @@ export default function Reveal({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.classList.add("in-view");
+          el.style.transition = `opacity 0.6s ${EASE}, transform 0.6s ${EASE}`;
+          el.style.transitionDelay = `${delay}s`;
+          el.style.opacity = "1";
+          el.style.transform = "translate(0)";
           if (once) observer.disconnect();
         }
       },
@@ -35,14 +47,14 @@ export default function Reveal({
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [once]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const dirClass = from === "up" ? "" : `css-reveal-${from}`;
   return (
     <div
       ref={ref}
-      className={`css-reveal ${dirClass} ${className}`}
-      style={delay > 0 ? { animationDelay: `${delay}s` } : undefined}
+      className={className}
+      style={{ opacity: 0, transform: initialTransform[from] }}
     >
       {children}
     </div>

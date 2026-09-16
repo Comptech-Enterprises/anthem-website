@@ -27,12 +27,43 @@ const segments = [
   { text: ".", highlight: false },
 ];
 
+const EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
+
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const bandRef = useRef<HTMLDivElement>(null);
+  const wordRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const descRef = useRef<HTMLParagraphElement>(null);
 
   const [slide, setSlide] = useState(0);
+
+  // Entrance animations — all JS-driven inline styles
+  useEffect(() => {
+    const run = () => {
+      wordRefs.current.forEach((el, i) => {
+        if (!el) return;
+        el.style.transition = `transform 0.7s ${EASE}`;
+        el.style.transitionDelay = `${0.2 + i * 0.1}s`;
+        el.style.transform = "translateY(0)";
+      });
+      if (descRef.current) {
+        const d = descRef.current;
+        d.style.transition = `opacity 0.5s ${EASE}, transform 0.5s ${EASE}`;
+        d.style.transitionDelay = "0.7s";
+        d.style.opacity = "1";
+        d.style.transform = "translateY(0)";
+      }
+      if (bandRef.current) {
+        const b = bandRef.current;
+        b.style.transition = `opacity 0.6s ${EASE}, transform 0.6s ${EASE}`;
+        b.style.transitionDelay = "0.5s";
+        b.style.opacity = "1";
+        b.style.transform = "translateY(0)";
+      }
+    };
+    requestAnimationFrame(() => requestAnimationFrame(run));
+  }, []);
 
   useEffect(() => {
     const t = setInterval(() => setSlide((s) => (s + 1) % slides.length), 2500);
@@ -101,14 +132,22 @@ export default function Hero() {
         <h1 className="mx-auto max-w-5xl font-display text-5xl font-extrabold leading-[0.95] tracking-tight sm:text-7xl lg:text-[7rem]">
           {words.map((w, i) => (
             <span key={w} className="inline-block overflow-hidden pb-[0.12em] align-bottom">
-              <span className={`mr-4 inline-block hero-word hero-word-${i} ${w === "Moments" ? "text-gradient" : ""}`}>
+              <span
+                ref={(el) => { wordRefs.current[i] = el; }}
+                className={`mr-4 inline-block ${w === "Moments" ? "text-gradient" : ""}`}
+                style={{ transform: "translateY(115%)" }}
+              >
                 {w}
               </span>
             </span>
           ))}
         </h1>
 
-        <p className="hero-desc mt-8 max-w-2xl font-body text-lg leading-relaxed text-muted">
+        <p
+          ref={descRef}
+          className="mt-8 max-w-2xl font-body text-lg leading-relaxed text-muted"
+          style={{ opacity: 0, transform: "translateY(10px)" }}
+        >
           {segments.map((segment, i) => (
             <span
               key={i}
@@ -121,7 +160,11 @@ export default function Hero() {
       </div>
 
       {/* cinematic image band */}
-      <div ref={bandRef} className="hero-band container-x relative z-10 mt-16">
+      <div
+        ref={bandRef}
+        className="container-x relative z-10 mt-16"
+        style={{ opacity: 0, transform: "translateY(10px)" }}
+      >
         <div className="relative overflow-hidden rounded-3xl border border-border bg-surface-2">
           <div className="relative aspect-[3/4] w-full overflow-hidden sm:aspect-[21/9]">
             {slides.map((src, i) => (

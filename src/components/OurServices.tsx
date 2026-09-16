@@ -21,10 +21,18 @@ export default function OurServices() {
   useEffect(() => {
     const el = listRef.current;
     if (!el) return;
+    const kids = Array.from(el.children) as HTMLElement[];
+    kids.forEach((child) => {
+      child.style.opacity = "0";
+    });
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.classList.add("in-view");
+          kids.forEach((child, i) => {
+            child.style.transition = `opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1)`;
+            child.style.transitionDelay = `${0.04 * i}s`;
+            child.style.opacity = "1";
+          });
           observer.disconnect();
         }
       },
@@ -50,29 +58,12 @@ export default function OurServices() {
         <Reveal>
           <p
             ref={listRef}
-            className="service-list mx-auto max-w-5xl text-center font-display text-[1.65rem] leading-[1.65] tracking-tight text-foreground sm:text-3xl sm:leading-[1.7] lg:text-4xl lg:leading-[1.7]"
+            className="mx-auto max-w-5xl text-center font-display text-[1.65rem] leading-[1.65] tracking-tight text-foreground sm:text-3xl sm:leading-[1.7] lg:text-4xl lg:leading-[1.7]"
           >
-            {services.map((service, i) => (
+            {services.map((service) => (
               <span
                 key={service.label}
-                className={`${service.bold ? "font-bold" : "font-light"} inline-block opacity-0`}
-                style={{
-                  animation: "none",
-                }}
-                ref={(el) => {
-                  if (!el) return;
-                  const parent = el.closest(".service-list");
-                  if (parent?.classList.contains("in-view")) {
-                    el.style.animation = `service-fade 0.45s cubic-bezier(0.16, 1, 0.3, 1) ${0.04 * i}s both`;
-                  }
-                  const obs = new MutationObserver(() => {
-                    if (parent?.classList.contains("in-view")) {
-                      el.style.animation = `service-fade 0.45s cubic-bezier(0.16, 1, 0.3, 1) ${0.04 * i}s both`;
-                      obs.disconnect();
-                    }
-                  });
-                  if (parent) obs.observe(parent, { attributes: true, attributeFilter: ["class"] });
-                }}
+                className={`${service.bold ? "font-bold" : "font-light"} inline-block`}
               >
                 {service.label}.{" "}
               </span>

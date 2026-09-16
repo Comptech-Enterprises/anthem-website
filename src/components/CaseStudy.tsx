@@ -59,10 +59,20 @@ function StaggerGrid({ className, children }: { className: string; children: Rea
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    const kids = Array.from(el.children) as HTMLElement[];
+    kids.forEach((child) => {
+      child.style.opacity = "0";
+      child.style.transform = "translateY(40px)";
+    });
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.classList.add("in-view");
+          kids.forEach((child, i) => {
+            child.style.transition = "opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
+            child.style.transitionDelay = `${i * 0.08}s`;
+            child.style.opacity = "1";
+            child.style.transform = "translateY(0)";
+          });
           observer.disconnect();
         }
       },
@@ -71,7 +81,7 @@ function StaggerGrid({ className, children }: { className: string; children: Rea
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
-  return <div ref={ref} className={`stagger-grid ${className}`}>{children}</div>;
+  return <div ref={ref} className={className}>{children}</div>;
 }
 
 function VideoSlide({
