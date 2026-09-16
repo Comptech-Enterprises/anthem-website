@@ -121,6 +121,52 @@ body {
   }
 }
 
+/* Mobile scroll-reveal — CSS-only, triggered by IntersectionObserver adding .in-view */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes reveal-down {
+  from { opacity: 0; transform: translateY(-24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes reveal-left {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes reveal-right {
+  from { opacity: 0; transform: translateX(-24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes heading-word-rise {
+  from { transform: translateY(115%); }
+  to { transform: translateY(0); }
+}
+
+@media (max-width: 639px) {
+  .css-reveal {
+    opacity: 0;
+  }
+  .css-reveal.in-view {
+    animation: reveal-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .css-reveal-down.in-view {
+    animation-name: reveal-down;
+  }
+  .css-reveal-left.in-view {
+    animation-name: reveal-left;
+  }
+  .css-reveal-right.in-view {
+    animation-name: reveal-right;
+  }
+  .css-heading-word {
+    transform: translateY(115%);
+  }
+  .css-heading.in-view .css-heading-word {
+    animation: heading-word-rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
 /* Gradient text — white → lavender → violet → soft pink */
 .text-gradient {
   background: linear-gradient(
