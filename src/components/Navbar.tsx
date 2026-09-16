@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -17,7 +17,6 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const onHome = pathname === "/";
-  const menuRef = useRef<HTMLUListElement>(null);
 
   const resolve = (l: (typeof links)[number]) => {
     if (l.kind === "route") return l.href;
@@ -32,28 +31,37 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close mobile menu on route change
   useEffect(() => {
-    const el = menuRef.current;
-    if (!el) return;
-    if (open) {
-      el.style.display = "block";
-      requestAnimationFrame(() => {
-        el.style.maxHeight = el.scrollHeight + "px";
-        el.style.opacity = "1";
-      });
-    } else {
-      el.style.maxHeight = "0";
-      el.style.opacity = "0";
-      const onEnd = () => { el.style.display = "none"; };
-      el.addEventListener("transitionend", onEnd, { once: true });
-    }
+    setOpen(false);
+  }, [pathname]);
+
+  // Close on Escape key press
+  useEffect(() => {
+    if (!open) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [open]);
+
+  // Close on resize to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <header
       className={`animate-navbar fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "border-b border-border bg-background/80 backdrop-blur-xl"
+        scrolled || open
+          ? "border-b border-border bg-background/90 backdrop-blur-xl shadow-lg shadow-black/20"
           : "border-b border-transparent bg-transparent"
       }`}
     >
@@ -101,51 +109,69 @@ export default function Navbar() {
 
         {/* mobile toggle */}
         <button
-          aria-label="Toggle menu"
+          type="button"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
           onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
+          className="relative flex h-11 w-11 items-center justify-center rounded-lg text-foreground transition-colors hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:hidden"
         >
-          <span
-            className="block h-0.5 w-6 bg-foreground transition-all duration-300"
-            style={{
-              transform: open ? "rotate(45deg) translateY(6px)" : "none",
-            }}
-          />
-          <span
-            className="block h-0.5 w-6 bg-foreground transition-all duration-300"
-            style={{ opacity: open ? 0 : 1 }}
-          />
-          <span
-            className="block h-0.5 w-6 bg-foreground transition-all duration-300"
-            style={{
-              transform: open ? "rotate(-45deg) translateY(-6px)" : "none",
-            }}
-          />
+          <div className="relative flex h-4 w-5 flex-col justify-between">
+            <span
+              className={`block h-0.5 w-full rounded-full bg-current transition-all duration-300 ease-out origin-center ${
+                open ? "translate-y-[7px] rotate-45" : "translate-y-0 rotate-0"
+              }`}
+            />
+            <span
+              className={`block h-0.5 w-full rounded-full bg-current transition-all duration-200 ease-out ${
+                open ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"
+              }`}
+            />
+            <span
+              className={`block h-0.5 w-full rounded-full bg-current transition-all duration-300 ease-out origin-center ${
+                open ? "-translate-y-[7px] -rotate-45" : "translate-y-0 rotate-0"
+              }`}
+            />
+          </div>
         </button>
       </nav>
 
-      <ul
-        ref={menuRef}
-        className="overflow-hidden border-t border-border bg-background/95 backdrop-blur-xl lg:hidden"
-        style={{
-          maxHeight: 0,
-          opacity: 0,
-          display: "none",
-          transition: "max-height 0.3s ease, opacity 0.3s ease",
-        }}
+      {/* mobile menu */}
+      <div
+        id="mobile-navigation"
+        className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out lg:hidden border-t border-border/70 bg-background/95 backdrop-blur-xl ${
+          open
+            ? "grid-rows-[1fr] opacity-100"
+            : "grid-rows-[0fr] opacity-0 pointer-events-none"
+        }`}
       >
-        {links.map((l) => (
-          <li key={l.href} className="border-b border-border/60">
-            <Link
-              href={resolve(l)}
-              onClick={() => setOpen(false)}
-              className="block px-6 py-4 font-body text-base text-muted hover:text-accent"
-            >
-              {l.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
+        <div className="overflow-hidden">
+          <ul className="container-x flex flex-col py-3 divide-y divide-border/30">
+            {links.map((l) => {
+              const href = resolve(l);
+              const isActive = pathname === href;
+              return (
+                <li key={l.href}>
+                  <Link
+                    href={href}
+                    onClick={() => setOpen(false)}
+                    className={`flex items-center justify-between py-3.5 font-body text-base transition-colors ${
+                      isActive ? "text-accent font-medium" : "text-muted hover:text-foreground"
+                    }`}
+                  >
+                    <span>{l.label}</span>
+                    {l.label === "Contact Us" && (
+                      <span className="rounded-full bg-accent/15 px-2.5 py-0.5 font-hand text-xs text-accent">
+                        Hit us up
+                      </span>
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
     </header>
   );
 }
