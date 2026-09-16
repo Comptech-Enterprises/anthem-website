@@ -180,8 +180,8 @@ export default function Hero() {
                         ? "object-right sm:object-center"
                         : "object-center"
                   }`}
-                  sizes="100vw"
-                  priority
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 80vw"
+                  priority={slide === 0}
                 />
               </motion.div>
             </AnimatePresence>
