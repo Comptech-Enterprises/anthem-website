@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Reveal from "./Reveal";
 
 const pillars = [
@@ -37,8 +36,6 @@ export default function About() {
           </h2>
         </Reveal>
 
-        {/* team picture — bespoke band (no centered icon to collide with the
-            caption); taller on mobile so it reads large on every screen */}
         <Reveal delay={0.1}>
           <figure className="relative mt-14 overflow-hidden rounded-2xl border border-border">
             <div className="relative aspect-[3/4] w-full bg-surface-2 sm:aspect-[21/9]">
@@ -69,10 +66,8 @@ export default function About() {
         <div className="mt-14 grid gap-5 md:grid-cols-3">
           {pillars.map((p, i) => (
             <Reveal key={p.title} delay={0.1 + i * 0.1}>
-              <motion.article
-                whileHover={{ y: -8 }}
-                transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                className="group relative h-full overflow-hidden rounded-2xl border border-border bg-surface p-8 transition-colors hover:border-accent/50"
+              <article
+                className="group relative h-full overflow-hidden rounded-2xl border border-border bg-surface p-8 transition-all duration-300 hover:border-accent/50 hover:-translate-y-2"
               >
                 <h3 className="relative font-display text-2xl font-semibold">
                   {p.title}
@@ -83,7 +78,7 @@ export default function About() {
                 <span className="relative mt-6 flex h-9 w-9 items-center justify-center rounded-full border border-border text-accent transition-all group-hover:border-accent group-hover:bg-accent group-hover:text-black">
                   →
                 </span>
-              </motion.article>
+              </article>
             </Reveal>
           ))}
         </div>

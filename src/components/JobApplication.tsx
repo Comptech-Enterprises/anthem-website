@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Reveal from "./Reveal";
 import AnimatedHeading from "./AnimatedHeading";
 
@@ -34,7 +33,6 @@ const perks = [
 export default function JobApplication() {
   return (
     <section id="careers" className="relative pt-40 pb-28 sm:pt-48 sm:pb-36">
-      {/* ambient glow */}
       <div
         className="pointer-events-none absolute top-24 left-1/2 -translate-x-1/2 h-[500px] w-[600px] rounded-full opacity-[0.07]"
         style={{
@@ -44,7 +42,6 @@ export default function JobApplication() {
       />
 
       <div className="container-x relative">
-        {/* header — two-column: text left, email CTA right */}
         <div className="mb-20 grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <Reveal>
@@ -67,7 +64,6 @@ export default function JobApplication() {
             </Reveal>
           </div>
 
-          {/* email CTA card — right side */}
           <Reveal delay={0.15}>
             <div className="flex flex-col items-center rounded-2xl border border-border bg-surface/60 px-8 py-10 text-center backdrop-blur-sm">
               <p className="mb-2 font-body text-sm leading-relaxed text-muted">

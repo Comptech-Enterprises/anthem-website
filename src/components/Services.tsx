@@ -2,26 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, type Variants } from "framer-motion";
+import { useRef, useEffect } from "react";
 import AnimatedHeading from "./AnimatedHeading";
 import Reveal from "./Reveal";
 import { cases } from "@/data/cases";
 
-const gridVariants: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.09 } },
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-// Formats Anthem owns and runs itself — distinct from client work.
 const ownedIp = [
   {
     tag: "Media Platform",
@@ -49,10 +34,34 @@ const ownedIp = [
   },
 ];
 
+function StaggerGrid({ className, children }: { className: string; children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add("in-view");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: "-80px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref} className={`stagger-grid ${className}`}>
+      {children}
+    </div>
+  );
+}
+
 export default function Services() {
   return (
     <section id="work" className="relative overflow-hidden pt-40 pb-28 sm:pt-48 sm:pb-36">
-      {/* ambient glows — static, hidden on mobile */}
       <div
         aria-hidden
         className="pointer-events-none absolute top-10 left-1/4 hidden h-[520px] w-[520px] rounded-full opacity-[0.09] sm:block"
@@ -65,7 +74,6 @@ export default function Services() {
       />
 
       <div className="container-x relative">
-        {/* header */}
         <div className="mb-16 max-w-2xl">
           <Reveal>
             <p className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
@@ -75,7 +83,6 @@ export default function Services() {
           </Reveal>
         </div>
 
-        {/* owned IP */}
         <div className="mb-10">
           <Reveal>
             <AnimatedHeading
@@ -91,19 +98,12 @@ export default function Services() {
           </Reveal>
         </div>
 
-        <motion.div
-          variants={gridVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          className="mb-24 grid gap-6 sm:grid-cols-2"
-        >
-          {ownedIp.map((ip) => (
-              <motion.article key={ip.title} variants={cardVariants}>
+        <StaggerGrid className="mb-24 grid gap-6 sm:grid-cols-2">
+          {ownedIp.map((ip, i) => (
+              <div key={ip.title} style={{ animationDelay: `${i * 0.09}s` }}>
                 <div
                   className="group relative flex h-full min-h-[280px] flex-col overflow-hidden rounded-2xl border border-border bg-surface/60 p-7 backdrop-blur-sm transition-all duration-300 hover:border-accent/50 hover:shadow-[0_28px_80px_-32px_var(--accent-glow)] sm:min-h-[300px] sm:p-8"
                 >
-                  {/* background image */}
                   {ip.bg && (
                     <div
                       aria-hidden
@@ -113,24 +113,20 @@ export default function Services() {
                     </div>
                   )}
 
-                  {/* hover spotlight */}
                   <div
                     aria-hidden
                     className="pointer-events-none absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
                     style={{ background: "radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)" }}
                   />
-                  {/* sheen sweep */}
                   <div
                     aria-hidden
                     className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.04] to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
                   />
 
-                  {/* corner tag */}
                   <span className="absolute top-6 right-6 z-10 rounded-full border border-border/70 bg-background/60 px-3 py-1 font-body text-[10px] uppercase tracking-[0.14em] text-muted-2 transition-colors duration-300 group-hover:border-accent/50 group-hover:text-accent">
                     {ip.tag}
                   </span>
 
-                  {/* content body — reveals with staggered rise animation on hover or on click/mobile */}
                   <div className="relative z-10 flex flex-1 flex-col pt-8">
                     <h3 className="font-display text-xl font-semibold sm:text-2xl">
                       {ip.title}
@@ -156,11 +152,10 @@ export default function Services() {
                     )}
                   </div>
                 </div>
-              </motion.article>
+              </div>
           ))}
-        </motion.div>
+        </StaggerGrid>
 
-        {/* brands heading */}
         <div className="mb-10">
           <Reveal>
             <AnimatedHeading
@@ -171,22 +166,14 @@ export default function Services() {
           </Reveal>
         </div>
 
-        {/* case-study grid */}
-        <motion.div
-          variants={gridVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {cases.map((c) => (
-            <motion.article key={c.slug} variants={cardVariants}>
+        <StaggerGrid className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {cases.map((c, i) => (
+            <div key={c.slug} style={{ animationDelay: `${i * 0.09}s` }}>
               <Link
                 href={`/services/${c.slug}`}
                 aria-label={`Read the ${c.title} case study`}
                 className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface/60 p-7 backdrop-blur-sm transition-colors duration-300 hover:border-accent/50 hover:shadow-[0_28px_80px_-32px_var(--accent-glow)] sm:p-8"
               >
-                {/* background image */}
                 {c.media[0] && (
                   <div
                     aria-hidden
@@ -202,19 +189,16 @@ export default function Services() {
                   </div>
                 )}
 
-                {/* hover spotlight */}
                 <div
                   aria-hidden
                   className="pointer-events-none absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
                   style={{ background: "radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)" }}
                 />
-                {/* sheen sweep */}
                 <div
                   aria-hidden
                   className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.04] to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
                 />
 
-                {/* corner tag */}
                 <span className="absolute top-6 right-6 z-10 rounded-full border border-border/70 bg-background/60 px-3 py-1 font-body text-[10px] uppercase tracking-[0.14em] text-muted-2 transition-colors duration-300 group-hover:border-accent/50 group-hover:text-accent">
                   {c.tags[0]}
                 </span>
@@ -228,7 +212,6 @@ export default function Services() {
                     {c.summary}
                   </p>
 
-                  {/* read more */}
                   <span className="mt-auto flex items-center gap-2 border-t border-border/50 pt-7 font-body text-sm font-medium text-accent">
                     View case study
                     <span className="transition-transform duration-300 group-hover:translate-x-1">
@@ -237,9 +220,9 @@ export default function Services() {
                   </span>
                 </div>
               </Link>
-            </motion.article>
+            </div>
           ))}
-        </motion.div>
+        </StaggerGrid>
       </div>
     </section>
   );

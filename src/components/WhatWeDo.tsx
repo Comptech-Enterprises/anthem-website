@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Reveal from "./Reveal";
 import AnimatedHeading from "./AnimatedHeading";
 import Image from "next/image";
@@ -45,11 +44,9 @@ export default function WhatWeDo() {
         <div className="grid gap-5 sm:grid-cols-2">
           {cards.map((card, i) => (
             <Reveal key={card.title} delay={0.08 * i}>
-              <motion.a
+              <a
                 href={card.href}
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="group relative block overflow-hidden rounded-2xl border border-border"
+                className="group relative block overflow-hidden rounded-2xl border border-border transition-transform duration-300 hover:scale-[1.02]"
               >
                 <div className="relative aspect-[16/10] w-full">
                   <Image
@@ -68,7 +65,7 @@ export default function WhatWeDo() {
                     {card.title}
                   </h3>
                 </div>
-              </motion.a>
+              </a>
             </Reveal>
           ))}
         </div>

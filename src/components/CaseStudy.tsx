@@ -2,23 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { AnimatePresence, motion, useInView } from "framer-motion";
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useInView } from "@/hooks/useInView";
 import AnimatedHeading from "./AnimatedHeading";
 import MagneticButton from "./MagneticButton";
 import Placeholder from "./Placeholder";
 import Reveal from "./Reveal";
 import type { CaseStudy as CaseStudyType } from "@/data/cases";
-
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.09 } },
-};
-
-const scaleFade = {
-  hidden: { opacity: 0, scale: 0.88 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
-};
 
 function useCountUp(target: string, active: boolean) {
   const [display, setDisplay] = useState("0");
@@ -48,22 +38,40 @@ function useCountUp(target: string, active: boolean) {
 }
 
 function ResultCard({ value, label }: { value: string; label: string }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const [ref, inView] = useInView<HTMLDivElement>({ threshold: 0.5, rootMargin: "-60px" });
   const display = useCountUp(value, inView);
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      variants={scaleFade}
       className="rounded-2xl border border-border bg-surface/60 p-7 text-center backdrop-blur-sm sm:text-left"
     >
       <p className="break-words font-display text-3xl font-bold text-gradient sm:text-4xl">
         {display}
       </p>
       <p className="mt-3 font-body text-sm leading-relaxed text-muted">{label}</p>
-    </motion.div>
+    </div>
   );
+}
+
+function StaggerGrid({ className, children }: { className: string; children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add("in-view");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: "-60px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  return <div ref={ref} className={`stagger-grid ${className}`}>{children}</div>;
 }
 
 function VideoSlide({
@@ -166,9 +174,9 @@ function MediaCarousel({
   fixedAspect?: number;
 }) {
   const [index, setIndex] = useState(0);
-  const [dir, setDir] = useState(1);
   const [paused, setPaused] = useState(false);
   const [ratios, setRatios] = useState<Record<number, number>>({});
+  const touchStart = useRef<number | null>(null);
   const len = slides.length;
 
   const setRatio = useCallback((i: number, r: number) => {
@@ -176,20 +184,18 @@ function MediaCarousel({
   }, []);
 
   const go = useCallback(
-    (next: number, direction?: number) => {
+    (next: number) => {
       if (len < 2) return;
-      const wrapped = ((next % len) + len) % len;
-      setDir(direction ?? (wrapped > index ? 1 : -1));
-      setIndex(wrapped);
+      setIndex(((next % len) + len) % len);
     },
-    [index, len],
+    [len],
   );
 
   useEffect(() => {
     if (len < 2) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight") go(index + 1, 1);
-      if (e.key === "ArrowLeft") go(index - 1, -1);
+      if (e.key === "ArrowRight") go(index + 1);
+      if (e.key === "ArrowLeft") go(index - 1);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -199,7 +205,7 @@ function MediaCarousel({
     if (len < 2 || paused) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const delay = slides[index]?.kind === "video" ? 8000 : 4500;
-    const t = window.setTimeout(() => go(index + 1, 1), delay);
+    const t = window.setTimeout(() => go(index + 1), delay);
     return () => window.clearTimeout(t);
   }, [go, index, len, paused, slides]);
 
@@ -207,10 +213,6 @@ function MediaCarousel({
 
   const slide = slides[index];
   const r = ratios[index];
-  // Every video slide across every case study renders at the same fixed
-  // frame size (object-cover crops to fill) so pages don't jump between a
-  // full 4K landscape box and a small shrunk portrait box. Images keep
-  // their native ratio (whole photo shows, no crop) unless fixedAspect is set.
   const VIDEO_ASPECT = 4 / 5;
   const nativeFrame = !fixedAspect && slide.kind === "image";
   const videoFit = "object-cover";
@@ -223,6 +225,14 @@ function MediaCarousel({
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
+      onTouchStart={(e) => { touchStart.current = e.touches[0].clientX; }}
+      onTouchEnd={(e) => {
+        if (touchStart.current === null) return;
+        const dx = e.changedTouches[0].clientX - touchStart.current;
+        touchStart.current = null;
+        if (dx < -60) go(index + 1);
+        else if (dx > 60) go(index - 1);
+      }}
     >
       <div
         className={`relative w-full overflow-hidden bg-surface transition-[aspect-ratio] duration-500 ${
@@ -230,28 +240,16 @@ function MediaCarousel({
         }`}
         style={{ aspectRatio: effectiveAspect }}
       >
-        <AnimatePresence initial={false} custom={dir} mode="popLayout">
-          <motion.div
-            key={`${slide.kind}-${slide.src}-${index}`}
-            custom={dir}
-            initial={{ x: dir * 48, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: dir * -48, opacity: 0 }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            drag={len > 1 ? "x" : false}
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.18}
-            onDragEnd={(_, info) => {
-              if (info.offset.x < -60) go(index + 1, 1);
-              else if (info.offset.x > 60) go(index - 1, -1);
-            }}
-            className="absolute inset-0 cursor-grab active:cursor-grabbing"
+        {slides.map((s, i) => (
+          <div
+            key={`${s.kind}-${s.src}-${i}`}
+            className={`carousel-slide ${i === index ? "active" : ""}`}
           >
-            {slide.kind === "video" ? (
-              <VideoSlide src={slide.src} fit={videoFit} onRatio={(r) => setRatio(index, r)} />
-            ) : slide.kind === "image" ? (
+            {s.kind === "video" ? (
+              <VideoSlide src={s.src} fit={videoFit} onRatio={(r) => setRatio(i, r)} />
+            ) : s.kind === "image" ? (
               <Image
-                src={slide.src}
+                src={s.src}
                 alt={title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 70vw"
@@ -260,32 +258,30 @@ function MediaCarousel({
                 onLoad={(e) => {
                   const img = e.currentTarget;
                   if (img.naturalWidth && img.naturalHeight)
-                    setRatio(index, img.naturalWidth / img.naturalHeight);
+                    setRatio(i, img.naturalWidth / img.naturalHeight);
                 }}
               />
             ) : (
-              <Placeholder label={slide.src} ratio="aspect-square" className="h-full w-full" />
+              <Placeholder label={s.src} ratio="aspect-square" className="h-full w-full" />
             )}
-          </motion.div>
-        </AnimatePresence>
+          </div>
+        ))}
       </div>
 
       {len > 1 && (
-        <>
-          <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2">
-            {slides.map((s, i) => (
-              <button
-                key={`${s.kind}-${s.src}`}
-                type="button"
-                aria-label={`Go to slide ${i + 1}`}
-                onClick={() => go(i, i >= index ? 1 : -1)}
-                className={`h-1.5 rounded-full transition-all ${
-                  i === index ? "w-6 bg-accent" : "w-1.5 bg-white/35 hover:bg-white/60"
-                }`}
-              />
-            ))}
-          </div>
-        </>
+        <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2">
+          {slides.map((s, i) => (
+            <button
+              key={`${s.kind}-${s.src}`}
+              type="button"
+              aria-label={`Go to slide ${i + 1}`}
+              onClick={() => go(i)}
+              className={`h-1.5 rounded-full transition-all ${
+                i === index ? "w-6 bg-accent" : "w-1.5 bg-white/35 hover:bg-white/60"
+              }`}
+            />
+          ))}
+        </div>
       )}
     </div>
   );
@@ -303,7 +299,6 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
       />
 
       <div className="container-x relative">
-        {/* back link */}
         <Reveal>
           <Link
             href="/services"
@@ -314,7 +309,6 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
           </Link>
         </Reveal>
 
-        {/* header */}
         <header className="mt-8 max-w-3xl">
           <Reveal>
             <p className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
@@ -379,34 +373,24 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
           <Reveal>
             <p className="mb-8 font-body text-xs uppercase tracking-[0.2em] text-accent">Execution</p>
           </Reveal>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid grid-cols-1 gap-4 sm:grid-cols-2"
-          >
-            {data.execution.map((step) => (
-              <motion.div
+          <StaggerGrid className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {data.execution.map((step, i) => (
+              <div
                 key={step}
-                variants={scaleFade}
+                style={{ animationDelay: `${i * 0.09}s` }}
                 className="flex items-center rounded-2xl border border-border/40 bg-gradient-to-br from-surface/80 to-surface/40 p-6 backdrop-blur-sm"
               >
                 <span className="font-body text-base leading-relaxed text-muted">{step}</span>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </StaggerGrid>
         </div>
 
         <div className="mt-20">
           <Reveal>
             <p className="mb-8 font-body text-xs uppercase tracking-[0.2em] text-accent">Impact</p>
           </Reveal>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
+          <StaggerGrid
             className={`grid gap-4 ${
               data.results.length === 2
                 ? "sm:grid-cols-2"
@@ -415,10 +399,12 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
                   : "sm:grid-cols-3"
             }`}
           >
-            {data.results.map((r) => (
-              <ResultCard key={r.label} value={r.value} label={r.label} />
+            {data.results.map((r, i) => (
+              <div key={r.label} style={{ animationDelay: `${i * 0.09}s` }}>
+                <ResultCard value={r.value} label={r.label} />
+              </div>
             ))}
-          </motion.div>
+          </StaggerGrid>
         </div>
 
         <Reveal>
@@ -441,4 +427,3 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
     </article>
   );
 }
-

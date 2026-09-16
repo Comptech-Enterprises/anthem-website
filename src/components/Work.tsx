@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import AnimatedHeading from "./AnimatedHeading";
 import Placeholder from "./Placeholder";
 import Reveal from "./Reveal";
@@ -44,14 +43,10 @@ export default function Work() {
               delay={i * 0.08}
               className={p.span}
             >
-              <motion.article
-                whileHover="hover"
+              <article
                 className="group relative h-full cursor-pointer overflow-hidden rounded-2xl border border-border transition-all duration-300 hover:border-accent/60 hover:shadow-[0_24px_70px_-24px_var(--accent-glow)]"
               >
-                <motion.div
-                  variants={{ hover: { scale: 1.05 } }}
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                >
+                <div className="transition-transform duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105">
                   <Placeholder
                     label={p.title}
                     ratio={
@@ -60,27 +55,23 @@ export default function Work() {
                         : "aspect-[4/3] lg:aspect-[4/5]"
                     }
                   />
-                </motion.div>
+                </div>
 
-                {/* overlay */}
                 <div className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/85 via-black/20 to-transparent p-6">
-                  <motion.div
-                    variants={{ hover: { y: 0, opacity: 1 } }}
-                    initial={{ y: 8 }}
-                  >
+                  <div className="transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                     <span className="font-body text-xs uppercase tracking-[0.25em] text-accent">
                       {p.tag}
                     </span>
                     <h3 className="mt-1 font-display text-xl font-semibold sm:text-2xl">
                       {p.title}
                     </h3>
-                  </motion.div>
+                  </div>
                 </div>
 
                 <div className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-accent text-black opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   ↗
                 </div>
-              </motion.article>
+              </article>
             </Reveal>
           ))}
         </div>

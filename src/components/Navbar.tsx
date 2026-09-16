@@ -1,14 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
 
-// `hash` links resolve to same-page anchors on the home page and to
-// `/#anchor` (navigate home, then scroll) from any other route. `route`
-// links are standalone pages.
 const links = [
   { label: "Home", href: "/", kind: "route" as const },
   { label: "Our Work", href: "/services", kind: "route" as const },
@@ -21,8 +17,8 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const onHome = pathname === "/";
+  const menuRef = useRef<HTMLUListElement>(null);
 
-  // Anchor links jump within the home page; off-home they must first route home.
   const resolve = (l: (typeof links)[number]) => {
     if (l.kind === "route") return l.href;
     const hash = l.href.replace(/^\/?/, "");
@@ -36,12 +32,26 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const el = menuRef.current;
+    if (!el) return;
+    if (open) {
+      el.style.display = "block";
+      requestAnimationFrame(() => {
+        el.style.maxHeight = el.scrollHeight + "px";
+        el.style.opacity = "1";
+      });
+    } else {
+      el.style.maxHeight = "0";
+      el.style.opacity = "0";
+      const onEnd = () => { el.style.display = "none"; };
+      el.addEventListener("transitionend", onEnd, { once: true });
+    }
+  }, [open]);
+
   return (
-    <motion.header
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+    <header
+      className={`animate-navbar fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
           ? "border-b border-border bg-background/80 backdrop-blur-xl"
           : "border-b border-transparent bg-transparent"
@@ -72,21 +82,18 @@ export default function Navbar() {
               </Link>
 
               {l.label === "Contact Us" && (
-                <motion.span
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1.2, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                <span
                   className="absolute right-0 top-full mt-3 whitespace-nowrap pointer-events-none"
+                  style={{ animation: "badge-appear 0.4s cubic-bezier(0.22, 1, 0.36, 1) 1.2s both" }}
                 >
                   <span className="absolute -top-[5px] right-4 h-2.5 w-2.5 rotate-45 bg-accent" />
-                  <motion.span
-                    animate={{ y: [0, -2, 0] }}
-                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                  <span
                     className="relative block rounded-2xl rounded-tr-sm bg-accent px-3.5 py-1.5 font-hand text-xs text-black font-medium shadow-[0_2px_12px_var(--accent-glow)]"
+                    style={{ animation: "badge-bounce 2.5s ease-in-out infinite" }}
                   >
                     Hit us up
-                  </motion.span>
-                </motion.span>
+                  </span>
+                </span>
               )}
             </li>
           ))}
@@ -98,44 +105,47 @@ export default function Navbar() {
           onClick={() => setOpen((v) => !v)}
           className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
         >
-          <motion.span
-            animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-            className="block h-0.5 w-6 bg-foreground"
+          <span
+            className="block h-0.5 w-6 bg-foreground transition-all duration-300"
+            style={{
+              transform: open ? "rotate(45deg) translateY(6px)" : "none",
+            }}
           />
-          <motion.span
-            animate={open ? { opacity: 0 } : { opacity: 1 }}
-            className="block h-0.5 w-6 bg-foreground"
+          <span
+            className="block h-0.5 w-6 bg-foreground transition-all duration-300"
+            style={{ opacity: open ? 0 : 1 }}
           />
-          <motion.span
-            animate={open ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-            className="block h-0.5 w-6 bg-foreground"
+          <span
+            className="block h-0.5 w-6 bg-foreground transition-all duration-300"
+            style={{
+              transform: open ? "rotate(-45deg) translateY(-6px)" : "none",
+            }}
           />
         </button>
       </nav>
 
-      <AnimatePresence>
-        {open && (
-          <motion.ul
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden border-t border-border bg-background/95 backdrop-blur-xl lg:hidden"
-          >
-            {links.map((l) => (
-              <li key={l.href} className="border-b border-border/60">
-                <Link
-                  href={resolve(l)}
-                  onClick={() => setOpen(false)}
-                  className="block px-6 py-4 font-body text-base text-muted hover:text-accent"
-                >
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </motion.ul>
-        )}
-      </AnimatePresence>
-    </motion.header>
+      <ul
+        ref={menuRef}
+        className="overflow-hidden border-t border-border bg-background/95 backdrop-blur-xl lg:hidden"
+        style={{
+          maxHeight: 0,
+          opacity: 0,
+          display: "none",
+          transition: "max-height 0.3s ease, opacity 0.3s ease",
+        }}
+      >
+        {links.map((l) => (
+          <li key={l.href} className="border-b border-border/60">
+            <Link
+              href={resolve(l)}
+              onClick={() => setOpen(false)}
+              className="block px-6 py-4 font-body text-base text-muted hover:text-accent"
+            >
+              {l.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </header>
   );
 }

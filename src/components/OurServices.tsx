@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef, useEffect } from "react";
 import Reveal from "./Reveal";
 
 const services: { label: string; bold: boolean }[] = [
@@ -16,6 +16,24 @@ const services: { label: string; bold: boolean }[] = [
 ];
 
 export default function OurServices() {
+  const listRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    const el = listRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add("in-view");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.4 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       id="our-services"
@@ -30,22 +48,34 @@ export default function OurServices() {
           </p>
         </Reveal>
         <Reveal>
-          <p className="mx-auto max-w-5xl text-center font-display text-[1.65rem] leading-[1.65] tracking-tight text-foreground sm:text-3xl sm:leading-[1.7] lg:text-4xl lg:leading-[1.7]">
+          <p
+            ref={listRef}
+            className="service-list mx-auto max-w-5xl text-center font-display text-[1.65rem] leading-[1.65] tracking-tight text-foreground sm:text-3xl sm:leading-[1.7] lg:text-4xl lg:leading-[1.7]"
+          >
             {services.map((service, i) => (
-              <motion.span
+              <span
                 key={service.label}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{
-                  duration: 0.45,
-                  delay: 0.04 * i,
-                  ease: [0.16, 1, 0.3, 1],
+                className={`${service.bold ? "font-bold" : "font-light"} inline-block opacity-0`}
+                style={{
+                  animation: "none",
                 }}
-                className={service.bold ? "font-bold" : "font-light"}
+                ref={(el) => {
+                  if (!el) return;
+                  const parent = el.closest(".service-list");
+                  if (parent?.classList.contains("in-view")) {
+                    el.style.animation = `service-fade 0.45s cubic-bezier(0.16, 1, 0.3, 1) ${0.04 * i}s both`;
+                  }
+                  const obs = new MutationObserver(() => {
+                    if (parent?.classList.contains("in-view")) {
+                      el.style.animation = `service-fade 0.45s cubic-bezier(0.16, 1, 0.3, 1) ${0.04 * i}s both`;
+                      obs.disconnect();
+                    }
+                  });
+                  if (parent) obs.observe(parent, { attributes: true, attributeFilter: ["class"] });
+                }}
               >
                 {service.label}.{" "}
-              </motion.span>
+              </span>
             ))}
           </p>
         </Reveal>

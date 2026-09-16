@@ -39,14 +39,7 @@
 }
 
 html {
-  /* anchor scrolling is handled by <SmoothScroll /> (controlled duration +
-     easing + header offset), so native smooth is left off here to avoid a
-     double animation. scroll-padding-top remains as a no-JS fallback. */
   scroll-padding-top: 7rem;
-  /* Guard against stray decorative/absolute elements widening the page.
-     Kept here (not just on body) because body's overflow-x isn't reliably
-     propagated to the viewport. Safe: nav/scroll chrome is position:fixed,
-     nothing relies on position:sticky. */
   overflow-x: hidden;
 }
 
@@ -94,7 +87,8 @@ body {
   }
 }
 
-/* Hero CSS animations for mobile — no JS dependency, starts instantly */
+/* ── Keyframes ─────────────────────────────────────────────────── */
+
 @keyframes hero-word-rise {
   from { transform: translateY(115%); }
   to { transform: translateY(0); }
@@ -103,25 +97,22 @@ body {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-@media (max-width: 639px) {
-  .hero-word {
-    animation: hero-word-rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-  .hero-word-0 { animation-delay: 0.1s; }
-  .hero-word-1 { animation-delay: 0.16s; }
-  .hero-word-2 { animation-delay: 0.22s; }
-  .hero-word-3 { animation-delay: 0.28s; }
-  .hero-word-4 { animation-delay: 0.34s; }
-  .hero-desc {
-    animation: hero-fade-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
-  }
-  .hero-band {
-    animation: hero-fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
-  }
+.hero-word {
+  animation: hero-word-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-word-0 { animation-delay: 0.2s; }
+.hero-word-1 { animation-delay: 0.3s; }
+.hero-word-2 { animation-delay: 0.4s; }
+.hero-word-3 { animation-delay: 0.5s; }
+.hero-word-4 { animation-delay: 0.6s; }
+.hero-desc {
+  animation: hero-fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+}
+.hero-band {
+  animation: hero-fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
 }
 
-/* Mobile scroll-reveal — CSS-only, triggered by IntersectionObserver adding .in-view */
+/* Scroll-reveal — triggered by IntersectionObserver adding .in-view */
 @keyframes reveal-up {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
@@ -143,29 +134,106 @@ body {
   to { transform: translateY(0); }
 }
 
-@media (max-width: 639px) {
-  .css-reveal {
-    opacity: 0;
-  }
-  .css-reveal.in-view {
-    animation: reveal-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-  .css-reveal-down.in-view {
-    animation-name: reveal-down;
-  }
-  .css-reveal-left.in-view {
-    animation-name: reveal-left;
-  }
-  .css-reveal-right.in-view {
-    animation-name: reveal-right;
-  }
-  .css-heading-word {
-    transform: translateY(115%);
-  }
-  .css-heading.in-view .css-heading-word {
-    animation: heading-word-rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
+.css-reveal {
+  opacity: 0;
 }
+.css-reveal.in-view {
+  animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.css-reveal-down.in-view {
+  animation-name: reveal-down;
+}
+.css-reveal-left.in-view {
+  animation-name: reveal-left;
+}
+.css-reveal-right.in-view {
+  animation-name: reveal-right;
+}
+.css-heading-word {
+  transform: translateY(115%);
+}
+.css-heading.in-view .css-heading-word {
+  animation: heading-word-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Stagger fade-in for grids — triggered by .in-view on parent */
+@keyframes stagger-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.stagger-grid > * {
+  opacity: 0;
+}
+.stagger-grid.in-view > * {
+  animation: stagger-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Navbar entrance */
+@keyframes navbar-down {
+  from { transform: translateY(-80px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.animate-navbar {
+  animation: navbar-down 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Shimmer sweep for placeholders */
+@keyframes shimmer-sweep {
+  from { transform: translateX(-120%); }
+  to { transform: translateX(120%); }
+}
+
+/* Carousel crossfade */
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.carousel-slide.active {
+  opacity: 1;
+}
+
+/* Testimonial slide transitions */
+.testimonial-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.testimonial-slide.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+.testimonial-slide.prev {
+  transform: translateX(-40px);
+}
+
+/* Autoplay progress bar */
+@keyframes autoplay-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* "Hit us up" badge bounce */
+@keyframes badge-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+@keyframes badge-appear {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* OurServices stagger */
+@keyframes service-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── End keyframes ─────────────────────────────────────────────── */
 
 /* Gradient text — white → lavender → violet → soft pink */
 .text-gradient {
