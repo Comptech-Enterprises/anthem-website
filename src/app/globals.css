@@ -85,7 +85,16 @@ body {
   padding-inline: 1.5rem;
 }
 
-/* Animated gradient text — white → lavender → violet → soft pink */
+/* Disable backdrop-blur on mobile — expensive on Safari iOS */
+@media (max-width: 639px) {
+  .backdrop-blur-sm,
+  .backdrop-blur-xl {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+
+/* Gradient text — white → lavender → violet → soft pink */
 .text-gradient {
   background: linear-gradient(
     110deg,
@@ -94,21 +103,9 @@ body {
     var(--accent) 62%,
     var(--accent-pink) 100%
   );
-  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient-pan 8s ease infinite;
-}
-
-@keyframes gradient-pan {
-  0%,
-  100% {
-    background-position: 0% center;
-  }
-  50% {
-    background-position: 100% center;
-  }
 }
 
 /* Infinite marquee — track is duplicated, so -50% loops seamlessly */

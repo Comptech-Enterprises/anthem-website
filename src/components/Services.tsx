@@ -53,20 +53,16 @@ const ownedIp = [
 export default function Services() {
   return (
     <section id="work" className="relative overflow-hidden pt-40 pb-28 sm:pt-48 sm:pb-36">
-      {/* drifting ambient glows */}
-      <motion.div
+      {/* ambient glows — static, hidden on mobile */}
+      <div
         aria-hidden
-        className="pointer-events-none absolute top-10 left-1/4 h-[520px] w-[520px] rounded-full opacity-[0.09]"
+        className="pointer-events-none absolute top-10 left-1/4 hidden h-[520px] w-[520px] rounded-full opacity-[0.09] sm:block"
         style={{ background: "radial-gradient(circle, var(--accent) 0%, transparent 70%)" }}
-        animate={{ x: [0, 60, 0], y: [0, 40, 0] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.div
+      <div
         aria-hidden
-        className="pointer-events-none absolute bottom-0 right-1/4 h-[440px] w-[440px] rounded-full opacity-[0.06]"
+        className="pointer-events-none absolute bottom-0 right-1/4 hidden h-[440px] w-[440px] rounded-full opacity-[0.06] sm:block"
         style={{ background: "radial-gradient(circle, var(--accent) 0%, transparent 70%)" }}
-        animate={{ x: [0, -50, 0], y: [0, -30, 0] }}
-        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div className="container-x relative">
