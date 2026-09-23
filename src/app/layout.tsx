@@ -50,6 +50,21 @@ export default function RootLayout({
         <Script id="js-detect" strategy="beforeInteractive">
           {`document.documentElement.classList.add('js')`}
         </Script>
+        {/* Google Analytics (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-YQQGMEZVFH"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-YQQGMEZVFH');
+          `}
+        </Script>
+        {/* Microsoft Clarity */}
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`
             (function(c,l,a,r,i,t,y){
