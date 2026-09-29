@@ -9,7 +9,7 @@ const founders = [
     role: "Co-Founder – Strategy & Growth",
     copy: "A sharp business strategist and operator, Shuchir translates ambitious creative ideas into scalable, commercially efficient campaigns. His expertise spans brand strategy, multi-city execution, client partnerships, and growth — ensuring every mandate is both creatively compelling and business-effective.",
     img: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/founders-Shuchir.webp",
-    href: "https://shuchir.com/",
+    href: "http://shuchir.theanthem.in/",
   },
   {
     name: "Anjali Batra",
