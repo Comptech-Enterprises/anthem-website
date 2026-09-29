@@ -9,7 +9,7 @@ const founders = [
     role: "Co-Founder – Strategy & Growth",
     copy: "A sharp business strategist and operator, Shuchir translates ambitious creative ideas into scalable, commercially efficient campaigns. His expertise spans brand strategy, multi-city execution, client partnerships, and growth — ensuring every mandate is both creatively compelling and business-effective.",
     img: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/founders-Shuchir.webp",
-    website: "http://shuchir.theanthem.in/",
+    href: "http://shuchir.theanthem.in/",
     linkedin: "https://www.linkedin.com/in/shuchir-suri-058251b",
   },
   {
@@ -17,7 +17,7 @@ const founders = [
     role: "Co-Founder – Creative & Experience",
     copy: "The creative engine behind Anthem's most iconic work, Anjali brings a consumer-first lens and an instinct for culture. From conceptualising immersive brand worlds to bringing a vision into reality, she ensures every experience feels intentional, premium, and deeply resonant.",
     img: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/founders-Anjali-Batra.webp",
-    website: undefined,
+    href: undefined,
     linkedin: "https://www.linkedin.com/in/anjali-batra-1b45a636",
   },
 ];
@@ -41,52 +41,35 @@ export default function Founders() {
         <div className="mt-14 flex flex-wrap justify-start gap-6">
           {founders.map((f, i) => (
             <Reveal key={f.name} delay={0.1 + i * 0.1} className="w-full sm:flex-1">
-              <div className="group flex h-full flex-col items-center justify-between gap-5 rounded-2xl border border-border bg-background p-6 text-center transition-colors hover:border-accent/50">
+              <div
+                onClick={() => {
+                  if (f.href) {
+                    window.open(f.href, "_blank", "noopener,noreferrer");
+                  }
+                }}
+                className={`group flex h-full flex-col items-center justify-between gap-5 rounded-2xl border border-border bg-background p-6 text-center transition-colors hover:border-accent/50 ${
+                  f.href ? "cursor-pointer" : ""
+                }`}
+              >
                 <div className="flex w-full flex-col items-center gap-5">
-                  {f.website ? (
-                    <a
-                      href={f.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group/img relative aspect-[4/3] w-full shrink-0 overflow-hidden rounded-xl"
-                    >
-                      <Image
-                        src={f.img}
-                        alt={f.name}
-                        fill
-                        sizes="(max-width: 640px) 100vw, 50vw"
-                        className="object-cover transition-transform duration-500 group-hover/img:scale-105"
-                      />
-                    </a>
-                  ) : (
-                    <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden rounded-xl">
-                      <Image
-                        src={f.img}
-                        alt={f.name}
-                        fill
-                        sizes="(max-width: 640px) 100vw, 50vw"
-                        className="object-cover"
-                      />
-                    </div>
-                  )}
+                  <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden rounded-xl">
+                    <Image
+                      src={f.img}
+                      alt={f.name}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                      className={`object-cover transition-transform duration-500 ${
+                        f.href ? "group-hover:scale-105" : ""
+                      }`}
+                    />
+                  </div>
 
                   <div>
                     <span className="font-body text-xs uppercase tracking-[0.25em] text-accent">
                       {f.role}
                     </span>
                     <h3 className="mt-1 font-display text-2xl font-semibold">
-                      {f.website ? (
-                        <a
-                          href={f.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="transition-colors hover:text-accent"
-                        >
-                          {f.name}
-                        </a>
-                      ) : (
-                        f.name
-                      )}
+                      {f.name}
                     </h3>
                     <p className="mt-3 font-body leading-relaxed text-muted">
                       {f.copy}
@@ -95,27 +78,12 @@ export default function Founders() {
                 </div>
 
                 <div className="mt-2 flex flex-wrap items-center justify-center gap-3 pt-2">
-                  {f.website && (
-                    <a
-                      href={f.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${f.name}'s Website`}
-                      className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 font-body text-xs text-muted transition-all hover:border-accent hover:text-accent hover:shadow-[0_0_15px_var(--accent-glow)]"
-                    >
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-4 w-4" aria-hidden>
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="2" y1="12" x2="22" y2="12" />
-                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                      </svg>
-                      <span>Website</span>
-                    </a>
-                  )}
                   {f.linkedin && (
                     <a
                       href={f.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       aria-label={`${f.name} on LinkedIn`}
                       className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 font-body text-xs text-muted transition-all hover:border-accent hover:text-accent hover:shadow-[0_0_15px_var(--accent-glow)]"
                     >
