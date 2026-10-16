@@ -9,10 +9,10 @@ import { cases } from "@/data/cases";
 
 const ownedIp = [
   {
-    tag: "Experiences Platform",
+    tag: "Experience Platform",
     name: "Food Talk",
     title: "Food Talk India",
-    highlight: "Experiences Platform",
+    highlight: "Experience Platform",
     summary:
       "Bringing people together around food, drinks and culture. We curate experiences that celebrate the people, places and ideas behind them, and create spaces where great food, memorable drinks and meaningful connections come together.",
     href: "https://foodtalk.in/",
