@@ -15,7 +15,7 @@ const ownedIp = [
     highlight: "Experience Platform",
     summary:
       "Bringing people together around food, drinks and culture. We curate experiences that celebrate the people, places and ideas behind them, and create spaces where great food, memorable drinks and meaningful connections come together.",
-    href: "https://foodtalk.anthem.in/",
+    href: "https://foodtalk.theanthem.in/",
     external: true,
     bg: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/food-talk-bg.webp",
     glow: "rgba(235, 94, 85, 0.15)",
