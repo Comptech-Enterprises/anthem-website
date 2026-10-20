@@ -99,6 +99,7 @@ export default function EnquiryForm() {
                 <input type="hidden" name="Lead Source" value="Anthem Website" />
                 <input type="hidden" name="Lead Status" value="Not Contacted" />
                 <input type="hidden" name="LEADCF1" value="Anthem" />
+                <input type="hidden" name="Lead Owner" value="nikita@theanthem.in" />
                 <input
                   type="text"
                   name="aG9uZXlwb3Q"
