@@ -6,9 +6,10 @@ import Services from "@/components/Services";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Our Work — Anthem",
+  title: "Our Work — Brand Activations & Experiential Campaigns",
   description:
-    "Case studies from the brands we've partnered with — festival IPs, brand activations, launches and films across screen and stage.",
+    "Explore Anthem's portfolio of experiential marketing campaigns, brand activations, live events and festival IPs for brands like Diageo, Pernod Ricard, BCG and more across India.",
+  alternates: { canonical: "/services" },
 };
 
 export default function ServicesPage() {

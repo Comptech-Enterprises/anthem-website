@@ -6,9 +6,10 @@ import JobApplication from "@/components/JobApplication";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Careers — Anthem",
+  title: "Careers at Anthem — Join India's Top Experiential Agency",
   description:
-    "Join the team behind the experiences — roles for producers, strategists and makers at an experiential agency in New Delhi.",
+    "Join the team behind India's biggest brand experiences. Open roles for producers, strategists and creatives at Anthem, New Delhi.",
+  alternates: { canonical: "/careers" },
 };
 
 export default function CareersPage() {
