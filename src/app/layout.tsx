@@ -81,6 +81,7 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    "max-video-preview": 0,
   },
 };
 
