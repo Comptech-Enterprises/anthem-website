@@ -45,10 +45,10 @@ export default function EnquiryForm() {
       <div className="container-x grid gap-14 lg:grid-cols-[0.85fr_1.15fr]">
         <div>
           <Reveal>
-            <p className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
-              <span className="h-px w-10 bg-accent" />
-              Let's work together
-            </p>
+            <h2 className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
+              <span className="h-px w-10 bg-accent" aria-hidden="true" />
+              Let&apos;s work together
+            </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-6 max-w-md font-body leading-relaxed text-muted">

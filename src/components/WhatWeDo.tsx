@@ -5,19 +5,39 @@ import AnimatedHeading from "./AnimatedHeading";
 import Image from "next/image";
 
 const cards = [
-  { title: "Owned IPs", href: "/services#owned-ips", img: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/what-we-do-owned-ip.webp" },
-  { title: "Events", href: "/services#events", img: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/what-we-do-events.webp" },
+  {
+    title: "Owned IPs",
+    name: "Owned IPs — Cultural & Lifestyle Platforms by Anthem",
+    alt: "Owned IPs and cultural lifestyle festivals curated by Anthem",
+    href: "/services#owned-ips",
+    img: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/what-we-do-owned-ip.webp",
+  },
+  {
+    title: "Events",
+    name: "Live Events & Large-Scale Productions by Anthem",
+    alt: "Live events, festivals, and corporate experiences produced by Anthem",
+    href: "/services#events",
+    img: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/what-we-do-events.webp",
+  },
   {
     title: "Experiential Brand Activation",
+    name: "Experiential Brand Activations by Anthem",
+    alt: "Immersive experiential brand activation and consumer engagement by Anthem",
     href: "/services#experiential",
     img: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/what-we-do-brand-activation.webp",
   },
-  { title: "Digital", href: "/services#digital", img: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/what-we-do-digital.webp" },
+  {
+    title: "Digital",
+    name: "Digital & Creator-Led Campaigns by Anthem",
+    alt: "Digital campaigns, creator collaborations, and content production by Anthem",
+    href: "/services#digital",
+    img: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/what-we-do-digital.webp",
+  },
 ];
 
 export default function WhatWeDo() {
   return (
-    <section className="relative overflow-hidden py-24 sm:py-32">
+    <section id="what-we-do" aria-label="What We Do" className="relative overflow-hidden py-24 sm:py-32">
       <div
         className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[700px] rounded-full opacity-[0.05]"
         style={{
@@ -51,7 +71,8 @@ export default function WhatWeDo() {
                 <div className="relative aspect-[16/10] w-full">
                   <Image
                     src={card.img}
-                    alt={card.title}
+                    alt={card.alt}
+                    title={card.name}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="object-cover"

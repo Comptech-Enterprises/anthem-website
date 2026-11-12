@@ -65,11 +65,12 @@ export default function Navbar() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <nav className="container-x flex min-h-18 items-center justify-between py-2">
+      <nav aria-label="Main navigation" className="container-x flex min-h-18 items-center justify-between py-2">
         <Link href="/" className="group flex items-center">
           <Image
             src="https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/logo.webp"
-            alt="Anthem"
+            alt="Anthem — Experiential Marketing Agency"
+            title="Anthem Logo"
             width={3000}
             height={2250}
             priority

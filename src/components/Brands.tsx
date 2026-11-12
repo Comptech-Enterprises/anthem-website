@@ -49,6 +49,7 @@ export default function Brands() {
           {[...brands, ...brands].map((name, i) => (
             <span
               key={i}
+              aria-hidden={i >= brands.length}
               className="group flex items-center justify-center rounded-2xl border border-border bg-surface px-10 py-8 transition-colors hover:border-accent/50 hover:bg-surface-2"
             >
               <span className="font-display text-xl font-semibold tracking-tight text-muted-2 transition-colors duration-300 group-hover:text-foreground sm:text-2xl">

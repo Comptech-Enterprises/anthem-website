@@ -86,10 +86,16 @@ function StaggerGrid({ className, children }: { className: string; children: Rea
 
 function VideoSlide({
   src,
+  name,
+  alt,
+  poster,
   onRatio,
   fit = "object-cover",
 }: {
   src: string;
+  name: string;
+  alt: string;
+  poster?: string;
   onRatio?: (r: number) => void;
   fit?: string;
 }) {
@@ -121,13 +127,18 @@ function VideoSlide({
           });
         }}
         src={src}
+        title={name}
+        aria-label={alt}
+        poster={poster}
         autoPlay
         loop
         playsInline
         preload="none"
         onCanPlay={() => setReady(true)}
         className={`h-full w-full ${fit}`}
-      />
+      >
+        {alt}
+      </video>
       <div
         className="pointer-events-none absolute inset-0 animate-pulse bg-gradient-to-r from-surface via-border/30 to-surface transition-opacity duration-700"
         style={{ opacity: ready ? 0 : 1 }}
@@ -156,19 +167,34 @@ function VideoSlide({
 }
 
 type Slide =
-  | { kind: "video"; src: string }
-  | { kind: "image"; src: string }
-  | { kind: "placeholder"; src: string };
+  | { kind: "video"; src: string; name: string; alt: string; poster?: string }
+  | { kind: "image"; src: string; name: string; alt: string }
+  | { kind: "placeholder"; src: string; name: string; alt: string };
 
 function buildSlides(data: CaseStudyType): Slide[] {
   const slides: Slide[] = [];
   const videos = data.video ? (Array.isArray(data.video) ? data.video : [data.video]) : [];
-  for (const v of videos) slides.push({ kind: "video", src: v });
-  for (const m of data.media) {
+  const poster = data.media.find((m) => m.startsWith("/") || m.startsWith("http"));
+  videos.forEach((v, i) => {
+    const meta = data.videoMeta?.[i];
+    slides.push({
+      kind: "video",
+      src: v,
+      name: meta?.name ?? `${data.title} — Event Video${videos.length > 1 ? ` ${i + 1}` : ""}`,
+      alt: meta?.alt ?? `${data.title} campaign video for ${data.company} by Anthem`,
+      poster,
+    });
+  });
+  data.media.forEach((m, i) => {
+    const meta = data.mediaMeta?.[i];
+    const name = meta?.name ?? `${data.title} — Image ${i + 1}`;
+    const alt = meta?.alt ?? `${data.title} campaign visual ${i + 1} for ${data.company} by Anthem`;
     slides.push(
-      m.startsWith("/") || m.startsWith("http") ? { kind: "image", src: m } : { kind: "placeholder", src: m }
+      m.startsWith("/") || m.startsWith("http")
+        ? { kind: "image", src: m, name, alt }
+        : { kind: "placeholder", src: m, name, alt }
     );
-  }
+  });
   return slides;
 }
 
@@ -230,6 +256,8 @@ function MediaCarousel({
 
   return (
     <div
+      role="region"
+      aria-label={`${title} media gallery`}
       className={`relative mx-auto w-full overflow-hidden rounded-2xl border border-border bg-surface ${className}`}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
@@ -256,11 +284,19 @@ function MediaCarousel({
             className={`carousel-slide ${i === index ? "active" : ""}`}
           >
             {s.kind === "video" ? (
-              <VideoSlide src={s.src} fit={videoFit} onRatio={(r) => setRatio(i, r)} />
+              <VideoSlide
+                src={s.src}
+                name={s.name}
+                alt={s.alt}
+                poster={s.poster}
+                fit={videoFit}
+                onRatio={(r) => setRatio(i, r)}
+              />
             ) : s.kind === "image" ? (
               <Image
                 src={s.src}
-                alt={title}
+                alt={s.alt}
+                title={s.name}
                 fill
                 sizes="(max-width: 1024px) 100vw, 70vw"
                 className={fixedAspect ? "object-cover" : "object-contain"}
@@ -328,6 +364,7 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
           </Reveal>
           <Reveal delay={0.05}>
             <AnimatedHeading
+              as="h1"
               text={data.title}
               className="font-display text-4xl font-bold sm:text-5xl lg:text-6xl"
             />
@@ -349,22 +386,22 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
         <div className="mt-14 grid items-stretch gap-10 lg:grid-cols-12 lg:gap-12">
           <div className={`order-2 flex flex-col justify-center gap-10 lg:order-none ${slides.length > 0 ? "lg:col-span-5" : "lg:col-span-12 lg:max-w-3xl"}`}>
             <Reveal>
-              <div className="flex gap-6">
+              <section aria-label="Overview" className="flex gap-6">
                 <div className="w-1 shrink-0 rounded-full bg-gradient-to-b from-accent to-accent/20" />
                 <div>
-                  <p className="mb-3 font-body text-xs uppercase tracking-[0.2em] text-accent">Overview</p>
+                  <h2 className="mb-3 font-body text-xs uppercase tracking-[0.2em] text-accent">Overview</h2>
                   <p className="font-body text-lg leading-relaxed text-muted">{data.overview}</p>
                 </div>
-              </div>
+              </section>
             </Reveal>
             <Reveal delay={0.1}>
-              <div className="flex gap-6">
+              <section aria-label="Objective" className="flex gap-6">
                 <div className="w-1 shrink-0 rounded-full bg-gradient-to-b from-accent to-accent/20" />
                 <div>
-                  <p className="mb-3 font-body text-xs uppercase tracking-[0.2em] text-accent">Objective</p>
+                  <h2 className="mb-3 font-body text-xs uppercase tracking-[0.2em] text-accent">Objective</h2>
                   <p className="font-body text-lg leading-relaxed text-muted">{data.objective}</p>
                 </div>
-              </div>
+              </section>
             </Reveal>
           </div>
 
@@ -379,9 +416,9 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
           )}
         </div>
 
-        <div className="mt-20">
+        <section aria-label="Execution" className="mt-20">
           <Reveal>
-            <p className="mb-8 font-body text-xs uppercase tracking-[0.2em] text-accent">Execution</p>
+            <h2 className="mb-8 font-body text-xs uppercase tracking-[0.2em] text-accent">Execution</h2>
           </Reveal>
           <StaggerGrid className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {data.execution.map((step, i) => (
@@ -394,11 +431,11 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
               </div>
             ))}
           </StaggerGrid>
-        </div>
+        </section>
 
-        <div className="mt-20">
+        <section aria-label="Impact" className="mt-20">
           <Reveal>
-            <p className="mb-8 font-body text-xs uppercase tracking-[0.2em] text-accent">Impact</p>
+            <h2 className="mb-8 font-body text-xs uppercase tracking-[0.2em] text-accent">Impact</h2>
           </Reveal>
           <StaggerGrid
             className={`grid gap-4 ${
@@ -415,7 +452,7 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
               </div>
             ))}
           </StaggerGrid>
-        </div>
+        </section>
 
         <Reveal>
           <div className="mt-24 flex flex-col items-center gap-6 rounded-3xl border border-border bg-surface/60 px-8 py-14 text-center backdrop-blur-sm">

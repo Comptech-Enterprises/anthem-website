@@ -22,6 +22,7 @@ export default function LocationServicePage({ service, city }: Props) {
           {city.name} &middot; {city.region}
         </p>
         <AnimatedHeading
+          as="h1"
           text={`${service.name} in ${city.name}`}
           highlight={service.name}
           className="font-display text-4xl font-extrabold leading-tight tracking-tight sm:text-6xl lg:text-7xl max-w-4xl"

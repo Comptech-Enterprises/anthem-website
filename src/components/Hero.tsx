@@ -6,11 +6,31 @@ import { useRef, useState, useEffect } from "react";
 const R2 = "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads";
 
 const slides = [
-  `${R2}/sliders-1.webp`,
-  `${R2}/sliders-2.webp`,
-  `${R2}/sliders-10.webp`,
-  `${R2}/sliders-11.webp`,
-  `${R2}/sliders-12.webp`,
+  {
+    src: `${R2}/sliders-1.webp`,
+    name: "Anthem Live Brand Experience Showcase",
+    alt: "Live experiential marketing event and crowd activation produced by Anthem",
+  },
+  {
+    src: `${R2}/sliders-2.webp`,
+    name: "Anthem Cultural Festival Production",
+    alt: "Large-scale cultural festival stage and audience engagement by Anthem",
+  },
+  {
+    src: `${R2}/sliders-10.webp`,
+    name: "Anthem Brand Activation & Consumer Experience",
+    alt: "Immersive brand activation installation and guest experience by Anthem",
+  },
+  {
+    src: `${R2}/sliders-11.webp`,
+    name: "Anthem Nightlife & Spirits Experiential Event",
+    alt: "Curated nightlife and luxury spirits brand experience by Anthem",
+  },
+  {
+    src: `${R2}/sliders-12.webp`,
+    name: "Anthem Experiential Pop-Up & Live Event",
+    alt: "Interactive pop-up event and creator-led brand campaign by Anthem",
+  },
 ];
 
 const words = ["We", "Build", "Moments", "People", "Remember"];
@@ -164,19 +184,20 @@ export default function Hero() {
       >
         <div className="relative overflow-hidden rounded-3xl border border-border bg-surface-2">
           <div className="relative aspect-[3/4] w-full overflow-hidden sm:aspect-[21/9]">
-            {slides.map((src, i) => (
+            {slides.map((s, i) => (
               <div
-                key={src}
+                key={s.src}
                 className={`carousel-slide ${i === slide ? "active" : ""}`}
               >
                 <Image
-                  src={src}
-                  alt=""
+                  src={s.src}
+                  alt={s.alt}
+                  title={s.name}
                   fill
                   className={`object-cover ${
-                    src === `${R2}/sliders-2.webp`
+                    s.src === `${R2}/sliders-2.webp`
                       ? "object-top"
-                      : src === `${R2}/sliders-12.webp`
+                      : s.src === `${R2}/sliders-12.webp`
                         ? "object-right sm:object-center"
                         : "object-center"
                   }`}

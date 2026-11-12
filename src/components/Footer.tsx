@@ -40,7 +40,8 @@ export default function Footer() {
             <Link href="/" className="flex items-center">
               <Image
                 src="https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/logo.webp"
-                alt="Anthem"
+                alt="Anthem — Experiential Marketing Agency"
+                title="Anthem Logo"
                 width={3000}
                 height={2250}
                 className="h-12 w-auto invert sm:h-16 md:h-20"
@@ -49,18 +50,20 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col items-center gap-6 sm:items-end">
-            <ul className="flex flex-wrap items-center gap-6 font-body text-sm">
-              {pages.map(([label, href]) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className="text-muted transition-colors hover:text-accent"
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <nav aria-label="Footer navigation">
+              <ul className="flex flex-wrap items-center gap-6 font-body text-sm">
+                {pages.map(([label, href]) => (
+                  <li key={href}>
+                    <Link
+                      href={href}
+                      className="text-muted transition-colors hover:text-accent"
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
 
             <ul className="flex items-center gap-3">
               {socials.map(({ label, href, icon }) => (
@@ -77,10 +80,10 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-            <p className="font-body text-xs leading-relaxed text-muted-2 text-center sm:text-right max-w-[260px]">
+            <address className="not-italic font-body text-xs leading-relaxed text-muted-2 text-center sm:text-right max-w-[260px]">
               1st floor, 134, D Block Rd, Dr Ambedkar Colony,<br />
               Chhatarpur, New Delhi, Delhi 110074
-            </p>
+            </address>
           </div>
         </div>
       </div>

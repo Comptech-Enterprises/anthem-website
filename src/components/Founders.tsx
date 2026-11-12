@@ -24,7 +24,7 @@ const founders = [
 
 export default function Founders() {
   return (
-    <section className="relative border-t border-border bg-surface/60 py-28 backdrop-blur-sm sm:py-36">
+    <section id="founders" aria-label="The Founders and Team" className="relative border-t border-border bg-surface/60 py-28 backdrop-blur-sm sm:py-36">
       <div className="container-x">
         <Reveal>
           <p className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
@@ -55,7 +55,8 @@ export default function Founders() {
                   <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden rounded-xl">
                     <Image
                       src={f.img}
-                      alt={f.name}
+                      alt={`${f.name}, ${f.role} at Anthem`}
+                      title={`${f.name} — ${f.role}`}
                       fill
                       sizes="(max-width: 640px) 100vw, 50vw"
                       className={`object-cover transition-transform duration-500 ${
@@ -101,10 +102,10 @@ export default function Founders() {
 
         <div className="mt-20 border-t border-border pt-14">
           <Reveal>
-            <p className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
-              <span className="h-px w-10 bg-accent" />
+            <h2 className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
+              <span className="h-px w-10 bg-accent" aria-hidden="true" />
               The Team
-            </p>
+            </h2>
           </Reveal>
           <Reveal delay={0.05}>
             <p className="font-body text-lg leading-relaxed text-muted">

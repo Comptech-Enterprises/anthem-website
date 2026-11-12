@@ -18,6 +18,8 @@ const ownedIp = [
     href: "https://foodtalk.theanthem.in/",
     external: true,
     bg: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/food-talk-bg.webp",
+    bgName: "Food Talk India — Experience Platform by Anthem",
+    bgAlt: "Food Talk India culinary, drinks, and cultural experience platform by Anthem",
     glow: "rgba(235, 94, 85, 0.15)",
   },
   {
@@ -25,6 +27,8 @@ const ownedIp = [
     name: "The Anthem",
     title: "Explorers Club",
     bg: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/explorers-club.webp",
+    bgName: "Explorers Club — Live Festival IP by Anthem",
+    bgAlt: "Explorers Club lifestyle, spirits, food, and music festival IP curated by Anthem",
     highlight: "1.5L+ Attendees · 3 Cities",
     summary:
       "A lifestyle and culture-led experiential IP built around spirits, flavour, food, music and more. What started as an experience has grown into a culture-led platform, attracting 1.5L+ attendees across 3 cities and building a community around discovery, connection and culture.",
@@ -86,14 +90,14 @@ export default function Services() {
       <div className="container-x relative">
         <div className="mb-16 max-w-2xl">
           <Reveal>
-            <p className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
-              <span className="h-px w-10 bg-accent" />
+            <h1 className="mb-4 flex items-center gap-3 font-hand text-lg text-accent">
+              <span className="h-px w-10 bg-accent" aria-hidden="true" />
               Our Work
-            </p>
+            </h1>
           </Reveal>
         </div>
 
-        <div className="mb-10">
+        <div id="owned-ips" className="mb-10">
           <Reveal>
             <AnimatedHeading
               text="Owned IPs"
@@ -116,10 +120,16 @@ export default function Services() {
                 >
                   {ip.bg && (
                     <div
-                      aria-hidden
                       className="pointer-events-none absolute inset-0 z-0 opacity-15 transition-opacity duration-500 group-hover:opacity-30"
                     >
-                      <Image src={ip.bg} alt="" fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" />
+                      <Image
+                        src={ip.bg}
+                        alt={ip.bgAlt}
+                        title={ip.bgName}
+                        fill
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                        className="object-cover"
+                      />
                     </div>
                   )}
 
@@ -186,12 +196,12 @@ export default function Services() {
               >
                 {c.media[0] && (
                   <div
-                    aria-hidden
                     className="pointer-events-none absolute inset-0 z-0 opacity-15 transition-opacity duration-500 group-hover:opacity-30"
                   >
                     <Image
                       src={c.media[0]}
-                      alt=""
+                      alt={c.mediaMeta?.[0]?.alt ?? `${c.title} — ${c.company} experiential campaign by Anthem`}
+                      title={c.mediaMeta?.[0]?.name ?? `${c.title} — ${c.company}`}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className={`object-cover ${c.bgPosition || "object-center"}`}

@@ -100,7 +100,8 @@ export default function Testimonials() {
                       <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-border bg-background">
                         <Image
                           src={item.img}
-                          alt={item.org}
+                          alt={`${item.org} logo`}
+                          title={`${item.name} — ${item.org}`}
                           fill
                           sizes="48px"
                           className="object-contain p-1.5"

@@ -1,3 +1,8 @@
+export type MediaMeta = {
+  name: string;
+  alt: string;
+};
+
 export type CaseStudy = {
   slug: string;
   company: string;
@@ -10,7 +15,9 @@ export type CaseStudy = {
   execution: string[];
   results: { value: string; label: string }[];
   media: string[];
+  mediaMeta?: MediaMeta[];
   video?: string | string[];
+  videoMeta?: MediaMeta[];
   bgPosition?: string;
 };
 
@@ -41,7 +48,19 @@ export const cases: CaseStudy[] = [
       { value: "55M+", label: "Impressions" },
     ],
     media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/world-class.webp"],
+    mediaMeta: [
+      {
+        name: "World Class Festival India — Diageo India Cocktail Festival",
+        alt: "World Class Festival India live cocktail festival and bartending showcase for Diageo India by Anthem",
+      },
+    ],
     video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/world-class-optimized.mp4",
+    videoMeta: [
+      {
+        name: "World Class Festival India — Official Event Aftermovie",
+        alt: "Event highlight video of World Class Festival India featuring Diageo brand zones, bartenders, and live music produced by Anthem",
+      },
+    ],
   },
   // 2. BCG India Leadership Meet (Corporate Summit - Non-Alcohol)
   {
@@ -68,6 +87,24 @@ export const cases: CaseStudy[] = [
       { value: "3-day", label: "Multi-format experience" },
     ],
     media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-BCG-3.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-BCG-2.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-BCG-4.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-BCG-5.webp"],
+    mediaMeta: [
+      {
+        name: "BCG India Leadership Meet Goa — Main Stage & Conference Setup",
+        alt: "BCG India Leadership Meet main conference stage and AV production in Goa by Anthem",
+      },
+      {
+        name: "BCG India Leadership Meet Goa — Executive Networking Experience",
+        alt: "Senior leaders networking during the three-day BCG India Leadership Meet in Goa",
+      },
+      {
+        name: "BCG India Leadership Meet Goa — Branded Event Collaterals",
+        alt: "Custom event fabrication and branded spatial touchpoints at BCG India Leadership Meet Goa",
+      },
+      {
+        name: "BCG India Leadership Meet Goa — Evening Entertainment & Gala",
+        alt: "Curated evening entertainment and gala experience at BCG India Leadership Meet in Goa",
+      },
+    ],
   },
   // 3. Don Julio (Tequila IP)
   {
@@ -93,6 +130,24 @@ export const cases: CaseStudy[] = [
       { value: "5M+", label: "Reach (2026)" },
     ],
     media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-don-julio-1.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-don-julio-2.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-don-julio-3.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-don-julio-4.webp"],
+    mediaMeta: [
+      {
+        name: "Don Julio Cinco On With Don — Flagship Celebration",
+        alt: "Don Julio Cinco de Mayo flagship experiential event and brand setup by Anthem",
+      },
+      {
+        name: "Don Julio Cinco On With Don — Multi-City Brand Activation",
+        alt: "Guests enjoying curated Don Julio tequila experiences at Cinco On With Don",
+      },
+      {
+        name: "Don Julio Cinco On With Don — Culture & Fashion Guests",
+        alt: "Creators and attendees celebrating Cinco de Mayo at Don Julio's experiential IP in India",
+      },
+      {
+        name: "Don Julio Cinco On With Don — Luxury Hospitality Experience",
+        alt: "Bespoke bar and immersive lighting installation for Don Julio Cinco On With Don",
+      },
+    ],
   },
   // 4. ARKS Store Launch (Fashion / Retail Launch - Non-Alcohol)
   {
@@ -119,6 +174,20 @@ export const cases: CaseStudy[] = [
       { value: "5,000+", label: "People queued for the launch" },
     ],
     media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-ARKS-1.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-ARKS-2.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-ARKS-3.webp"],
+    mediaMeta: [
+      {
+        name: "ARKS Flagship Store Launch — DLF Avenue Saket",
+        alt: "ARKS by Ranbir Kapoor flagship store launch event and crowd experience at DLF Avenue Saket",
+      },
+      {
+        name: "ARKS Flagship Store Launch — Interactive Brand Installations",
+        alt: "Immersive retail installation and minimalist studio space at the ARKS store launch in New Delhi",
+      },
+      {
+        name: "ARKS Flagship Store Launch — Guest Experience & Reveal",
+        alt: "Attendees exploring the ARKS flagship store launch curated by Anthem",
+      },
+    ],
   },
   // 5. Johnnie Walker Whisky Experiments (Whisky IP)
   {
@@ -145,7 +214,19 @@ export const cases: CaseStudy[] = [
       { value: "5", label: "Large-scale events" },
     ],
     media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/whisky-experiments.webp"],
+    mediaMeta: [
+      {
+        name: "Johnnie Walker Black Label Whisky Experiments — Cocktail Culture IP",
+        alt: "Johnnie Walker Black Label Whisky Experiments cocktail activation and bar collaboration by Anthem",
+      },
+    ],
     video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/whisky-experiments-optimized.mp4",
+    videoMeta: [
+      {
+        name: "Johnnie Walker Black Label Whisky Experiments — Campaign Film",
+        alt: "Highlight video of Johnnie Walker Black Label Whisky Experiments experiential activations across Indian bars",
+      },
+    ],
   },
   // 6. Curator Circle (Recruitment / Culture Event - Non-Alcohol)
   {
@@ -179,6 +260,24 @@ export const cases: CaseStudy[] = [
       "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/curator-circle-3.webp",
       "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/curator-circle-4.webp",
     ],
+    mediaMeta: [
+      {
+        name: "Curator Circle Diageo India — Culture Hiring Experience",
+        alt: "Diageo India Curator Circle culture-first recruitment event produced by Anthem",
+      },
+      {
+        name: "Curator Circle Diageo India — Jury & Finalists Session",
+        alt: "Finalists presenting to the jury panel during Diageo India's Curator Circle event",
+      },
+      {
+        name: "Curator Circle Diageo India — Community & Hospitality Curation",
+        alt: "Curated F&B and interactive experience setup at Diageo India Curator Circle",
+      },
+      {
+        name: "Curator Circle Diageo India — Culture Maestros Finale",
+        alt: "Culture and Community Curators finalists and winners at Diageo India Curator Circle",
+      },
+    ],
   },
   // 7. Chambal Gin (Gin Brand Activation)
   {
@@ -203,7 +302,19 @@ export const cases: CaseStudy[] = [
       { value: "1", label: "End-to-end execution" },
     ],
     media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/chambal-launch.webp"],
+    mediaMeta: [
+      {
+        name: "Chambal Gin Launch — Immersive Brand Experience",
+        alt: "Chambal Gin launch event featuring earthy ravine-inspired decor and gin tasting by Anthem",
+      },
+    ],
     video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/chambal-gin-optimized.mp4",
+    videoMeta: [
+      {
+        name: "Chambal Gin Launch — Event Film",
+        alt: "Launch film of Chambal Gin brand activation showcasing theatrical guest experiences and creator attendance",
+      },
+    ],
   },
   // 8. Hiring Campaign (Digital Talent / Campaign - Non-Alcohol)
   {
@@ -231,9 +342,25 @@ export const cases: CaseStudy[] = [
       { value: "13", label: "Finalists identified" },
     ],
     media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/hiring-campaign.webp"],
+    mediaMeta: [
+      {
+        name: "Diageo India Hiring Campaign — Culture & Community Curators",
+        alt: "Digital hiring campaign key visual for Diageo India Culture & Community Curators by Anthem",
+      },
+    ],
     video: [
       "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/hiring-campaign-1-optimized.mp4",
       "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/hiring-campaign-2-optimized.mp4",
+    ],
+    videoMeta: [
+      {
+        name: "Diageo India Hiring Campaign — Launch Film",
+        alt: "Digital campaign film 1 for Diageo India's pan-India Culture & Community Curators talent search",
+      },
+      {
+        name: "Diageo India Hiring Campaign — Culture Creators Film",
+        alt: "Digital campaign film 2 spotlighting culture-forward creators for Diageo India's hiring campaign",
+      },
     ],
   },
   // 9. Black & White Table For Everyone (Dining & Connection)
@@ -261,7 +388,19 @@ export const cases: CaseStudy[] = [
       { value: "2023–", label: "Running successfully since" },
     ],
     media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/table-for-everyone.webp"],
+    mediaMeta: [
+      {
+        name: "Black & White Table For Everyone — Conversation-Led Dining IP",
+        alt: "Guests sharing dinner and conversation at Black & White Table For Everyone experiential IP by Anthem",
+      },
+    ],
     video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/black-white-optimized.mp4",
+    videoMeta: [
+      {
+        name: "Black & White Table For Everyone — Experience Film",
+        alt: "Video recap of Black & White Table For Everyone intimate dining experiences across India",
+      },
+    ],
     bgPosition: "object-top",
   },
   // 10. The House of Oddities (Hendrick's Gin)
@@ -288,6 +427,20 @@ export const cases: CaseStudy[] = [
       { value: "1", label: "Mumbai experience" },
     ],
     media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-Hendrick-Gin-2.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-Hendrick-Gin-1.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-Hendrick-Gin-3.webp"],
+    mediaMeta: [
+      {
+        name: "Hendrick's Gin House of Oddities — Mumbai Brand Activation",
+        alt: "Surreal House of Oddities experience for Hendrick's Gin at Love Fools in Bandra, Mumbai",
+      },
+      {
+        name: "Hendrick's Gin House of Oddities — Immersive Decor & Characters",
+        alt: "Whimsical decor, eccentric characters, and curated tables inside Hendrick's House of Oddities",
+      },
+      {
+        name: "Hendrick's Gin House of Oddities — Global Ambassador Experience",
+        alt: "Guests experiencing puzzles, secrets, and curated cocktails at Hendrick's House of Oddities Mumbai",
+      },
+    ],
   },
   // 11. Por Amor Potluck (Creator Series)
   {
@@ -313,7 +466,19 @@ export const cases: CaseStudy[] = [
       { value: "110K+", label: "Engagement" },
     ],
     media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/por-amor.webp"],
+    mediaMeta: [
+      {
+        name: "Por Amor Potluck x Don Julio — Creator Digital Series",
+        alt: "Creator-led Por Amor Potluck dinner collaboration with Don Julio Grapefruit Soda by Anthem",
+      },
+    ],
     video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/naina-bhan-don-julio-optimized.mp4",
+    videoMeta: [
+      {
+        name: "Por Amor Potluck x Don Julio — Creator Campaign Video",
+        alt: "Creator storytelling video from Por Amor Potluck with Don Julio Grapefruit Soda featuring Naina Bhan",
+      },
+    ],
     bgPosition: "object-top",
   },
   // 12. Serious Eaters Club Dinners (Dining & Toki Whisky)
@@ -341,6 +506,24 @@ export const cases: CaseStudy[] = [
       { value: "180+", label: "Attendees" },
     ],
     media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/serious-eaters-club-1.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-Toki-Dinners-2.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-Toki-Dinners-3.webp", "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/projects-Toki-Dinners-4.webp"],
+    mediaMeta: [
+      {
+        name: "Serious Eaters Club Dinners x Toki Whisky — Culinary Experience",
+        alt: "Serious Eaters Club curated dining experience featuring Suntory Toki Whisky by Food Talk India and Anthem",
+      },
+      {
+        name: "Serious Eaters Club Dinners — Bespoke Dining Table",
+        alt: "Ticketed dining setup and immersive table curation for Serious Eaters Club x Toki Whisky",
+      },
+      {
+        name: "Serious Eaters Club Dinners — Highball & Cuisine Pairing",
+        alt: "Toki Whisky highball pairings served alongside bold culinary courses at Serious Eaters Club",
+      },
+      {
+        name: "Serious Eaters Club Dinners — Community Gathering",
+        alt: "Guests enjoying storytelling and fine dining at Serious Eaters Club Dinners",
+      },
+    ],
   },
   // 13. Roku Gin (Japanese Craft / Nature IP)
   {
@@ -368,7 +551,19 @@ export const cases: CaseStudy[] = [
       { value: "600K+", label: "Engagement" },
     ],
     media: ["https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/roku-gin.webp"],
+    mediaMeta: [
+      {
+        name: "Roku Gin Come Alive With The Seasons — Japanese Craft Experience",
+        alt: "Roku Gin Come Alive With The Seasons Japanese craft workshop and sensory activation by Anthem",
+      },
+    ],
     video: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/roku-gin-optimized.mp4",
+    videoMeta: [
+      {
+        name: "Roku Gin Come Alive With The Seasons — Campaign Film",
+        alt: "Experiential campaign film for Roku Gin featuring Japanese ink art, terrarium building, and Ikebana across Delhi, Mumbai, and Bengaluru",
+      },
+    ],
   },
 ];
 

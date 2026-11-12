@@ -52,6 +52,7 @@ export default function JobApplication() {
             </Reveal>
             <Reveal delay={0.05}>
               <AnimatedHeading
+                as="h1"
                 text="Work With Us"
                 highlight="With Us"
                 className="font-display text-4xl font-bold sm:text-5xl lg:text-6xl"

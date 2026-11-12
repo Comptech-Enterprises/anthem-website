@@ -7,6 +7,7 @@ type Props = {
   highlight?: string;
   className?: string;
   delay?: number;
+  as?: "h1" | "h2" | "h3";
 };
 
 const clean = (w: string) => w.replace(/[.,—]/g, "");
@@ -17,7 +18,9 @@ export default function AnimatedHeading({
   highlight = "",
   className = "",
   delay = 0,
+  as = "h2",
 }: Props) {
+  const Tag = as;
   const words = text.split(" ");
   const hi = new Set(
     highlight
@@ -51,7 +54,7 @@ export default function AnimatedHeading({
   }, []);
 
   return (
-    <h2 ref={ref} className={className}>
+    <Tag ref={ref} className={className}>
       {words.map((w, i) => (
         <span
           key={`${w}-${i}`}
@@ -65,6 +68,6 @@ export default function AnimatedHeading({
           </span>
         </span>
       ))}
-    </h2>
+    </Tag>
   );
 }

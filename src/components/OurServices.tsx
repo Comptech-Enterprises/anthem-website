@@ -50,10 +50,10 @@ export default function OurServices() {
     >
       <div className="container-x">
         <Reveal>
-          <p className="mb-16 flex items-center gap-3 font-hand text-lg text-accent">
-            <span className="h-px w-10 bg-accent" />
+          <h2 className="mb-16 flex items-center gap-3 font-hand text-lg text-accent">
+            <span className="h-px w-10 bg-accent" aria-hidden="true" />
             Our Services
-          </p>
+          </h2>
         </Reveal>
         <Reveal>
           <p

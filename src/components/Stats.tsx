@@ -41,7 +41,11 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
 export default function Stats() {
   return (
-    <section className="relative border-y border-border bg-surface/60 py-12 backdrop-blur-sm sm:py-14">
+    <section
+      aria-label="Agency impact in numbers"
+      className="relative border-y border-border bg-surface/60 py-12 backdrop-blur-sm sm:py-14"
+    >
+      <h2 className="sr-only">Agency Impact in Numbers</h2>
       <div className="container-x grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
         {stats.map((s, i) => (
           <Reveal key={s.label} delay={i * 0.08}>
