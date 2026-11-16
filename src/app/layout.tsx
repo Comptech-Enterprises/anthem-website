@@ -97,6 +97,8 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <link rel="preconnect" href="https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev" />
+        <link rel="dns-prefetch" href="https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev" />
         <Script id="js-detect" strategy="beforeInteractive">
           {`document.documentElement.classList.add('js')`}
         </Script>
