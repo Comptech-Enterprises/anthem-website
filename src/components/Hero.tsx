@@ -57,7 +57,6 @@ export default function Hero() {
   const descRef = useRef<HTMLParagraphElement>(null);
 
   const [slide, setSlide] = useState(0);
-  const [loaded, setLoaded] = useState<Set<number>>(() => new Set([0]));
 
   useEffect(() => {
     if (descRef.current) descRef.current.style.transform = "translateY(10px)";
@@ -88,22 +87,8 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    const preload = setTimeout(() => {
-      setLoaded((prev) => new Set([...prev, 1]));
-    }, 1500);
-    const t = setInterval(() => {
-      setSlide((s) => {
-        const next = (s + 1) % slides.length;
-        setLoaded((prev) => {
-          const copy = new Set(prev);
-          copy.add(next);
-          copy.add((next + 1) % slides.length);
-          return copy;
-        });
-        return next;
-      });
-    }, 2500);
-    return () => { clearTimeout(preload); clearInterval(t); };
+    const t = setInterval(() => setSlide((s) => (s + 1) % slides.length), 2500);
+    return () => clearInterval(t);
   }, []);
 
   useEffect(() => {
@@ -204,23 +189,21 @@ export default function Hero() {
                 key={s.src}
                 className={`carousel-slide ${i === slide ? "active" : ""}`}
               >
-                {(i === 0 || loaded.has(i)) && (
-                  <Image
-                    src={s.src}
-                    alt={s.alt}
-                    title={s.name}
-                    fill
-                    className={`object-cover ${
-                      s.src === `${R2}/sliders-2.webp`
-                        ? "object-top"
-                        : s.src === `${R2}/sliders-12.webp`
-                          ? "object-right sm:object-center"
-                          : "object-center"
-                    }`}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 80vw"
-                    priority={i === 0}
-                  />
-                )}
+                <Image
+                  src={s.src}
+                  alt={s.alt}
+                  title={s.name}
+                  fill
+                  className={`object-cover ${
+                    s.src === `${R2}/sliders-2.webp`
+                      ? "object-top"
+                      : s.src === `${R2}/sliders-12.webp`
+                        ? "object-right sm:object-center"
+                        : "object-center"
+                  }`}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 80vw"
+                  priority={i === 0}
+                />
               </div>
             ))}
             <div className="pointer-events-none absolute inset-0 bg-black/30" />
