@@ -203,8 +203,9 @@ export default function Hero() {
                           ? "object-right sm:object-center"
                           : "object-center"
                     }`}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
+                    sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) 90vw, 1200px"
                     priority={i === 0}
+                    fetchPriority={i === 0 ? "high" : "auto"}
                   />
                 </div>
               );
