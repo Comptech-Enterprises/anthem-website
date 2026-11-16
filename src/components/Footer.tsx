@@ -42,8 +42,9 @@ export default function Footer() {
                 src="https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/logo.webp"
                 alt="Anthem — Experiential Marketing Agency"
                 title="Anthem Logo"
-                width={3000}
-                height={2250}
+                width={120}
+                height={90}
+                sizes="120px"
                 className="h-12 w-auto invert sm:h-16 md:h-20"
               />
             </Link>

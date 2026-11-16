@@ -57,6 +57,13 @@ export default function Hero() {
   const descRef = useRef<HTMLParagraphElement>(null);
 
   const [slide, setSlide] = useState(0);
+  const [loadRest, setLoadRest] = useState(false);
+
+  useEffect(() => {
+    // Delay loading inactive carousel slides until after initial paint & LCP
+    const timer = setTimeout(() => setLoadRest(true), 2500);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (descRef.current) descRef.current.style.transform = "translateY(10px)";
@@ -79,9 +86,10 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
+    if (!loadRest) return;
     const t = setInterval(() => setSlide((s) => (s + 1) % slides.length), 5500);
     return () => clearInterval(t);
-  }, []);
+  }, [loadRest]);
 
   useEffect(() => {
     const section = ref.current;
@@ -176,28 +184,31 @@ export default function Hero() {
       >
         <div className="relative overflow-hidden rounded-3xl border border-border bg-surface-2">
           <div className="relative aspect-[3/4] w-full overflow-hidden sm:aspect-[21/9]">
-            {slides.map((s, i) => (
-              <div
-                key={s.src}
-                className={`carousel-slide ${i === slide ? "active" : ""}`}
-              >
-                <Image
-                  src={s.src}
-                  alt={s.alt}
-                  title={s.name}
-                  fill
-                  className={`object-cover ${
-                    s.src === `${R2}/sliders-2.webp`
-                      ? "object-top"
-                      : s.src === `${R2}/sliders-12.webp`
-                        ? "object-right sm:object-center"
-                        : "object-center"
-                  }`}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 80vw"
-                  priority={i === 0}
-                />
-              </div>
-            ))}
+            {slides.map((s, i) => {
+              if (i !== 0 && !loadRest) return null;
+              return (
+                <div
+                  key={s.src}
+                  className={`carousel-slide ${i === slide ? "active" : ""}`}
+                >
+                  <Image
+                    src={s.src}
+                    alt={s.alt}
+                    title={s.name}
+                    fill
+                    className={`object-cover ${
+                      s.src === `${R2}/sliders-2.webp`
+                        ? "object-top"
+                        : s.src === `${R2}/sliders-12.webp`
+                          ? "object-right sm:object-center"
+                          : "object-center"
+                    }`}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
+                    priority={i === 0}
+                  />
+                </div>
+              );
+            })}
             <div className="pointer-events-none absolute inset-0 bg-black/30" />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-6 sm:p-8" />
           </div>
