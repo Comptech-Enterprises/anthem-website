@@ -16,10 +16,16 @@ function useCountUp(target: string, active: boolean) {
   useEffect(() => {
     if (!active) return;
     const match = target.match(/^(\D*)([\d,]+)(\D*)$/);
-    if (!match) { setDisplay(target); return; }
+    if (!match) {
+      const raf = requestAnimationFrame(() => setDisplay(target));
+      return () => cancelAnimationFrame(raf);
+    }
     const [, pre, raw, suf] = match;
     const end = parseInt(raw.replace(/,/g, ""), 10);
-    if (isNaN(end)) { setDisplay(target); return; }
+    if (isNaN(end)) {
+      const raf = requestAnimationFrame(() => setDisplay(target));
+      return () => cancelAnimationFrame(raf);
+    }
 
     let startTs: number;
     const duration = 1200;

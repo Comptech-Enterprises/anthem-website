@@ -15,8 +15,14 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [prevPathname, setPrevPathname] = useState("");
   const pathname = usePathname();
   const onHome = pathname === "/";
+
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    if (open) setOpen(false);
+  }
 
   const resolve = (l: (typeof links)[number]) => {
     if (l.kind === "route") return l.href;
@@ -30,11 +36,6 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  // Close mobile menu on route change
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
 
   // Close on Escape key press
   useEffect(() => {

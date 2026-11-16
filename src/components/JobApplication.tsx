@@ -3,33 +3,6 @@
 import Reveal from "./Reveal";
 import AnimatedHeading from "./AnimatedHeading";
 
-const perks = [
-  {
-    icon: "01",
-    title: "Build things people remember",
-    description:
-      "You won't push pixels in a vacuum. Every project ships live — festivals, launches, activations — and you'll see thousands of people experience what you made.",
-  },
-  {
-    icon: "02",
-    title: "Small team, outsized reach",
-    description:
-      "We're lean by design. That means you own your lane from day one, work directly with founders, and move faster than agencies five times our size.",
-  },
-  {
-    icon: "03",
-    title: "Creative without the fluff",
-    description:
-      "No jargon decks. No brainstorms that go nowhere. We brief sharp, execute fast, and measure what matters — then do it again.",
-  },
-  {
-    icon: "04",
-    title: "New Delhi, on the ground",
-    description:
-      "We work out of Chhatarpur, Delhi. The role is in-person because the best experiential work happens when the team is in the room together.",
-  },
-];
-
 export default function JobApplication() {
   return (
     <section id="careers" className="relative pt-40 pb-28 sm:pt-48 sm:pb-36">

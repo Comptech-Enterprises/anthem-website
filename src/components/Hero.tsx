@@ -60,7 +60,6 @@ export default function Hero() {
 
   useEffect(() => {
     if (descRef.current) descRef.current.style.transform = "translateY(10px)";
-    if (bandRef.current) bandRef.current.style.transform = "translateY(10px)";
     const run = () => {
       wordRefs.current.forEach((el, i) => {
         if (!el) return;
@@ -75,19 +74,12 @@ export default function Hero() {
         d.style.opacity = "1";
         d.style.transform = "translateY(0)";
       }
-      if (bandRef.current) {
-        const b = bandRef.current;
-        b.style.transition = `opacity 0.6s ${EASE}, transform 0.6s ${EASE}`;
-        b.style.transitionDelay = "0.5s";
-        b.style.opacity = "1";
-        b.style.transform = "translateY(0)";
-      }
     };
     requestAnimationFrame(() => requestAnimationFrame(run));
   }, []);
 
   useEffect(() => {
-    const t = setInterval(() => setSlide((s) => (s + 1) % slides.length), 2500);
+    const t = setInterval(() => setSlide((s) => (s + 1) % slides.length), 5500);
     return () => clearInterval(t);
   }, []);
 
@@ -180,7 +172,7 @@ export default function Hero() {
       {/* cinematic image band */}
       <div
         ref={bandRef}
-        className="reveal-hide container-x relative z-10 mt-16"
+        className="container-x relative z-10 mt-16"
       >
         <div className="relative overflow-hidden rounded-3xl border border-border bg-surface-2">
           <div className="relative aspect-[3/4] w-full overflow-hidden sm:aspect-[21/9]">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type FormEvent } from "react";
+import { useRef, useState } from "react";
 import Reveal from "./Reveal";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -18,7 +18,7 @@ export default function EnquiryForm() {
   const [status, setStatus] = useState<Status>("idle");
   const submittedRef = useRef(false);
 
-  function handleSubmit(_e: FormEvent<HTMLFormElement>) {
+  function handleSubmit() {
     submittedRef.current = true;
     setStatus("submitting");
   }

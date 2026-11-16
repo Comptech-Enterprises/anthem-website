@@ -2,9 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export function useScrollProgress(
-  options?: { offset?: [string, string] },
-) {
+export function useScrollProgress() {
   const ref = useRef<HTMLElement>(null);
   const [progress, setProgress] = useState(0);
 

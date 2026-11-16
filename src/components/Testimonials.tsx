@@ -49,8 +49,6 @@ export default function Testimonials() {
     el.style.animation = `autoplay-fill ${AUTOPLAY_MS}ms linear forwards`;
   }, [index, paused]);
 
-  const t = testimonials[index];
-
   return (
     <section
       id="testimonials"
