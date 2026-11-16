@@ -74,7 +74,7 @@ export default function WhatWeDo() {
                     alt={card.alt}
                     title={card.name}
                     fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover"
                   />
                 </div>

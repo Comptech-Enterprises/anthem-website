@@ -61,7 +61,7 @@ export default function Hero() {
 
   useEffect(() => {
     // Delay loading inactive carousel slides until after initial paint & LCP
-    const timer = setTimeout(() => setLoadRest(true), 2500);
+    const timer = setTimeout(() => setLoadRest(true), 6500);
     return () => clearTimeout(timer);
   }, []);
 
