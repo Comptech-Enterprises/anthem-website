@@ -49,6 +49,10 @@ export const metadata: Metadata = {
   verification: {
     google: "9oULDvmqmUDX2qp5DFvHGseyDvjdJNLbeOcQkwc9-Ks",
   },
+  applicationName: "Anthem",
+  appleWebApp: {
+    title: "Anthem",
+  },
   metadataBase: new URL("https://theanthem.in"),
   alternates: {
     canonical: "/",
@@ -137,6 +141,24 @@ export default function RootLayout({
         </Script>
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
+        {/* Google Site Name structured data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Anthem",
+              alternateName: [
+                "The Anthem",
+                "Anthem Agency",
+                "Anthem India",
+                "theanthem.in",
+              ],
+              url: "https://theanthem.in",
+            }),
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
