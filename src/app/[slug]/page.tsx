@@ -6,11 +6,11 @@ import RibbonFlight from "@/components/RibbonFlight";
 import ScrollProgress from "@/components/ScrollProgress";
 import SmoothScroll from "@/components/SmoothScroll";
 import Hero from "@/components/Hero";
+import Stats from "@/components/Stats";
+import Brands from "@/components/Brands";
+import OurServices from "@/components/OurServices";
 import { getAllSlugs, getServiceCity } from "@/data/location-services";
 
-const Stats = dynamic(() => import("@/components/Stats"));
-const Brands = dynamic(() => import("@/components/Brands"));
-const OurServices = dynamic(() => import("@/components/OurServices"));
 const WhatWeDo = dynamic(() => import("@/components/WhatWeDo"));
 const Founders = dynamic(() => import("@/components/Founders"));
 const EnquiryForm = dynamic(() => import("@/components/EnquiryForm"));
