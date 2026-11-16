@@ -97,12 +97,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link
-          rel="preload"
-          as="image"
-          href="https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/sliders-1.webp"
-          fetchPriority="high"
-        />
         <Script id="js-detect" strategy="beforeInteractive">
           {`document.documentElement.classList.add('js')`}
         </Script>
