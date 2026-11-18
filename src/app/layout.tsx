@@ -70,7 +70,7 @@ export const metadata: Metadata = {
       "Anthem is an integrated creative and experiential marketing agency delivering brand activations, corporate events, digital campaigns and experiences across India.",
     images: [
       {
-        url: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/world-class.webp",
+        url: "/og-default.webp",
         width: 1200,
         height: 630,
         alt: "Anthem — Experiential Marketing Agency",
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     description:
       "Anthem is an integrated creative and experiential marketing agency delivering brand activations, corporate events, digital campaigns and experiences across India.",
     images: [
-      "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/world-class.webp",
+      "/og-default.webp",
     ],
   },
   robots: {
@@ -169,18 +169,26 @@ export default function RootLayout({
               "@type": "Organization",
               name: "Anthem",
               url: "https://theanthem.in",
-              logo: "https://theanthem.in/logo.webp",
+              logo: "https://theanthem.in/logo.png",
               description:
-                "Anthem is an integrated creative and experiential marketing agency delivering brand activations, corporate events, digital campaigns and experiences across India.",
+                "Anthem is an integrated creative and experiential marketing agency in India, with offices in Delhi NCR and Mumbai.",
+              foundingDate: "2014",
               address: {
                 "@type": "PostalAddress",
+                streetAddress: "1st floor, 134, D Block Rd, Dr Ambedkar Colony, Chhatarpur",
                 addressLocality: "New Delhi",
+                addressRegion: "Delhi",
+                postalCode: "110074",
                 addressCountry: "IN",
               },
               sameAs: [
                 "https://www.instagram.com/theanthemindia/",
                 "https://www.linkedin.com/company/theanthemindia/",
               ],
+              numberOfEmployees: {
+                "@type": "QuantitativeValue",
+                minValue: 30,
+              },
               knowsAbout: [
                 "Experiential Marketing",
                 "Brand Activations",
@@ -188,6 +196,16 @@ export default function RootLayout({
                 "Corporate Events",
                 "Festival Management",
               ],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [],
             }),
           }}
         />
