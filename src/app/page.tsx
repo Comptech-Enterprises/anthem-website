@@ -10,7 +10,6 @@ import OurServices from "@/components/OurServices";
 
 const WhatWeDo = dynamic(() => import("@/components/WhatWeDo"));
 const Founders = dynamic(() => import("@/components/Founders"));
-const FAQ = dynamic(() => import("@/components/FAQ"));
 const EnquiryForm = dynamic(() => import("@/components/EnquiryForm"));
 const Footer = dynamic(() => import("@/components/Footer"));
 
@@ -30,7 +29,6 @@ export default function Home() {
         </RibbonFlight>
         {/* <Testimonials /> */}
         <Founders />
-        <FAQ />
         <EnquiryForm />
       </main>
       <Footer />
