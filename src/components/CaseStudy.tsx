@@ -11,21 +11,19 @@ import Reveal from "./Reveal";
 import type { CaseStudy as CaseStudyType } from "@/data/cases";
 
 function useCountUp(target: string, active: boolean) {
-  const [display, setDisplay] = useState("0");
+  const [display, setDisplay] = useState(target);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
-    if (!active) return;
+    if (!active || hasAnimated.current) return;
     const match = target.match(/^(\D*)([\d,]+)(\D*)$/);
-    if (!match) {
-      const raf = requestAnimationFrame(() => setDisplay(target));
-      return () => cancelAnimationFrame(raf);
-    }
+    if (!match) return;
     const [, pre, raw, suf] = match;
     const end = parseInt(raw.replace(/,/g, ""), 10);
-    if (isNaN(end)) {
-      const raf = requestAnimationFrame(() => setDisplay(target));
-      return () => cancelAnimationFrame(raf);
-    }
+    if (isNaN(end)) return;
+
+    hasAnimated.current = true;
+    setDisplay(pre + "0" + suf);
 
     let startTs: number;
     const duration = 1200;
