@@ -33,17 +33,15 @@ const slides = [
   },
 ];
 
-const words = ["We", "Build", "Moments", "People", "Remember"];
+const words = ["An", "Integrated", "Creative", "&", "Experiential", "Marketing", "Agency"];
 
 const segments = [
-  { text: "Anthem is an ", highlight: false },
-  { text: "experiential marketing agency", highlight: true },
-  { text: " that builds ideas people don't just see, but ", highlight: false },
-  { text: "get to live", highlight: true },
-  { text: ". From large-scale festivals and brand activations to creator-led campaigns and ", highlight: false },
-  { text: "cultural IPs", highlight: true },
-  { text: ", we create work that lives both ", highlight: false },
-  { text: "online and offline", highlight: true },
+  { text: "Anthem is an integrated creative and experiential marketing agency helping brands connect with people through ideas, experiences and culture. With a presence in ", highlight: false },
+  { text: "Delhi NCR and Mumbai", highlight: true },
+  { text: " and projects across India, Anthem brings together creative strategy, integrated marketing, ", highlight: false },
+  { text: "brand activations", highlight: true },
+  { text: ", corporate events, digital campaigns, content production, influencer marketing and ", highlight: false },
+  { text: "large-scale experiences", highlight: true },
   { text: ".", highlight: false },
 ];
 
@@ -149,12 +147,12 @@ export default function Hero() {
         ref={contentRef}
         className="container-x relative z-10 flex flex-col items-center text-center"
       >
-        <h1 className="mx-auto max-w-5xl font-display text-5xl font-extrabold leading-[0.95] tracking-tight sm:text-7xl lg:text-[7rem]">
+        <h1 className="mx-auto max-w-5xl font-display text-4xl font-extrabold leading-[0.95] tracking-tight sm:text-6xl lg:text-[5.5rem]">
           {words.map((w, i) => (
             <span key={w} className="inline-block overflow-hidden pb-[0.12em] align-bottom">
               <span
                 ref={(el) => { wordRefs.current[i] = el; }}
-                className={`mr-4 inline-block hero-word-hide ${w === "Moments" ? "text-gradient" : ""}`}
+                className={`mr-4 inline-block hero-word-hide ${w === "Creative" || w === "Experiential" ? "text-gradient" : ""}`}
               >
                 {w}
               </span>
