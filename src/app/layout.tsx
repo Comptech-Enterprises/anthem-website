@@ -27,13 +27,14 @@ const playwrite = Playwrite_NZ_Basic({
 export const metadata: Metadata = {
   title: {
     default:
-      "Anthem — Experiential Marketing Agency in India | Brand Activations & Live Events",
+      "Anthem | Creative & Experiential Marketing Agency in India",
     template: "%s | Anthem",
   },
   description:
-    "Anthem is a leading experiential marketing company in India. We create brand activations, live events, festivals, corporate experiences and 360° campaigns for brands like Diageo, Pernod Ricard, BCG and more.",
+    "Anthem is an integrated creative and experiential marketing agency delivering brand activations, corporate events, digital campaigns and experiences across India.",
   keywords: [
     "experiential marketing agency India",
+    "creative marketing agency India",
     "brand activation agency",
     "event management company India",
     "experiential marketing company India",
@@ -41,6 +42,7 @@ export const metadata: Metadata = {
     "brand experience agency",
     "corporate events India",
     "BTL agency India",
+    "digital campaigns India",
   ],
   icons: {
     icon: "/logo.webp",
@@ -63,9 +65,9 @@ export const metadata: Metadata = {
     url: "https://theanthem.in",
     siteName: "Anthem",
     title:
-      "Anthem — Experiential Marketing Agency in India | Brand Activations & Live Events",
+      "Anthem | Creative & Experiential Marketing Agency in India",
     description:
-      "India's leading experiential marketing agency. Brand activations, live events, festivals and 360° campaigns for top brands.",
+      "Anthem is an integrated creative and experiential marketing agency delivering brand activations, corporate events, digital campaigns and experiences across India.",
     images: [
       {
         url: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/world-class.webp",
@@ -77,9 +79,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Anthem — Experiential Marketing Agency in India",
+    title: "Anthem | Creative & Experiential Marketing Agency in India",
     description:
-      "Brand activations, live events, festivals and 360° campaigns for India's top brands.",
+      "Anthem is an integrated creative and experiential marketing agency delivering brand activations, corporate events, digital campaigns and experiences across India.",
     images: [
       "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/world-class.webp",
     ],
@@ -169,7 +171,7 @@ export default function RootLayout({
               url: "https://theanthem.in",
               logo: "https://theanthem.in/logo.webp",
               description:
-                "Anthem is a leading experiential marketing agency in India specializing in brand activations, live events, festivals and 360° campaigns.",
+                "Anthem is an integrated creative and experiential marketing agency delivering brand activations, corporate events, digital campaigns and experiences across India.",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "New Delhi",
