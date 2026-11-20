@@ -127,14 +127,20 @@ export default function Founders() {
           </Reveal>
           <Reveal delay={0.05}>
             <p className="font-body text-lg leading-relaxed text-muted">
-              Anthem is an integrated experiential marketing agency with a 30+ member team of strategists, creative directors, experiential producers, content creators and digital marketers. We&apos;re headquartered in Delhi NCR with operations in Mumbai. Founded in 2014 by Shuchir Suri and Anjali Batra, the team has delivered over 150 brand experiences across 30+ cities in India for 80+ brands including{" "}
+              Anthem is an integrated experiential marketing agency with a 30+ member team of strategists, creative directors, experiential producers, content creators and digital marketers. We&apos;re headquartered in{" "}
+              <Link href="/experience-design-in-delhi" className="text-accent underline-offset-2 hover:underline">Delhi NCR</Link> with operations in{" "}
+              <Link href="/event-management-in-mumbai" className="text-accent underline-offset-2 hover:underline">Mumbai</Link>. Founded in 2014 by{" "}
+              <Link href="https://www.linkedin.com/in/shuchir-suri-058251b" target="_blank" rel="noopener noreferrer" className="text-accent underline-offset-2 hover:underline">Shuchir Suri</Link> and{" "}
+              <Link href="https://www.linkedin.com/in/anjali-batra-1b45a636" target="_blank" rel="noopener noreferrer" className="text-accent underline-offset-2 hover:underline">Anjali Batra</Link>, the team has delivered over 150 brand experiences across 30+ cities in India for 80+ brands including{" "}
               <Link href="/services/hiring-campaign-diageo-india" className="text-accent underline-offset-2 hover:underline">Diageo</Link>,{" "}
               <Link href="/services/bcg-india-leadership-meet" className="text-accent underline-offset-2 hover:underline">BCG</Link>,{" "}
               <Link href="/services/whisky-experiments" className="text-accent underline-offset-2 hover:underline">Johnnie Walker</Link>,{" "}
               <Link href="/services/don-julio-cinco-on" className="text-accent underline-offset-2 hover:underline">Don Julio</Link>,{" "}
               <Link href="/services/hendricks-house-of-oddities" className="text-accent underline-offset-2 hover:underline">Hendrick&apos;s</Link> and{" "}
               <Link href="/services/arks-store-launch" className="text-accent underline-offset-2 hover:underline">ARKS by Ranbir Kapoor</Link>.
-              {" "}Our in-house capabilities cover creative strategy, experience design, event production and fabrication, content production, and influencer marketing through our creator network Anthem Amplify. We also create and run our own experiential properties. Food Talk India is one of the country&apos;s leading food culture platforms. Explorers Club is a lifestyle and culture-led festival that has drawn 1.5 lakh+ attendees across 3 cities. Every project is handled end-to-end, from concept through execution and post-event content.
+              {" "}Our in-house capabilities cover creative strategy, experience design, event production and fabrication, content production, and influencer marketing through our creator network Anthem Amplify. We also create and run our own experiential properties.{" "}
+              <Link href="https://foodtalk.theanthem.in/" target="_blank" rel="noopener noreferrer" className="text-accent underline-offset-2 hover:underline">Food Talk India</Link> is one of the country&apos;s leading food culture platforms.{" "}
+              <Link href="https://www.instagram.com/exploraboratories/" target="_blank" rel="noopener noreferrer" className="text-accent underline-offset-2 hover:underline">Explorers Club</Link> is a lifestyle and culture-led festival that has drawn 1.5 lakh+ attendees across 3 cities. Every project is handled end-to-end, from concept through execution and post-event content.
             </p>
           </Reveal>
         </div>
