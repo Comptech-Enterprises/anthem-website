@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "./Reveal";
 
 const founders = [
@@ -11,6 +12,7 @@ const founders = [
     img: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/founders-Shuchir.webp",
     href: "http://shuchir.theanthem.in/",
     linkedin: "https://www.linkedin.com/in/shuchir-suri-058251b",
+    instagram: "https://www.instagram.com/shuchir.suri/",
   },
   {
     name: "Anjali Batra",
@@ -19,6 +21,7 @@ const founders = [
     img: "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads/founders-Anjali-Batra.webp",
     href: undefined,
     linkedin: "https://www.linkedin.com/in/anjali-batra-1b45a636",
+    instagram: "https://www.instagram.com/anjali__batra/",
   },
 ];
 
@@ -94,6 +97,21 @@ export default function Founders() {
                       <span>LinkedIn</span>
                     </a>
                   )}
+                  {f.instagram && (
+                    <a
+                      href={f.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      aria-label={`${f.name} on Instagram`}
+                      className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 font-body text-xs text-muted transition-all hover:border-accent hover:text-accent hover:shadow-[0_0_15px_var(--accent-glow)]"
+                    >
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden>
+                        <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" />
+                      </svg>
+                      <span>Instagram</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </Reveal>
@@ -109,7 +127,14 @@ export default function Founders() {
           </Reveal>
           <Reveal delay={0.05}>
             <p className="font-body text-lg leading-relaxed text-muted">
-              We&apos;re a 30+ strong team of strategists, creators, producers and digital minds who bring different perspectives to the same table — turning ideas into experiences, stories and work that people remember.
+              Anthem is an integrated experiential marketing agency with a 30+ member team of strategists, creative directors, experiential producers, content creators and digital marketers. We&apos;re headquartered in Delhi NCR with operations in Mumbai. Founded in 2014 by Shuchir Suri and Anjali Batra, the team has delivered over 150 brand experiences across 30+ cities in India for 80+ brands including{" "}
+              <Link href="/services/hiring-campaign-diageo-india" className="text-accent underline-offset-2 hover:underline">Diageo</Link>,{" "}
+              <Link href="/services/bcg-india-leadership-meet" className="text-accent underline-offset-2 hover:underline">BCG</Link>,{" "}
+              <Link href="/services/whisky-experiments" className="text-accent underline-offset-2 hover:underline">Johnnie Walker</Link>,{" "}
+              <Link href="/services/don-julio-cinco-on" className="text-accent underline-offset-2 hover:underline">Don Julio</Link>,{" "}
+              <Link href="/services/hendricks-house-of-oddities" className="text-accent underline-offset-2 hover:underline">Hendrick&apos;s</Link> and{" "}
+              <Link href="/services/arks-store-launch" className="text-accent underline-offset-2 hover:underline">ARKS by Ranbir Kapoor</Link>.
+              {" "}Our in-house capabilities cover creative strategy, experience design, event production and fabrication, content production, and influencer marketing through our creator network Anthem Amplify. We also create and run our own experiential properties. Food Talk India is one of the country&apos;s leading food culture platforms. Explorers Club is a lifestyle and culture-led festival that has drawn 1.5 lakh+ attendees across 3 cities. Every project is handled end-to-end, from concept through execution and post-event content.
             </p>
           </Reveal>
         </div>

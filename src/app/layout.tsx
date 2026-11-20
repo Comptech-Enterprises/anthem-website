@@ -205,7 +205,56 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: [],
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "What does Anthem do?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Anthem is a leading experiential marketing agency in India that builds brands through strategic ideas, immersive experiences, and culture. Backed by 12+ years of experience and a core 30+ member team, Anthem operates out of Delhi NCR and Mumbai to deliver creative strategy, integrated marketing, brand activations, corporate event management, content production, influencer marketing, and large-scale entertainment properties.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Where does Anthem operate?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Anthem operates on a pan-India scale, anchored by physical offices in Delhi NCR and Mumbai. The agency has executed over 150+ experiences across 30+ cities for 80+ global and national brands, regularly deploying multi-city marketing campaigns, corporate offsites, and brand activations across Bangalore, Hyderabad, and Pune.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Does Anthem create and manage original brand IPs?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, Anthem specializes in developing, producing, and scaling original experiential intellectual properties. A prime example is The Gin Explorers Club, India's largest cocktail festival, which has welcomed over 100,000 enthusiasts across Delhi, Mumbai, and Bengaluru.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Does Anthem work with startups or only enterprise brands?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Anthem partners with a diverse portfolio ranging from high-growth startups to established enterprise brands and Fortune 500 companies, tailoring creative strategies, brand activations, and corporate event production to match the specific scale, budget, and goals of each client.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "What industries does Anthem specialize in?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Anthem has deep domain expertise across FMCG, food and beverage, alcohol and spirits, luxury and lifestyle, automotive, technology, fashion, beauty, hospitality, and corporate services.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "What is Anthem Amplify?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Anthem Amplify is Anthem's dedicated digital, creator, and culture marketing arm that manages micro-creator ambassador programs, meme and culture-page seeding, short-form video production, event clipping, and digital-first campaigns to extend live brand moments into the digital ecosystem.",
+                  },
+                },
+              ],
             }),
           }}
         />
