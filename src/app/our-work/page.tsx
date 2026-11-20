@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Our Work — Brand Activations & Experiential Campaigns",
   description:
     "Explore Anthem's portfolio of experiential marketing campaigns, brand activations, live events and festival IPs for brands like Diageo, Pernod Ricard, BCG and more across India.",
-  alternates: { canonical: "/services" },
+  alternates: { canonical: "/our-work" },
 };
 
 const faqStructuredData = {
