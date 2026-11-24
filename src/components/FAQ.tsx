@@ -35,7 +35,7 @@ const faqs: { q: string; a: ReactNode }[] = [
     q: "Does Anthem work with startups or only enterprise brands?",
     a: (
       <>
-        Anthem partners with a diverse portfolio ranging from high-growth startups to established enterprise brands and Fortune 500 companies. As an integrated <Link href="/experience-design-in-mumbai" className={link}>experiential marketing agency in Mumbai</Link> and Delhi, the agency tailors its creative strategies, <Link href="/brand-activations-in-delhi" className={link}>brand activations</Link>, and <Link href="/corporate-events-in-mumbai" className={link}>corporate event production</Link> capabilities to match the specific scale, budget, and commercial goals of each client — backed by a track record supporting over 80+ brands nationwide.
+        Anthem partners with a diverse portfolio ranging from high-growth startups to established enterprise brands and Fortune 500 companies. As an integrated <Link href="/experience-design-in-mumbai" className={link}>experiential marketing agency in Mumbai</Link> and Delhi, the agency tailors its creative strategies, <Link href="/brand-activations-in-delhi" className={link}>brand activations</Link>, and <Link href="/corporate-events-in-mumbai" className={link}>corporate event production</Link> capabilities to match the specific scale, budget, and commercial goals of each client - backed by a track record supporting over 80+ brands nationwide.
       </>
     ),
   },

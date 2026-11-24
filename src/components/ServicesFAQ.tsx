@@ -35,7 +35,7 @@ const faqs: { q: string; a: ReactNode }[] = [
     q: "What is the process for working with Anthem?",
     a: (
       <>
-        Working with Anthem begins with an initial strategic discovery call to understand your brand objectives, campaign timeline, and target markets. Whether you need <Link href="/experience-design-in-delhi" className={link}>experience design in Delhi</Link>, <Link href="/event-management-in-mumbai" className={link}>event management in Mumbai</Link>, or <Link href="/brand-activations-in-bangalore" className={link}>brand activations in Bangalore</Link>, our 30+ member multidisciplinary team collaborates closely with your stakeholders through structured phases covering creative concept development, spatial design, logistics planning, and execution — delivering seamless campaigns backed by 12+ years of industry experience.
+        Working with Anthem begins with an initial strategic discovery call to understand your brand objectives, campaign timeline, and target markets. Whether you need <Link href="/experience-design-in-delhi" className={link}>experience design in Delhi</Link>, <Link href="/event-management-in-mumbai" className={link}>event management in Mumbai</Link>, or <Link href="/brand-activations-in-bangalore" className={link}>brand activations in Bangalore</Link>, our 30+ member multidisciplinary team collaborates closely with your stakeholders through structured phases covering creative concept development, spatial design, logistics planning, and execution - delivering seamless campaigns backed by 12+ years of industry experience.
       </>
     ),
   },

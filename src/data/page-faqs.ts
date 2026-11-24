@@ -15,7 +15,7 @@ export const careersFAQs: FAQItem[] = [
   },
   {
     q: "What is work culture and team size at Anthem?",
-    a: "Established in 2014 by Shuchir Suri and Anjali Batra, Anthem operates with a 30+ member team of strategists, experiential producers, and digital marketers. The agency fosters high-ownership execution where creative concepts move rapidly into live activations. Team members get direct exposure across integrated campaigns—ranging from executive corporate meets for BCG to large-scale 100,000+ attendee culture festivals.",
+    a: "Established in 2014 by Shuchir Suri and Anjali Batra, Anthem operates with a 30+ member team of strategists, experiential producers, and digital marketers. The agency fosters high-ownership execution where creative concepts move rapidly into live activations. Team members get direct exposure across integrated campaigns-ranging from executive corporate meets for BCG to large-scale 100,000+ attendee culture festivals.",
   },
   {
     q: "What brands and projects do employees work on at Anthem?",
@@ -23,7 +23,7 @@ export const careersFAQs: FAQItem[] = [
   },
   {
     q: "Does Anthem hire for digital and creator marketing roles under Anthem Amplify?",
-    a: "Yes. Anthem Amplify serves as our dedicated digital, creator, and content arm. We bring on digital-native talent for brand ambassador networks, creator seeding, short-form video production, culture-page distribution, and viral meme marketing—extending physical activations into the digital ecosystem.",
+    a: "Yes. Anthem Amplify serves as our dedicated digital, creator, and content arm. We bring on digital-native talent for brand ambassador networks, creator seeding, short-form video production, culture-page distribution, and viral meme marketing-extending physical activations into the digital ecosystem.",
   },
   {
     q: "Does Anthem offer internships and entry-level roles for freshers?",
@@ -31,7 +31,7 @@ export const careersFAQs: FAQItem[] = [
   },
   {
     q: "What is hiring and interview process at Anthem?",
-    a: "Our recruitment process follows four structured stages: 1. Portfolio Submission — Submit your CV and case study deck to hr@theanthem.in. 2. Initial Review — Our team reviews materials and connects within 7 business days. 3. Practical Task — Candidates complete a practical brief (spatial layout, campaign idea, or creator plan). 4. Leadership Interview — Final interview with co-founders and department leads.",
+    a: "Our recruitment process follows four structured stages: 1. Portfolio Submission - Submit your CV and case study deck to hr@theanthem.in. 2. Initial Review - Our team reviews materials and connects within 7 business days. 3. Practical Task - Candidates complete a practical brief (spatial layout, campaign idea, or creator plan). 4. Leadership Interview - Final interview with co-founders and department leads.",
   },
   {
     q: "What specific skills and qualifications does Anthem prioritize?",
@@ -47,7 +47,7 @@ export const caseStudyFAQs: Record<string, FAQItem[]> = {
     },
     {
       q: "What happens at the World Class Festival?",
-      a: "The experience operates across two primary tracks: The National Competition — Top mixologists across India go head-to-head in technical cocktail challenges to secure the national title and represent India at global finals. The Cultural Experience — Attendees explore custom brand environments, international guest bartender masterclasses, tasting flights, curated food concepts, and live music stages designed and fabricated by Anthem.",
+      a: "The experience operates across two primary tracks: The National Competition - Top mixologists across India go head-to-head in technical cocktail challenges to secure the national title and represent India at global finals. The Cultural Experience - Attendees explore custom brand environments, international guest bartender masterclasses, tasting flights, curated food concepts, and live music stages designed and fabricated by Anthem.",
     },
     {
       q: "Which spirits brands are featured at World Class Festival India?",
@@ -63,7 +63,7 @@ export const caseStudyFAQs: Record<string, FAQItem[]> = {
     },
     {
       q: "Who produces and executes World Class Festival in India?",
-      a: "World Class Festival India is produced end-to-end by Anthem, an integrated creative and experiential marketing agency headquartered in Delhi NCR with an active operational presence in Mumbai. Anthem directs the full lifecycle for Diageo India—encompassing creative strategy, spatial architecture, stage fabrication, talent management, F&B curation, and live execution.",
+      a: "World Class Festival India is produced end-to-end by Anthem, an integrated creative and experiential marketing agency headquartered in Delhi NCR with an active operational presence in Mumbai. Anthem directs the full lifecycle for Diageo India-encompassing creative strategy, spatial architecture, stage fabrication, talent management, F&B curation, and live execution.",
     },
   ],
   "bcg-india-leadership-meet": [
@@ -73,7 +73,7 @@ export const caseStudyFAQs: Record<string, FAQItem[]> = {
     },
     {
       q: "Is Anthem a top corporate event company in Delhi NCR for large enterprise meets?",
-      a: "Yes. Headquartered in Delhi NCR with a 12-year operational footprint, Anthem ranks among the premier corporate event management companies in India. The team routinely executes multi-day enterprise gatherings—such as the BCG Palooza leadership retreat in Goa for 500+ attendees—overseeing hospitality logistics, complex AV setups, stage fabrication, and live run-of-show execution.",
+      a: "Yes. Headquartered in Delhi NCR with a 12-year operational footprint, Anthem ranks among the premier corporate event management companies in India. The team routinely executes multi-day enterprise gatherings-such as the BCG Palooza leadership retreat in Goa for 500+ attendees-overseeing hospitality logistics, complex AV setups, stage fabrication, and live run-of-show execution.",
     },
     {
       q: "How does Anthem plan and manage corporate parties, annual days, and executive galas?",
@@ -81,7 +81,7 @@ export const caseStudyFAQs: Record<string, FAQItem[]> = {
     },
     {
       q: "What makes Anthem one of the best corporate event planners in Delhi for destination offsites?",
-      a: "Anthem delivers turnkey destination offsites across India. Backed by a portfolio of 150+ brand experiences across 30+ cities, the agency coordinates pan-India offground operations in hubs like Goa, Jaipur, and Udaipur—handling travel logistics, 5-star venue management, staging, technical setups, and evening entertainment setups.",
+      a: "Anthem delivers turnkey destination offsites across India. Backed by a portfolio of 150+ brand experiences across 30+ cities, the agency coordinates pan-India offground operations in hubs like Goa, Jaipur, and Udaipur-handling travel logistics, 5-star venue management, staging, technical setups, and evening entertainment setups.",
     },
     {
       q: "Can Anthem handle large-scale corporate events with 500+ attendees?",
@@ -89,7 +89,7 @@ export const caseStudyFAQs: Record<string, FAQItem[]> = {
     },
     {
       q: "What services do corporate event management companies like Anthem provide?",
-      a: "Full-scope corporate event production encompasses five core execution pillars: 1. Concept & Spatial Design — 3D visual setups, custom stage fabrication, and branded environment integration. 2. Technical AV & Lighting — High-definition LED backdrops, acoustic sound engineering, and multi-camera live broadcast setups. 3. Hospitality & Hotel Operations — Five-star venue sourcing, room allocation logistics, VIP ground transport, and guest management. 4. Run-of-Show Direction — Stage management, keynote teleprompter operations, speaker timing, and execution governance. 5. Corporate Parties & Entertainment — Live artist curation, custom bar setups, and themed awards galas.",
+      a: "Full-scope corporate event production encompasses five core execution pillars: 1. Concept & Spatial Design - 3D visual setups, custom stage fabrication, and branded environment integration. 2. Technical AV & Lighting - High-definition LED backdrops, acoustic sound engineering, and multi-camera live broadcast setups. 3. Hospitality & Hotel Operations - Five-star venue sourcing, room allocation logistics, VIP ground transport, and guest management. 4. Run-of-Show Direction - Stage management, keynote teleprompter operations, speaker timing, and execution governance. 5. Corporate Parties & Entertainment - Live artist curation, custom bar setups, and themed awards galas.",
     },
     {
       q: "How can companies in Delhi NCR, Mumbai, or Bengaluru hire Anthem for corporate events?",
@@ -99,11 +99,11 @@ export const caseStudyFAQs: Record<string, FAQItem[]> = {
   "don-julio-cinco-on": [
     {
       q: "What does a brand activation agency do in India?",
-      a: "A brand activation agency conceptualizes, designs, and executes experiential platforms that translate core brand strategy into live consumer engagement. Moving beyond passive advertising touchpoints, activations establish direct audience interaction through physical setups—including bespoke retail pop-ups, multi-city roadshows, high-fashion collaborations, and proprietary brand IPs. Agencies like Anthem direct complete execution lifecycles encompassing spatial architecture, guest-list management, artist programming, and digital amplification through Anthem Amplify.",
+      a: "A brand activation agency conceptualizes, designs, and executes experiential platforms that translate core brand strategy into live consumer engagement. Moving beyond passive advertising touchpoints, activations establish direct audience interaction through physical setups-including bespoke retail pop-ups, multi-city roadshows, high-fashion collaborations, and proprietary brand IPs. Agencies like Anthem direct complete execution lifecycles encompassing spatial architecture, guest-list management, artist programming, and digital amplification through Anthem Amplify.",
     },
     {
       q: "What is a Brand IP, and why should companies invest in proprietary assets?",
-      a: "A Brand IP (Intellectual Property) represents a recurring, branded experiential property or cultural platform fully conceptualized and owned by an enterprise rather than sponsoring third-party events. Developing proprietary IP—such as Diageo India’s Cinco On With Don for Don Julio or World Class Festival—allows organizations to build long-term brand equity, control creative expression, gather first-party consumer engagement, and transform transactional event spend into compounding cultural equity.",
+      a: "A Brand IP (Intellectual Property) represents a recurring, branded experiential property or cultural platform fully conceptualized and owned by an enterprise rather than sponsoring third-party events. Developing proprietary IP-such as Diageo India’s Cinco On With Don for Don Julio or World Class Festival-allows organizations to build long-term brand equity, control creative expression, gather first-party consumer engagement, and transform transactional event spend into compounding cultural equity.",
     },
     {
       q: "Which is the top brand activations agency in Delhi NCR for luxury brands?",
@@ -123,7 +123,7 @@ export const caseStudyFAQs: Record<string, FAQItem[]> = {
     },
     {
       q: "What was Anthem's role in the Don Julio “Cinco On With Don” brand activation?",
-      a: "Anthem was commissioned by Diageo India as the turnkey experiential and brand activation agency for Don Julio’s Cinco On With Don platform. Anthem designed and executed a multi-year brand IP crafted to establish Don Julio’s cultural leadership over Mexico’s Cinco de Mayo holiday in India. The project covered strategic roadmap design (1-9-45 model), the Don Julio x Anamika Khanna luxury fashion partnership, flagship festival production, artist programming, bespoke agave mixology curation, and VIP guest management—delivering 3 annual editions (2024–2026), 2,000+ attendees, and 5M+ digital reach in 2026.",
+      a: "Anthem was commissioned by Diageo India as the turnkey experiential and brand activation agency for Don Julio’s Cinco On With Don platform. Anthem designed and executed a multi-year brand IP crafted to establish Don Julio’s cultural leadership over Mexico’s Cinco de Mayo holiday in India. The project covered strategic roadmap design (1-9-45 model), the Don Julio x Anamika Khanna luxury fashion partnership, flagship festival production, artist programming, bespoke agave mixology curation, and VIP guest management-delivering 3 annual editions (2024–2026), 2,000+ attendees, and 5M+ digital reach in 2026.",
     },
   ],
   "arks-store-launch": [
@@ -175,7 +175,7 @@ export const caseStudyFAQs: Record<string, FAQItem[]> = {
     },
     {
       q: "What is the difference between a one-off brand activation and a 365-day brand IP framework?",
-      a: "A single brand activation delivers a temporary spike in visibility, whereas a 365-day brand IP framework establishes sustained cultural equity, continuous retail and bar momentum, and recurring consumer touchpoints. Anthem builds annual campaign engines—like Whisky Experiments for Diageo or Anthem’s owned IP The Gin Explorers Club—that keep brands continuously top-of-mind through seasonal activations, partner venues, and multi-tiered event programming.",
+      a: "A single brand activation delivers a temporary spike in visibility, whereas a 365-day brand IP framework establishes sustained cultural equity, continuous retail and bar momentum, and recurring consumer touchpoints. Anthem builds annual campaign engines-like Whisky Experiments for Diageo or Anthem’s owned IP The Gin Explorers Club-that keep brands continuously top-of-mind through seasonal activations, partner venues, and multi-tiered event programming.",
     },
   ],
   "curator-circle": [
