@@ -204,4 +204,186 @@ export const caseStudyFAQs: Record<string, FAQItem[]> = {
       a: "Anthem integrates live corporate experiences with digital amplification through its dedicated culture division, Anthem Amplify. By capturing social-first, high-production behind-the-scenes content, leadership spotlight reels, and candidate testimonial clips, the live event is transformed into an ongoing employer branding campaign. In the Diageo Curator Circle campaign, Anthem generated over 1,000+ organic recruitment entries and extensive social visibility across LinkedIn and Instagram, multiplying the enterprise’s return on investment far beyond the physical room.",
     },
   ],
+  "chambal-gin": [
+    {
+      q: "What was the Chambal Gin brand launch experience conceptualized and produced by Anthem?",
+      a: "The Chambal Gin launch was an experiential brand launch produced by Anthem in Delhi in 2023 for Bapuna. To introduce consumers and cocktail enthusiasts to a new Indian craft gin, Anthem turned the raw terroir and folklore of the Chambal ravines into a sensory brand world. The evening featured earthy spatial design, custom rustic decor, intimate theatrical performances, interactive games, and curated tasting sessions, bringing together more than 70 top content creators and culture tastemakers under one roof.",
+    },
+    {
+      q: "How does Anthem approach craft spirits and luxury alcobev brand launches in India?",
+      a: "Because direct alcohol advertising is restricted in India, launching a spirits brand comes down to creating memorable, real-world experiences. Instead of hosting generic club nights, Anthem builds narrative-led brand worlds that celebrate local ingredients, distillation stories, and signature cocktail rituals. Through immersive spatial design, live theatrical interactions, and guided tastings, Anthem helps craft spirit brands earn authentic attention from tastemakers, media, and early adopters across Delhi NCR, Mumbai, and Bengaluru.",
+    },
+    {
+      q: "What brand launch agency and experiential design services did Anthem provide for Chambal Gin in Delhi?",
+      a: "Anthem delivered complete end-to-end brand launch execution for Bapuna's Chambal Gin in Delhi. Backed by our multidisciplinary teams operating across Delhi NCR, Mumbai, and Bengaluru, we handled everything from creative concept development and spatial design to vendor procurement, theatrical performance direction, bespoke decor fabrication, F&B curation, creator invitation management, and on-ground event production.",
+    },
+    {
+      q: "How did the Chambal Gin launch integrate immersive theatrical storytelling and spatial design?",
+      a: "To bring the untamed spirit of the Chambal ravines into the room, Anthem designed an environment using raw earthy textures, indigenous botanical displays, and warm valley-inspired lighting. Guests walked through a sensory corridor that evoked the rugged landscape of the Chambal region before arriving at a styled tasting lounge. Live theatrical storytelling performances wove real folklore into the evening, transforming a standard product launch into a narrative journey.",
+    },
+    {
+      q: "Why is creator curation and influencer engagement critical for premium alcobev launches?",
+      a: "With traditional advertising off the table for alcohol brands in India, authentic creator experiences are one of the most effective ways to build awareness. By inviting and hosting more than 70 handpicked creators and tastemakers at the Chambal Gin launch, Anthem ensured that organic content captured the brand story through genuine personal endorsement rather than paid placements.",
+    },
+    {
+      q: "Can Anthem execute turnkey brand launches and experiential marketing campaigns across Delhi NCR and India?",
+      a: "Yes, Anthem operates nationwide with active teams and execution capabilities across Delhi NCR, Mumbai, and Bengaluru. Over the past decade, we have created and managed more than 150 brand launches, experiential activations, and marketing campaigns for 80+ brands across 30+ Indian cities, delivering end-to-end creative, production, and logistics solutions.",
+    },
+  ],
+  "hiring-campaign-diageo-india": [
+    {
+      q: "What was Anthem's role in the Diageo India Culture and Community Curator hiring campaign?",
+      a: "Anthem conceptualized, directed, and executed the entire turnkey recruitment campaign for Diageo India to discover its next Culture and Community Curator. The scope encompassed creative strategy, digital campaign production, multi-channel social distribution, candidate screening from over 1,000 applicants, and shortlisting the top 13 finalists. By reimagining corporate talent acquisition into an authentic cultural movement, Anthem helped Diageo generate more than 10 million digital impressions across India.",
+    },
+    {
+      q: "How did the digital hiring campaign achieve over 10 million impressions and 1,000+ applications?",
+      a: "Rather than relying on conventional job boards and text postings, Anthem produced culture-first video content and interactive digital narratives that highlighted the creative pulse of nightlife, music, mixology, and community building. The campaign engaged hyper-targeted creative communities across major hubs including Delhi NCR, Mumbai, and Bengaluru through Instagram, LinkedIn, and YouTube distribution.",
+    },
+    {
+      q: "Can Anthem design and manage experiential corporate hiring campaigns in Bengaluru, Delhi NCR, and Mumbai?",
+      a: "Yes. Anthem delivers end-to-end employer branding and experiential hiring campaigns across India, with dedicated production and strategy teams in Bengaluru, Delhi NCR, and Mumbai. The agency manages every phase of the process, including social-first content production, targeted digital distribution, candidate experience design, evaluation frameworks, and final selection events.",
+    },
+    {
+      q: "How does experiential employer branding differ from traditional corporate recruitment?",
+      a: "Traditional corporate hiring relies heavily on resume screenings and standard interview rooms, which rarely communicate an organization's true personality. Experiential employer branding transforms recruitment into an engaging brand activation. In the Diageo India campaign, candidates were immersed in the brand's cultural ecosystem through creative challenges, collaborative workshops, and culture-building exercises that revealed authentic leadership traits.",
+    },
+    {
+      q: "How does Anthem shortlist and evaluate candidates during large-scale hiring campaigns?",
+      a: "Anthem designs custom, multi-tier evaluation frameworks aligned with client business and culture goals. For the Diageo India campaign, Anthem developed a bespoke submission process that evaluated real-world portfolios, community influence, and strategic brand-building capability, narrowing over 1,000 entries down to 13 finalists who participated in an immersive in-person assessment experience.",
+    },
+    {
+      q: "What types of corporate events and campaigns does Anthem produce for enterprise clients?",
+      a: "In addition to employer branding and recruitment campaigns, Anthem produces a full spectrum of corporate events across Bengaluru, Delhi NCR, and Mumbai. The agency's corporate portfolio includes executive leadership retreats like the BCG India Leadership Meet, employer branding summits like Diageo's Curator Circle, annual stakeholder conferences, product launches, dealer meets, and employee engagement festivals.",
+    },
+  ],
+  "black-and-white-table-for-everyone": [
+    {
+      q: "What is the Black & White Table for Everyone campaign, and how does Anthem execute it across India?",
+      a: "Black & White Table for Everyone is a signature conversation-led dining property created for Diageo India to foster genuine community connections among Gen Z and young millennial consumers. Since launching in 2023, Anthem has produced over 350 editions hosting more than 6,000 guests across multiple metropolitan hubs, including Bengaluru, Delhi NCR, and Mumbai. Anthem manages the entire ecosystem end to end, covering concept design, curated restaurant collaborations, bespoke tablescapes, interactive conversation formats, and complete on-ground hospitality management.",
+    },
+    {
+      q: "How does Anthem drive brand salience and measurable ROI for youth audiences through experiential dining?",
+      a: "Rather than relying on conventional passive sampling, Anthem creates high-touch social dining experiences that integrate natural brand storytelling with culinary artistry. By curating communal tables, custom menus, and conversation-driven programming, Anthem embeds brand presence into genuinely memorable social moments that drive organic word-of-mouth and social sharing.",
+    },
+    {
+      q: "Can Anthem scale recurring experiential dining activations across Bengaluru, Mumbai, and Delhi NCR?",
+      a: "Yes. Anthem operates full-fledged production and creative teams across Bengaluru, Delhi NCR, and Mumbai, enabling seamless multi-city rollouts. Delivering more than 350 editions of Table for Everyone demonstrates Anthem's ability to maintain rigorous quality control, local venue licensing, top-tier chef collaborations, and uniform brand standards across regions.",
+    },
+    {
+      q: "What programming elements are included in the Table for Everyone guest journey?",
+      a: "Every edition is designed as a multi-sensory journey built around good food, shared laughter, and meaningful dialogue. Key elements include custom menus paired with signature Black & White cocktails, themed tablescapes, interactive icebreaker formats, curated playlists, and candid photo and video capture that extends the experience into digital content.",
+    },
+    {
+      q: "How does Anthem measure the long-term impact of continuous activation properties like Table for Everyone?",
+      a: "Anthem tracks both quantitative execution metrics and qualitative brand resonance. With over 350 editions and 6,000+ verified attendees between 2023 and 2026, the campaign showcases rare operational longevity. Success is measured through guest dwell time, qualitative sentiment, organic social amplification, and repeat brand affinity.",
+    },
+    {
+      q: "How can consumer brands or corporate enterprises partner with Anthem for bespoke dining experiences?",
+      a: "Brands and corporate leaders can engage Anthem for turnkey dining experiences, executive networking dinners, or nationwide roadshows. Anthem provides end-to-end capabilities spanning strategic positioning, venue curation, chef collaborations, branded tablescapes, hospitality management, and digital content production across Bengaluru, Delhi NCR, and Mumbai.",
+    },
+  ],
+  "hendricks-house-of-oddities": [
+    {
+      q: "How does Anthem design luxury corporate brand activations for global brand launches and executive visits?",
+      a: "Anthem approaches luxury corporate brand activations by turning brand narratives into living, multi-sensory worlds rather than predictable stage presentations. For William Grant & Sons, Anthem conceptualized The House of Oddities in Mumbai to mark the India visit of Hendrick's global brand ambassador, Ally Martin. Instead of hosting a standard press conference, Anthem built an intimate, narrative-driven environment that reflected the brand's eccentric heritage.",
+    },
+    {
+      q: "How can corporate branding use immersive storytelling and theatrical environments to strengthen brand salience?",
+      a: "Corporate branding achieves lasting recall when audiences actively participate in a brand story instead of passively reading marketing copy. At The House of Oddities, Anthem avoided superficial step-and-repeat backdrops by creating interactive story stations where guests engaged with the brand's eccentric cucumber-and-rose narrative through touch, taste, and conversation.",
+    },
+    {
+      q: "What goes into bespoke venue transformations for high-end corporate events and experiential marketing campaigns?",
+      a: "Bespoke venue transformations require a delicate balance of architectural scenography, structural safety, spatial flow, and ambient sensory control. For The House of Oddities, Anthem completely took over Love Fools, a boutique heritage property in Bandra, Mumbai, transforming it into a multi-room brand universe with curated botanical installations, theatrical lighting, and custom furniture.",
+    },
+    {
+      q: "How do intimate corporate hospitality events build relationships with HNIs, media leaders, and key stakeholders?",
+      a: "Intimate corporate hospitality events prioritize depth of engagement over superficial crowd volume. By limiting The House of Oddities to a curated gathering of 80+ top media editors, luxury tastemakers, PR leaders, and high-net-worth individuals, Anthem ensured every guest received personalized attention and direct interaction with Hendrick's global brand ambassador.",
+    },
+    {
+      q: "How do enterprise brands measure the business ROI and media impact of intimate experiential corporate events?",
+      a: "Measuring ROI on intimate corporate events requires looking beyond simple headcount to focus on audience quality, dwell time, earned media value, and brand sentiment. The House of Oddities generated substantial organic reach because the 80+ guests included influential lifestyle journalists and high-profile tastemakers who actively shared their bespoke journey on social channels, producing millions of targeted impressions and high-tier press coverage without reliance on paid media promotions.",
+    },
+    {
+      q: "Why do global enterprise brands partner with Anthem for luxury corporate events and experiential brand activations across India?",
+      a: "Global brands choose Anthem because we combine visionary creative concepting with meticulous operational execution. From welcoming international ambassadors and launching luxury products to producing nationwide corporate offsites, Anthem handles the complete lifecycle: creative strategy, venue procurement, scenic fabrication, theatrical scripting, artist curation, guest management, and statutory licensing across Bengaluru, Delhi NCR, and Mumbai.",
+    },
+  ],
+  "por-amor-potluck-don-julio": [
+    {
+      q: "How does creator-led storytelling strengthen corporate branding and luxury product positioning?",
+      a: "Creator-led storytelling builds authentic cultural relevance by anchoring luxury products within genuine human moments rather than scripted advertisements. In the Por Amor Potluck campaign executed for Diageo India and Don Julio Grapefruit Soda, Anthem partnered with prominent cultural tastemakers, including Meghna Kaur, Naina Bhan, and Armaan Jain, who hosted intimate gatherings with their inner circles. By framing the brand around the Mexican ethos of Por Amor (For Love), the product became a natural catalyst for connection, shared meals, and celebratory toasts.",
+    },
+    {
+      q: "Why are enterprise brands choosing intimate hospitality and curated potlucks over traditional corporate events?",
+      a: "Enterprise brands increasingly prefer curated, micro-format gatherings because intimate hospitality fosters deeper emotional engagement and organic conversation than large convention halls can deliver. The Don Julio Por Amor Potluck transformed corporate hospitality into a series of warm, shared culinary experiences where guests contributed dishes, shared personal stories, and enjoyed bespoke cocktails in relaxed residential and boutique settings.",
+    },
+    {
+      q: "What metrics demonstrate the business ROI of an experiential influencer campaign?",
+      a: "Measuring the return on investment of an experiential influencer campaign requires tracking both top-of-funnel reach and qualitative community engagement. The Don Julio Por Amor Potluck campaign delivered over 5.5 million total reach, more than 5 million organic video views, and upward of 110,000 active social engagements across its February to March 2026 run.",
+    },
+    {
+      q: "How do agencies manage end-to-end talent coordination and content production for multi-city brand activations?",
+      a: "Seamless talent coordination requires end-to-end management spanning creator curation, creative briefing, on-site production, compliance oversight, and post-production distribution. For the Por Amor Potluck initiative, Anthem managed talent negotiations, logistical scheduling, and dedicated video production crews to capture natural, unscripted moments without disrupting the intimacy of the gatherings.",
+    },
+    {
+      q: "How can corporate branding be seamlessly woven into culinary and beverage experiences without feeling overly commercial?",
+      a: "Integrating corporate branding into culinary experiences requires subtlety, sensory relevance, and cultural authenticity. Rather than placing overt logos or repetitive sales banners across the venue, Anthem integrated Don Julio Grapefruit Soda organically as the signature beverage pairing designed to complement communal dining rituals. Signature serves, crafted glassware, and customized cocktail stations blended naturally into the aesthetic table setting, reflecting the celebratory Por Amor spirit.",
+    },
+    {
+      q: "How do corporate event organizers convert on-ground private gatherings into high-impact digital campaigns?",
+      a: "Converting private on-ground gatherings into widespread digital impact relies on designing camera-ready environments and capturing authentic human emotion in real time. Anthem engineered the Por Amor Potluck with specialized lighting, artisanal tablescapes, and dedicated digital capture units that recorded high-definition short-form videos optimized for Instagram and YouTube. This hybrid experiential model allows an intimate gathering of 15 to 20 guests to achieve multi-million digital impressions across the country.",
+    },
+  ],
+  "toki-dinners": [
+    {
+      q: "How do curated experiential dining series elevate corporate branding beyond traditional dinner sponsorships?",
+      a: "Curated experiential dining transforms corporate branding from a passive sponsorship into an authentic sensory narrative. Rather than relying on static banner logos or generic welcome drinks, high-concept dining activations weave a brand into the evening through bespoke gastronomy, custom cocktail pairings, and intimate ambiance. In the Toki Serious Eaters Dinners executed for Beam Suntory, Anthem integrated Toki Blended Japanese Whisky as an organic storytelling vehicle across four distinct restaurant venues rather than a casual beverage add-on. This immersive approach allowed 180+ influential diners to connect with the brand's Japanese craftsmanship through off-menu courses created specifically to complement Toki's subtle flavour profile.",
+    },
+    {
+      q: "What strategies ensure seamless brand integration during high-touch corporate events and VIP dinners?",
+      a: "Seamless brand integration in high-touch corporate events requires aligning the product's core identity with every touchpoint of the guest journey, avoiding aggressive sales pitches in favour of subtle, authentic discovery. Key strategies include collaborating with executive chefs on ingredient harmonization, staging interactive tasting moments, and designing tactile tabletop collateral that explains tasting notes and heritage. During the Toki Serious Eaters Dinners, Anthem and Food Talk India curated custom off-menu dishes specifically paired with Toki highballs and neat serves, ensuring the whisky elevated the food and vice versa.",
+    },
+    {
+      q: "How can enterprise brands use exclusive community channels to drive qualified attendance for corporate dining activations?",
+      a: "Enterprise brands and luxury labels can dramatically enhance guest quality and attendance reliability by partnering with curated, interest-driven micro-communities instead of issuing broad public invitations. By utilizing private communication channels operated by trusted community platforms like Food Talk India, Anthem reached culinary enthusiasts, food critics, and industry insiders who self-selected into the dining experience based on genuine interest rather than casual curiosity.",
+    },
+    {
+      q: "Why are chef-led culinary storytelling formats effective for executive client engagement and corporate hospitality?",
+      a: "Chef-led culinary storytelling is exceptionally effective for executive client engagement because it shifts corporate hospitality from a passive meal into a shared intellectual and sensory adventure. When executive chefs personally present each course, explain ingredient sourcing, and demonstrate the craft behind each dish, it establishes a narrative arc that holds guest attention far longer than a standard seated dinner.",
+    },
+    {
+      q: "What measurable digital reach and brand equity can an intimate corporate dining activation generate?",
+      a: "While intimate corporate dining activations host relatively small guest lists, their capacity to generate outsized digital reach and authentic brand equity is immense when experiences are designed to be innately shareable. High-touch presentation, rare culinary pairings, and aesthetic ambiance naturally prompt social sharing among guests. The Toki Serious Eaters Dinners, produced across four high-profile restaurant venues, generated significant organic social reach and content across Instagram and YouTube.",
+    },
+    {
+      q: "How does Anthem manage multi-venue corporate dining activations across key Indian metropolitan markets?",
+      a: "Managing multi-venue corporate dining programs requires meticulous venue vetting, chef collaboration, supply chain consistency, and local regulatory adherence. Anthem acts as a turnkey partner across Bengaluru, Delhi NCR, and Mumbai, overseeing restaurant partnerships, bespoke menu co-creation, branded collateral design, guest management, event-day hospitality, and post-event digital content production.",
+    },
+  ],
+  "roku-gin-come-alive": [
+    {
+      q: "How does Anthem build multi-city experiential brand IPs that transition smoothly from digital storytelling to on-ground consumer participation?",
+      a: "Building a high-impact experiential IP begins with an authentic cultural hook rather than a sales pitch. For Beam Suntory's Roku Gin, Anthem translated the brand's \"Come Alive with the Seasons\" philosophy into a repeatable, ticketed weekend brunch experience that toured major metropolitan centers. Rather than simply serving drinks, each activation immersed guests in Japanese craftsmanship, natural botanicals, and mindful creative workshops. By pairing this high-touch physical environment with curated creator storytelling, the campaign generated 7M+ digital reach and 8M+ views.",
+    },
+    {
+      q: "What interactive craft workshops can luxury brands incorporate into corporate retreats and client hospitality experiences?",
+      a: "High-end corporate retreats and VIP hospitality gatherings thrive when guests actively create something beautiful with their hands. For the Roku Gin tour, Anthem designed hands-on Japanese botanical ateliers featuring Japanese ink painting (Sumi-e), botanical arrangement workshops, and guided sake and gin pairing sessions that connected the craft of Roku's six botanicals directly to guest creativity.",
+    },
+    {
+      q: "How does an on-ground luxury activation generate over 7 million digital reach and organic social engagement without feeling promotional?",
+      a: "The secret to massive organic engagement is designing physical environments that people naturally want to photograph and share. Rather than setting up standard step-and-repeat logo boards, Anthem crafted photogenic, sunlit botanical installations, origami-inspired decor, and artisanal cocktail stations that became organic content engines. The Roku Gin activations generated 7M+ digital reach and 8M+ views purely through authentic guest sharing and curated creator content.",
+    },
+    {
+      q: "Why do premium consumer brands and corporate enterprises choose repeatable, ticketed event formats over one-off product launches?",
+      a: "One-off launch parties often burn substantial budgets for a single night of fleeting attention. A repeatable, ticketed format transforms a campaign into an ongoing consumer and B2B touchpoint that builds compounding brand equity. Ticketing creates psychological value through exclusivity and commitment, while repetition across multiple cities generates a nationwide consumer footprint.",
+    },
+    {
+      q: "How can a global enterprise translate abstract heritage and nature-inspired brand values into a tangible corporate event environment?",
+      a: "Translating nuanced brand philosophy into a live space requires engaging all five senses simultaneously. For Roku Gin, \"Come Alive with the Seasons\" was not just a tagline printed on signage. It shaped every touchpoint: botanical garnishes hand-picked to reflect seasonal Japanese ingredients, ambient soundscapes recorded in Japanese gardens, and tactile craft workshops that placed guests directly within the brand's nature-inspired philosophy.",
+    },
+    {
+      q: "What full-scope experiential production services does Anthem deliver for luxury multi-city activations across India?",
+      a: "Anthem operates as a single, accountable turnkey production partner from creative ideation through post-campaign analytics. For multi-city campaigns like Roku Gin's seasonal tour, our services encompass spatial scenography, bespoke fabrication, master mixologist coordination, chef collaborations, ticketing operations, creator management, compliance and licensing, logistics, and post-event digital amplification across Bengaluru, Delhi NCR, and Mumbai.",
+    },
+  ],
 };
