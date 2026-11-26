@@ -8,50 +8,74 @@ const link = "text-accent underline underline-offset-2 hover:text-accent/80 tran
 
 const faqs: { q: string; a: ReactNode }[] = [
   {
-    q: "What does Anthem do?",
+    q: "What services does Anthem provide as an integrated creative and experiential marketing agency?",
     a: (
       <>
-        Anthem is a leading <Link href="/experience-design-in-delhi" className={link}>experiential marketing agency in Delhi</Link> and India that builds brands through strategic ideas, immersive experiences, and culture. Backed by 12+ years of experience and a core 30+ member team, Anthem operates out of primary hubs in Delhi NCR and <Link href="/event-management-in-mumbai" className={link}>Mumbai</Link> to deliver comprehensive campaigns nationwide. The agency&apos;s multi-disciplinary capabilities span creative strategy, integrated marketing, <Link href="/brand-activations-in-delhi" className={link}>brand activations</Link>, <Link href="/corporate-events-in-delhi" className={link}>corporate event management</Link>, digital marketing, <Link href="/content-production-in-delhi" className={link}>content production</Link>, <Link href="/influencer-marketing-in-delhi" className={link}>influencer marketing</Link>, and large-scale entertainment properties.
+        Anthem delivers end-to-end creative strategy, experiential brand activations, corporate event management, and digital amplification for global brands across India. Operating through integrated teams across Bengaluru, Delhi NCR, and Mumbai, Anthem pairs strategic storytelling with technical production to execute large-scale conferences, immersive brand worlds, and retail experiences. Explore our dedicated capabilities in <Link href="/corporate-events-in-delhi" className={link}>corporate event management</Link> to see how we build high-impact corporate experiences.
       </>
     ),
   },
   {
-    q: "Where does Anthem operate?",
+    q: "Where does Anthem operate and manage events across India?",
     a: (
       <>
-        Anthem operates on a pan-India scale, anchored by physical offices in <Link href="/experience-design-in-delhi" className={link}>Delhi NCR</Link> (covering Delhi, Gurgaon, and Noida) and <Link href="/brand-activations-in-mumbai" className={link}>Mumbai</Link>. Leveraging a proven track record of executing over 150+ experiences across 30+ cities for 80+ global and national brands, Anthem regularly deploys multi-city marketing campaigns, corporate offsites, and <Link href="/brand-activations-in-bangalore" className={link}>brand activations in Bangalore</Link>, Hyderabad, and Pune.
+        Anthem operates on a nationwide scale with dedicated physical hubs and production infrastructure in Bengaluru, Delhi NCR, and Mumbai. Having produced over 150 experiences across 30 Indian cities, Anthem seamlessly manages multi-city brand roadshows, high-security corporate offsites, and regional product rollouts with complete logistical control. Review our case studies and nationwide portfolio in <Link href="/our-work" className={link}>our work</Link> to explore our geographic reach.
       </>
     ),
   },
   {
-    q: "Does Anthem create and manage original brand IPs?",
+    q: "Does Anthem create and produce proprietary brand IPs and cultural festivals?",
+    a: "Yes, Anthem conceptualizes, finances, produces, and scales original experiential intellectual properties that shape modern consumer culture. A premier example is The Gin Explorers Club, India's largest cocktail festival, which has engaged more than 100,000 attendees across editions in Bengaluru, Delhi NCR, and Mumbai. This proprietary capability allows partner brands to integrate into high-traffic cultural festivals and access highly engaged consumer audiences.",
+  },
+  {
+    q: "Does Anthem partner with corporate enterprises as well as high-growth brands?",
     a: (
       <>
-        Yes, Anthem specializes in developing, producing, and scaling original experiential intellectual properties (IPs). A prime example is The Gin Explorers Club, India&apos;s largest and most celebrated cocktail festival created and produced by the team. Having welcomed over 100,000 enthusiasts across major metropolitan hubs like Delhi, Mumbai, and Bengaluru, this marquee property showcases Anthem&apos;s unique capability to build cultural relevance, brand partnerships, and large-scale consumer communities from the ground up.
+        Anthem works with Fortune 500 corporations, management consulting firms, and market-defining consumer lifestyle brands. Whether engineering leadership summits such as the <Link href="/services/bcg-india-leadership-meet" className={link}>BCG India leadership meet</Link> or producing high-energy retail debuts, Anthem tailors creative direction, vendor governance, and spatial design to match each client&apos;s commercial goals across Bengaluru, Delhi NCR, and Mumbai.
       </>
     ),
   },
   {
-    q: "Does Anthem work with startups or only enterprise brands?",
+    q: "What industry sectors does Anthem specialize in?",
+    a: "Anthem holds established domain expertise across premium alcobev and spirits, consumer technology, luxury lifestyle, automotive, FMCG, banking, and professional services. By combining consumer behavioral insights with architectural production across Bengaluru, Delhi NCR, and Mumbai, Anthem translates nuanced brand narratives into memorable physical environments that resonate with corporate leadership and discerning consumers alike.",
+  },
+  {
+    q: "How does Anthem Amplify connect on-ground experiences with digital reach?",
     a: (
       <>
-        Anthem partners with a diverse portfolio ranging from high-growth startups to established enterprise brands and Fortune 500 companies. As an integrated <Link href="/experience-design-in-mumbai" className={link}>experiential marketing agency in Mumbai</Link> and Delhi, the agency tailors its creative strategies, <Link href="/brand-activations-in-delhi" className={link}>brand activations</Link>, and <Link href="/corporate-events-in-mumbai" className={link}>corporate event production</Link> capabilities to match the specific scale, budget, and commercial goals of each client - backed by a track record supporting over 80+ brands nationwide.
+        Anthem Amplify is our dedicated digital and creator marketing division that turns live experiential moments into sustained online conversation. By coordinating creator ambassador programs, real-time social clipping, and digital content distribution across Bengaluru, Delhi NCR, and Mumbai, Amplify converts physical event attendance into millions of verified impressions. Connect with our leadership team through our <Link href="/#enquiry" className={link}>project consultation form</Link> to plan your next integrated campaign.
       </>
     ),
   },
   {
-    q: "What industries does Anthem specialize in?",
+    q: "Which enterprise brands and industry sectors does Anthem partner with across India?",
     a: (
       <>
-        Anthem possesses deep domain expertise across multiple high-impact industries, including FMCG, food and beverage, alcohol and spirits (Alcobev), <Link href="/luxury-experiences-in-delhi" className={link}>luxury and lifestyle</Link>, automotive, technology, fashion, beauty, hospitality, and corporate services. By combining industry-specific consumer insights with creative execution and <Link href="/brand-activations-in-delhi" className={link}>brand activation expertise</Link>, Anthem delivers campaigns that resonate authentically within each sector.
+        Anthem collaborates with global Fortune 500 enterprises, market-leading conglomerates, and disruptive consumer labels spanning management consulting, luxury spirits, automotive, technology, and retail. Notable portfolio partners include Boston Consulting Group, Diageo India, Pernod Ricard, and premium fashion labels. The agency designs tailored brand ecosystems and produces high-impact <Link href="/corporate-events-in-delhi" className={link}>corporate events in Delhi NCR</Link>, alongside pan-India brand campaigns delivered across Bengaluru, Delhi NCR, and Mumbai.
       </>
     ),
   },
   {
-    q: "What is Anthem Amplify?",
+    q: "How does Anthem balance proprietary festival IPs with bespoke client brand activations?",
+    a: "Anthem operates a dual model consisting of owned cultural intellectual properties and tailored client brand activations. The agency conceptualizes, funds, and produces flagship proprietary IPs such as The Gin Explorers Club and Food Talk India, which have engaged over 150,000 attendees. This firsthand experience managing massive crowds, complex vendor ecosystems, and liquor compliance directly informs how Anthem produces bespoke activations and corporate conferences for external brands across Bengaluru, Delhi NCR, and Mumbai.",
+  },
+  {
+    q: "How does Anthem ensure quality control and production consistency across multi-city campaigns?",
     a: (
       <>
-        Anthem Amplify is Anthem&apos;s dedicated digital, creator, and culture marketing arm designed to extend live physical brand moments into the digital ecosystem. Amplify manages micro-creator ambassador programs, meme and culture-page seeding, short-form video production, event clipping, and digital-first campaigns that maximize online engagement. Learn more about our <Link href="/influencer-marketing-in-delhi" className={link}>influencer marketing in Delhi</Link>, <Link href="/influencer-marketing-in-mumbai" className={link}>Mumbai</Link>, and <Link href="/influencer-marketing-in-bangalore" className={link}>Bangalore</Link>.
+        Anthem maintains centralized creative direction and standardized production protocols supported by trusted local vendor networks. Whether executing multi-city roadshows or large-scale celebrations like <Link href="/services/world-class-festival-india" className={link}>World Class Festival India</Link>, Anthem deploys seasoned technical directors, spatial designers, and compliance managers to oversee fabrication, audio-visual staging, and artist management. This disciplined framework guarantees uniform brand prestige and zero downtime across Bengaluru, Delhi NCR, and Mumbai.
+      </>
+    ),
+  },
+  {
+    q: "How are campaign outcomes, attendee engagement, and ROI measured across Anthem's portfolio?",
+    a: "Anthem evaluates project success through structured quantitative metrics and qualitative brand equity benchmarks. For corporate conferences and leadership offsites, key metrics include executive net promoter scores, session dwell time, and stakeholder feedback. For consumer activations and brand festivals, Anthem tracks verified attendee footfall, digital impressions, media coverage, and on-ground conversion rates across Bengaluru, Delhi NCR, and Mumbai.",
+  },
+  {
+    q: "How can prospective corporate clients initiate a project or request tailored case credentials?",
+    a: (
+      <>
+        Enterprise brands and corporate teams can begin by submitting an initial project brief through Anthem&apos;s inquiry portal. Anthem&apos;s strategic leadership reviews project scope, expected timelines, and budget parameters before scheduling a collaborative discovery session. From there, the team delivers customized case study decks and spatial design proposals tailored to upcoming brand activations and corporate summits in Bengaluru, Delhi NCR, and Mumbai. You can <Link href="/#enquiry" className={link}>contact Anthem&apos;s client solutions team</Link> to discuss your upcoming project requirements.
       </>
     ),
   },
