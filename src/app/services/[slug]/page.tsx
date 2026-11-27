@@ -4,8 +4,10 @@ import Navbar from "@/components/Navbar";
 import ScrollProgress from "@/components/ScrollProgress";
 import SmoothScroll from "@/components/SmoothScroll";
 import CaseStudy from "@/components/CaseStudy";
+import PageFAQ from "@/components/PageFAQ";
 import Footer from "@/components/Footer";
 import { cases, getCase } from "@/data/cases";
+import { caseStudyFAQs } from "@/data/page-faqs";
 
 export function generateStaticParams() {
   return cases.map((c) => ({ slug: c.slug }));
@@ -55,6 +57,7 @@ export default async function CaseStudyPage({
   const data = getCase(slug);
   if (!data) notFound();
 
+  const faqs = caseStudyFAQs[slug] ?? [];
   const videos = data.video ? (Array.isArray(data.video) ? data.video : [data.video]) : [];
   const jsonLd = {
     "@context": "https://schema.org",
@@ -92,17 +95,39 @@ export default async function CaseStudyPage({
       : {}),
   };
 
+  const faqJsonLd = faqs.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.q,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.a,
+          },
+        })),
+      }
+    : null;
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <ScrollProgress />
       <SmoothScroll />
       <Navbar />
       <main className="flex-1">
         <CaseStudy data={data} />
+        {faqs.length > 0 && <PageFAQ faqs={faqs} />}
       </main>
       <Footer />
     </>

@@ -351,7 +351,7 @@ export default function CaseStudy({ data }: { data: CaseStudyType }) {
       <div className="container-x relative">
         <Reveal>
           <Link
-            href="/services"
+            href="/our-work"
             className="group inline-flex items-center gap-2 font-body text-sm text-muted transition-colors hover:text-accent"
           >
             <span className="transition-transform duration-300 group-hover:-translate-x-1">←</span>

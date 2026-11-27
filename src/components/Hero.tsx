@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRef, useState, useEffect } from "react";
 
 const R2 = "https://pub-c591ee037cf34224a3fb5b70122e4a59.r2.dev/uploads";
@@ -33,16 +34,16 @@ const slides = [
   },
 ];
 
-const words = ["An", "Integrated", "Creative", "&", "Experiential", "Marketing", "Agency"];
+const words = ["Integrated", "Marketing", "Agency"];
 
-const segments = [
-  { text: "Anthem is an integrated creative and experiential marketing agency helping brands connect with people through ideas, experiences and culture. With a presence in ", highlight: false },
-  { text: "Delhi NCR and Mumbai", highlight: true },
-  { text: " and projects across India, Anthem brings together creative strategy, integrated marketing, ", highlight: false },
-  { text: "brand activations", highlight: true },
-  { text: ", corporate events, digital campaigns, content production, influencer marketing and ", highlight: false },
-  { text: "large-scale experiences", highlight: true },
-  { text: ".", highlight: false },
+const segments: { text: string; highlight?: boolean; href?: string }[] = [
+  { text: "Anthem is an integrated marketing agency helping brands connect with people through ideas, experiences and culture. With a presence in " },
+  { text: "Delhi NCR", highlight: true, href: "/experience-design-in-delhi" },
+  { text: ", " },
+  { text: "Mumbai", highlight: true, href: "/event-management-in-mumbai" },
+  { text: " and " },
+  { text: "Bengaluru", highlight: true, href: "/brand-activations-in-bangalore" },
+  { text: ", Anthem executes projects across India and internationally. Anthem brings together creative strategy and brand solutions in both physical and digital spaces with world class end-to-end execution." },
 ];
 
 const EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
@@ -164,14 +165,21 @@ export default function Hero() {
           ref={descRef}
           className="reveal-hide mt-8 max-w-2xl font-body text-lg leading-relaxed text-muted"
         >
-          {segments.map((segment, i) => (
-            <span
-              key={i}
-              className={segment.highlight ? "text-gradient font-medium" : ""}
-            >
-              {segment.text}
-            </span>
-          ))}
+          {segments.map((segment, i) => {
+            const cls = segment.highlight ? "text-gradient font-medium" : "";
+            if (segment.href) {
+              return (
+                <Link key={i} href={segment.href} className={`${cls} underline-offset-2 hover:underline`}>
+                  {segment.text}
+                </Link>
+              );
+            }
+            return (
+              <span key={i} className={cls}>
+                {segment.text}
+              </span>
+            );
+          })}
         </p>
       </div>
 
