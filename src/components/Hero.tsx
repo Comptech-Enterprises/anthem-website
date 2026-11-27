@@ -34,10 +34,10 @@ const slides = [
   },
 ];
 
-const words = ["Integrated", "Marketing", "Agency"];
+const words = ["Creative", "Integrated", "Marketing", "Agency"];
 
 const segments: { text: string; highlight?: boolean; href?: string }[] = [
-  { text: "Anthem is an integrated marketing agency helping brands connect with people through ideas, experiences and culture. With a presence in " },
+  { text: "Anthem is a creative integrated marketing agency helping brands connect with people through ideas, experiences and culture. With a presence in " },
   { text: "Delhi NCR", highlight: true, href: "/experience-design-in-delhi" },
   { text: ", " },
   { text: "Mumbai", highlight: true, href: "/event-management-in-mumbai" },
