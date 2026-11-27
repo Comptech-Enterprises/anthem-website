@@ -41,11 +41,7 @@ const faqs: { q: string; a: ReactNode }[] = [
   },
   {
     q: "How does Anthem Amplify connect on-ground experiences with digital reach?",
-    a: (
-      <>
-        Anthem Amplify is Anthem&apos;s dedicated creator, culture, and content vertical that extends physical brand activations into sustained digital conversation. Available per project or on a monthly retainer, Amplify delivers brand ambassador programs, micro-creator campaigns, campus challenges, meme marketing, culture-page seeding, event content clipping, and short-form video production - ensuring live experiences continue driving relevance across social platforms. Connect with our team through our <Link href="/#enquiry" className={link}>project consultation form</Link> to plan an integrated campaign.
-      </>
-    ),
+    a: "Anthem Amplify is Anthem's dedicated creator, culture, and content vertical that extends physical brand activations into sustained digital conversation. Available per project or on a monthly retainer, Amplify delivers brand ambassador programs, micro-creator campaigns, campus challenges, meme marketing, culture-page seeding, event content clipping, and short-form video production - ensuring live experiences continue driving relevance across social platforms. Connect with our team through our project consultation form to plan an integrated campaign.",
   },
 ];
 
