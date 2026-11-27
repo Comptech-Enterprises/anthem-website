@@ -38,7 +38,7 @@ const faqStructuredData = {
       name: "How does Anthem balance proprietary festival IPs with bespoke client brand activations?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Anthem operates a dual model consisting of owned cultural intellectual properties and tailored client brand activations. The agency conceptualizes, funds, and produces flagship proprietary IPs such as The Gin Explorers Club and Food Talk India, which have engaged over 150,000 attendees. This firsthand experience managing massive crowds, complex vendor ecosystems, and liquor compliance directly informs how Anthem produces bespoke activations and corporate conferences for external brands across Bengaluru, Delhi NCR, and Mumbai.",
+        text: "Anthem operates a dual model consisting of owned cultural intellectual properties and tailored client brand activations. The agency conceptualizes, funds, and produces flagship proprietary IPs such as Explorers Club and Food Talk India, which have engaged over 150,000 attendees. This firsthand experience managing massive crowds, complex vendor ecosystems, and liquor compliance directly informs how Anthem produces bespoke activations and corporate conferences for external brands across Bengaluru, Delhi NCR, and Mumbai.",
       },
     },
     {
@@ -51,10 +51,10 @@ const faqStructuredData = {
     },
     {
       "@type": "Question",
-      name: "How are campaign outcomes, attendee engagement, and ROI measured across Anthem's portfolio?",
+      name: "How does Anthem measure campaign outcomes and ROI across its portfolio?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Anthem evaluates project success through structured quantitative metrics and qualitative brand equity benchmarks. For corporate conferences and leadership offsites, key metrics include executive net promoter scores, session dwell time, and stakeholder feedback. For consumer activations and brand festivals, Anthem tracks verified attendee footfall, digital impressions, media coverage, and on-ground conversion rates across Bengaluru, Delhi NCR, and Mumbai.",
+        text: "Anthem ties campaign measurement directly to each brand's commercial objective rather than relying on generic metrics, tracking performance across three layers: on-ground scale and trial, digital and cultural amplification, and brand salience among target audiences. This approach has delivered measurable outcomes ranging from 500+ activated retail and bar outlets for Johnnie Walker Whisky Experiments to 5.5M+ reach for Don Julio Por Amor Potluck, and 5,000+ attendees at the ARKS flagship retail launch.",
       },
     },
     {
@@ -62,7 +62,7 @@ const faqStructuredData = {
       name: "How can prospective corporate clients initiate a project or request tailored case credentials?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Enterprise brands and corporate teams can begin by submitting an initial project brief through Anthem's inquiry portal. Anthem's strategic leadership reviews project scope, expected timelines, and budget parameters before scheduling a collaborative discovery session. From there, the team delivers customized case study decks and spatial design proposals tailored to upcoming brand activations and corporate summits in Bengaluru, Delhi NCR, and Mumbai.",
+        text: "Enterprise brands and corporate teams can begin by submitting an initial project brief through Anthem's inquiry portal. Anthem's strategic leadership reviews project scope, expected timelines, and budget parameters before scheduling a collaborative discovery session. From there, the team delivers customized case study decks and spatial design proposals tailored to upcoming brand activations and corporate summits in Bengaluru, Delhi NCR, and Mumbai. You can contact Anthem's client solutions team to discuss your upcoming project requirements.",
       },
     },
   ],
