@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useInView } from "@/hooks/useInView";
 import Reveal from "./Reveal";
 
@@ -13,10 +13,14 @@ const stats = [
 
 function Counter({ value, suffix }: { value: number; suffix: string }) {
   const [ref, inView] = useInView<HTMLSpanElement>({ threshold: 0.5, rootMargin: "-80px" });
-  const [display, setDisplay] = useState(0);
+  const [display, setDisplay] = useState(value);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
-    if (!inView) return;
+    if (!inView || hasAnimated.current) return;
+    hasAnimated.current = true;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     const duration = 1400;
     let raf = 0;
     let start: number | null = null;
