@@ -31,7 +31,7 @@ const faqs: { q: string; a: ReactNode }[] = [
     q: "Does Anthem partner with corporate enterprises as well as high-growth brands?",
     a: (
       <>
-        Anthem works with Fortune 500 corporations, management consulting firms, and market-defining consumer lifestyle brands. Whether engineering leadership summits such as the <Link href="/services/bcg-india-leadership-meet" className={link}>BCG India leadership meet</Link> or producing high-energy retail debuts, Anthem tailors creative direction, vendor governance, and spatial design to match each client&apos;s commercial goals across Bengaluru, Delhi NCR, and Mumbai.
+        Anthem works with Fortune 500 corporations, management consulting firms, and market-defining consumer lifestyle brands. Whether engineering leadership summits such as the <Link href="/services/bcg-india-leadership-meet" className={link}>BCG India leadership meet</Link>{" "}or producing high-energy retail debuts, Anthem tailors creative direction, vendor governance, and spatial design to match each client&apos;s commercial goals across Bengaluru, Delhi NCR, and Mumbai.
       </>
     ),
   },
