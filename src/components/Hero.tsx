@@ -34,24 +34,16 @@ const slides = [
   },
 ];
 
-const words = ["An", "Integrated", "Creative", "&", "Experiential", "Marketing", "Agency"];
+const words = ["Integrated", "Marketing", "Agency"];
 
 const segments: { text: string; highlight?: boolean; href?: string }[] = [
-  { text: "Anthem is an integrated creative and experiential marketing agency helping brands connect with people through ideas, experiences and culture. With a presence in " },
+  { text: "Anthem is an integrated marketing agency helping brands connect with people through ideas, experiences and culture. With a presence in " },
   { text: "Delhi NCR", highlight: true, href: "/experience-design-in-delhi" },
-  { text: " and " },
+  { text: ", " },
   { text: "Mumbai", highlight: true, href: "/event-management-in-mumbai" },
-  { text: " and projects across India, Anthem brings together creative strategy, integrated marketing, " },
-  { text: "brand activations", highlight: true, href: "/brand-activations-in-delhi" },
-  { text: ", " },
-  { text: "corporate events", href: "/corporate-events-in-delhi" },
-  { text: ", digital campaigns, " },
-  { text: "content production", href: "/content-production-in-delhi" },
-  { text: ", " },
-  { text: "influencer marketing", href: "/influencer-marketing-in-delhi" },
   { text: " and " },
-  { text: "large-scale experiences", highlight: true, href: "/experience-design-in-mumbai" },
-  { text: "." },
+  { text: "Bengaluru", highlight: true, href: "/brand-activations-in-bangalore" },
+  { text: ", Anthem executes projects across India and internationally. Anthem brings together creative strategy and brand solutions in both physical and digital spaces with world class end-to-end execution." },
 ];
 
 const EASE = "cubic-bezier(0.16, 1, 0.3, 1)";

@@ -27,11 +27,11 @@ const playwrite = Playwrite_NZ_Basic({
 export const metadata: Metadata = {
   title: {
     default:
-      "Anthem | Creative & Experiential Marketing Agency in India",
+      "Anthem | Integrated Marketing Agency in India",
     template: "%s | Anthem",
   },
   description:
-    "Anthem is an integrated creative and experiential marketing agency delivering brand activations, corporate events, digital campaigns and experiences across India.",
+    "Anthem is an integrated marketing agency helping brands connect with people through ideas, experiences and culture, with a presence in Delhi NCR, Mumbai and Bengaluru.",
   keywords: [
     "experiential marketing agency India",
     "creative marketing agency India",
@@ -65,15 +65,15 @@ export const metadata: Metadata = {
     url: "https://theanthem.in",
     siteName: "Anthem",
     title:
-      "Anthem | Creative & Experiential Marketing Agency in India",
+      "Anthem | Integrated Marketing Agency in India",
     description:
-      "Anthem is an integrated creative and experiential marketing agency delivering brand activations, corporate events, digital campaigns and experiences across India.",
+      "Anthem is an integrated marketing agency helping brands connect with people through ideas, experiences and culture, with a presence in Delhi NCR, Mumbai and Bengaluru.",
     images: [
       {
         url: "/og-default.webp",
         width: 1200,
         height: 630,
-        alt: "Anthem — Experiential Marketing Agency",
+        alt: "Anthem — Integrated Marketing Agency",
       },
     ],
   },
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Anthem | Creative & Experiential Marketing Agency in India",
     description:
-      "Anthem is an integrated creative and experiential marketing agency delivering brand activations, corporate events, digital campaigns and experiences across India.",
+      "Anthem is an integrated marketing agency helping brands connect with people through ideas, experiences and culture, with a presence in Delhi NCR, Mumbai and Bengaluru.",
     images: [
       "/og-default.webp",
     ],
@@ -161,7 +161,7 @@ export default function RootLayout({
               url: "https://theanthem.in",
               logo: "https://theanthem.in/logo.png",
               description:
-                "Anthem is an integrated creative and experiential marketing agency in India, with offices in Delhi NCR and Mumbai.",
+                "Anthem is an integrated marketing agency in India, with a presence in Delhi NCR, Mumbai and Bengaluru.",
               foundingDate: "2014",
               address: {
                 "@type": "PostalAddress",
