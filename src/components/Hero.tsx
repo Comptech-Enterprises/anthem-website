@@ -34,10 +34,10 @@ const slides = [
   },
 ];
 
-const words = ["Creative", "Integrated", "Marketing", "Agency"];
+const words = ["Integrated", "Creative", "Marketing", "Agency"];
 
 const segments: { text: string; highlight?: boolean; href?: string }[] = [
-  { text: "Anthem is a creative integrated marketing agency helping brands connect with people through ideas, experiences and culture. With a presence in " },
+  { text: "Anthem is an integrated creative marketing agency helping brands connect with people through ideas, experiences and culture. With a presence in " },
   { text: "Delhi NCR", highlight: true, href: "/experience-design-in-delhi" },
   { text: ", " },
   { text: "Mumbai", highlight: true, href: "/event-management-in-mumbai" },
@@ -153,7 +153,7 @@ export default function Hero() {
             <span key={w} className="inline-block overflow-hidden pb-[0.12em] align-bottom">
               <span
                 ref={(el) => { wordRefs.current[i] = el; }}
-                className={`mr-4 inline-block hero-word-hide ${w === "Creative" || w === "Experiential" ? "text-gradient" : ""}`}
+                className={`mr-4 inline-block hero-word-hide ${w === "Integrated" ? "text-gradient" : ""}`}
               >
                 {w}
               </span>
